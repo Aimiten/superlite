@@ -1,0 +1,57 @@
+Ongelma on financial-analysis.ts tiedostossa, jossa palautetaan kovakoodattuja oletuskysymyksiä kun Gemini-analyysi epäonnistuu. Tämä tapahtuu riviltä 177 alkaen:
+typescriptconsole.log("WARNING: No questions or complete data found in the Gemini response. Falling back to default questions.");
+const defaultQuestions = [
+  { id: "owner_salary_impact", category: "income_statement", description: "...", question: "...", impact: "..." },
+  // ... muut kysymykset
+];
+Yksinkertainen ratkaisu: Palauta virhe oletuskysymysten sijaan
+Muuta financial-analysis.ts tiedostossa (riveiltä ~177-189):
+typescript// VANHA KOODI (poista tämä):
+console.log("WARNING: No questions or complete data found in the Gemini response. Falling back to default questions.");
+const defaultQuestions = [...];
+return {
+  status: "questions_identified",
+  questions: defaultQuestions,
+  // ...
+};
+
+// UUSI KOODI (korvaa yllä oleva tällä):
+console.error("ERROR: No valid data found in Gemini response - will retry");
+throw new Error("Gemini ei palauttanut validia dataa - analyysi palautetaan jonoon uudelleenyritystä varten");
+Tämä aiheuttaa sen, että:
+
+analyzeFinancialData heittää virheen
+process-valuation-documents-queue -funktio nappaa virheen catch-lohkossa
+Koska arkistointi tapahtuu vasta finally-lohkossa, voit estää arkistoinnin virhetilanteessa
+
+Lisäksi muuta process-valuation-documents-queue/index.ts tiedostossa finally-lohkoa (rivi ~197):
+typescript} finally {
+    // Archive message ONLY if successful or permanently failed
+    if (messageId) {
+      try {
+        // Arkistoi vain jos ei ole tilapäinen virhe
+        const shouldArchive = !error?.message?.includes("palautetaan jonoon");
+        
+        if (shouldArchive) {
+          const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_ROLE_KEY!);
+          debugLog("Queue", `Archiving message ${messageId} from queue`);
+          
+          const { error } = await supabase.rpc('queue_archive', {
+            queue_name: 'valuation_document_analysis_queue',
+            msg_id: Number(messageId)
+          });
+          
+          if (error) {
+            debugLog("Archive", `Failed: ${error.message}`);
+          } else {
+            debugLog("Archive", "Archived successfully");
+          }
+        } else {
+          debugLog("Queue", `NOT archiving message ${messageId} - will retry`);
+        }
+      } catch (e) { 
+        debugLog("Archive", "Exception", e);
+      }
+    }
+  }
+Näin viesti palautuu automaattisesti takaisin jonoon ja yritetään uudelleen.

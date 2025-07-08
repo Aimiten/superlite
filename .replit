@@ -1,0 +1,427 @@
+modules = ["nodejs-20", "web"]
+run = "npm run dev"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "npx serve -s dist"]
+deploymentTarget = "cloudrun"
+build = ["sh", "-c", "npm run build"]
+
+[workflows]
+runButton = "Build and Serve"
+
+[[workflows.workflow]]
+name = "Run"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
+
+[[workflows.workflow]]
+name = "Deploy Functions"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js all"
+
+[[workflows.workflow]]
+name = "Deploy"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js all"
+
+[[workflows.workflow]]
+name = "Deploy Free Valuation"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js free-valuation"
+
+[[workflows.workflow]]
+name = "Deploy All Functions"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js all"
+
+[[workflows.workflow]]
+name = "Deploy - send-email-valuation"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js send-email-valuation"
+
+[[workflows.workflow]]
+name = "Deploy - free-valuation"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js free-valuation"
+
+[[workflows.workflow]]
+name = "Deploy - ai-database-chat"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js ai-database-chat"
+
+[[workflows.workflow]]
+name = "Deploy - assessment"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js assessment"
+
+[[workflows.workflow]]
+name = "Deploy - generate-tasks"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js generate-tasks"
+
+[[workflows.workflow]]
+name = "Deploy - get-shared-company"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js get-shared-company"
+
+[[workflows.workflow]]
+name = "Deploy - valuation"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js valuation"
+
+[[workflows.workflow]]
+name = "Deploy - free-valuation-database"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js free-valuation"
+
+[[workflows.workflow]]
+name = "Deploy Free Valuation Database"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js free-valuation"
+
+[[workflows.workflow]]
+name = "Deploy - simple-calculator"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js simple-calculator"
+
+[[workflows.workflow]]
+name = "Dev Server"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev -- --host 0.0.0.0 --port 3000"
+
+[[workflows.workflow]]
+name = "Production Preview"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run build && npx --no serve -s dist -l 5000"
+
+[[workflows.workflow]]
+name = "Deploy Simple Calculator"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js simple-calculator"
+
+[[workflows.workflow]]
+name = "Deploy - create-checkout"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js create-checkout"
+
+[[workflows.workflow]]
+name = "Deploy - send-report-email"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js send-report-email"
+
+[[workflows.workflow]]
+name = "Deploy - ai-document-generator"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js ai-document-generator"
+
+[[workflows.workflow]]
+name = "Build and Serve"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run build && npx serve -s dist -l 5000"
+
+[[workflows.workflow]]
+name = "Security Scan"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx snyk auth"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx snyk test"
+
+[[workflows.workflow]]
+name = "Deploy - update-task"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js update-task"
+
+[[workflows.workflow]]
+name = "Deploy - delete-task"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js delete-task"
+
+[[workflows.workflow]]
+name = "Deploy - calculate-valuation-impact"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js calculate-valuation-impact"
+
+[[workflows.workflow]]
+name = "Deploy - analyze-post-dd-readiness"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js analyze-post-dd-readiness"
+
+[[workflows.workflow]]
+name = "Deploy - analyze-sales-readiness"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-analyze-sales-readiness.js"
+
+[[workflows.workflow]]
+name = "Deploy - process-sales-analysis-queue"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-process-sales-analysis-queue.js"
+
+[[workflows.workflow]]
+name = "Deploy - generate-dd-tasks"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-generate-dd-tasks.js"
+
+[[workflows.workflow]]
+name = "Deploy - process-post-dd-analysis-queue"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-process-post-dd-analysis-queue.js"
+
+[[workflows.workflow]]
+name = "Deploy - analyze-valuation-documents"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-analyze-valuation-documents.js"
+
+[[workflows.workflow]]
+name = "Deploy - process-valuation-documents-queue"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-process-valuation-documents-queue.js"
+
+[[workflows.workflow]]
+name = "Deploy - stripe-webhook"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-stripe-webhook.js"
+
+[[workflows.workflow]]
+name = "Deploy Simulate Valuation"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run deploy:simulate-valuation"
+
+[[workflows.workflow]]
+name = "Deploy - dcf-scenario-analysis"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js dcf-scenario-analysis"
+
+[[workflows.workflow]]
+name = "Deploy - reset-user-data"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js reset-user-data"
+
+[[workflows.workflow]]
+name = "Deploy - queue-dcf-analysis"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-queue-dcf-analysis.js"
+
+[[workflows.workflow]]
+name = "Deploy - process-dcf-analysis-queue"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-process-dcf-analysis-queue.js"
+
+[[workflows.workflow]]
+name = "Deploy - upload-conversation-file"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js upload-conversation-file"
+
+[[workflows.workflow]]
+name = "Deploy - send-share-notification"
+author = 35977962
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/deploy-functions.js send-share-notification"
+
+[[ports]]
+localPort = 3000
+externalPort = 3000
+
+[[ports]]
+localPort = 3001
+externalPort = 3001
+
+[[ports]]
+localPort = 3002
+externalPort = 3002
+
+[[ports]]
+localPort = 3003
+externalPort = 3003
+
+[[ports]]
+localPort = 4000
+externalPort = 4200
+
+[[ports]]
+localPort = 5000
+externalPort = 5000
+
+[[ports]]
+localPort = 8080
+externalPort = 80
+exposeLocalhost = true
+
+[[ports]]
+localPort = 8081
+externalPort = 8081
+
+[[ports]]
+localPort = 37679
+externalPort = 5173
+
+[[ports]]
+localPort = 45221
+externalPort = 6000

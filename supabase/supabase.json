@@ -1,0 +1,11 @@
+
+{
+  "project_id": "rmkleyyzieacwltcbgzs",
+  "org_id": "",
+  "api": {
+    "http_url": "https://rmkleyyzieacwltcbgzs.supabase.co",
+    "ws_url": "wss://rmkleyyzieacwltcbgzs.supabase.co",
+    "service_role_key": "",
+    "anon_key": ""
+  }
+}

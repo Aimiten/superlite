@@ -1,0 +1,127 @@
+// Korvaa Valuation.tsx:ssä oleva analyzeCompany funktio tällä:
+
+const analyzeCompany = async () => {
+  if (!activeCompany) {
+    toast({ title: "Virhe", description: "Valitse ensin yritys", variant: "destructive" });
+    return;
+  }
+
+  if (uploadedFiles.length === 0) {
+    toast({ title: "Virhe", description: "Lataa tai valitse vähintään yksi tiedosto", variant: "destructive" });
+    return;
+  }
+
+  setIsLoading(true);
+  setError("");
+  setCurrentStep(2);
+
+  const progress = createProgressHandler();
+  progress.start("analyzing");
+
+  try {
+    console.log("Starting queue-based valuation analysis...");
+    
+    // VAIHE 1: Queue ensimmäinen raskas analyysi
+    const analysisId = await valuationService.queueDocumentAnalysis(
+      activeCompany.name, 
+      uploadedFiles, 
+      activeCompany.company_type,
+      activeCompany.id
+    );
+
+    setLatestValuationId(analysisId);
+    console.log(`Analysis queued with ID: ${analysisId}`);
+
+    toast({
+      title: "Analyysi käynnistetty",
+      description: "Dokumenttianalyysi käsitellään taustalla.",
+      variant: "default"
+    });
+
+    // VAIHE 2: Pollaa kunnes ensimmäinen vaihe valmis
+    let attempts = 0;
+    const maxAttempts = 120; // 10 minuuttia
+    
+    const pollInterval = setInterval(async () => {
+      attempts++;
+      
+      try {
+        const status = await valuationService.pollAnalysisStatus(analysisId);
+        
+        if (status.status === 'completed') {
+          clearInterval(pollInterval);
+          progress.update("analyzing", 95);
+          
+          // Tarkista onko kysymyksiä
+          if (status.questions && status.questions.length > 0) {
+            setFinancialQuestions(status.questions);
+            setInitialFindings(status.initial_findings);
+            setRequiresUserInput(true);
+            setCurrentStep(2.5);
+            
+            toast({
+              title: "Dokumenttianalyysi valmis",
+              description: "Vastaa kysymyksiin tarkemman analyysin saamiseksi."
+            });
+          } else {
+            // Jos ei kysymyksiä, käytä tavallista service-kutsua
+            const data = await valuationService.analyzeCompany(
+              activeCompany.name,
+              uploadedFiles,
+              activeCompany.company_type
+            );
+
+            if (data.companyInfo) setCompanyInfo(data.companyInfo);
+            if (data.financialAnalysis) setFinancialAnalysis(data.financialAnalysis);
+            if (data.finalAnalysis) setValuationReport(data.finalAnalysis);
+
+            setCurrentStep(3);
+            
+            if (data.finalAnalysis && !data.finalAnalysis.error) {
+              setTimeout(() => {
+                saveValuationToDatabase(
+                  data.finalAnalysis,
+                  data.financialAnalysis,
+                  data.companyInfo,
+                  false,
+                  [],
+                  status.initial_findings
+                );
+              }, 500);
+            }
+
+            toast({ title: "Analyysi valmis", description: "Arvonmääritys suoritettu." });
+          }
+          
+          progress.complete("analyzing");
+          setIsLoading(false);
+          
+        } else if (status.status === 'failed') {
+          clearInterval(pollInterval);
+          handleError("Dokumenttianalyysi epäonnistui", new Error(status.error_message));
+          setCurrentStep(1);
+          
+        } else if (attempts >= maxAttempts) {
+          clearInterval(pollInterval);
+          handleError("Analyysi kesti liian kauan", new Error("Timeout"));
+          setCurrentStep(1);
+        }
+        
+      } catch (pollError) {
+        console.error("Polling error:", pollError);
+        if (attempts >= maxAttempts) {
+          clearInterval(pollInterval);
+          handleError("Tilan tarkistus epäonnistui", pollError);
+          setCurrentStep(1);
+        }
+      }
+    }, 5000);
+
+  } catch (err) {
+    handleError("Analyysin aloitus epäonnistui", err);
+    setCurrentStep(1);
+  } finally {
+    progress.cleanup();
+    setIsLoading(false);
+  }
+};

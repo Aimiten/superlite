@@ -1,0 +1,142 @@
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
+  box-shadow: 
+    5px 5px 15px rgba(0, 0, 0, 0.05),
+    -5px -5px 15px rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    8px 8px 20px rgba(0, 0, 0, 0.07),
+    -8px -8px 20px rgba(255, 255, 255, 0.9);
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Modern scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.8);
+}
+
+/* Dashboard specific styles */
+.gradient-bg {
+  background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
+}
+
+.shadow-neumorphic {
+  box-shadow: 
+    5px 5px 15px rgba(0, 0, 0, 0.05),
+    -5px -5px 15px rgba(255, 255, 255, 0.8);
+}
+
+.shadow-neumorphic-pressed {
+  box-shadow: 
+    inset 3px 3px 7px rgba(0, 0, 0, 0.05),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.8);
+}
+
+.shadow-neumorphic-primary {
+  box-shadow: 
+    5px 5px 10px rgba(124, 58, 237, 0.05),
+    -5px -5px 10px rgba(255, 255, 255, 0.8);
+}
+
+.shadow-neumorphic-primary-pressed {
+  box-shadow: 
+    inset 3px 3px 7px rgba(124, 58, 237, 0.05),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.8);
+}
+
+.shadow-neumorphic-secondary {
+  box-shadow: 
+    5px 5px 10px rgba(192, 132, 252, 0.05),
+    -5px -5px 10px rgba(255, 255, 255, 0.8);
+}
+
+.shadow-neumorphic-secondary-pressed {
+  box-shadow: 
+    inset 3px 3px 7px rgba(192, 132, 252, 0.05),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.8);
+}
+
+.shadow-input {
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.03), inset -2px -2px 5px rgba(255, 255, 255, 0.7);
+}
+
+.shadow-input-focus {
+  box-shadow: inset 2px 2px 5px rgba(124, 58, 237, 0.05), inset -2px -2px 5px rgba(255, 255, 255, 0.7);
+}
+
+.card-3d {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
+  box-shadow: 
+    5px 5px 15px rgba(0, 0, 0, 0.05),
+    -5px -5px 15px rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.card-3d:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    8px 8px 20px rgba(0, 0, 0, 0.07),
+    -8px -8px 20px rgba(255, 255, 255, 0.9);
+}

@@ -1,0 +1,48 @@
+Selkeä ohje ValuationImpactTab.tsx korjaukseen:
+1. Etsi tämä koodi (noin rivi 260-280):
+tsx<Card className="bg-green-50 border-green-200">
+   <CardHeader className="pb-2">
+     <CardTitle className="text-base font-medium">Arvio myyntikuntoisuuden jälkeen</CardTitle>
+   </CardHeader>
+   <CardContent>
+     <p className="text-2xl font-bold text-green-700">{formatCurrency(adjustedResult?.averageValuation)}</p>
+     {/* Lisätty selkeä prosentuaalinen muutos */}
+     <p className="text-sm text-green-600 mb-1">
+       {calculatePercentageChange(originalSnapshot?.averageValuation, adjustedResult?.averageValuation)} muutos
+     </p>
+     <p className="text-sm text-green-600">
+       Haarukka: {formatCurrency(adjustedResult?.valuationRange?.low)} - {formatCurrency(adjustedResult?.valuationRange?.high)}
+     </p>
+   </CardContent>
+</Card>
+2. Lisää ENNEN tuota Card-komponenttia nämä 2 riviä:
+tsxconst changePercent = calculatePercentageChange(originalSnapshot?.averageValuation, adjustedResult?.averageValuation);
+const isPositive = !changePercent.includes('-');
+3. Korvaa kaikki vihreät värit ehdollisilla väreillä:
+
+"bg-green-50 border-green-200" → {isPositive ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}
+"text-green-700" → {isPositive ? "text-green-700" : "text-red-700"}
+"text-green-600" → {isPositive ? "text-green-600" : "text-red-600"}
+{calculatePercentageChange(...)} muutos → {changePercent} muutos
+
+Lopputulos näyttää tältä:
+tsxconst changePercent = calculatePercentageChange(originalSnapshot?.averageValuation, adjustedResult?.averageValuation);
+const isPositive = !changePercent.includes('-');
+
+<Card className={isPositive ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}>
+   <CardHeader className="pb-2">
+     <CardTitle className="text-base font-medium">Arvio myyntikuntoisuuden jälkeen</CardTitle>
+   </CardHeader>
+   <CardContent>
+     <p className={`text-2xl font-bold ${isPositive ? "text-green-700" : "text-red-700"}`}>
+       {formatCurrency(adjustedResult?.averageValuation)}
+     </p>
+     <p className={`text-sm ${isPositive ? "text-green-600" : "text-red-600"} mb-1`}>
+       {changePercent} muutos
+     </p>
+     <p className={`text-sm ${isPositive ? "text-green-600" : "text-red-600"}`}>
+       Haarukka: {formatCurrency(adjustedResult?.valuationRange?.low)} - {formatCurrency(adjustedResult?.valuationRange?.high)}
+     </p>
+   </CardContent>
+</Card>
+Tulos: Nyt negatiivinen muutos (-41.3%) näkyy punaisella ja positiivinen muutos (+X%) näkyy vihreällä!

@@ -1,0 +1,68 @@
+Failed to load resource: the server responded with a status of 406 ()Understand this error
+index-BWtHjNFc.js:784 [ValuationPathQuestionForm] Saved answers to database
+rmkleyyzieacwltcbgzs.supabase.co/rest/v1/valuations?select=id%2Cuser_id&id=eq.f2c0e0b6-77d1-4939-ac23-f1fa2aebae29&user_id=eq.c57e310f-8cc4-452b-af94-19adf564772c:1 
+            
+            
+           Failed to load resource: the server responded with a status of 406 ()Understand this error
+index-BWtHjNFc.js:784 [ValuationPathQuestionForm] Saved answers to database
+rmkleyyzieacwltcbgzs.supabase.co/rest/v1/valuations?select=id%2Cuser_id&id=eq.f2c0e0b6-77d1-4939-ac23-f1fa2aebae29&user_id=eq.c57e310f-8cc4-452b-af94-19adf564772c:1 
+            
+            
+           Failed to load resource: the server responded with a status of 406 ()Understand this error
+index-BWtHjNFc.js:784 [ValuationPathQuestionForm] Saved answers to database
+rmkleyyzieacwltcbgzs.supabase.co/rest/v1/valuations?select=id%2Cuser_id&id=eq.f2c0e0b6-77d1-4939-ac23-f1fa2aebae29&user_id=eq.c57e310f-8cc4-452b-af94-19adf564772c:1 
+            
+            
+           Failed to load resource: the server responded with a status of 406 ()Understand this error
+index-BWtHjNFc.js:784 [ValuationPathQuestionForm] Saved answers to database
+rmkleyyzieacwltcbgzs.supabase.co/rest/v1/valuations?select=id%2Cuser_id&id=eq.f2c0e0b6-77d1-4939-ac23-f1fa2aebae29&user_id=eq.c57e310f-8cc4-452b-af94-19adf564772c:1 
+            
+            
+           Failed to load resource: the server responded with a status of 406 ()Understand this error
+index-BWtHjNFc.js:784 [ValuationPathQuestionForm] Saved answers to database
+rmkleyyzieacwltcbgzs.supabase.co/rest/v1/valuations?select=id%2Cuser_id&id=eq.f2c0e0b6-77d1-4939-ac23-f1fa2aebae29&user_id=eq.c57e310f-8cc4-452b-af94-19adf564772c:1 
+            
+            
+           Failed to load resource: the server responded with a status of 406 ()Understand this error
+index-BWtHjNFc.js:784 [ValuationPathQuestionForm] Saved answers to database
+rmkleyyzieacwltcbgzs.supabase.co/rest/v1/valuations?select=id%2Cuser_id&id=eq.f2c0e0b6-77d1-4939-ac23-f1fa2aebae29&user_id=eq.c57e310f-8cc4-452b-af94-19adf564772c:1 
+            
+            
+           Failed to load resource: the server responded with a status of 406 ()Understand this error
+index-BWtHjNFc.js:784 [ValuationPathQuestionForm] Saved answers to database
+rmkleyyzieacwltcbgzs.supabase.co/rest/v1/valuations?select=id%2Cuser_id&id=eq.f2c0e0b6-77d1-4939-ac23-f1fa2aebae29&user_id=eq.c57e310f-8cc4-452b-af94-19adf564772c:1 
+            
+            
+           Failed to load resource: the server responded with a status of 406 ()Understand this error
+index-BWtHjNFc.js:784 [ValuationPathQuestionForm] Saved answers to database
+rmkleyyzieacwltcbgzs.supabase.co/rest/v1/valuations?select=id%2Cuser_id&id=eq.f2c0e0b6-77d1-4939-ac23-f1fa2aebae29&user_id=eq.c57e310f-8cc4-452b-af94-19adf564772c:1 
+            
+            
+           Failed to load resource: the server responded with a status of 406 ()Understand this error
+index-BWtHjNFc.js:784 [ValuationPathQuestionForm] Saved answers to database
+rmkleyyzieacwltcbgzs.supabase.co/rest/v1/valuations?select=id%2Cuser_id&id=eq.f2c0e0b6-77d1-4939-ac23-f1fa2aebae29&user_id=eq.c57e310f-8cc4-452b-af94-19adf564772c:1 
+            
+            
+           Failed to load resource: the server responded with a status of 406 ()Understand this error
+index-BWtHjNFc.js:784 [ValuationPathQuestionForm] Saved answers to database
+index-BWtHjNFc.js:712 Calling edge function valuation
+rmkleyyzieacwltcbgzs.supabase.co/rest/v1/valuations?select=id%2Cuser_id&id=eq.f2c0e0b6-77d1-4939-ac23-f1fa2aebae29&user_id=eq.c57e310f-8cc4-452b-af94-19adf564772c:1 
+            
+            
+           Failed to load resource: the server responded with a status of 406 ()Understand this error
+rmkleyyzieacwltcbgzs.supabase.co/rest/v1/valuations?select=id%2Cuser_id&id=eq.f2c0e0b6-77d1-4939-ac23-f1fa2aebae29&user_id=eq.c57e310f-8cc4-452b-af94-19adf564772c:1 
+            
+            
+           Failed to load resource: the server responded with a status of 406 ()Understand this error
+4index-BWtHjNFc.js:637 Auth state changed: SIGNED_IN
+valuation:1 Access to fetch at 'https://rmkleyyzieacwltcbgzs.supabase.co/functions/v1/valuation' from origin 'https://e5371ce2-f4d3-46d8-b5d1-a12d3245499c-00-15ig3m0h8um2l.kirk.replit.dev:5000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.Understand this error
+rmkleyyzieacwltcbgzs.supabase.co/functions/v1/valuation:1 
+            
+            
+           Failed to load resource: net::ERR_FAILEDUnderstand this error
+index-BWtHjNFc.js:712 Error calling valuation: FunctionsFetchError: Failed to send a request to the Edge Function
+    at index-BWtHjNFc.js:632:26635
+ms @ index-BWtHjNFc.js:712Understand this error
+index-BWtHjNFc.js:784 Vastausten käsittely epäonnistui: Error: Failed to send a request to the Edge Function
+    at Object.processQuestionAnswers (index-BWtHjNFc.js:712:66064)
+    at async he (index-BWtHjNFc.js:784:81112)

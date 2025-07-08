@@ -1,0 +1,21 @@
+
+User-agent: *
+Disallow: /
+
+# Salli vain nämä määritellyt sivut
+Allow: /$
+Allow: /free-valuation$
+Allow: /free-calculator$
+Allow: /ehdot-lite$
+
+# Salli myös CSS, JS ja kuvatiedostot
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.ico$
+
+Sitemap: https://arvento.fi/sitemap.xml
