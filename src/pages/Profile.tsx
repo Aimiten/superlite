@@ -11,7 +11,7 @@ import ActivityTab from "@/components/profile/ActivityTab";
 import ProfileTab from "@/components/profile/ProfileTab";
 import CompanyTab from "@/components/profile/CompanyTab";
 import DocumentsTab from "@/components/profile/DocumentsTab";
-import { Company } from "@/components/assessment/types";
+import { Company } from "@/types/company";
 
 const Profile = () => {
   const navigate = useNavigate();

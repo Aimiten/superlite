@@ -17,9 +17,6 @@ import Index from "@/pages/Index";
 import CheckoutSuccess from "@/pages/CheckoutSuccess";
 import Profile from "@/pages/Profile";
 import PricingPage from "@/pages/PricingPage";
-import Assessment from "@/pages/Assessment";
-import TaskList from "@/components/tasks/TaskList";
-import TaskGenerator from "@/pages/TaskGenerator";
 import Valuation from "@/pages/Valuation";
 import Sharing from "@/pages/Sharing";
 import SharingManager from "@/pages/SharingManager";
@@ -32,7 +29,6 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { CompanyProvider } from "@/contexts/CompanyContext";
 import FreeValuation from "@/pages/FreeValuation";
 import FreeCalculatorPage from "@/pages/FreeCalculatorPage";
-import TaskDashboard from "@/pages/TaskDashboard";
 import AIAssistantHistory from "@/pages/AIAssistantHistory";
 import TermsOfService from "@/pages/TermsOfService";
 import SimplePageTransition from "@/components/SimplePageTransition";
@@ -159,10 +155,6 @@ function App() {
 
             {/* Suojatut reitit yritysvaatimuksella */}
             <Route element={<ProtectedMainLayout requireCompany={true} />}>
-              <Route path="/assessment" element={<Assessment />} />
-              <Route path="/tasks" element={<TaskDashboard />} />
-              <Route path="/task-list" element={<TaskList />} />
-              <Route path="/task-generator" element={<TaskGenerator />} />
               <Route path="/valuation" element={<Valuation />} />
               <Route path="/sharing" element={<Sharing />} />
               <Route path="/sharing-manager" element={<SharingManager />} />

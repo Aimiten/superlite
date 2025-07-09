@@ -5,12 +5,8 @@ import ChatHeader from "./ChatHeader";
 import MessageList from "./MessageList";
 import MessageInput from "./MessageInput";
 import FileUploadPreview from "./FileUploadPreview";
-import { DocumentGenerationButton } from "./DocumentGenerationButton";
-import DocumentHandlerContainer from "./DocumentHandlerContainer";
 import { Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import TaskPanelButton from "./TaskPanelButton";
-import TaskWYSIWYGEditor from "./TaskWYSIWYGEditor";
 
 const ChatContainer: React.FC<ChatContainerProps> = ({
   messages,
@@ -39,21 +35,6 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
   acceptedFileFormats,
   onHandlerAction
 }) => {
-  // Tehtäväeditorin tilamuuttuja
-  const [isTaskPanelOpen, setIsTaskPanelOpen] = useState(false);
-
-  // ChatContainer.tsx (KORJATTU VERSIO)
-  const handleEditorContentShare = (content: string) => {
-    // Tässä on oikea tapa käsitellä editorin sisältö
-    const formattedContent = `Tässä työstämäni tehtävän sisältö. Auta minua parantamaan sitä:\n\n${content}`;
-
-    // Lähetetään viesti suoraan contentOverride-parametrin avulla
-    // Ei tarvetta päivittää message-tilaa ensin
-    onSendMessage(
-      {preventDefault: () => {}} as React.FormEvent,
-      formattedContent
-    );
-  };
 
   // Keskitetty empty state UI
   if (!hasMessages) {
@@ -136,21 +117,8 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
         messages={messages}
       />
 
-      {/* Näytä tehtäväeditorin avausnappi, kun käyttäjällä on tehtäväkonteksti */}
-      {taskContext && (
-        <div className="border-b bg-background py-1 px-4">
-          <div className="max-w-2xl mx-auto flex justify-end">
-            <TaskPanelButton 
-              taskContext={taskContext}
-              onClick={() => setIsTaskPanelOpen(!isTaskPanelOpen)}
-              isOpen={isTaskPanelOpen}
-            />
-          </div>
-        </div>
-      )}
-
-      {/* Chat-alue - lisätty marginaali kun paneeli on auki */}
-      <div className={`flex-grow overflow-y-auto relative py-2 ${isTaskPanelOpen ? 'mr-[450px]' : ''}`}>
+      {/* Chat-alue */}
+      <div className="flex-grow overflow-y-auto relative py-2">
         <div className="max-w-2xl mx-auto px-4">
           <MessageList 
             messages={messages}
@@ -161,49 +129,11 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
             onHandlerAction={onHandlerAction}
           />
 
-          {/* Document generation button */}
-          {taskContext && documentGenerationReady && !generatedDocument && !isLoading && (
-            <DocumentGenerationButton 
-              isLoading={isLoading}
-              onClick={onGenerateDocument}
-            />
-          )}
-
-          {/* Document download/save options */}
-          {generatedDocument && (
-            <DocumentHandlerContainer
-              taskContext={taskContext}
-              document={generatedDocument}
-              onDocumentSaved={() => {
-                if (onHandlerAction) onHandlerAction('documentSaved');
-                // Vanha toiminnallisuus yhteensopivuuden vuoksi
-                onFormatSelect('markdown', true);
-              }}
-              onDocumentDownloaded={(format) => {
-                if (onHandlerAction) onHandlerAction('documentDownloaded', { format });
-                // Vanha toiminnallisuus yhteensopivuuden vuoksi
-                onFormatSelect(format, false);
-              }}
-            />
-          )}
         </div>
       </div>
 
-      {/* Tehtäväeditorin sivupaneeli */}
-      {taskContext && (
-        <TaskWYSIWYGEditor
-          taskContext={taskContext}
-          isOpen={isTaskPanelOpen}
-          onClose={() => setIsTaskPanelOpen(false)}
-          onContentShare={handleEditorContentShare}
-          onSaved={() => {
-            if (onHandlerAction) onHandlerAction('taskEditorSaved');
-          }}
-        />
-      )}
-
-      {/* Syöttörivi alhaalla - lisätty marginaali kun paneeli on auki */}
-      <div className={`bg-gray-50 pt-4 pb-4 border-t ${isTaskPanelOpen ? 'mr-[450px]' : ''}`}>
+      {/* Syöttörivi alhaalla */}
+      <div className="bg-gray-50 pt-4 pb-4 border-t">
         <div className="max-w-2xl mx-auto px-4">
           {uploadedFile && (
             <FileUploadPreview 

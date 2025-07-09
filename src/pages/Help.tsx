@@ -3,8 +3,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import GettingStartedSection from "@/components/help/GettingStartedSection";
 import ValuationHelpSection from "@/components/help/ValuationHelpSection";
-import AssessmentHelpSection from "@/components/help/AssessmentHelpSection";
-import TasksHelpSection from "@/components/help/TasksHelpSection";
 import AIAssistantHelpSection from "@/components/help/AIAssistantHelpSection";
 import SharingHelpSection from "@/components/help/SharingHelpSection";
 
@@ -17,11 +15,9 @@ const Help = () => {
     >
       <div className="container mx-auto py-4 max-w-6xl">
         <Tabs defaultValue="getting-started">
-          <TabsList className="mb-6 grid w-full grid-cols-6">
+          <TabsList className="mb-6 grid w-full grid-cols-4">
             <TabsTrigger value="getting-started">Aloittaminen</TabsTrigger>
             <TabsTrigger value="valuations">Arvonmääritys</TabsTrigger>
-            <TabsTrigger value="assessment">Myyntikunto</TabsTrigger>
-            <TabsTrigger value="tasks">Tehtävät</TabsTrigger>
             <TabsTrigger value="ai-assistant">AI-assistentti</TabsTrigger>
             <TabsTrigger value="sharing">Jakaminen</TabsTrigger>
           </TabsList>
@@ -32,14 +28,6 @@ const Help = () => {
 
           <TabsContent value="valuations">
             <ValuationHelpSection />
-          </TabsContent>
-
-          <TabsContent value="assessment">
-            <AssessmentHelpSection />
-          </TabsContent>
-
-          <TabsContent value="tasks">
-            <TasksHelpSection />
           </TabsContent>
 
           <TabsContent value="ai-assistant">

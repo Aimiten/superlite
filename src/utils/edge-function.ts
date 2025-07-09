@@ -27,11 +27,11 @@ export async function callEdgeFunction<T = any>(
 
   // Sallittujen funktioiden allow-list
   const ALLOWED_FUNCTIONS = [
-    'analyze-post-dd-readiness', 'valuation', 'free-valuation', 'assessment', 'analyze-sales-readiness',
-    'generate-dd-tasks', 'ai-database-chat', 'simple-calculator', 
-    'send-email-valuation', 'generate-tasks', 'get-shared-company',
+    'analyze-post-dd-readiness', 'valuation', 'free-valuation', 'analyze-sales-readiness',
+    'ai-database-chat', 'simple-calculator', 
+    'send-email-valuation', 'get-shared-company',
     'create-checkout', 'send-report-email', 'ai-document-generator',
-    'calculate-valuation-impact', 'update-task', 'delete-task', 'cleanup-expired-conversations', 'list-conversations', 'save-conversation', 'get-conversation', 'create-task', 'analyze-valuation-documents', 'process-valuation-documents-queue', 'stripe-webhook',
+    'calculate-valuation-impact', 'cleanup-expired-conversations', 'list-conversations', 'save-conversation', 'get-conversation', 'analyze-valuation-documents', 'process-valuation-documents-queue', 'stripe-webhook',
     'simulate-valuation', 'reset-user-data',
     'queue-dcf-analysis', 'send-share-notification', 'generate-nda',
     'send-nda-email', 'accept-nda'

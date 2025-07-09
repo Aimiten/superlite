@@ -11,7 +11,6 @@ export interface Message {
 export interface CompanyContext {
   companyData: any;
   companyInfo?: any;
-  tasks?: any[];
   valuation?: any;
   lastUpdated: Date;
 }
@@ -45,8 +44,6 @@ export interface MessageInputProps {
 export interface MessageItemProps {
   message: Message;
   isLoading?: boolean;
-  taskContext?: TaskContext | null;
-  onHandlerAction?: (action: string, data?: any) => void;
 }
 
 export interface FileUploadPreviewProps {

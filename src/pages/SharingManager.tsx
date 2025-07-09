@@ -28,7 +28,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 // Uudet komponentti-importit
 import DocumentSelector from "@/components/sharing/DocumentSelector";
-import TaskSelector from "@/components/sharing/TaskSelector";
 import DeleteShareDialog from "@/components/sharing/DeleteShareDialog"; // Lisätty DeleteShareDialog-komponentti
 import { SmartNDASection, NDAConfig } from "@/components/sharing/SmartNDASection";
 import { NDAPreviewModal } from "@/components/sharing/NDAPreviewModal";
@@ -67,7 +66,6 @@ interface ShareItem {
   share_assessment: boolean;
   share_valuation: boolean;
   share_documents: boolean;
-  share_tasks: boolean;
   share_valuation_impact: boolean;
   shared_with: string | null;
   assessment_id?: string;
@@ -122,7 +120,6 @@ const SharingManager = () => {
   const [shareAssessment, setShareAssessment] = useState(false);
   const [shareValuation, setShareValuation] = useState(false);
   const [shareDocuments, setShareDocuments] = useState(false);
-  const [shareTasks, setShareTasks] = useState(false);
   const [shareValuationImpact, setShareValuationImpact] = useState(false);
   const [accessLevel, setAccessLevel] = useState<"read_only" | "comment">("read_only");
   const [expirationDays, setExpirationDays] = useState<number | null>(15);
@@ -134,7 +131,6 @@ const SharingManager = () => {
 
   // Uudet tilamuuttujat
   const [selectedDocuments, setSelectedDocuments] = useState<{id: string, source: string, name?: string}[]>([]);
-  const [selectedTasks, setSelectedTasks] = useState<string[]>([]);
   const [shareCommentCounts, setShareCommentCounts] = useState<Record<string, number>>({});
   const [viewingCommentsForShare, setViewingCommentsForShare] = useState<string | null>(null);
   const [shareComments, setShareComments] = useState<any[]>([]);
@@ -156,7 +152,7 @@ const SharingManager = () => {
   useEffect(() => {
     // Reset NDA approval when any key selection changes
     setNdaApproved(false);
-  }, [selectedCompany, shareValuation, shareAssessment, shareDocuments, shareTasks]);
+  }, [selectedCompany, shareValuation, shareAssessment, shareDocuments]);
 
   // Lisätään funktio, joka poistaa jaon käyttöliittymästä kun se on poistettu tietokannasta
   const handleShareDeleteSuccess = (shareId: string) => {
@@ -325,7 +321,6 @@ const SharingManager = () => {
           company_name: share.companies?.name || "Tuntematon yritys",
           share_assessment: share.share_basic_info || false,
           share_valuation: share.share_financial_info || false,
-          share_tasks: share.share_tasks || false,
           share_valuation_impact: share.share_valuation_impact || false,
           access_level: share.access_level as "read_only" | "comment"
         }));
@@ -406,11 +401,6 @@ const SharingManager = () => {
       console.log("selectedDocuments:", selectedDocuments);
       console.log("Saving to shared_documents:", JSON.stringify(selectedDocuments));
 
-      // Debug-tulostukset tehtävien tallennukselle
-      console.log("shareTasks boolean:", shareTasks);
-      console.log("selectedTasks:", selectedTasks);
-      console.log("Saving to shared_tasks:", JSON.stringify(selectedTasks));
-
       const shareId = crypto.randomUUID();
       const shareLink = `${window.location.origin}/shared/${shareId}`;
 
@@ -436,8 +426,7 @@ const SharingManager = () => {
               sharedItems: {
                 valuation: shareValuation,
                 assessment: shareAssessment,
-                documents: selectedDocuments,
-                tasks: selectedTasks.map(id => ({ id, title: '', financial_impact: false }))
+                documents: selectedDocuments
               },
               recipientEmail: shareEmail
             },
@@ -497,7 +486,6 @@ const SharingManager = () => {
           share_basic_info: shareAssessment,
           share_financial_info: shareValuation,
           share_documents: shareDocuments,
-          share_tasks: shareTasks,
           share_valuation_impact: shareValuationImpact,
           access_level: accessLevel,
           share_link: shareLink,
@@ -506,7 +494,6 @@ const SharingManager = () => {
           assessment_id: shareAssessment && selectedAssessment ? selectedAssessment : null,
           valuation_id: shareValuation && selectedValuation ? selectedValuation : null,
           shared_documents: shareDocuments && selectedDocuments.length > 0 ? selectedDocuments : null,
-          shared_tasks: shareTasks && selectedTasks.length > 0 ? selectedTasks : null,
           // NDA-kentät
           requires_nda: requiresNDA,
           nda_template: requiresNDA ? ndaConfig.template : null,
@@ -534,7 +521,6 @@ const SharingManager = () => {
                 shareAssessment,
                 shareValuation,
                 shareDocuments,
-                shareTasks,
                 shareValuationImpact,
                 accessLevel,
                 requiresNDA
@@ -583,7 +569,6 @@ const SharingManager = () => {
         company_name: updatedShare.companies?.name || "Tuntematon yritys",
         share_assessment: updatedShare.share_basic_info || false,
         share_valuation: updatedShare.share_financial_info || false,
-        share_tasks: updatedShare.share_tasks || false,
         share_valuation_impact: updatedShare.share_valuation_impact || false,
         access_level: updatedShare.access_level as "read_only" | "comment"
       };
@@ -596,10 +581,8 @@ const SharingManager = () => {
       setShareAssessment(false);
       setShareValuation(false);
       setShareDocuments(false);
-      setShareTasks(false);
       setShareValuationImpact(false);
       setSelectedDocuments([]);
-      setSelectedTasks([]);
 
       await navigator.clipboard.writeText(shareLink);
       setCopiedLink(shareId);
@@ -922,26 +905,6 @@ const SharingManager = () => {
 
                     <div className="flex items-center space-x-2">
                       <Checkbox 
-                        id="tasks" 
-                        checked={shareTasks} 
-                        onCheckedChange={(checked) => setShareTasks(checked as boolean)}
-                      />
-                      <Label htmlFor="tasks">Tehtävät</Label>
-                    </div>
-
-                    {shareTasks && (
-                      <div className="ml-6 mt-2">
-                        <TaskSelector 
-                          companyId={selectedCompany}
-                          selectedTasks={selectedTasks}
-                          onTasksChange={setSelectedTasks}
-                          completedOnly={true}
-                        />
-                      </div>
-                    )}
-
-                    <div className="flex items-center space-x-2">
-                      <Checkbox 
                         id="valuationImpact" 
                         checked={shareValuationImpact} 
                         onCheckedChange={(checked) => setShareValuationImpact(checked as boolean)}
@@ -998,11 +961,7 @@ const SharingManager = () => {
                   shareValuation={shareValuation}
                   shareAssessment={shareAssessment}
                   selectedDocuments={selectedDocuments}
-                  selectedTasks={selectedTasks.map(taskId => ({
-                    id: taskId,
-                    title: '',
-                    financial_impact: false
-                  }))}
+                  selectedTasks={[]}
                   requiresNDA={requiresNDA}
                   onNDAToggle={(enabled) => {
                     setRequiresNDA(enabled);
@@ -1035,7 +994,6 @@ const SharingManager = () => {
                     ((!shareAssessment || !selectedAssessment) && 
                      (!shareValuation || !selectedValuation) && 
                      (!shareDocuments || selectedDocuments.length === 0) && 
-                     (!shareTasks || selectedTasks.length === 0) && 
                      !shareValuationImpact)}
                   className="text-white"
                 >
@@ -1218,9 +1176,6 @@ const SharingManager = () => {
                               </Badge>
                               <Badge variant="outline" className="bg-slate-50">
                                 {share.share_documents ? 'Dokumentit' : 'Ei dokumentteja'}
-                              </Badge>
-                              <Badge variant="outline" className="bg-slate-50">
-                                {share.share_tasks ? 'Tehtävät' : 'Ei tehtäviä'}
                               </Badge>
                               <Badge variant="outline" className="bg-slate-50">
                                 {share.share_valuation_impact ? 'Tehtävien arvovaikutus' : 'Ei tehtävien arvovaikutusta'}
@@ -1490,7 +1445,7 @@ const SharingManager = () => {
           shareValuation,
           shareAssessment,
           selectedDocuments,
-          selectedTasks: selectedTasks.map(id => ({ id, title: '' })),
+          selectedTasks: [],
           recipientEmail: shareEmail
         }}
         ndaConfig={ndaConfig}

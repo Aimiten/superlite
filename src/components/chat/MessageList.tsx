@@ -1,7 +1,7 @@
 // src/components/chat/MessageList.tsx
 import React, { useRef, useEffect } from "react";
 import MessageItem from "./MessageItem";
-import { Message, TaskContext } from "./types";
+import { Message } from "./types";
 import { cn } from "@/lib/utils";
 
 interface MessageListProps {
@@ -9,8 +9,6 @@ interface MessageListProps {
   isLoading: boolean;
   emptyStateAction?: () => void;
   hasCompanyContext: boolean;
-  taskContext?: TaskContext | null;
-  onHandlerAction?: (action: string, data?: any) => void;
   disableAutoScroll?: boolean;
 }
 
@@ -19,8 +17,6 @@ const MessageList: React.FC<MessageListProps> = ({
   isLoading,
   emptyStateAction,
   hasCompanyContext,
-  taskContext,
-  onHandlerAction,
   disableAutoScroll = false
 }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -39,8 +35,6 @@ const MessageList: React.FC<MessageListProps> = ({
           key={index} 
           message={message}
           isLoading={false}
-          taskContext={taskContext}
-          onHandlerAction={onHandlerAction}
         />
       ))}
 
@@ -52,8 +46,6 @@ const MessageList: React.FC<MessageListProps> = ({
             content: "" 
           }} 
           isLoading={true}
-          taskContext={taskContext}
-          onHandlerAction={onHandlerAction}
         />
       )}
 

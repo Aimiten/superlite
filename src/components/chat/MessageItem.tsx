@@ -6,13 +6,10 @@ import { MessageItemProps } from "./types";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import AITaskResponseHandler from "./AITaskResponseHandler";
 
 const MessageItem: React.FC<MessageItemProps> = ({ 
   message, 
-  isLoading, 
-  taskContext,
-  onHandlerAction
+  isLoading
 }) => {
   const [copied, setCopied] = useState(false);
 
@@ -101,16 +98,6 @@ const MessageItem: React.FC<MessageItemProps> = ({
           </div>
         )}
 
-        {/* Tehtävään tallennusmahdollisuus, jos kyseessä AI:n viesti ja tehtäväkonteksti on annettu */}
-        {!isUser && !isLoading && taskContext && (
-          <AITaskResponseHandler 
-            taskContext={taskContext} 
-            content={message.content}
-            onResponseSaved={() => {
-              if (onHandlerAction) onHandlerAction('save');
-            }}
-          />
-        )}
 
         {/* Loading indicator for the assistant */}
         {!isUser && isLoading && (

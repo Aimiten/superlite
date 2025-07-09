@@ -6,8 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { useSearchParams } from "react-router-dom";
 import { useCompany } from "@/hooks/use-company";
-import { useTaskManagement } from "@/hooks/UseTaskManagement";
-import { Message, CompanyContext, TaskContext, DocumentGeneration } from "@/components/chat/types";
+import { Message, CompanyContext, DocumentGeneration } from "@/components/chat/types";
 import ChatContainer from "@/components/chat/ChatContainer";
 import { useFileUpload } from "@/hooks/useFileUpload";
 // Tiedostokonstantit
@@ -26,7 +25,6 @@ const AIAssistant = () => {
   );
   const [companies, setCompanies] = useState<{ id: string, name: string }[]>([]);
   const { activeCompany } = useCompany();
-  const { fetchTasks } = useTaskManagement();
   const [companyContext, setCompanyContext] = useState<CompanyContext | null>(null);
   const [hasShownInitialToast, setHasShownInitialToast] = useState(false);
 
@@ -45,24 +43,10 @@ const AIAssistant = () => {
     allowedTypes: ALLOWED_FILE_TYPES
   });
 
-  // Tehtäväkonteksti
-  const [taskContext, setTaskContext] = useState<TaskContext | null>(null);
   const [documentGenerationReady, setDocumentGenerationReady] = useState(false);
   const [generatedDocument, setGeneratedDocument] = useState<DocumentGeneration | null>(null);
   const collectedUserDataRef = useRef<any>({});
 
-  const getTaskTypeTranslation = (type: string): string => {
-    const translations: Record<string, string> = {
-      'document_upload': 'Tiedoston lataus',
-      'checkbox': 'Valintaruutu',
-      'multiple_choice': 'Monivalinta',
-      'text_input': 'Tekstikenttä',
-      'explanation': 'Selitys',
-      'contact_info': 'Yhteystiedot'
-    };
-
-    return translations[type] || type;
-  };
 
   // Ladataan yritystieto kun komponentti mountataan
   useEffect(() => {
@@ -92,50 +76,17 @@ const AIAssistant = () => {
     }
   }, [user]);
 
-  // Tehtäväkontekstin tulkinta URL-parametreista
-  useEffect(() => {
-    const taskId = searchParams.get("taskId");
-    const taskTitle = searchParams.get("taskTitle");
-    const taskDescription = searchParams.get("taskDescription") || "";
-    const taskType = searchParams.get("taskType") || "";
-
-    if (taskId && taskTitle) {
-      setTaskContext({
-        taskId,
-        taskTitle,
-        taskDescription,
-        taskType
-      });
-
-      if (taskId && taskTitle && companyContext && messages.length === 0) {
-        const initialMessage = `Auta minua seuraavassa tehtävässä: "${taskTitle}" (${taskDescription}). Kysy minulta tarvittavat tiedot tehtävän suorittamiseksi.`;
-
-        // ÄLÄ lisää viestiä tässä, ainoastaan lähetä se AI:lle
-        // Viesti lisätään messages-tilaan handleSendMessageWithContent-funktiossa
-        handleSendMessageWithContent(initialMessage);
-      }
-    }
-  }, [taskContext?.taskId, taskContext?.taskTitle, companyContext, messages.length, searchParams]);
 
   // Määritetään dokumentin generointi valmius
   useEffect(() => {
     const hasEnoughData = () => {
-      if (!taskContext) return false;
-
-      // Dokumenttigenerointi näytetään VAIN document_upload -tyyppisille tehtäville
-      const isDocumentUploadTask = taskContext.taskType === 'document_upload';
-
-      if (!isDocumentUploadTask) {
-        return false; // Ei näytetä dokumenttipainiketta muille kuin document_upload -tehtäville
-      }
-
-      // Document_upload -tehtäville vaaditaan vähintään 2 käyttäjän viestiä
+      // Dokumenttigenerointi näytetään kun on vähintään 2 käyttäjän viestiä
       const userMessageCount = messages.filter(m => m.role === "user").length;
       return userMessageCount >= 2;
     };
 
     setDocumentGenerationReady(hasEnoughData());
-  }, [messages, taskContext, fileContent]);
+  }, [messages, fileContent]);
 
   const loadCompanyContext = async () => {
     if (!activeCompany || !user || isLoadingContext) return;
@@ -166,12 +117,6 @@ const AIAssistant = () => {
         console.error("Virhe yritystietojen hakemisessa:", infoError);
       }
 
-      let tasks = [];
-      try {
-        tasks = await fetchTasks(activeCompany.id);
-      } catch (error) {
-        console.error("Virhe tehtävien hakemisessa:", error);
-      }
 
       const { data: valuation, error: valuationError } = await supabase
         .from("valuations")
@@ -187,7 +132,6 @@ const AIAssistant = () => {
       setCompanyContext({
         companyData,
         companyInfo,
-        tasks,
         valuation,
         lastUpdated: new Date()
       });
@@ -212,42 +156,11 @@ const AIAssistant = () => {
     }
   };
 
-  // AI-avustajan ja tehtävän välinen kommunikaatiorajapinta
+  // AI-avustajan kommunikaatiorajapinta
   const handleHandlerAction = async (action: string, data?: any) => {
     console.log(`AI Action Handler: ${action}`, data);
 
-    if (action === 'save') {
-      // Käyttäjä on tallentanut AI-vastauksen tehtävään
-      toast({
-        title: "Vastaus tallennettu tehtävään",
-        description: "AI:n vastaus on tallennettu tehtävään onnistuneesti.",
-      });
-
-      // Lisätään viesti keskusteluun
-      setMessages(prev => [
-        ...prev,
-        {
-          role: "assistant",
-          content: "Vastaukseni on tallennettu tehtävään onnistuneesti. Voit nyt jatkaa tehtävän työstämistä tehtäväsivulla tai kysyä minulta lisää kysymyksiä."
-        }
-      ]);
-    }
-
-    else if (action === 'documentSaved') {
-      // Käyttäjä on tallentanut dokumentin tehtävään
-      setGeneratedDocument(null); // Poistetaan dokumentti näkyvistä
-
-      // Lisätään viesti keskusteluun
-      setMessages(prev => [
-        ...prev,
-        {
-          role: "assistant",
-          content: "Dokumentti on tallennettu tehtävään onnistuneesti. Voit nyt jatkaa tehtävän työstämistä tehtäväsivulla tai kysyä minulta lisää kysymyksiä."
-        }
-      ]);
-    }
-
-    else if (action === 'documentDownloaded') {
+    if (action === 'documentDownloaded') {
       const format = data?.format || 'markdown';
       // Tiedoston lataaminen hoidetaan jo DocumentHandlerContainer-komponentissa,
       // joten tässä ei tarvitse tehdä mitään
@@ -313,12 +226,6 @@ const AIAssistant = () => {
       // Käytä tiedoston sisältöä sellaisenaan
       let truncatedFileContent = fileContent;
 
-      const contextData: Record<string, any> = {};
-      if (taskContext?.taskId) {
-        contextData.taskId = taskContext.taskId;
-        contextData.taskTitle = taskContext.taskTitle;
-      }
-
       const { data, error } = await supabase.functions.invoke("ai-database-chat", {
         body: {
           message: messageContent.trim(),
@@ -327,9 +234,7 @@ const AIAssistant = () => {
           fileContent: truncatedFileContent,
           fileName: uploadedFile?.name,
           fileType: fileType,
-          context: Object.keys(contextData).length > 0 ? contextData : undefined,
-          companyContext: companyContext,
-          taskContext: taskContext
+          companyContext: companyContext
         }
       });
 
@@ -410,8 +315,7 @@ const AIAssistant = () => {
               title: title,
               messages: updatedMessages,
               is_saved: false, // Automaattisesti tallennetut eivät ole "pinnattuja"
-              company_id: companyContext?.companyData?.id,
-              task_id: taskContext?.taskId
+              company_id: companyContext?.companyData?.id
             }
           });
 
@@ -466,8 +370,6 @@ const AIAssistant = () => {
   };
 
   const handleGenerateDocument = async () => {
-    if (!taskContext) return;
-
     try {
       setIsLoading(true);
 
@@ -481,8 +383,7 @@ const AIAssistant = () => {
       const { data, error } = await supabase.functions.invoke("ai-document-generator", {
         body: {
           format: "markdown",
-          userData: userInputData,
-          taskContext: taskContext
+          userData: userInputData
         }
       });
 
@@ -502,7 +403,7 @@ const AIAssistant = () => {
         ...prev,
         {
           role: "assistant",
-          content: `Olen luonut dokumentin pyytämiesi tietojen perusteella. Voit ladata sen eri muodoissa tai tallentaa suoraan tehtävään.`
+          content: `Olen luonut dokumentin pyytämiesi tietojen perusteella. Voit ladata sen eri muodoissa.`
         }
       ]);
 
@@ -523,46 +424,11 @@ const AIAssistant = () => {
     }
   };
 
-  const handleFormatSelect = async (format: string, saveToTask: boolean = false) => {
-    if (!generatedDocument || !taskContext) return;
+  const handleFormatSelect = async (format: string) => {
+    if (!generatedDocument) return;
 
     try {
       setIsLoading(true);
-
-      if (saveToTask) {
-        // Tallenna dokumentti tehtävään
-        const { data, error } = await supabase.functions.invoke("update-task", {
-          body: {
-            taskId: taskContext.taskId,
-            updateData: {
-              value: {
-                text: generatedDocument.content,
-                generatedByAI: true,
-                generatedAt: new Date().toISOString()
-              }
-            }
-          }
-        });
-
-        if (error) throw error;
-
-        // Poistetaan generatedDocument jotta käyttöliittymä päivittyy
-        setGeneratedDocument(null);
-
-        // Lisää viesti dokumentin tallennuksesta
-        setMessages(prev => [
-          ...prev,
-          {
-            role: "assistant",
-            content: `Dokumentti on tallennettu tehtävään onnistuneesti. Voit nyt jatkaa tehtävän työstämistä tehtäväsivulla tai kysyä minulta lisää kysymyksiä.`
-          }
-        ]);
-
-        toast({
-          title: "Dokumentti tallennettu",
-          description: "Dokumentti on tallennettu tehtävään onnistuneesti.",
-        });
-      } else {
         // Muunna ja lataa dokumentti
         let downloadContent = generatedDocument.content;
         let mimeType = "text/plain";
@@ -616,7 +482,6 @@ const AIAssistant = () => {
           title: "Dokumentti ladattu",
           description: `Dokumentti ladattu ${format.toUpperCase()}-muodossa`,
         });
-      }
     } catch (error) {
       console.error("Error with document:", error);
       toast({
@@ -657,7 +522,7 @@ const AIAssistant = () => {
         messages={messages}
         isLoading={isLoading}
         companyContext={companyContext}
-        taskContext={taskContext}
+        taskContext={null}
         isLoadingContext={isLoadingContext}
         documentGenerationReady={documentGenerationReady}
         generatedDocument={generatedDocument}

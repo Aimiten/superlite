@@ -15,11 +15,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { ValuationImpactResult } from '../../supabase/functions/_shared/types';
 
 // Import components
-import { AssessmentResults } from "@/components/assessment/AssessmentResultsContainer";
 import ImprovedValuationTabs from "@/components/valuation/ImprovedValuationTabs";
-import TaskList from "@/components/tasks/TaskList";
-import { ValuationImpactTab } from "@/components/tasks/ValuationImpactTab";
-import SharedTasksList from "@/components/sharing/SharedTasksList";
 import CommentsList from "@/components/sharing/CommentList";
 import { Comment } from "@/components/sharing/CommentItem";
 import SharedDocumentsList from "@/components/sharing/SharedDocumentsList";
@@ -27,8 +23,8 @@ import { NDAAcceptanceView } from "@/components/sharing/NDAAcceptanceView";
 
 import { 
   Loader2, Calendar, AlertCircle, Info, FileText, Lock, DollarSign, 
-  Building, MessageSquare, Send, ClipboardCheck, BarChart2, 
-  ListChecks, TrendingUp, CheckCircle, Download, ExternalLink,
+  Building, MessageSquare, Send, BarChart2, 
+  CheckCircle, Download, ExternalLink,
   Hash, Users, Factory, Shield
 } from "lucide-react";
 import { format } from "date-fns";
@@ -49,12 +45,6 @@ interface SharedCompany {
   company_type?: string;
 }
 
-interface Assessment {
-  id: string;
-  results: any;
-  answers?: any;
-  created_at: string;
-}
 
 interface Valuation {
   id: string;
@@ -91,7 +81,6 @@ interface Task {
 interface SharedData {
   share: ShareInfo;
   company: SharedCompany;
-  assessment?: Assessment | null;
   valuation?: Valuation | null;
   financial?: FinancialInfo | null;
   documents?: DocumentInfo | null;
@@ -333,15 +322,13 @@ const SharedView = () => {
   // Jos NDA vaaditaan eikä ole hyväksytty, näytä NDA-hyväksyntäsivu
   if (requiresNDA && !ndaAccepted && shareId) {
     return (
-      <NDAErrorBoundary>
-        <NDAAcceptanceView 
-          shareId={shareId}
-          onAccept={() => {
-            // Lataa data uudelleen NDA:n hyväksymisen jälkeen
-            window.location.reload();
-          }}
-        />
-      </NDAErrorBoundary>
+      <NDAAcceptanceView 
+        shareId={shareId}
+        onAccept={() => {
+          // Lataa data uudelleen NDA:n hyväksymisen jälkeen
+          window.location.reload();
+        }}
+      />
     );
   }
 
@@ -367,7 +354,7 @@ const SharedView = () => {
     );
   }
 
-  const { share, company, assessment, valuation, documents } = sharedData as SharedData;
+  const { share, company, valuation, documents } = sharedData as SharedData;
   const expiresDate = share.expires_at ? new Date(share.expires_at) : null;
   const isExpired = expiresDate && expiresDate < new Date();
   const accessLevelText = 
@@ -413,29 +400,10 @@ const SharedView = () => {
                 <Building className="h-4 w-4" />
                 <span>Perustiedot</span>
               </TabsTrigger>
-              {assessment && (
-                <TabsTrigger value="assessment" className="flex items-center gap-2">
-                  <ClipboardCheck className="h-4 w-4" />
-                  <span>Myyntikunto-analyysi</span>
-                </TabsTrigger>
-              )}
               {valuation && (
                 <TabsTrigger value="valuation" className="flex items-center gap-2">
                   <BarChart2 className="h-4 w-4" />
                   <span>Arvonmääritys</span>
-                </TabsTrigger>
-              )}
-              {/* New tabs for tasks and valuation impact */}
-              {sharedData.tasks && (
-                <TabsTrigger value="tasks" className="flex items-center gap-2">
-                  <ListChecks className="h-4 w-4" />
-                  <span>Tehtävät</span>
-                </TabsTrigger>
-              )}
-              {sharedData.valuationImpact && (
-                <TabsTrigger value="impact" className="flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4" />
-                  <span>Arvovaikutus</span>
                 </TabsTrigger>
               )}
               {documents && (
@@ -586,32 +554,6 @@ const SharedView = () => {
               </Card>
             </TabsContent>
 
-            {assessment && (
-              <TabsContent value="assessment">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Myyntikunto-analyysi</CardTitle>
-                    <CardDescription>Yrityksen {company.name} myyntikunto-analyysi</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    {assessment.results ? (
-                      <AssessmentResults
-                        analysisResults={assessment.results}
-                        answers={assessment.answers || {}}
-                        questions={assessment.questions || []} 
-                        onBack={null} // No back function in shared view
-                      />
-                    ) : (
-                      <div className="text-center py-8">
-                        <Info className="h-12 w-12 text-slate-400 mx-auto mb-4" />
-                        <h3 className="text-lg font-medium mb-2">Analyysin tietoja ei ole saatavilla</h3>
-                        <p className="text-slate-500">Myyntikunto-analyysin tuloksia ei ole vielä tallennettu järjestelmään.</p>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            )}
 
             {valuation && (
               <TabsContent value="valuation">
@@ -631,41 +573,7 @@ const SharedView = () => {
               </TabsContent>
             )}
 
-            {/* New tab for tasks */}
-            {sharedData.tasks && (
-              <TabsContent value="tasks">
-                <SharedTasksList 
-                  tasks={sharedData.tasks}
-                  companyName={company.name}
-                />
-              </TabsContent>
-            )}
 
-            {/* New tab for valuation impact */}
-            {sharedData.valuationImpact && (
-              <TabsContent value="impact">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <TrendingUp className="h-5 w-5 text-indigo-600" />
-                      Tehtävien vaikutus arvoon
-                    </CardTitle>
-                    <CardDescription>
-                      Miten myyntikuntoon-tehtävät vaikuttavat yrityksen {company.name} arvoon
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ValuationImpactTab
-                      valuationImpact={sharedData.valuationImpact}
-                      isLoading={false}
-                      error={null}
-                      onGenerateDDTasks={undefined} // No generation function in shared view
-                      isGeneratingTasks={false}
-                    />
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            )}
 
             {/* Documents tab - updated to use new SharedDocumentsList component */}
             <TabsContent value="documents">

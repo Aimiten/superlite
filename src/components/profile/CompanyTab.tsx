@@ -11,7 +11,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useCompany } from "@/hooks/use-company";
 import { Loader2, Building, HelpCircle } from "lucide-react";
-import { Company, CompanyType, OwnershipChangeType } from "@/components/assessment/types";
+import { Company, CompanyType, OwnershipChangeType } from "@/types/company";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Textarea } from "@/components/ui/textarea";
 import { fetchYTJData } from "@/utils/ytj-service";

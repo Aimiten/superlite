@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect, useRef, useMemo, useCallback, ReactNode } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
-import { Company, CompanyType, OwnershipChangeType } from "@/components/assessment/types";
+import { Company, CompanyType, OwnershipChangeType } from "@/types/company";
 
 interface CompanyContextType {
   companies: Company[];

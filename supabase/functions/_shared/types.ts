@@ -9,33 +9,10 @@ interface CategoryAssessment {
   };
 }
 
-// Tehtävätyyppi
-export interface Task {
-  id: string;
-  company_id: string;
-  assessment_id?: string;
-  valuation_id?: string;
-  title: string;
-  description?: string;
-  type: 'checkbox' | 'multiple_choice' | 'text_input' | 'document_upload' | 'explanation' | 'contact_info';
-  category: 'financial' | 'legal' | 'operations' | 'documentation' | 'customers' | 'personnel' | 'strategy';
-  priority: 'high' | 'medium' | 'low';
-  impact?: 'high' | 'medium' | 'low';
-  estimated_time?: string;
-  completion_status: 'not_started' | 'in_progress' | 'completed';
-  options?: string[];
-  value?: any; // Käyttäjän antama vastaus/data tähän
-  dependencies?: string[];
-  expected_outcome?: string;
-  created_at: string;
-  updated_at?: string;
-  dd_related?: boolean; // Merkitsee tehtävät, jotka liittyvät DD-korjauksiin
-}
-
 // Geminin tuottama päivitetty myyntikuntoisuusanalyysi
 export interface SalesReadinessAnalysis {
   analyysiPvm: string; // ISO 8601 date string
-  perustuuTehtaviin: number; // Montako tehtävää analyysissä huomioitu
+  perustuuTehtaviin: number; // Montako kohtaa analyysissä huomioitu
   kvantitatiivisetArviot: {
     // Taloudelliset tekijät
     taloudelliset?: CategoryAssessment & {

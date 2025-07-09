@@ -8,7 +8,7 @@ import {
   LightbulbIcon, 
   CheckSquare 
 } from "lucide-react";
-import { AnalysisResults } from "@/components/assessment/types";
+import { AnalysisResults } from "@/types/analysis";
 
 interface AnalysisResultsCardProps {
   analysisResults?: AnalysisResults | null;

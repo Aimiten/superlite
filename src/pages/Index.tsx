@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import OverviewCard from "@/components/dashboard/OverviewCard";
 import QuickActions from "@/components/dashboard/QuickActions";
-import TaskProgressBar from "@/components/tasks/TaskProgressBar"; // Lisätty import
 import { useAuth } from "@/contexts/AuthContext";
 import { useCompany } from "@/hooks/use-company";
-import { FileBarChart, CheckSquare, Building, ArrowRight } from "lucide-react";
+import { FileBarChart, Building, ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -43,8 +42,6 @@ const Index = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
 
-  const [tasks, setTasks] = useState([]);
-  const [tasksLoading, setTasksLoading] = useState(false);
 
   const [valuations, setValuations] = useState([]);
   const [loadingValuations, setLoadingValuations] = useState(false);
@@ -67,37 +64,9 @@ const Index = () => {
   useEffect(() => {
     if (user && activeCompany) {
       fetchRecentValuations();
-      fetchTasks();
       fetchImpactAnalysis();
     }
   }, [user, activeCompany]);
-
-  const fetchTasks = async () => {
-    if (!user) return;
-
-    try {
-      setTasksLoading(true);
-
-      const { data, error } = await supabase
-        .from('company_tasks')
-        .select('*')
-        .eq('company_id', activeCompany?.id)
-        .order('created_at', { ascending: false });
-
-      if (error) {
-        console.error("Error fetching tasks:", error);
-        return;
-      }
-
-      if (data) {
-        setTasks(data);
-      }
-    } catch (err) {
-      console.error("Error in fetchTasks:", err);
-    } finally {
-      setTasksLoading(false);
-    }
-  };
 
   const fetchImpactAnalysis = async () => {
     if (!user || !activeCompany) return;
@@ -231,7 +200,7 @@ const Index = () => {
     <DashboardLayout>
       <div className="space-y-4 sm:space-y-6">
         {/* Yläosan Overview-kortit (säilyvät ennallaan) */}
-        <div className="grid gap-3 sm:gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2">
+        <div className="grid gap-3 sm:gap-4 md:gap-6 grid-cols-1">
           <OverviewCard
             title={
               <div className="flex items-center gap-2">
@@ -277,53 +246,11 @@ const Index = () => {
             })()}
           />
 
-          <OverviewCard
-            title="Tehtävät"
-            value={`${tasks.filter(task => task.completion_status === 'completed').length}/${tasks.length}`}
-            description="Suoritettu"
-            icon={<CheckSquare className="h-5 w-5 text-white" />}
-            iconColor="bg-pink-500"
-          />
         </div>
 
         {/* QuickActions nyt täysleveänä */}
         <QuickActions />
 
-        {/* TaskProgressBar komponentti Card-komponentin sisällä */}
-        <Card className="w-full">
-          <CardHeader className="flex flex-row items-center justify-between">
-            <div>
-              <CardTitle>Tehtävien edistyminen</CardTitle>
-              <CardDescription>Seuraa tehtävien edistymistä eri osa-alueilla</CardDescription>
-            </div>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={() => navigate('/tasks')}
-              className="gap-1"
-            >
-              <ArrowRight className="h-4 w-4" />
-              <span className="hidden sm:inline">Siirry tehtäviin</span>
-            </Button>
-          </CardHeader>
-          <CardContent>
-            {tasksLoading ? (
-              <div className="flex justify-center py-4">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500"></div>
-              </div>
-            ) : tasks.length > 0 ? (
-              <TaskProgressBar 
-                tasks={tasks} 
-                showDetails={true} 
-                size="md" 
-              />
-            ) : (
-              <div className="text-center py-4 text-muted-foreground">
-                Ei tehtäviä saatavilla. Tee arvonmääritys ja myyntikuntoisuuden arviointi ensin.
-              </div>
-            )}
-          </CardContent>
-        </Card>
       </div>
     </DashboardLayout>
   );

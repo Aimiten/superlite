@@ -1,8 +1,6 @@
 import {
   LayoutDashboard,
-  ClipboardCheck,
   FileText, 
-  CheckSquare,
   Presentation,
   Share2,
   Settings,
@@ -27,18 +25,6 @@ export const MAIN_NAV_ITEMS = [
     title: "Arvonmääritys",
     icon: FileText,
     path: "/valuation",
-    description: ""
-  },
-  {
-    title: "Myyntikunto",
-    icon: ClipboardCheck,
-    path: "/assessment",
-    description: ""
-  },
-  {
-    title: "Tehtävät",
-    icon: CheckSquare,
-    path: "/tasks",
     description: ""
   },
   {
