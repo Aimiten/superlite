@@ -70,7 +70,7 @@ const Header = ({ isLoggedIn, handleNavigation, customLinks, useNavigation = fal
             <button
               key={index}
               onClick={() => scrollToSection(item.href)}
-              className="text-slate-600 hover:text-purple-600 transition-colors text-sm font-medium relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-purple-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
+              className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
             >
               {item.label}
             </button>
@@ -89,7 +89,7 @@ const Header = ({ isLoggedIn, handleNavigation, customLinks, useNavigation = fal
           <Button 
             variant="ghost" 
             size="icon"
-            className="text-slate-700"
+            className="text-foreground"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -108,7 +108,7 @@ const Header = ({ isLoggedIn, handleNavigation, customLinks, useNavigation = fal
             <button
               key={index}
               onClick={() => scrollToSection(item.href)}
-              className="text-slate-700 hover:text-purple-600 transition-colors py-2 text-left"
+              className="text-foreground hover:text-primary transition-colors py-2 text-left"
             >
               {item.label}
             </button>

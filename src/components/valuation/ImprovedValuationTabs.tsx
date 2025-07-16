@@ -131,12 +131,12 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
 
             {/* Taloudellinen suorituskyky */}
             {valuationReport?.analysis?.financial_performance?.content && (
-              <div className="border border-green-100 rounded-xl p-6 bg-green-50 mt-6">
+              <div className="border border-success/20 rounded-xl p-6 bg-success/5 mt-6">
                 <h3 className="text-lg font-semibold flex items-center mb-3">
                   <FileBarChart className="h-5 w-5 mr-2 text-success" />
                   {valuationReport.analysis.financial_performance.title || "Taloudellinen suorituskyky"}
                 </h3>
-                <div className="bg-white p-4 rounded-lg border border-green-100">
+                <div className="bg-white p-4 rounded-lg border border-success/20">
                   <p className="whitespace-pre-line">{cleanMarkdownText(valuationReport.analysis.financial_performance.content)}</p>
                 </div>
               </div>
@@ -184,7 +184,7 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
                           <h4 className="font-medium text-primary pb-1 border-b border-primary/20">{category}</h4>
 
                           {recs.map((rec: any, recIndex: number) => (
-                            <div key={recIndex} className="p-4 bg-white rounded-lg border border-slate-200">
+                            <div key={recIndex} className="p-4 bg-white rounded-lg border border-muted">
                               <div className="flex items-start gap-3">
                                 <div className="bg-primary/10 text-primary rounded-full w-7 h-7 flex items-center justify-center flex-shrink-0 mt-0.5">
                                   {categoryIndex + 1}.{recIndex + 1}
@@ -203,7 +203,7 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
                 </div>
               </div>
             ) : (
-              <div className="border border-indigo-100 rounded-xl p-6">
+              <div className="border border-primary/10 rounded-xl p-6">
                 <div className="p-4 bg-slate-50 rounded-lg">
                   <p className="text-slate-500">Toimenpidesuosituksia ei ole saatavilla tälle yritykselle.</p>
                 </div>

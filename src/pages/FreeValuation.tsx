@@ -108,7 +108,7 @@ const FreeValuation = () => {
 
   const benefits = [
     {
-      icon: <Calculator className="h-4 w-4 text-indigo-500" />,
+      icon: <Calculator className="h-4 w-4 text-primary" />,
       title: "Nopea arvio",
       description: "Saat suuntaa-antavan arvion yrityksesi arvosta muutamassa minuutissa."
     },
@@ -118,7 +118,7 @@ const FreeValuation = () => {
       description: "Voit ladata tilinpäätöksen tai syöttää tiedot manuaalisesti."
     },
     {
-      icon: <Shield className="h-4 w-4 text-blue-500" />,
+      icon: <Shield className="h-4 w-4 text-info" />,
       title: "Turvallinen",
       description: "Kaikki tietosi käsitellään turvallisesti ja luottamuksellisesti."
     }
@@ -140,7 +140,7 @@ const FreeValuation = () => {
         <section className="bg-gradient-to-b from-white to-slate-50 border-b border-slate-200">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
             <div className="text-center">
-              <Badge variant="outline" className="mb-2 bg-white text-indigo-500 border-indigo-200 px-3 py-1 rounded-full">
+              <Badge variant="outline" className="mb-2 bg-white text-primary border-primary/20 px-3 py-1 rounded-full">
                 Ilmainen työkalu
               </Badge>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 leading-tight mb-2">
@@ -151,7 +151,7 @@ const FreeValuation = () => {
               </p>
               <div className="grid grid-cols-3 gap-4 mt-4">
                 {benefits.map((benefit, index) => (
-                  <div key={index} className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                  <div key={index} className="bg-white p-3 rounded-lg shadow-neumorphic border border-slate-100 hover:shadow-neumorphic transition-shadow">
                     <div className="flex flex-col items-center text-center">
                       <div className="w-8 h-8 bg-slate-50 rounded-full flex items-center justify-center mb-2">
                         {benefit.icon}
@@ -169,7 +169,7 @@ const FreeValuation = () => {
 
       <main className={`max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 ${companyData ? "pt-2" : "py-6 md:py-8"}`}>
         {calculationStatus !== "complete" ? (
-          <div className="bg-white shadow-sm rounded-2xl border border-slate-100 overflow-hidden">
+          <div className="bg-white shadow-neumorphic rounded-2xl border border-slate-100 overflow-hidden">
             {!companyName && (
               <div className="p-6 sm:p-8 border-b border-slate-100">
                 <div>
@@ -205,7 +205,7 @@ const FreeValuation = () => {
                       Vaihda yritystä
                     </Button>
                   </div>
-                  <Card className="bg-white border-2 border-indigo-100 shadow-sm">
+                  <Card className="bg-white border-2 border-primary/10 shadow-neumorphic">
                     <CardContent className="pt-6">
                       <div className="flex items-center mb-3">
                         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg mr-3">
@@ -261,7 +261,7 @@ const FreeValuation = () => {
                           <h3 className="font-semibold text-slate-800 mb-2">Näin saat arvion yrityksesi arvosta:</h3>
                           <ol className="space-y-2 text-slate-700">
                             <li className="flex items-start gap-2">
-                              <span className="bg-indigo-100 text-indigo-700 rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5 font-medium">1</span>
+                              <span className="bg-primary/10 text-primary rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5 font-medium">1</span>
                               <span>Valitse yrityksesi tilinpäätös PDF-tiedostona tai syötä tiedot manuaalisesti.</span>
                             </li>
                             <li className="flex items-start gap-2">
@@ -336,7 +336,7 @@ const FreeValuation = () => {
             </div>
           </div>
         ) : (
-          <div className="bg-white shadow-sm rounded-2xl border border-slate-100 overflow-hidden">
+          <div className="bg-white shadow-neumorphic rounded-2xl border border-slate-100 overflow-hidden">
             <div className="p-6 sm:p-8">
               <FreeValuationResults 
                 valuationResults={valuationResults} 
@@ -351,7 +351,7 @@ const FreeValuation = () => {
 
       <section className="bg-gradient-to-r from-indigo-50 to-purple-50 py-3 mb-3">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center p-3 bg-white rounded-xl shadow-sm border border-indigo-100">
+          <div className="flex flex-col sm:flex-row items-center p-3 bg-white rounded-xl shadow-neumorphic border border-primary/10">
             <div className="mb-1 sm:mb-0 sm:mr-3">
               <Zap className="h-7 w-7 text-amber-500" />
             </div>

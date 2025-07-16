@@ -223,8 +223,8 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
         <Card className="border border-gray-200">
           <CardHeader className="text-center pb-6">
             <div className="flex justify-center mb-4">
-              <div className="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center border border-blue-200">
-                <Shield className="h-8 w-8 text-blue-600" />
+              <div className="h-16 w-16 rounded-full bg-info/10 flex items-center justify-center border border-info/20">
+                <Shield className="h-8 w-8 text-info" />
               </div>
             </div>
             <CardTitle className="text-2xl">Salassapitosopimus vaaditaan</CardTitle>

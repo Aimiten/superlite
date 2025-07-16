@@ -126,7 +126,7 @@ const ValuationMethodsTab: React.FC<ValuationMethodsTabProps> = ({
 
       {/* Käytetyt arvostuskertoimet */}
       {latestPeriod?.valuation_multiples && Object.keys(latestPeriod.valuation_multiples).length > 0 && (
-        <div className="border border-indigo-100 rounded-xl overflow-hidden">
+        <div className="border border-primary/10 rounded-xl overflow-hidden">
           <div className="bg-gradient-to-r from-indigo-600 to-blue-700 p-4">
             <h2 className="text-lg font-bold text-white flex items-center">
               <Calculator className="h-5 w-5 mr-2" />
@@ -200,7 +200,7 @@ const ValuationMethodsTab: React.FC<ValuationMethodsTabProps> = ({
 
       {/* Tilikausien painotustiedot */}
       {latestPeriod?.valuation_metrics?.weighting_method && (
-        <div className="border border-indigo-100 rounded-xl p-6 mt-4">
+        <div className="border border-primary/10 rounded-xl p-6 mt-4">
           <h3 className="text-lg font-semibold mb-4">Tilikausien painotus</h3>
           <div className="p-4 bg-primary/10 rounded-lg border border-primary/20 shadow-neumorphic">
             <div className="flex items-start gap-3">
@@ -220,11 +220,11 @@ const ValuationMethodsTab: React.FC<ValuationMethodsTabProps> = ({
                   {cleanMarkdownText(latestPeriod.valuation_metrics.weighting_method.explanation)}
                 </p>
                 <div className="mt-2 grid grid-cols-2 gap-2">
-                  <div className="p-2 bg-white rounded border border-indigo-100">
+                  <div className="p-2 bg-white rounded border border-primary/10">
                     <p className="text-xs text-muted-foreground">Tilikausien määrä</p>
                     <p className="font-medium">{latestPeriod.valuation_metrics.weighting_method.period_count}</p>
                   </div>
-                  <div className="p-2 bg-white rounded border border-indigo-100">
+                  <div className="p-2 bg-white rounded border border-primary/10">
                     <p className="text-xs text-muted-foreground">Painotuskerroin (α)</p>
                     <p className="font-medium">{latestPeriod.valuation_metrics.weighting_method.alpha?.toFixed(1)}</p>
                   </div>

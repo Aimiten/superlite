@@ -729,7 +729,7 @@ const SharingManager = () => {
       case 'read_only':
         return <Badge variant="outline">Vain luku</Badge>;
       case 'comment':
-        return <Badge variant="secondary" className="bg-blue-100 text-blue-700 shadow-neumorphic">Kommentointi sallittu</Badge>;
+        return <Badge variant="secondary" className="bg-info/10 text-info shadow-neumorphic">Kommentointi sallittu</Badge>;
       default:
         return <Badge variant="outline">Tuntematon</Badge>;
     }
@@ -750,7 +750,7 @@ const SharingManager = () => {
               <ClipboardCheck className="h-4 w-4" />
               <span>Hallitse jakoja</span>
               {shares.length > 0 && (
-                <Badge variant="secondary" className="ml-1 bg-blue-100 text-blue-700 shadow-neumorphic">{shares.length}</Badge>
+                <Badge variant="secondary" className="ml-1 bg-info/10 text-info shadow-neumorphic">{shares.length}</Badge>
               )}
             </TabsTrigger>
           </TabsList>
@@ -1192,7 +1192,7 @@ const SharingManager = () => {
                                 Luotu: {format(new Date(share.created_at), 'dd.MM.yyyy', { locale: fi })}
                               </span>
                               {shareCommentCounts[share.id] > 0 && (
-                                <Badge variant="outline" className="bg-blue-100 text-blue-700 border-blue-200 shadow-neumorphic">
+                                <Badge variant="outline" className="bg-info/10 text-info border-info/20 shadow-neumorphic">
                                   <MessageSquare className="h-3 w-3 mr-1" />
                                   {shareCommentCounts[share.id]} kommenttia
                                 </Badge>
@@ -1382,7 +1382,7 @@ const SharingManager = () => {
                                                         </span>
                                                       )}
                                                       {comment.is_owner && (
-                                                        <Badge variant="outline" className="ml-2 text-xs bg-blue-100 text-blue-700 shadow-neumorphic">
+                                                        <Badge variant="outline" className="ml-2 text-xs bg-info/10 text-info shadow-neumorphic">
                                                           Sinä
                                                         </Badge>
                                                       )}

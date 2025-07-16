@@ -378,8 +378,8 @@ const SharedView = () => {
             </div>
           </div>
 
-          <div className="px-6 py-2 bg-indigo-50 border-b border-indigo-100">
-            <div className="flex items-center space-x-2 text-sm text-indigo-800">
+          <div className="px-6 py-2 bg-primary/5 border-b border-primary/10">
+            <div className="flex items-center space-x-2 text-sm text-primary">
               <Calendar className="h-4 w-4" />
               <span>
                 {expiresDate ? (
@@ -427,8 +427,8 @@ const SharedView = () => {
             </TabsList>
 
             <TabsContent value="company">
-              <Card className="shadow-sm overflow-hidden">
-                <CardHeader className="bg-gradient-to-r from-indigo-50 to-blue-50 border-b border-indigo-100">
+              <Card className="shadow-neumorphic overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-primary/5 to-info/5 border-b border-primary/10">
                   <CardTitle className="flex items-center gap-2 text-xl">
                     <Building className="h-5 w-5 text-indigo-600" />
                     Yrityksen tiedot
@@ -442,7 +442,7 @@ const SharedView = () => {
                     {/* Ensimmäinen rivi - Y-tunnus ja yhtiömuoto */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {company.business_id && (
-                        <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                        <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
                           <div className="flex items-center gap-2 mb-2">
                             <div className="p-1.5 bg-gray-100 rounded-md">
                               <Hash className="h-4 w-4 text-gray-600" />
@@ -454,7 +454,7 @@ const SharedView = () => {
                       )}
 
                       {company.company_type && (
-                        <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                        <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
                           <div className="flex items-center gap-2 mb-2">
                             <div className="p-1.5 bg-gray-100 rounded-md">
                               <Shield className="h-4 w-4 text-gray-600" />
@@ -478,7 +478,7 @@ const SharedView = () => {
 
                     {/* Toinen rivi - Toimiala */}
                     {company.industry && (
-                      <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                      <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
                         <div className="flex items-center gap-2 mb-2">
                           <div className="p-1.5 bg-gray-100 rounded-md">
                             <Factory className="h-4 w-4 text-gray-600" />
@@ -492,7 +492,7 @@ const SharedView = () => {
                     {/* Kolmas rivi - Perustaminen ja henkilöstö */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {company.founded && (
-                        <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                        <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
                           <div className="flex items-center gap-2 mb-2">
                             <div className="p-1.5 bg-gray-100 rounded-md">
                               <Calendar className="h-4 w-4 text-gray-600" />
@@ -504,7 +504,7 @@ const SharedView = () => {
                       )}
 
                       {company.employees && (
-                        <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                        <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
                           <div className="flex items-center gap-2 mb-2">
                             <div className="p-1.5 bg-gray-100 rounded-md">
                               <Users className="h-4 w-4 text-gray-600" />
@@ -518,7 +518,7 @@ const SharedView = () => {
 
                     {/* Neljäs rivi - Kuvaus */}
                     {company.description && (
-                      <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                      <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
                         <div className="flex items-center gap-2 mb-3">
                           <div className="p-1.5 bg-gray-100 rounded-md">
                             <FileText className="h-4 w-4 text-gray-600" />
@@ -531,7 +531,7 @@ const SharedView = () => {
 
                     {/* Viides rivi - Verkkosivu */}
                     {company.website && (
-                      <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                      <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
                         <div className="flex items-center gap-2 mb-2">
                           <div className="p-1.5 bg-indigo-100 rounded-md">
                             <ExternalLink className="h-4 w-4 text-indigo-600" />

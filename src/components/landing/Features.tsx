@@ -19,7 +19,7 @@ const Features = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-slate-800">
+          <h2 className="text-3xl font-bold text-foreground">
             Ominaisuudet, jotka tekevät meistä erilaisen
           </h2>
         </motion.div>

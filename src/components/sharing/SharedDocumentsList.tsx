@@ -94,7 +94,7 @@ const SharedDocumentsList: React.FC<SharedDocumentsListProps> = ({ documents, co
                         Lisätty: {format(new Date(doc.created_at), 'dd.MM.yyyy', { locale: fi })}
                       </span>
                       {doc.source === 'company_documents' && (
-                        <span className="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full">
+                        <span className="bg-info/10 text-info px-1.5 py-0.5 rounded-full">
                           Yrityksen dokumentti
                         </span>
                       )}

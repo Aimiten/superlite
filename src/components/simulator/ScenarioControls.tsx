@@ -90,7 +90,7 @@ export const ScenarioControls = ({
           />
         </div>
         {futureScenario.enabled && (
-          <div className="bg-blue-50 p-3 rounded text-sm">
+          <div className="bg-info/5 p-3 rounded text-sm">
             <p className="font-medium">Ennuste:</p>
             <p>• Nykyinen EBIT-%: {baseValues.revenue > 0 ? ((baseValues.ebit / baseValues.revenue) * 100).toFixed(1) : '0.0'}%</p>
             <p>• Uusi liikevaihto: {formatCurrency(baseValues.revenue * (1 + futureScenario.revenueGrowth))}</p>

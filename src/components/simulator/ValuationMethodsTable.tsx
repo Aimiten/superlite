@@ -48,7 +48,7 @@ export const ValuationMethodsTable = ({
             <Button
               onClick={onRunSimulation}
               disabled={isSimulating || baseValues.revenue === 0}
-              className="bg-blue-600 hover:bg-blue-700"
+              className="bg-primary hover:bg-primary/90"
             >
               {isSimulating ? (
                 <>
@@ -70,7 +70,7 @@ export const ValuationMethodsTable = ({
         </div>
       </CardHeader>
       <CardContent>
-        <div className="mb-4 p-3 bg-blue-50 rounded text-sm">
+        <div className="mb-4 p-3 bg-info/5 rounded text-sm">
           <p className="font-medium">💡 Huom: Keskiarvo sisältää aina substanssin ({formatCurrency(baseValues.equity)}) + valitut menetelmät</p>
           <p className="text-xs text-muted-foreground mt-1">Tämä vastaa alkuperäistä arvonmääritystä jossa kaikki menetelmät olivat mukana keskiarvossa</p>
         </div>

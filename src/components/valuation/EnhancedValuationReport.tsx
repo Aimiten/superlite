@@ -213,7 +213,7 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
               {/* Arvonmäärityksen perusteet */}
               {report.valuation_numbers?.valuation_rationale && (
                 <div className="bg-white p-5 rounded-lg mt-4 border border-primary/20">
-                  <h4 className="text-sm font-medium text-slate-700 mb-2">Arvonmäärityksen perusteet</h4>
+                  <h4 className="text-sm font-medium text-muted-foreground mb-2">Arvonmäärityksen perusteet</h4>
                   <p className="text-sm whitespace-pre-line">{report.valuation_numbers.valuation_rationale}</p>
                 </div>
               )}
@@ -221,7 +221,7 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
               {/* Kontekstitiedot: Oma pääoma ja Nettovelka */}
               {(report.valuation_numbers?.book_value !== undefined || report.valuation_numbers?.calculated_net_debt !== undefined) && (
                 <div className="bg-white p-5 rounded-lg mt-4 border border-primary/20">
-                  <h4 className="text-sm font-medium text-slate-700 mb-3">Taseen ja velkojen vaikutus</h4>
+                  <h4 className="text-sm font-medium text-muted-foreground mb-3">Taseen ja velkojen vaikutus</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                     {report.valuation_numbers?.book_value !== undefined && (
                       <div className="bg-slate-50 p-3 rounded">
@@ -276,10 +276,10 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
 
                     // Get appropriate icon
                     const categoryIcon = {
-                      'documentation': <Badge className="bg-slate-100 text-slate-800">Dokumentaatio</Badge>,
-                      'process': <Badge className="bg-blue-100 text-blue-800">Prosessit</Badge>,
-                      'financial': <Badge className="bg-green-100 text-green-800">Talous</Badge>,
-                      'customers': <Badge className="bg-amber-100 text-amber-800">Asiakkaat</Badge>
+                      'documentation': <Badge className="bg-muted text-muted-foreground">Dokumentaatio</Badge>,
+                      'process': <Badge className="bg-info/10 text-info">Prosessit</Badge>,
+                      'financial': <Badge className="bg-success/10 text-success">Talous</Badge>,
+                      'customers': <Badge className="bg-warning/10 text-warning">Asiakkaat</Badge>
                     }[key] || null;
 
                     return (
@@ -337,25 +337,25 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
                                               section.title.toLowerCase().includes('taloudellinen');
 
                 // Set color scheme based on section type
-                let bgColor = "bg-slate-50";
-                let borderColor = "border-slate-200";
-                let iconComponent = <ChevronRight className="h-5 w-5 text-slate-400" />;
+                let bgColor = "bg-muted/50";
+                let borderColor = "border-muted";
+                let iconComponent = <ChevronRight className="h-5 w-5 text-muted-foreground" />;
 
                 if (isBusinessModel) {
                   bgColor = "bg-blue-50";
                   borderColor = "border-blue-200";
                   iconComponent = <Building className="h-5 w-5 text-info" />;
                 } else if (isRiskAssessment) {
-                  bgColor = "bg-amber-50";
-                  borderColor = "border-amber-200";
-                  iconComponent = <AlertTriangle className="h-5 w-5 text-amber-500" />;
+                  bgColor = "bg-warning/5";
+                  borderColor = "border-warning/20";
+                  iconComponent = <AlertTriangle className="h-5 w-5 text-warning" />;
                 } else if (isValuationMethods) {
-                  bgColor = "bg-indigo-50";
+                  bgColor = "bg-primary/5";
                   borderColor = "border-primary/30";
                   iconComponent = <Scale className="h-5 w-5 text-primary" />;
                 } else if (isFinancialPerformance) {
-                  bgColor = "bg-green-50";
-                  borderColor = "border-green-200";
+                  bgColor = "bg-success/5";
+                  borderColor = "border-success/20";
                   iconComponent = <BarChart className="h-5 w-5 text-success" />;
                 }
 

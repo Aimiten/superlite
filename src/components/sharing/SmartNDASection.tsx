@@ -127,7 +127,7 @@ export function SmartNDASection({
         <CardContent className="space-y-4">
           <Alert className="bg-blue-50 border-blue-200">
             <Info className="h-4 w-4 text-blue-700" />
-            <AlertDescription className="text-blue-800">
+            <AlertDescription className="text-info">
               {suggestion.reason}. NDA varmistaa että vastaanottaja sitoutuu pitämään tiedot salassa.
             </AlertDescription>
           </Alert>

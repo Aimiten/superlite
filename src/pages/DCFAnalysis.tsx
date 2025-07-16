@@ -356,7 +356,7 @@ const DCFAnalysis: React.FC = () => {
 
 
   const renderHistoryItem = (item: DCFHistoryItem) => (
-    <Card key={item.id} className="cursor-pointer hover:shadow-sm transition-shadow shadow-sm"
+    <Card key={item.id} className="cursor-pointer hover:shadow-neumorphic transition-shadow shadow-neumorphic"
           onClick={() => {
             if (item.structured_data) {
               setAnalysis({

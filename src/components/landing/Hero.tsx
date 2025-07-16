@@ -22,11 +22,11 @@ const Hero = ({ handleNavigation, scrollToSection }: HeroProps) => {
             transition={{ duration: 0.8 }}
             className="md:w-1/2 mb-12 md:mb-0 pr-0 md:pr-12"
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-800 leading-tight">
-              Selvitä <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">yrityksesi arvo </span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground leading-tight">
+              Selvitä <span className="text-primary">yrityksesi arvo </span>
               helposti!
             </h1>
-            <p className="mt-6 text-xl text-slate-600 max-w-xl">
+            <p className="mt-6 text-xl text-muted-foreground max-w-xl">
               Arvento on nopea ja tarkka tapa määrittää yrityksesi arvo. Tunnista arvoa nostavat tekijät ja valmistaudu onnistuneeseen yrityskauppaan.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
@@ -42,7 +42,7 @@ const Hero = ({ handleNavigation, scrollToSection }: HeroProps) => {
               <Button 
                 variant="neumorphic" 
                 size="pill"
-                className="text-slate-700 px-8 py-6 text-lg"
+                className="text-foreground px-8 py-6 text-lg"
                 onClick={() => scrollToSection("pricing")}
               >
                 Lue lisää
@@ -57,7 +57,7 @@ const Hero = ({ handleNavigation, scrollToSection }: HeroProps) => {
             className="md:w-1/2"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-indigo-500/20 rounded-3xl transform rotate-3"></div>
+              <div className="absolute inset-0 bg-primary/20 rounded-3xl transform rotate-3"></div>
               <div 
                 className="relative rounded-3xl shadow-neumorphic transform -rotate-2 transition-transform hover:rotate-0 duration-500 bg-white/50 flex items-center justify-center aspect-[4/3] overflow-hidden"
               >

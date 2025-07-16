@@ -47,10 +47,10 @@ const FreeCalculatorPage = () => {
         {/* Hero Section */}
       <div className="flex flex-col lg:flex-row gap-8 mb-12 items-center">
         <div className="w-full lg:w-1/2">
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Ilmainen yrityksen <span className="text-primary">arvonmäärityslaskuri</span>
           </h1>
-          <p className="text-b text-slate-600">
+          <p className="text-b text-muted-foreground">
             Saat nopean arvion yrityksesi arvosta toimialastandardien ja taloudellisten tunnuslukujen perusteella.
             Syötä vain yrityksesi Y-tunnus tai nimi aloittaaksesi.
           </p>
@@ -80,8 +80,8 @@ const FreeCalculatorPage = () => {
       {/* How It Works Section */}
       <div className="container mx-auto max-w-6xl px-4 py-8">
         <div className="mb-12">
-          <h2 className="text-xl font-semibold text-slate-800 mb-4">Miten arvonmäärityslaskuri toimii</h2>
-          <p className="text-slate-600 mb-4">
+          <h2 className="text-xl font-semibold text-foreground mb-4">Miten arvonmäärityslaskuri toimii</h2>
+          <p className="text-muted-foreground mb-4">
             Arvonmäärityslaskurimme käyttää toimialakohtaisia kertoimia yrityksesi arvon arvioimiseksi taloudellisten tunnuslukujen perusteella.
             Laskuri tarjoaa kaksi yleistä arvonmääritysmenetelmää:
           </p>
@@ -89,16 +89,16 @@ const FreeCalculatorPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div className="bg-primary/10 p-5 rounded-lg border border-primary/20">
               <h3 className="font-semibold text-primary mb-2">Liikevaihtoperusteinen menetelmä</h3>
-              <p className="text-slate-700">Arvio perustuu yrityksesi vuosittaiseen liikevaihtoon. Tämä on yleinen menetelmä nopeasti kasvavilla yrityksillä, jotka eivät vielä tuota merkittävää voittoa.</p>
+              <p className="text-muted-foreground">Arvio perustuu yrityksesi vuosittaiseen liikevaihtoon. Tämä on yleinen menetelmä nopeasti kasvavilla yrityksillä, jotka eivät vielä tuota merkittävää voittoa.</p>
             </div>
 
             <div className="bg-primary/10 p-5 rounded-lg border border-primary/20">
               <h3 className="font-semibold text-primary mb-2">EV/EBIT-menetelmä</h3>
-              <p className="text-slate-700">Arvio perustuu yrityksesi liikevoittoon (EBIT). Tämä menetelmä sopii erityisesti vakiintuneille yrityksille, joilla on tasainen tulovirta.</p>
+              <p className="text-muted-foreground">Arvio perustuu yrityksesi liikevoittoon (EBIT). Tämä menetelmä sopii erityisesti vakiintuneille yrityksille, joilla on tasainen tulovirta.</p>
             </div>
           </div>
 
-          <p className="text-slate-600">
+          <p className="text-muted-foreground">
             Kattavampaa arvonmääritystä varten, joka sisältää yksityiskohtaisen analyysin ja normalisointioikaisut, 
             harkitse täyden arvonmäärityspalvelumme käyttöä.
           </p>
@@ -124,12 +124,12 @@ const FreeCalculatorPage = () => {
 
       {/* Additional Information */}
       <div className="mb-12">
-        <h2 className="text-xl font-semibold text-slate-800 mb-4">Yrityksen arvonmäärityksen ymmärtäminen</h2>
-        <p className="text-slate-600 mb-4">
+        <h2 className="text-xl font-semibold text-foreground mb-4">Yrityksen arvonmäärityksen ymmärtäminen</h2>
+        <p className="text-muted-foreground mb-4">
           Yrityksen arvonmääritys on sekä taidetta että tiedettä. Vaikka laskurimme tarjoaa hyvän lähtökohdan,
           ammattimainen arvonmääritys huomioi monia lisätekijöitä, kuten:
         </p>
-        <ul className="list-disc pl-6 text-slate-600 space-y-2">
+        <ul className="list-disc pl-6 text-muted-foreground space-y-2">
           <li>Normalisoidut tuloksen oikaisut</li>
           <li>Kasvunäkymät ja markkinapotentiaali</li>
           <li>Kilpailuympäristön analyysi</li>

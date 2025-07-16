@@ -62,7 +62,7 @@ const CommentItem: React.FC<CommentItemProps> = ({
             </span>
 
             {comment.is_owner && (
-              <Badge variant="secondary" className="text-xs px-1.5 py-0 h-5 bg-blue-100 text-blue-800">
+              <Badge variant="secondary" className="text-xs px-1.5 py-0 h-5 bg-info/10 text-info">
                 Jaon omistaja
               </Badge>
             )}

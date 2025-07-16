@@ -17,7 +17,7 @@ const CompanyAnalysisTab: React.FC<CompanyAnalysisTabProps> = ({
   return (
     <div className="space-y-6">
       {/* Yrityksen perustiedot */}
-      <div className="border border-indigo-200 rounded-xl p-6">
+      <div className="border border-primary/20 rounded-xl p-6">
         <h3 className="text-lg font-semibold flex items-center mb-4">
           <Building className="h-5 w-5 mr-2 text-indigo-600" />
           Yritysanalyysi
@@ -29,14 +29,14 @@ const CompanyAnalysisTab: React.FC<CompanyAnalysisTabProps> = ({
           {(companyInfoAnalysis?.liiketoiminnanKuvaus || companyInfo?.structuredData?.description) && (
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <div className="p-2 bg-blue-100 rounded-lg">
-                  <Target className="h-4 w-4 text-blue-600" />
+                <div className="p-2 bg-info/10 rounded-lg">
+                  <Target className="h-4 w-4 text-info" />
                 </div>
                 <h4 className="text-md font-medium">Liiketoiminnan kuvaus</h4>
                 <Badge variant="secondary" className="text-xs">Ydintoiminta</Badge>
               </div>
-              <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
-                <p className="whitespace-pre-line text-slate-700">
+              <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
+                <p className="whitespace-pre-line text-muted-foreground">
                   {cleanMarkdownText(companyInfoAnalysis?.liiketoiminnanKuvaus || companyInfo?.structuredData?.description)}
                 </p>
               </div>
@@ -47,14 +47,14 @@ const CompanyAnalysisTab: React.FC<CompanyAnalysisTabProps> = ({
           {(companyInfoAnalysis?.asiakasJaMarkkina || companyInfo?.structuredData?.market_position) && (
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <div className="p-2 bg-green-100 rounded-lg">
-                  <MapPin className="h-4 w-4 text-green-600" />
+                <div className="p-2 bg-success/10 rounded-lg">
+                  <MapPin className="h-4 w-4 text-success" />
                 </div>
                 <h4 className="text-md font-medium">Markkina-asema</h4>
-                <Badge variant="secondary" className="text-xs bg-green-100 text-green-700">Markkinointi</Badge>
+                <Badge variant="secondary" className="text-xs bg-success/10 text-success">Markkinointi</Badge>
               </div>
-              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                <p className="whitespace-pre-line text-slate-700">
+              <div className="bg-success/5 p-4 rounded-lg border border-success/20">
+                <p className="whitespace-pre-line text-muted-foreground">
                   {cleanMarkdownText(companyInfoAnalysis?.asiakasJaMarkkina || companyInfo?.structuredData?.market_position)}
                 </p>
               </div>
@@ -71,8 +71,8 @@ const CompanyAnalysisTab: React.FC<CompanyAnalysisTabProps> = ({
                 <h4 className="text-md font-medium">Kilpailuedut ja erottautumistekijät</h4>
                 <Badge variant="secondary" className="text-xs bg-purple-100 text-purple-700">Erottautumistekijät</Badge>
               </div>
-              <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                <p className="whitespace-pre-line text-slate-700">
+              <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
+                <p className="whitespace-pre-line text-muted-foreground">
                   {cleanMarkdownText(companyInfoAnalysis.kilpailuJaErot)}
                 </p>
               </div>
@@ -83,14 +83,14 @@ const CompanyAnalysisTab: React.FC<CompanyAnalysisTabProps> = ({
           {companyInfoAnalysis?.strategiaJaTulevaisuus && (
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <div className="p-2 bg-amber-100 rounded-lg">
-                  <TrendingUp className="h-4 w-4 text-amber-600" />
+                <div className="p-2 bg-warning/10 rounded-lg">
+                  <TrendingUp className="h-4 w-4 text-warning" />
                 </div>
                 <h4 className="text-md font-medium">Strategia ja tulevaisuus</h4>
-                <Badge variant="secondary" className="text-xs bg-amber-100 text-amber-700">Visio</Badge>
+                <Badge variant="secondary" className="text-xs bg-warning/10 text-warning">Visio</Badge>
               </div>
-              <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
-                <p className="whitespace-pre-line text-slate-700">
+              <div className="bg-warning/5 p-4 rounded-lg border border-warning/20">
+                <p className="whitespace-pre-line text-muted-foreground">
                   {cleanMarkdownText(companyInfoAnalysis.strategiaJaTulevaisuus)}
                 </p>
               </div>
@@ -99,10 +99,10 @@ const CompanyAnalysisTab: React.FC<CompanyAnalysisTabProps> = ({
 
           {/* Lähdetiedot */}
           {companyInfoAnalysis?.lahteet && (
-            <div className="mt-6 p-3 bg-slate-100 rounded-lg border border-slate-200">
+            <div className="mt-6 p-3 bg-muted rounded-lg border border-muted">
               <div className="flex items-center gap-2 mb-2">
                 <ExternalLink className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm font-medium text-slate-700">Tietolähteet</span>
+                <span className="text-sm font-medium text-muted-foreground">Tietolähteet</span>
               </div>
               <p className="text-xs text-slate-500 italic">{cleanMarkdownText(companyInfoAnalysis.lahteet)}</p>
             </div>
@@ -123,8 +123,8 @@ const CompanyAnalysisTab: React.FC<CompanyAnalysisTabProps> = ({
             </h3>
           </div>
           <div className="p-6 bg-blue-50">
-            <div className="bg-white p-4 rounded-lg border border-slate-200">
-              <p className="whitespace-pre-line text-slate-700 leading-relaxed">
+            <div className="bg-white p-4 rounded-lg border border-muted">
+              <p className="whitespace-pre-line text-muted-foreground leading-relaxed">
                 {cleanMarkdownText(valuationReport.analysis.business_model.content)}
               </p>
             </div>
@@ -136,12 +136,12 @@ const CompanyAnalysisTab: React.FC<CompanyAnalysisTabProps> = ({
       {!companyInfoAnalysis?.liiketoiminnanKuvaus && 
        !companyInfo?.structuredData?.description && 
        !valuationReport?.analysis?.business_model?.content && (
-        <div className="border border-slate-200 rounded-xl p-8 text-center">
-          <div className="p-4 bg-slate-100 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-            <Building className="h-8 w-8 text-slate-400" />
+        <div className="border border-muted rounded-xl p-8 text-center">
+          <div className="p-4 bg-muted rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+            <Building className="h-8 w-8 text-muted-foreground" />
           </div>
-          <h3 className="text-lg font-medium text-slate-700 mb-2">Yritysanalyysi ei saatavilla</h3>
-          <p className="text-slate-500 text-sm">
+          <h3 className="text-lg font-medium text-muted-foreground mb-2">Yritysanalyysi ei saatavilla</h3>
+          <p className="text-muted-foreground text-sm">
             Yrityksen tarkempaa analyysiä ei voitu tuottaa saatavilla olevien tietojen perusteella.
           </p>
         </div>

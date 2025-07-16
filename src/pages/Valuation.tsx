@@ -665,10 +665,10 @@ const analyzeCompany = async () => {
         {uploadedFiles.map((file) => (
           <div
             key={file.id}
-            className="flex items-center justify-between p-2 border rounded-md bg-slate-50"
+            className="flex items-center justify-between p-2 border rounded-md bg-muted/50"
           >
             <div className="flex items-center space-x-2 overflow-hidden">
-              <FileText className="h-4 w-4 text-indigo-600 flex-shrink-0" />
+              <FileText className="h-4 w-4 text-primary flex-shrink-0" />
               <span className="text-sm font-medium truncate" title={file.name}>{file.name}</span>
               {selectedDocuments.includes(file.id) && !file.id.startsWith('upload-') && (
                 <Badge variant="success" className="text-xs bg-green-100 text-green-800">Tallennettu</Badge>
@@ -681,7 +681,7 @@ const analyzeCompany = async () => {
               className="h-7 w-7 p-0 flex-shrink-0 ml-2"
               aria-label={`Poista tiedosto ${file.name}`}
             >
-              <X className="h-4 w-4 text-slate-500 hover:text-red-600" />
+              <X className="h-4 w-4 text-muted-foreground hover:text-destructive" />
             </Button>
           </div>
         ))}
@@ -693,7 +693,7 @@ const analyzeCompany = async () => {
     if (!isContentReady) {
       return (
         <div className="flex justify-center py-8">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
         </div>
       );
     }
@@ -753,7 +753,7 @@ const analyzeCompany = async () => {
     if (selectedValuationId && currentStep !== 4 && isLoading) {
       return (
         <div className="flex justify-center items-center py-10">
-          <Loader2 className="h-12 w-12 text-indigo-600 animate-spin" />
+          <Loader2 className="h-12 w-12 text-primary animate-spin" />
           <span className="ml-4 text-lg">Ladataan arvonmääritystä...</span>
         </div>
       );
@@ -773,12 +773,12 @@ const analyzeCompany = async () => {
                 <div className="flex justify-between items-center mb-4">
                   <div>
                     <Badge variant="outline" className="mb-2 w-fit rounded-full flex items-center gap-1 text-xs py-1">
-                      <div className="bg-indigo-100 text-indigo-700 rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 font-medium">1</div>
+                      <div className="bg-primary/10 text-primary rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 font-medium">1</div>
                       <span>/ 4</span>
                     </Badge>
                     <h2 className="text-xl font-bold">Yritystiedot ja dokumentit</h2>
                     {activeCompany ? (
-                      <p className="text-gray-500 mt-1">
+                      <p className="text-muted-foreground mt-1">
                         Valitse analysoitavat tilinpäätöstiedostot yritykselle: {activeCompany.name} {activeCompany.company_type && `- ${activeCompany.company_type}`}
                       </p>
                     ) : (
@@ -802,9 +802,9 @@ const analyzeCompany = async () => {
                   </Alert>
                 ) : (
                   <div className="space-y-4">
-                    <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                      <h3 className="font-medium text-blue-800 mb-1">Aktiivinen yritys</h3>
-                      <p className="text-blue-700">
+                    <div className="p-4 bg-info/5 border border-info/20 rounded-lg">
+                      <h3 className="font-medium text-info mb-1">Aktiivinen yritys</h3>
+                      <p className="text-info">
                         <span className="font-semibold">{activeCompany.name}</span>
                         {activeCompany.company_type && <span> ({activeCompany.company_type})</span>}
                       </p>
@@ -826,10 +826,10 @@ const analyzeCompany = async () => {
                     <div className="space-y-4 mt-6">
                       <h3 className="text-md font-medium border-t pt-4">Valitse tilinpäätökset alta, tai lisää tässä uusia tilinpäätöksiä analyysiin</h3>
 
-                      <div className="border-dashed border-2 border-slate-300 rounded-md p-4 flex flex-col items-center justify-center text-center space-y-2 hover:border-indigo-500 transition-colors">
-                        <Upload className="h-8 w-8 text-indigo-500 mb-2" />
+                      <div className="border-dashed border-2 border-muted rounded-md p-4 flex flex-col items-center justify-center text-center space-y-2 hover:border-primary transition-colors">
+                        <Upload className="h-8 w-8 text-primary mb-2" />
                         <h4 className="font-medium">Lataa uusi tiedosto</h4>
-                        <p className="text-sm text-slate-500">
+                        <p className="text-sm text-muted-foreground">
                           Valitse yksi tai useampi PDF, CSV tai TXT-tiedosto.
                         </p>
                         <input
@@ -881,18 +881,18 @@ const analyzeCompany = async () => {
                                 key={doc.id}
                                 variant={selectedDocuments.includes(doc.id) ? "secondary" : "outline"}
                                 className={`w-full justify-start text-left h-auto py-2 ${
-                                  selectedDocuments.includes(doc.id) ? 'border-indigo-500 ring-1 ring-indigo-500' : ''
+                                  selectedDocuments.includes(doc.id) ? 'border-primary ring-1 ring-primary' : ''
                                 }`}
                                 onClick={() => toggleDocument(doc.id, doc.name)}
                               >
                                 <FileText
                                   className={`mr-2 h-4 w-4 flex-shrink-0 ${
-                                    selectedDocuments.includes(doc.id) ? 'text-indigo-700' : 'text-slate-500'
+                                    selectedDocuments.includes(doc.id) ? 'text-primary' : 'text-muted-foreground'
                                   }`}
                                 />
                                 <div className="flex-grow overflow-hidden">
                                   <p className="text-sm font-medium truncate" title={doc.name}>{doc.name}</p>
-                                  <p className="text-xs text-slate-500">
+                                  <p className="text-xs text-muted-foreground">
                                     Ladattu: {formatDate(doc.created_at)}
                                   </p>
                                 </div>
@@ -997,7 +997,7 @@ const analyzeCompany = async () => {
 
             {/* Step indicator for the final step */}
             <Badge variant="outline" className="mb-4 w-fit rounded-full flex items-center gap-1 text-xs py-1">
-              <div className="bg-indigo-100 text-indigo-700 rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 font-medium">4</div>
+              <div className="bg-primary/10 text-primary rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 font-medium">4</div>
               <span>/ 4</span>
             </Badge>
 

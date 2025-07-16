@@ -150,8 +150,8 @@ export function NDAPreviewModal({
       <DialogContent className="max-w-5xl max-h-[95vh] p-0">
         <DialogHeader className="p-6 pb-0">
           <DialogTitle className="flex items-center gap-3 text-xl">
-            <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
-              <Shield className="h-5 w-5 text-blue-600" />
+            <div className="h-10 w-10 rounded-full bg-info/10 flex items-center justify-center">
+              <Shield className="h-5 w-5 text-info" />
             </div>
             Salassapitosopimuksen esikatselu
           </DialogTitle>
