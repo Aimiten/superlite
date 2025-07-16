@@ -78,7 +78,7 @@ const MainLayout = () => {
         <Outlet />
       </main>
       <footer className="py-3 md:py-4 px-3 sm:px-6 lg:px-8 bg-white/70 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto text-center text-slate-600 text-xs md:text-sm">
+        <div className="max-w-7xl mx-auto text-center text-muted-foreground text-xs md:text-sm">
           <p>© {new Date().getFullYear()} Arvonlaskuri Työkalu</p>
         </div>
       </footer>

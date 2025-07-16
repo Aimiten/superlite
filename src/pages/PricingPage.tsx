@@ -352,7 +352,7 @@ const PricingPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold text-slate-800 mb-4"
+            className="text-4xl md:text-5xl font-bold text-foreground mb-4"
           >
             Läpinäkyvä hinnoittelu <span className="text-primary">jokaiselle yritykselle</span>
           </motion.h1>
@@ -360,7 +360,7 @@ const PricingPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl text-slate-600 max-w-3xl mx-auto mb-8"
+            className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8"
           >
             Valitse tarpeisiisi sopiva ratkaisu yrityksen arvonmääritykseen ja myyntikuntoon saattamiseen
           </motion.p>
@@ -377,7 +377,7 @@ const PricingPage = () => {
       {/* Ominaisuuksien vertailutaulukko */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/80">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-slate-800 text-center mb-12">Ominaisuuksien vertailu</h2>
+          <h2 className="text-3xl font-bold text-foreground text-center mb-12">Ominaisuuksien vertailu</h2>
 
           <Tabs defaultValue="monthly" className="w-full max-w-4xl mx-auto mb-8">
             <TabsList className="grid w-full grid-cols-2 mb-8">
@@ -393,18 +393,18 @@ const PricingPage = () => {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="bg-slate-50">
-                  <th className="py-4 px-6 text-left text-slate-700 font-medium">Ominaisuus</th>
-                  <th className="py-4 px-6 text-center text-slate-700 font-medium">Free</th>
-                  <th className="py-4 px-6 text-center text-slate-700 font-medium">
+                <tr className="bg-muted">
+                  <th className="py-4 px-6 text-left text-foreground font-medium">Ominaisuus</th>
+                  <th className="py-4 px-6 text-center text-foreground font-medium">Free</th>
+                  <th className="py-4 px-6 text-center text-foreground font-medium">
                     Lite
-                    <div className="text-sm font-normal text-slate-500">
+                    <div className="text-sm font-normal text-muted-foreground">
                       {billingCycle === "monthly" ? "29€/kk" : "279€/vuosi"}
                     </div>
                   </th>
-                  <th className="py-4 px-6 text-center text-slate-700 font-medium">
+                  <th className="py-4 px-6 text-center text-foreground font-medium">
                     Pro
-                    <div className="text-sm font-normal text-slate-500">
+                    <div className="text-sm font-normal text-muted-foreground">
                       {billingCycle === "monthly" ? "99€/kk" : "949€/vuosi"}
                     </div>
                   </th>
@@ -413,19 +413,19 @@ const PricingPage = () => {
               <tbody>
                 {featureCategories.map((category, categoryIndex) => (
                   <>
-                    <tr key={`category-${categoryIndex}`} className="bg-slate-100">
-                      <td colSpan={4} className="py-3 px-6 font-medium text-slate-800">{category.name}</td>
+                    <tr key={`category-${categoryIndex}`} className="bg-muted">
+                      <td colSpan={4} className="py-3 px-6 font-medium text-foreground">{category.name}</td>
                     </tr>
                     {category.features.map((feature, featureIndex) => (
-                      <tr key={`feature-${categoryIndex}-${featureIndex}`} className="border-b border-slate-200">
-                        <td className="py-3 px-6 text-slate-700 flex items-center">
+                      <tr key={`feature-${categoryIndex}-${featureIndex}`} className="border-b border-border">
+                        <td className="py-3 px-6 text-foreground flex items-center">
                           {feature.name}
                           {feature.tooltip && (
                             <TooltipProvider>
                               <Tooltip>
                                 <TooltipTrigger asChild>
                                   <Button variant="ghost" size="icon" className="h-5 w-5 ml-1 p-0">
-                                    <HelpCircle className="h-4 w-4 text-slate-400" />
+                                    <HelpCircle className="h-4 w-4 text-muted-foreground" />
                                   </Button>
                                 </TooltipTrigger>
                                 <TooltipContent>{feature.tooltip}</TooltipContent>
@@ -436,17 +436,17 @@ const PricingPage = () => {
                         <td className="py-3 px-6 text-center">
                           {feature.free ? 
                             <Check className="h-5 w-5 text-success mx-auto" /> : 
-                            <X className="h-5 w-5 text-slate-300 mx-auto" />}
+                            <X className="h-5 w-5 text-muted-foreground mx-auto" />}
                         </td>
                         <td className="py-3 px-6 text-center">
                           {feature.lite ? 
                             <Check className="h-5 w-5 text-primary mx-auto" /> : 
-                            <X className="h-5 w-5 text-slate-300 mx-auto" />}
+                            <X className="h-5 w-5 text-muted-foreground mx-auto" />}
                         </td>
                         <td className="py-3 px-6 text-center">
                           {feature.pro ? 
                             <Check className="h-5 w-5 text-secondary mx-auto" /> : 
-                            <X className="h-5 w-5 text-slate-300 mx-auto" />}
+                            <X className="h-5 w-5 text-muted-foreground mx-auto" />}
                         </td>
                       </tr>
                     ))}
@@ -461,15 +461,15 @@ const PricingPage = () => {
       {/* FAQ - Usein kysytyt kysymykset */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-primary/5">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-slate-800 text-center mb-12">Usein kysytyt kysymykset</h2>
+          <h2 className="text-3xl font-bold text-foreground text-center mb-12">Usein kysytyt kysymykset</h2>
 
           <Accordion type="single" collapsible className="bg-white rounded-xl shadow-neumorphic">
             {faqItems.map((item, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="px-6 py-4 text-slate-800 hover:text-primary">
+                <AccordionTrigger className="px-6 py-4 text-foreground hover:text-primary">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 text-slate-600">
+                <AccordionContent className="px-6 pb-4 text-muted-foreground">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -481,8 +481,8 @@ const PricingPage = () => {
       {/* Asiakastarinat */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-primary/5 to-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-slate-800 text-center mb-4">Mitä asiakkaamme sanovat</h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto text-center mb-12">
+          <h2 className="text-3xl font-bold text-foreground text-center mb-4">Mitä asiakkaamme sanovat</h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-center mb-12">
             Arvento on auttanut satoja yrittäjiä kasvattamaan yrityksensä arvoa ja löytämään sopivan jatkajan
           </p>
 
@@ -494,22 +494,22 @@ const PricingPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-white rounded-xl shadow-neumorphic p-6 border border-slate-100"
+                className="bg-white rounded-xl shadow-neumorphic p-6 border border-muted"
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="bg-slate-100 h-16 w-16 rounded-full flex items-center justify-center">
+                  <div className="bg-muted h-16 w-16 rounded-full flex items-center justify-center">
                     {story.image ? (
                       <img src={story.image} alt={story.name} className="h-16 w-16 rounded-full object-cover" />
                     ) : (
-                      <div className="text-2xl font-bold text-slate-400">{story.name.charAt(0)}</div>
+                      <div className="text-2xl font-bold text-muted-foreground">{story.name.charAt(0)}</div>
                     )}
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-slate-800">{story.name}</h3>
-                    <p className="text-slate-600">{story.company}</p>
+                    <h3 className="text-lg font-semibold text-foreground">{story.name}</h3>
+                    <p className="text-muted-foreground">{story.company}</p>
                   </div>
                 </div>
-                <blockquote className="text-slate-700 mb-4 italic">"{story.quote}"</blockquote>
+                <blockquote className="text-foreground mb-4 italic">"{story.quote}"</blockquote>
                 <div className="bg-primary/10 p-3 rounded-lg text-sm text-primary font-medium">
                   Tulokset: {story.results}
                 </div>
@@ -522,8 +522,8 @@ const PricingPage = () => {
       {/* Yhteydenotto */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary/10 to-secondary/10">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-slate-800 mb-4">Tarvitsetko räätälöidyn ratkaisun?</h2>
-          <p className="text-lg text-slate-600 mb-8">
+          <h2 className="text-3xl font-bold text-foreground mb-4">Tarvitsetko räätälöidyn ratkaisun?</h2>
+          <p className="text-lg text-muted-foreground mb-8">
             Isommille yrityksille ja erityistarpeisiin tarjoamme räätälöityjä ratkaisuja. Ota yhteyttä myyntitiimiimme.
           </p>
           <Button 
@@ -538,8 +538,8 @@ const PricingPage = () => {
       {/* Call to Action */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-slate-800 mb-6">Valmis aloittamaan?</h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+          <h2 className="text-3xl font-bold text-foreground mb-6">Valmis aloittamaan?</h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Aloita ilmaisella arvonmäärityksellä ja päivitä tarvittaessa laajempaan versioon.
           </p>
           <Button 

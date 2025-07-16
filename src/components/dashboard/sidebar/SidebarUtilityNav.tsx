@@ -25,7 +25,7 @@ const SidebarUtilityNav = ({ collapsed }: SidebarUtilityNavProps) => {
   };
 
   return (
-    <div className="mt-auto p-3 border-t border-slate-200">
+    <div className="mt-auto p-3 border-t border-border">
       <div className="space-y-1">
         {/* Käyttäjätiedot näytetään aina, riippumatta collapsed-tilasta */}
         <SidebarUserInfo />

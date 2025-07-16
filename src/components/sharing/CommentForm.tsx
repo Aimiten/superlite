@@ -80,7 +80,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
         />
 
         <div className="flex justify-between items-center">
-          <div className="text-xs text-gray-500">
+          <div className="text-xs text-muted-foreground">
             {!user && "Kommentointi kirjautumattomana."}
             {user && `Kommentointi käyttäjänä: ${user.email}`}
           </div>

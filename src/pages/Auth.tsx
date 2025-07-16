@@ -175,8 +175,8 @@ const Auth = () => {
       <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <h2 className="text-2xl font-semibold text-slate-800 mb-2">Vahvistetaan sähköpostia...</h2>
-          <p className="text-slate-600">Odota hetki, sinut ohjataan automaattisesti eteenpäin.</p>
+          <h2 className="text-2xl font-semibold text-foreground mb-2">Vahvistetaan sähköpostia...</h2>
+          <p className="text-muted-foreground">Odota hetki, sinut ohjataan automaattisesti eteenpäin.</p>
         </div>
       </div>
     );
@@ -193,7 +193,7 @@ const Auth = () => {
         <div className="flex items-center justify-between mb-4">
           <Button 
             variant="ghost" 
-            className="text-slate-600"
+            className="text-muted-foreground"
             onClick={() => navigate("/")}
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -201,7 +201,7 @@ const Auth = () => {
           </Button>
         </div>
         
-        <h1 className="text-3xl font-bold text-center text-slate-800 mb-6">
+        <h1 className="text-3xl font-bold text-center text-foreground mb-6">
           Arvento Lite
         </h1>
         
@@ -247,7 +247,7 @@ const Auth = () => {
                   {loading ? "Kirjaudutaan..." : "Kirjaudu sisään"}
                 </Button>
                 
-                <div className="mt-4 p-3 bg-slate-100 rounded-lg text-slate-600 text-center text-sm">
+                <div className="mt-4 p-3 bg-muted rounded-lg text-muted-foreground text-center text-sm">
                   Rekisteröityminen avataan pian. Jos tarvitset pääsyn järjestelmään, ota yhteyttä ylläpitoon.
                 </div>
               </form>

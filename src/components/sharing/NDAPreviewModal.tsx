@@ -163,9 +163,9 @@ export function NDAPreviewModal({
         <div className="px-6 pb-4">
           {/* Sopimuksen tiedot kortteina */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
-            <Card className="p-4 bg-blue-50/50 border-blue-200">
+            <Card className="p-4 bg-info/5 border-info/20">
               <div className="flex items-center gap-3">
-                <Users className="h-5 w-5 text-blue-600" />
+                <Users className="h-5 w-5 text-info" />
                 <div>
                   <p className="text-sm text-muted-foreground">Vastaanottaja</p>
                   <p className="font-medium">
@@ -177,9 +177,9 @@ export function NDAPreviewModal({
               </div>
             </Card>
             
-            <Card className="p-4 bg-green-50/50 border-green-200">
+            <Card className="p-4 bg-success/5 border-success/20">
               <div className="flex items-center gap-3">
-                <Clock className="h-5 w-5 text-green-600" />
+                <Clock className="h-5 w-5 text-success" />
                 <div>
                   <p className="text-sm text-muted-foreground">Voimassaolo</p>
                   <p className="font-medium">{getDurationLabel(ndaConfig.duration)}</p>
@@ -187,9 +187,9 @@ export function NDAPreviewModal({
               </div>
             </Card>
             
-            <Card className="p-4 bg-orange-50/50 border-orange-200">
+            <Card className="p-4 bg-warning/5 border-warning/20">
               <div className="flex items-center gap-3">
-                <Euro className="h-5 w-5 text-orange-600" />
+                <Euro className="h-5 w-5 text-warning" />
                 <div>
                   <p className="text-sm text-muted-foreground">Sopimussakko</p>
                   <p className="font-medium">{getPenaltyLabel(ndaConfig.penalty)}</p>
@@ -202,8 +202,8 @@ export function NDAPreviewModal({
         </div>
 
         <div className="px-6">
-          <div className="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
-            <div className="bg-white px-4 py-3 border-b border-gray-200 flex items-center justify-between">
+          <div className="bg-muted rounded-lg border border-border overflow-hidden">
+            <div className="bg-white px-4 py-3 border-b border-border flex items-center justify-between">
               <h3 className="font-medium text-sm flex items-center gap-2">
                 <FileText className="h-4 w-4" />
                 Sopimuksen sisältö
@@ -218,13 +218,13 @@ export function NDAPreviewModal({
             <ScrollArea className="h-[400px] p-6">
               {loading ? (
                 <div className="flex flex-col items-center justify-center py-12">
-                  <Loader2 className="h-8 w-8 animate-spin text-blue-600 mb-4" />
+                  <Loader2 className="h-8 w-8 animate-spin text-info mb-4" />
                   <p className="text-muted-foreground">Generoidaan sopimusta...</p>
                   <p className="text-sm text-muted-foreground mt-1">Tämä kestää noin 5-10 sekuntia</p>
                 </div>
               ) : ndaContent ? (
                 <div className="prose prose-sm max-w-none">
-                  <div className="bg-white rounded-lg p-6 border border-gray-200 text-sm leading-relaxed text-gray-700">
+                  <div className="bg-white rounded-lg p-6 border border-border text-sm leading-relaxed text-muted-foreground">
                     <ReactMarkdown
                       components={{
                         // Rajoita sallitut elementit turvallisuuden vuoksi
@@ -241,7 +241,7 @@ export function NDAPreviewModal({
                         img: () => null,
                         script: () => null,
                         iframe: () => null,
-                        a: ({children}) => <span className="text-blue-600 underline">{children}</span>
+                        a: ({children}) => <span className="text-info underline">{children}</span>
                       }}
                     >
                       {ndaContent}
@@ -278,7 +278,7 @@ export function NDAPreviewModal({
                   onConfirm();
                   onClose();
                 }}
-                className="bg-blue-600 hover:bg-blue-700"
+                className="bg-info hover:bg-info/90"
               >
                 <Check className="h-4 w-4 mr-2" />
                 Hyväksy sopimus ja luo jako

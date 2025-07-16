@@ -756,15 +756,15 @@ const SharingManager = () => {
           </TabsList>
 
           <TabsContent value="create">
-            <Card className="shadow-neumorphic bg-gray-50">
+            <Card className="shadow-neumorphic bg-muted">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Share2 className="h-5 w-5 text-blue-600" />
+                  <Share2 className="h-5 w-5 text-info" />
                   Jaa raportteja ja analyysejä
                 </CardTitle>
                 <CardDescription className="space-y-2">
                   <p>Luo jakolinkki arvonmääritysten ja myyntikunto-analyysien jakamiseksi</p>
-                  <div className="flex items-center gap-2 text-green-600 font-medium">
+                  <div className="flex items-center gap-2 text-success font-medium">
                     <CheckCircle className="h-4 w-4" />
                     <span>Pika-jako käyttää oletuksia: 30 päivää, vain luku, ei NDA:ta</span>
                   </div>
@@ -780,7 +780,7 @@ const SharingManager = () => {
                       onValueChange={setSelectedCompany}
                       disabled={loading || companies.length === 0}
                     >
-                      <SelectTrigger id="company" className="shadow-neumorphic-inset bg-gray-50">
+                      <SelectTrigger id="company" className="shadow-neumorphic-inset bg-muted">
                         <SelectValue placeholder="Valitse yritys" />
                       </SelectTrigger>
                       <SelectContent>
@@ -801,7 +801,7 @@ const SharingManager = () => {
                       placeholder="esim. vastaanottaja@example.com"
                       value={shareEmail}
                       onChange={(e) => setShareEmail(e.target.value)}
-                      className="shadow-neumorphic-inset bg-gray-50"
+                      className="shadow-neumorphic-inset bg-muted"
                     />
                   </div>
 
@@ -812,7 +812,7 @@ const SharingManager = () => {
                       placeholder="Kirjoita viesti vastaanottajalle..."
                       value={shareMessage}
                       onChange={(e) => setShareMessage(e.target.value)}
-                      className="shadow-neumorphic-inset bg-gray-50"
+                      className="shadow-neumorphic-inset bg-muted"
                     />
                   </div>
                 </div>
@@ -842,7 +842,7 @@ const SharingManager = () => {
                             onValueChange={setSelectedAssessment}
                             disabled={loadingAssessments || assessments.length === 0}
                           >
-                            <SelectTrigger className="shadow-neumorphic-inset bg-gray-50">
+                            <SelectTrigger className="shadow-neumorphic-inset bg-muted">
                               <SelectValue placeholder="Valitse analyysi" />
                             </SelectTrigger>
                             <SelectContent>
@@ -857,7 +857,7 @@ const SharingManager = () => {
                       )}
 
                       {shareAssessment && assessments.length === 0 && (
-                        <div className="ml-6 mt-2 text-sm text-gray-500">
+                        <div className="ml-6 mt-2 text-sm text-muted-foreground">
                           Ei saatavilla olevia myyntikunto-analyysejä
                         </div>
                       )}
@@ -883,7 +883,7 @@ const SharingManager = () => {
                             onValueChange={setSelectedValuation}
                             disabled={loadingValuations || valuations.length === 0}
                           >
-                            <SelectTrigger className="shadow-neumorphic-inset bg-gray-50">
+                            <SelectTrigger className="shadow-neumorphic-inset bg-muted">
                               <SelectValue placeholder="Valitse arvonmääritys" />
                             </SelectTrigger>
                             <SelectContent>
@@ -898,7 +898,7 @@ const SharingManager = () => {
                       )}
 
                       {shareValuation && valuations.length === 0 && (
-                        <div className="ml-6 mt-2 text-sm text-gray-500">
+                        <div className="ml-6 mt-2 text-sm text-muted-foreground">
                           Ei saatavilla olevia arvonmäärityksiä
                         </div>
                       )}
@@ -960,7 +960,7 @@ const SharingManager = () => {
                           value={accessLevel} 
                           onValueChange={(value) => setAccessLevel(value as "read_only" | "comment")}
                         >
-                          <SelectTrigger className="shadow-neumorphic-inset bg-gray-50">
+                          <SelectTrigger className="shadow-neumorphic-inset bg-muted">
                             <SelectValue placeholder="Valitse käyttöoikeustaso" />
                           </SelectTrigger>
                           <SelectContent>
@@ -979,7 +979,7 @@ const SharingManager = () => {
                           value={expirationDays?.toString() || "null"} 
                           onValueChange={(value) => setExpirationDays(value === "null" ? null : parseInt(value))}
                         >
-                          <SelectTrigger className="shadow-neumorphic-inset bg-gray-50">
+                          <SelectTrigger className="shadow-neumorphic-inset bg-muted">
                             <SelectValue placeholder="Valitse voimassaoloaika" />
                           </SelectTrigger>
                           <SelectContent>
@@ -1018,7 +1018,7 @@ const SharingManager = () => {
                 
                 {/* NDA approval status */}
                 {requiresNDA && ndaApproved && (
-                  <Alert className="mt-4 shadow-neumorphic bg-gray-50">
+                  <Alert className="mt-4 shadow-neumorphic bg-muted">
                     <CheckCircle className="h-4 w-4" />
                     <AlertDescription>
                       NDA on hyväksytty. Voit nyt luoda jaon.
@@ -1031,16 +1031,16 @@ const SharingManager = () => {
                 <div className="w-full space-y-4">
                   {/* Current settings indicator */}
                   <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary" className="text-xs bg-gray-100 shadow-neumorphic">
+                    <Badge variant="secondary" className="text-xs bg-muted shadow-neumorphic">
                       <Clock className="mr-1 h-3 w-3" />
                       {expirationDays ? `${expirationDays} päivää` : 'Toistaiseksi'}
                     </Badge>
-                    <Badge variant="secondary" className="text-xs bg-gray-100 shadow-neumorphic">
+                    <Badge variant="secondary" className="text-xs bg-muted shadow-neumorphic">
                       <Eye className="mr-1 h-3 w-3" />
                       {accessLevel === "read_only" ? "Vain luku" : "Kommentointi"}
                     </Badge>
                     {requiresNDA && (
-                      <Badge variant="secondary" className="text-xs bg-gray-100 shadow-neumorphic">
+                      <Badge variant="secondary" className="text-xs bg-muted shadow-neumorphic">
                         <Shield className="mr-1 h-3 w-3" />
                         NDA vaaditaan
                       </Badge>
@@ -1058,7 +1058,7 @@ const SharingManager = () => {
                            (!shareDocuments || selectedDocuments.length === 0) && 
                            !shareValuationImpact)}
                         size="lg"
-                        className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto shadow-neumorphic"
+                        className="bg-success hover:bg-success/90 text-white w-full sm:w-auto shadow-neumorphic"
                       >
                         {isCreatingShare ? (
                           <>
@@ -1080,7 +1080,7 @@ const SharingManager = () => {
                            (!shareValuation || !selectedValuation) && 
                            (!shareDocuments || selectedDocuments.length === 0) && 
                            !shareValuationImpact)}
-                        className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto shadow-neumorphic"
+                        className="bg-info hover:bg-info/90 text-white w-full sm:w-auto shadow-neumorphic"
                       >
                         {isCreatingShare ? (
                           <>
@@ -1130,10 +1130,10 @@ const SharingManager = () => {
           </TabsContent>
 
           <TabsContent value="manage">
-            <Card className="shadow-neumorphic bg-gray-50">
+            <Card className="shadow-neumorphic bg-muted">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <ClipboardCheck className="h-5 w-5 text-blue-600" />
+                  <ClipboardCheck className="h-5 w-5 text-info" />
                   Hallitse jakoja
                 </CardTitle>
                 <CardDescription>
@@ -1161,13 +1161,13 @@ const SharingManager = () => {
               <CardContent>
                 {loadingShares ? (
                   <div className="flex justify-center py-8">
-                    <Loader2 className="h-8 w-8 text-blue-600 animate-spin" />
+                    <Loader2 className="h-8 w-8 text-info animate-spin" />
                   </div>
                 ) : shares.length === 0 ? (
                   <div className="text-center py-8">
-                    <Share2 className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium mb-2 text-gray-700">Ei aktiivisia jakoja</h3>
-                    <p className="text-gray-500 mb-6">Sinulla ei ole vielä aktiivisia jakoja tälle yritykselle. Siirry takaisin "Luo uusi jako"-välilehdelle</p>
+                    <Share2 className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                    <h3 className="text-lg font-medium mb-2 text-foreground">Ei aktiivisia jakoja</h3>
+                    <p className="text-muted-foreground mb-6">Sinulla ei ole vielä aktiivisia jakoja tälle yritykselle. Siirry takaisin "Luo uusi jako"-välilehdelle</p>
                   </div>
                 ) : (
                   <div className="space-y-6">
@@ -1181,14 +1181,14 @@ const SharingManager = () => {
                           key={share.id} 
                           className={`shadow-neumorphic rounded-lg overflow-hidden ${!share.is_active || isExpired ? 'opacity-70' : ''}`}
                         >
-                          <div className="bg-gray-100 p-4 flex justify-between items-center shadow-neumorphic-inset rounded-t-lg">
+                          <div className="bg-muted p-4 flex justify-between items-center shadow-neumorphic-inset rounded-t-lg">
                             <div className="flex items-center gap-2 flex-wrap">
                               <Badge 
                                 variant={shareStatus.color}
                               >
                                 {shareStatus.label}
                               </Badge>
-                              <span className="text-sm text-gray-500">
+                              <span className="text-sm text-muted-foreground">
                                 Luotu: {format(new Date(share.created_at), 'dd.MM.yyyy', { locale: fi })}
                               </span>
                               {shareCommentCounts[share.id] > 0 && (
@@ -1200,7 +1200,7 @@ const SharingManager = () => {
                               {share.requires_nda && (
                                 <Badge 
                                   variant={share.nda_accepted_at ? "default" : "secondary"}
-                                  className={share.nda_accepted_at ? "bg-green-600 text-white shadow-neumorphic" : "shadow-neumorphic"}
+                                  className={share.nda_accepted_at ? "bg-success text-white shadow-neumorphic" : "shadow-neumorphic"}
                                 >
                                   <Shield className="h-3 w-3 mr-1" />
                                   NDA {share.nda_accepted_at ? "hyväksytty" : "odottaa"}
@@ -1216,7 +1216,7 @@ const SharingManager = () => {
                                   onClick={() => copyShareLink(share.share_link, share.id)}
                                 >
                                   {copiedLink === share.id ? (
-                                    <CheckCircle className="h-4 w-4 text-green-600" />
+                                    <CheckCircle className="h-4 w-4 text-success" />
                                   ) : (
                                     <Copy className="h-4 w-4" />
                                   )}
@@ -1229,19 +1229,19 @@ const SharingManager = () => {
                             <div className="flex flex-col sm:flex-row justify-between gap-4 mb-4">
                               <div className="space-y-2">
                                 <div className="flex items-center gap-2">
-                                  <User className="h-4 w-4 text-gray-500" />
+                                  <User className="h-4 w-4 text-muted-foreground" />
                                   <span>
                                     {share.shared_with || "Jaettu yleisellä linkillä"}
                                   </span>
                                 </div>
 
                                 <div className="flex items-center gap-2 text-sm">
-                                  <LinkIcon className="h-4 w-4 text-gray-500" />
+                                  <LinkIcon className="h-4 w-4 text-muted-foreground" />
                                   <a 
                                     href={share.share_link} 
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-blue-600 hover:text-blue-700 hover:underline truncate max-w-[240px]"
+                                    className="text-info hover:text-info/80 hover:underline truncate max-w-[240px]"
                                   >
                                     {share.share_link}
                                   </a>
@@ -1250,7 +1250,7 @@ const SharingManager = () => {
 
                               <div className="space-y-2">
                                 <div className="flex items-center gap-2 text-sm">
-                                  <Calendar className="h-4 w-4 text-gray-500" />
+                                  <Calendar className="h-4 w-4 text-muted-foreground" />
                                   <span>
                                     {share.expires_at ? (
                                       <>
@@ -1264,7 +1264,7 @@ const SharingManager = () => {
                                 </div>
 
                                 <div className="flex items-center gap-2 text-sm">
-                                  <Eye className="h-4 w-4 text-gray-500" />
+                                  <Eye className="h-4 w-4 text-muted-foreground" />
                                   <span>
                                     {share.viewed_at ? (
                                       <>
@@ -1278,33 +1278,33 @@ const SharingManager = () => {
                               </div>
                             </div>
 
-                            <div className="flex flex-wrap gap-2 text-xs text-gray-600 mb-4">
-                              <Badge variant="outline" className="bg-gray-100 shadow-neumorphic">
+                            <div className="flex flex-wrap gap-2 text-xs text-muted-foreground mb-4">
+                              <Badge variant="outline" className="bg-muted shadow-neumorphic">
                                 {share.share_assessment ? 'Myyntikunto-analyysi' : 'Ei myyntikunto-analyysiä'}
                               </Badge>
-                              <Badge variant="outline" className="bg-gray-100 shadow-neumorphic">
+                              <Badge variant="outline" className="bg-muted shadow-neumorphic">
                                 {share.share_valuation ? 'Arvonmääritys' : 'Ei arvonmääritystä'}
                               </Badge>
-                              <Badge variant="outline" className="bg-gray-100 shadow-neumorphic">
+                              <Badge variant="outline" className="bg-muted shadow-neumorphic">
                                 {share.share_documents ? 'Dokumentit' : 'Ei dokumentteja'}
                               </Badge>
-                              <Badge variant="outline" className="bg-gray-100 shadow-neumorphic">
+                              <Badge variant="outline" className="bg-muted shadow-neumorphic">
                                 {share.share_valuation_impact ? 'Tehtävien arvovaikutus' : 'Ei tehtävien arvovaikutusta'}
                               </Badge>
                             </div>
 
                             {/* NDA hyväksyntätiedot */}
                             {share.requires_nda && share.nda_accepted_at && (
-                              <div className="mt-3 p-3 bg-green-50 shadow-neumorphic-inset rounded-lg text-sm">
+                              <div className="mt-3 p-3 bg-success/10 shadow-neumorphic-inset rounded-lg text-sm">
                                 <div className="flex items-start gap-2">
-                                  <CheckCircle className="h-4 w-4 text-green-600 mt-0.5" />
+                                  <CheckCircle className="h-4 w-4 text-success mt-0.5" />
                                   <div>
-                                    <p className="font-medium text-green-700">NDA hyväksytty</p>
-                                    <p className="text-green-600">
+                                    <p className="font-medium text-success">NDA hyväksytty</p>
+                                    <p className="text-success">
                                       {format(new Date(share.nda_accepted_at), 'dd.MM.yyyy HH:mm', { locale: fi })}
                                     </p>
                                     {share.nda_accepted_by_name && (
-                                      <p className="text-green-600">
+                                      <p className="text-success">
                                         Hyväksyjä: {share.nda_accepted_by_name}
                                         {share.nda_accepted_by_email && ` (${share.nda_accepted_by_email})`}
                                       </p>
@@ -1363,21 +1363,21 @@ const SharingManager = () => {
                                         <div className="pb-4">
                                           {loadingComments ? (
                                             <div className="flex justify-center py-10">
-                                              <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+                                              <Loader2 className="h-8 w-8 animate-spin text-info" />
                                             </div>
                                           ) : shareComments.length === 0 ? (
-                                            <div className="text-center py-10 text-gray-500">
+                                            <div className="text-center py-10 text-muted-foreground">
                                               Ei kommentteja
                                             </div>
                                           ) : (
                                             <div className="space-y-4">
                                               {shareComments.map((comment) => (
-                                                <div key={comment.id} className="shadow-neumorphic rounded-lg p-4 bg-gray-50">
+                                                <div key={comment.id} className="shadow-neumorphic rounded-lg p-4 bg-muted">
                                                   <div className="flex justify-between items-start mb-2">
                                                     <div className="font-medium">
                                                       {comment.user_name || 'Kommentin kirjoittaja'}
                                                       {comment.user_email && (
-                                                        <span className="text-sm text-gray-500 ml-2">
+                                                        <span className="text-sm text-muted-foreground ml-2">
                                                           ({comment.user_email})
                                                         </span>
                                                       )}
@@ -1387,11 +1387,11 @@ const SharingManager = () => {
                                                         </Badge>
                                                       )}
                                                     </div>
-                                                    <div className="text-sm text-gray-500">
+                                                    <div className="text-sm text-muted-foreground">
                                                       {format(new Date(comment.created_at), 'dd.MM.yyyy HH:mm', { locale: fi })}
                                                     </div>
                                                   </div>
-                                                  <div className="whitespace-pre-wrap text-gray-700">
+                                                  <div className="whitespace-pre-wrap text-foreground">
                                                     {comment.content}
                                                   </div>
                                                 </div>
@@ -1513,7 +1513,7 @@ const SharingManager = () => {
                           </div>
 
                           {viewLogs.length > 0 && (
-                            <div className="bg-gray-100 shadow-neumorphic-inset rounded-b-lg p-3">
+                            <div className="bg-muted shadow-neumorphic-inset rounded-b-lg p-3">
                               <details className="group">
                                 <summary className="flex items-center cursor-pointer">
                                   <span className="font-medium text-sm">Katseluhistoria ({viewLogs.length})</span>
@@ -1528,7 +1528,7 @@ const SharingManager = () => {
                                     {viewLogs.map((log) => (
                                       <div key={log.id} className="flex justify-between items-center py-1">
                                         <span>{format(new Date(log.viewed_at), 'dd.MM.yyyy HH:mm:ss', { locale: fi })}</span>
-                                        <span className="text-gray-500 text-xs">{log.viewer_ip}</span>
+                                        <span className="text-muted-foreground text-xs">{log.viewer_ip}</span>
                                       </div>
                                     ))}
                                   </div>

@@ -222,7 +222,7 @@ const Index = () => {
             })()}
             description={impactAnalysis ? "Myyntikuntoisuuden jälkeen" : "Arvioitu myyntihinta"}
             icon={<FileBarChart className="h-5 w-5 text-white" />}
-            iconColor="bg-green-500"
+            iconColor="bg-success"
             trend={(() => {
               // Jos on impact analysis, vertaa alkuperäiseen
               if (impactAnalysis?.original_valuation_snapshot?.averageValuation && 

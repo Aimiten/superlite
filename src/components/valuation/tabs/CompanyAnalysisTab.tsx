@@ -19,7 +19,7 @@ const CompanyAnalysisTab: React.FC<CompanyAnalysisTabProps> = ({
       {/* Yrityksen perustiedot */}
       <div className="border border-primary/20 rounded-xl p-6">
         <h3 className="text-lg font-semibold flex items-center mb-4">
-          <Building className="h-5 w-5 mr-2 text-indigo-600" />
+          <Building className="h-5 w-5 mr-2 text-primary" />
           Yritysanalyysi
           <Badge variant="outline" className="ml-2 text-xs">Tekoälyn analyysi</Badge>
         </h3>
@@ -65,11 +65,11 @@ const CompanyAnalysisTab: React.FC<CompanyAnalysisTabProps> = ({
           {companyInfoAnalysis?.kilpailuJaErot && (
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <div className="p-2 bg-purple-100 rounded-lg">
-                  <Lightbulb className="h-4 w-4 text-purple-600" />
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Lightbulb className="h-4 w-4 text-primary" />
                 </div>
                 <h4 className="text-md font-medium">Kilpailuedut ja erottautumistekijät</h4>
-                <Badge variant="secondary" className="text-xs bg-purple-100 text-purple-700">Erottautumistekijät</Badge>
+                <Badge variant="secondary" className="text-xs bg-primary/10 text-primary">Erottautumistekijät</Badge>
               </div>
               <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
                 <p className="whitespace-pre-line text-muted-foreground">
@@ -104,7 +104,7 @@ const CompanyAnalysisTab: React.FC<CompanyAnalysisTabProps> = ({
                 <ExternalLink className="h-4 w-4 text-muted-foreground" />
                 <span className="text-sm font-medium text-muted-foreground">Tietolähteet</span>
               </div>
-              <p className="text-xs text-slate-500 italic">{cleanMarkdownText(companyInfoAnalysis.lahteet)}</p>
+              <p className="text-xs text-muted-foreground italic">{cleanMarkdownText(companyInfoAnalysis.lahteet)}</p>
             </div>
           )}
         </div>
@@ -112,8 +112,8 @@ const CompanyAnalysisTab: React.FC<CompanyAnalysisTabProps> = ({
 
       {/* Liiketoimintamalli-analyysi arvonmäärityksestä */}
       {valuationReport?.analysis?.business_model?.content && (
-        <div className="border border-blue-100 rounded-xl overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-4">
+        <div className="border border-info/10 rounded-xl overflow-hidden">
+          <div className="bg-gradient-to-r from-info to-primary p-4">
             <h3 className="text-lg font-semibold flex items-center text-white">
               <Building className="h-5 w-5 mr-2" />
               {valuationReport.analysis.business_model.title || "Liiketoimintamalli ja kilpailuedut"}
@@ -122,7 +122,7 @@ const CompanyAnalysisTab: React.FC<CompanyAnalysisTabProps> = ({
               </Badge>
             </h3>
           </div>
-          <div className="p-6 bg-blue-50">
+          <div className="p-6 bg-info/5">
             <div className="bg-white p-4 rounded-lg border border-muted">
               <p className="whitespace-pre-line text-muted-foreground leading-relaxed">
                 {cleanMarkdownText(valuationReport.analysis.business_model.content)}

@@ -191,7 +191,7 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
                                 </div>
                                 <div>
                                   <h5 className="font-semibold text-primary">{cleanMarkdownText(rec.title)}</h5>
-                                  <p className="mt-1 text-slate-600">{cleanMarkdownText(rec.description)}</p>
+                                  <p className="mt-1 text-muted-foreground">{cleanMarkdownText(rec.description)}</p>
                                 </div>
                               </div>
                             </div>
@@ -204,8 +204,8 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
               </div>
             ) : (
               <div className="border border-primary/10 rounded-xl p-6">
-                <div className="p-4 bg-slate-50 rounded-lg">
-                  <p className="text-slate-500">Toimenpidesuosituksia ei ole saatavilla tälle yritykselle.</p>
+                <div className="p-4 bg-muted rounded-lg">
+                  <p className="text-muted-foreground">Toimenpidesuosituksia ei ole saatavilla tälle yritykselle.</p>
                 </div>
               </div>
             )}

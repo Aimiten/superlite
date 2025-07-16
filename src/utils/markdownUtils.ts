@@ -14,7 +14,7 @@ export const cleanMarkdownText = (text: string): React.ReactNode => {
     // *italic* → <em>italic</em> (mutta älä koske bold-merkintöihin)
     .replace(/(?<!\*)\*([^*]+?)\*(?!\*)/g, '<em>$1</em>')
     // `code` → <code>code</code>
-    .replace(/`(.*?)`/g, '<code class="bg-slate-100 px-1 rounded text-sm">$1</code>')
+    .replace(/`(.*?)`/g, '<code class="bg-muted px-1 rounded text-sm">$1</code>')
     // Poista # otsikkomerkinnät
     .replace(/#{1,6}\s*/g, '')
     // Poista --- erottimet

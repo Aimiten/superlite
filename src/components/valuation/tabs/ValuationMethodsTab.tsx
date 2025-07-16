@@ -127,7 +127,7 @@ const ValuationMethodsTab: React.FC<ValuationMethodsTabProps> = ({
       {/* Käytetyt arvostuskertoimet */}
       {latestPeriod?.valuation_multiples && Object.keys(latestPeriod.valuation_multiples).length > 0 && (
         <div className="border border-primary/10 rounded-xl overflow-hidden">
-          <div className="bg-gradient-to-r from-indigo-600 to-blue-700 p-4">
+          <div className="bg-gradient-to-r from-primary to-info p-4">
             <h2 className="text-lg font-bold text-white flex items-center">
               <Calculator className="h-5 w-5 mr-2" />
               Käytetyt arvostuskertoimet
@@ -140,7 +140,7 @@ const ValuationMethodsTab: React.FC<ValuationMethodsTabProps> = ({
                 <h3 className="text-sm font-medium text-muted-foreground mb-2">Liikevaihtokerroin</h3>
                 <p className="text-xl font-semibold">{latestPeriod.valuation_multiples.revenue_multiple.multiple}x</p>
                 {latestPeriod.valuation_multiples.revenue_multiple.justification && (
-                  <div className="mt-2 text-xs text-slate-500">
+                  <div className="mt-2 text-xs text-muted-foreground">
                     <div className="flex items-start">
                       <Info className="h-4 w-4 text-muted-foreground mr-1 flex-shrink-0 mt-0.5" />
                       <span>{cleanMarkdownText(latestPeriod.valuation_multiples.revenue_multiple.justification)}</span>
@@ -155,7 +155,7 @@ const ValuationMethodsTab: React.FC<ValuationMethodsTabProps> = ({
                 <h3 className="text-sm font-medium text-muted-foreground mb-2">EV/EBIT-kerroin</h3>
                 <p className="text-xl font-semibold">{latestPeriod.valuation_multiples.ev_ebit.multiple}x</p>
                 {latestPeriod.valuation_multiples.ev_ebit.justification && (
-                  <div className="mt-2 text-xs text-slate-500">
+                  <div className="mt-2 text-xs text-muted-foreground">
                     <div className="flex items-start">
                       <Info className="h-4 w-4 text-muted-foreground mr-1 flex-shrink-0 mt-0.5" />
                       <span>{cleanMarkdownText(latestPeriod.valuation_multiples.ev_ebit.justification)}</span>
@@ -170,7 +170,7 @@ const ValuationMethodsTab: React.FC<ValuationMethodsTabProps> = ({
                 <h3 className="text-sm font-medium text-muted-foreground mb-2">EV/EBITDA-kerroin</h3>
                 <p className="text-xl font-semibold">{latestPeriod.valuation_multiples.ev_ebitda.multiple}x</p>
                 {latestPeriod.valuation_multiples.ev_ebitda.justification && (
-                  <div className="mt-2 text-xs text-slate-500">
+                  <div className="mt-2 text-xs text-muted-foreground">
                     <div className="flex items-start">
                       <Info className="h-4 w-4 text-muted-foreground mr-1 flex-shrink-0 mt-0.5" />
                       <span>{cleanMarkdownText(latestPeriod.valuation_multiples.ev_ebitda.justification)}</span>
@@ -185,7 +185,7 @@ const ValuationMethodsTab: React.FC<ValuationMethodsTabProps> = ({
                 <h3 className="text-sm font-medium text-muted-foreground mb-2">P/E-kerroin</h3>
                 <p className="text-xl font-semibold">{latestPeriod.valuation_multiples.p_e.multiple}x</p>
                 {latestPeriod.valuation_multiples.p_e.justification && (
-                  <div className="mt-2 text-xs text-slate-500">
+                  <div className="mt-2 text-xs text-muted-foreground">
                     <div className="flex items-start">
                       <Info className="h-4 w-4 text-muted-foreground mr-1 flex-shrink-0 mt-0.5" />
                       <span>{cleanMarkdownText(latestPeriod.valuation_multiples.p_e.justification)}</span>

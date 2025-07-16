@@ -160,7 +160,7 @@ const AnalysisResultsCard: React.FC<AnalysisResultsCardProps> = ({
                   <div className="flex items-start gap-3">
                     <div>
                       <h4 className="font-medium text-lg">{recommendation.title}</h4>
-                      <p className="text-gray-700 mt-1 whitespace-pre-line">{recommendation.description}</p>
+                      <p className="text-muted-foreground mt-1 whitespace-pre-line">{recommendation.description}</p>
                       
                       {recommendation.expected_impact && (
                         <div className="mt-3 pt-3 border-t border-dashed">
@@ -196,7 +196,7 @@ const AnalysisResultsCard: React.FC<AnalysisResultsCardProps> = ({
                          recommendation.priority === "keskitaso" ? "Keskitaso" : "Matala prioriteetti"}
                       </Badge>
                       <h4 className="font-medium text-lg">{recommendation.title}</h4>
-                      <p className="text-gray-700 mt-1 whitespace-pre-line">{recommendation.description}</p>
+                      <p className="text-muted-foreground mt-1 whitespace-pre-line">{recommendation.description}</p>
                       
                       {recommendation.expected_impact && (
                         <div className="mt-3 pt-3 border-t border-dashed">

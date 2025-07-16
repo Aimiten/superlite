@@ -187,7 +187,7 @@ const ValuationCalculationSummary: React.FC<ValuationCalculationSummaryProps> = 
             <div className="bg-info/10 p-3 rounded-lg border border-info/20 mt-4">
               <h3 className="text-sm font-medium text-info-foreground">Usean tilikauden painotus</h3>
               <div className="mt-2 space-y-1">
-                <p className="text-xs text-blue-600">
+                <p className="text-xs text-info">
                   <strong>Tilikausien määrä:</strong> {valuationMetrics.weighting_method.period_count || 1}
                 </p>
                 {valuationMetrics.weighting_method.method === "exponential" && (

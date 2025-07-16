@@ -132,7 +132,7 @@ export const ValuationMethodsTable = ({
                 </Tooltip>
               </TableCell>
               <TableCell className="font-medium">EV/Liikevaihto</TableCell>
-              <TableCell className={baseValues.revenue <= 0 ? "text-red-600" : ""}>
+              <TableCell className={baseValues.revenue <= 0 ? "text-destructive" : ""}>
                 {formatCurrency(baseValues.revenue)}
               </TableCell>
               <TableCell>
@@ -185,7 +185,7 @@ export const ValuationMethodsTable = ({
                 </Tooltip>
               </TableCell>
               <TableCell className="font-medium">EV/EBIT</TableCell>
-              <TableCell className={baseValues.ebit <= 0 ? "text-red-600" : ""}>
+              <TableCell className={baseValues.ebit <= 0 ? "text-destructive" : ""}>
                 {formatCurrency(baseValues.ebit)}
               </TableCell>
               <TableCell>
@@ -238,7 +238,7 @@ export const ValuationMethodsTable = ({
                 </Tooltip>
               </TableCell>
               <TableCell className="font-medium">EV/EBITDA</TableCell>
-              <TableCell className={baseValues.ebitda <= 0 ? "text-red-600" : ""}>
+              <TableCell className={baseValues.ebitda <= 0 ? "text-destructive" : ""}>
                 {formatCurrency(baseValues.ebitda)}
               </TableCell>
               <TableCell>
@@ -280,8 +280,8 @@ export const ValuationMethodsTable = ({
                 </p>
                 {baseValues.currentValue > 0 && simulationResult.change && simulationResult.change.absolute !== undefined && (
                   <p className={`text-sm ${
-                    simulationResult.change.absolute > 0 ? 'text-green-600' : 
-                    simulationResult.change.absolute < 0 ? 'text-red-600' : 
+                    simulationResult.change.absolute > 0 ? 'text-success' : 
+                    simulationResult.change.absolute < 0 ? 'text-destructive' : 
                     'text-muted-foreground'
                   }`}>
                     {simulationResult.change.absolute > 0 ? '+' : ''}

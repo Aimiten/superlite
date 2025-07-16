@@ -310,11 +310,11 @@ const SharedView = () => {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-slate-50">
+      <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-muted/10">
         <div className="w-16 h-16 mb-4 flex items-center justify-center">
-          <Loader2 className="h-10 w-10 animate-spin text-indigo-600" />
+          <Loader2 className="h-10 w-10 animate-spin text-primary" />
         </div>
-        <p className="text-slate-600">Ladataan jaettuja tietoja...</p>
+        <p className="text-muted-foreground">Ladataan jaettuja tietoja...</p>
       </div>
     );
   }
@@ -334,7 +334,7 @@ const SharedView = () => {
 
   if (error || !sharedData) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-slate-50">
+      <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-muted/10">
         <div className="max-w-lg w-full">
           <Alert variant="destructive" className="mb-4">
             <AlertCircle className="h-4 w-4" />
@@ -344,7 +344,7 @@ const SharedView = () => {
             </AlertDescription>
           </Alert>
           <div className="text-center mt-8">
-            <p className="text-slate-600 mb-4">Pahoittelemme, mutta pyydettyä jaettua sisältöä ei voitu näyttää.</p>
+            <p className="text-muted-foreground mb-4">Pahoittelemme, mutta pyydettyä jaettua sisältöä ei voitu näyttää.</p>
             <Button asChild variant="outline">
               <a href="/">Palaa etusivulle</a>
             </Button>
@@ -362,19 +362,19 @@ const SharedView = () => {
     'Kommentointi sallittu';
 
   return (
-    <div className="min-h-screen bg-slate-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-muted/10 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <div className="bg-white shadow rounded-lg mb-8 overflow-hidden">
-          <div className="p-6 bg-indigo-600 text-white">
+          <div className="p-6 bg-primary text-white">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <Building className="h-8 w-8" />
                 <div>
                   <h1 className="text-2xl font-bold">{company.name}</h1>
-                  <p className="text-indigo-100">Jaettu näkymä</p>
+                  <p className="text-primary-foreground/80">Jaettu näkymä</p>
                 </div>
               </div>
-              <Badge className="bg-white text-indigo-600">{accessLevelText}</Badge>
+              <Badge className="bg-white text-primary">{accessLevelText}</Badge>
             </div>
           </div>
 
@@ -385,7 +385,7 @@ const SharedView = () => {
                 {expiresDate ? (
                   <>
                     Voimassa: {format(expiresDate, 'dd.MM.yyyy', { locale: fi })} asti
-                    {isExpired && <span className="ml-2 font-bold text-red-500">(Vanhentunut)</span>}
+                    {isExpired && <span className="ml-2 font-bold text-destructive">(Vanhentunut)</span>}
                   </>
                 ) : (
                   'Voimassa toistaiseksi'
@@ -430,10 +430,10 @@ const SharedView = () => {
               <Card className="shadow-neumorphic overflow-hidden">
                 <CardHeader className="bg-gradient-to-r from-primary/5 to-info/5 border-b border-primary/10">
                   <CardTitle className="flex items-center gap-2 text-xl">
-                    <Building className="h-5 w-5 text-indigo-600" />
+                    <Building className="h-5 w-5 text-primary" />
                     Yrityksen tiedot
                   </CardTitle>
-                  <CardDescription className="text-indigo-700">
+                  <CardDescription className="text-primary">
                     Perustiedot yrityksestä {company.name}
                   </CardDescription>
                 </CardHeader>
@@ -442,26 +442,26 @@ const SharedView = () => {
                     {/* Ensimmäinen rivi - Y-tunnus ja yhtiömuoto */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {company.business_id && (
-                        <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
+                        <div className="bg-background p-4 rounded-lg border border-border shadow-neumorphic">
                           <div className="flex items-center gap-2 mb-2">
-                            <div className="p-1.5 bg-gray-100 rounded-md">
-                              <Hash className="h-4 w-4 text-gray-600" />
+                            <div className="p-1.5 bg-muted rounded-md">
+                              <Hash className="h-4 w-4 text-muted-foreground" />
                             </div>
-                            <h3 className="text-sm font-semibold text-gray-700">Y-tunnus</h3>
+                            <h3 className="text-sm font-semibold text-foreground">Y-tunnus</h3>
                           </div>
-                          <p className="text-lg font-mono font-medium text-gray-900">{company.business_id}</p>
+                          <p className="text-lg font-mono font-medium text-foreground">{company.business_id}</p>
                         </div>
                       )}
 
                       {company.company_type && (
-                        <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
+                        <div className="bg-background p-4 rounded-lg border border-border shadow-neumorphic">
                           <div className="flex items-center gap-2 mb-2">
-                            <div className="p-1.5 bg-gray-100 rounded-md">
-                              <Shield className="h-4 w-4 text-gray-600" />
+                            <div className="p-1.5 bg-muted rounded-md">
+                              <Shield className="h-4 w-4 text-muted-foreground" />
                             </div>
-                            <h3 className="text-sm font-semibold text-gray-700">Yhtiömuoto</h3>
+                            <h3 className="text-sm font-semibold text-foreground">Yhtiömuoto</h3>
                           </div>
-                          <p className="text-lg font-medium text-gray-900">
+                          <p className="text-lg font-medium text-foreground">
                             {(() => {
                               switch(company.company_type) {
                                 case 'osakeyhtiö': return 'Osakeyhtiö';
@@ -478,71 +478,71 @@ const SharedView = () => {
 
                     {/* Toinen rivi - Toimiala */}
                     {company.industry && (
-                      <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
+                      <div className="bg-background p-4 rounded-lg border border-border shadow-neumorphic">
                         <div className="flex items-center gap-2 mb-2">
-                          <div className="p-1.5 bg-gray-100 rounded-md">
-                            <Factory className="h-4 w-4 text-gray-600" />
+                          <div className="p-1.5 bg-muted rounded-md">
+                            <Factory className="h-4 w-4 text-muted-foreground" />
                           </div>
-                          <h3 className="text-sm font-semibold text-gray-700">Toimiala</h3>
+                          <h3 className="text-sm font-semibold text-foreground">Toimiala</h3>
                         </div>
-                        <p className="text-lg font-medium text-gray-900">{company.industry}</p>
+                        <p className="text-lg font-medium text-foreground">{company.industry}</p>
                       </div>
                     )}
 
                     {/* Kolmas rivi - Perustaminen ja henkilöstö */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {company.founded && (
-                        <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
+                        <div className="bg-background p-4 rounded-lg border border-border shadow-neumorphic">
                           <div className="flex items-center gap-2 mb-2">
-                            <div className="p-1.5 bg-gray-100 rounded-md">
-                              <Calendar className="h-4 w-4 text-gray-600" />
+                            <div className="p-1.5 bg-muted rounded-md">
+                              <Calendar className="h-4 w-4 text-muted-foreground" />
                             </div>
-                            <h3 className="text-sm font-semibold text-gray-700">Perustettu</h3>
+                            <h3 className="text-sm font-semibold text-foreground">Perustettu</h3>
                           </div>
-                          <p className="text-lg font-medium text-gray-900">{company.founded}</p>
+                          <p className="text-lg font-medium text-foreground">{company.founded}</p>
                         </div>
                       )}
 
                       {company.employees && (
-                        <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
+                        <div className="bg-background p-4 rounded-lg border border-border shadow-neumorphic">
                           <div className="flex items-center gap-2 mb-2">
-                            <div className="p-1.5 bg-gray-100 rounded-md">
-                              <Users className="h-4 w-4 text-gray-600" />
+                            <div className="p-1.5 bg-muted rounded-md">
+                              <Users className="h-4 w-4 text-muted-foreground" />
                             </div>
-                            <h3 className="text-sm font-semibold text-gray-700">Henkilöstö</h3>
+                            <h3 className="text-sm font-semibold text-foreground">Henkilöstö</h3>
                           </div>
-                          <p className="text-lg font-medium text-gray-900">{company.employees}</p>
+                          <p className="text-lg font-medium text-foreground">{company.employees}</p>
                         </div>
                       )}
                     </div>
 
                     {/* Neljäs rivi - Kuvaus */}
                     {company.description && (
-                      <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
+                      <div className="bg-background p-4 rounded-lg border border-border shadow-neumorphic">
                         <div className="flex items-center gap-2 mb-3">
-                          <div className="p-1.5 bg-gray-100 rounded-md">
-                            <FileText className="h-4 w-4 text-gray-600" />
+                          <div className="p-1.5 bg-muted rounded-md">
+                            <FileText className="h-4 w-4 text-muted-foreground" />
                           </div>
-                          <h3 className="text-sm font-semibold text-gray-700">Yrityksen kuvaus</h3>
+                          <h3 className="text-sm font-semibold text-foreground">Yrityksen kuvaus</h3>
                         </div>
-                        <p className="text-gray-900 leading-relaxed whitespace-pre-line">{company.description}</p>
+                        <p className="text-foreground leading-relaxed whitespace-pre-line">{company.description}</p>
                       </div>
                     )}
 
                     {/* Viides rivi - Verkkosivu */}
                     {company.website && (
-                      <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-neumorphic">
+                      <div className="bg-background p-4 rounded-lg border border-border shadow-neumorphic">
                         <div className="flex items-center gap-2 mb-2">
-                          <div className="p-1.5 bg-indigo-100 rounded-md">
-                            <ExternalLink className="h-4 w-4 text-indigo-600" />
+                          <div className="p-1.5 bg-primary/10 rounded-md">
+                            <ExternalLink className="h-4 w-4 text-primary" />
                           </div>
-                          <h3 className="text-sm font-semibold text-gray-700">Verkkosivu</h3>
+                          <h3 className="text-sm font-semibold text-foreground">Verkkosivu</h3>
                         </div>
                         <a 
                           href={company.website.startsWith('http') ? company.website : `https://${company.website}`} 
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-lg font-medium text-indigo-600 hover:text-indigo-800 hover:underline transition-colors"
+                          className="inline-flex items-center gap-2 text-lg font-medium text-primary hover:text-primary/80 hover:underline transition-colors"
                         >
                           {company.website}
                           <ExternalLink className="h-4 w-4" />
@@ -564,9 +564,9 @@ const SharedView = () => {
                     />
                   ) : (
                     <div className="text-center py-8">
-                      <Info className="h-12 w-12 text-slate-400 mx-auto mb-4" />
+                      <Info className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                       <h3 className="text-lg font-medium mb-2">Arvonmääritystä ei ole saatavilla</h3>
-                      <p className="text-slate-500">Arvonmäärityksen tuloksia ei ole vielä tallennettu järjestelmään.</p>
+                      <p className="text-muted-foreground">Arvonmäärityksen tuloksia ei ole vielä tallennettu järjestelmään.</p>
                     </div>
                   )}
                 </div>
@@ -609,7 +609,7 @@ const SharedView = () => {
           </Tabs>
         </div>
 
-        <div className="mt-8 text-center text-sm text-slate-500">
+        <div className="mt-8 text-center text-sm text-muted-foreground">
           <p>Tämä on jaettu näkymä {company.name} -yrityksen tiedoista.</p>
           <p className="mt-1">
             Kaikki oikeudet pidätetään &copy; {new Date().getFullYear()}

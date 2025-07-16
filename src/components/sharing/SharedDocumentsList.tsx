@@ -28,23 +28,23 @@ const SharedDocumentsList: React.FC<SharedDocumentsListProps> = ({ documents, co
   // Funktio dokumentin tyypin ikonin valintaan
   const getDocumentIcon = (doc: SharedDocument) => {
     if (doc.source === 'task_responses') {
-      return <FileCheck className="h-5 w-5 text-blue-500" />;
+      return <FileCheck className="h-5 w-5 text-info" />;
     }
 
     switch (doc.type?.toLowerCase()) {
       case 'excel':
       case 'spreadsheet':
       case 'csv':
-        return <FileText className="h-5 w-5 text-green-600" />;
+        return <FileText className="h-5 w-5 text-success" />;
       case 'pdf':
-        return <FileText className="h-5 w-5 text-red-600" />;
+        return <FileText className="h-5 w-5 text-destructive" />;
       case 'word':
       case 'document':
-        return <FileText className="h-5 w-5 text-blue-600" />;
+        return <FileText className="h-5 w-5 text-info" />;
       case 'presentation':
-        return <FilePlus className="h-5 w-5 text-orange-600" />;
+        return <FilePlus className="h-5 w-5 text-warning" />;
       default:
-        return <File className="h-5 w-5 text-gray-600" />;
+        return <File className="h-5 w-5 text-muted-foreground" />;
     }
   };
 
@@ -57,9 +57,9 @@ const SharedDocumentsList: React.FC<SharedDocumentsListProps> = ({ documents, co
         </CardHeader>
         <CardContent>
           <div className="text-center py-8">
-            <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+            <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
             <h3 className="text-lg font-medium mb-2">Ei jaettuja dokumentteja</h3>
-            <p className="text-gray-500">Tähän jakoon ei ole liitetty dokumentteja.</p>
+            <p className="text-muted-foreground">Tähän jakoon ei ole liitetty dokumentteja.</p>
           </div>
         </CardContent>
       </Card>
@@ -77,7 +77,7 @@ const SharedDocumentsList: React.FC<SharedDocumentsListProps> = ({ documents, co
           {documents.map(doc => (
             <div 
               key={`${doc.source}-${doc.id}`} 
-              className="border border-gray-200 rounded-md p-4 hover:bg-gray-50 transition-colors"
+              className="border border-border rounded-md p-4 hover:bg-muted transition-colors"
             >
               <div className="flex items-start justify-between">
                 <div className="flex items-start gap-3">
@@ -87,9 +87,9 @@ const SharedDocumentsList: React.FC<SharedDocumentsListProps> = ({ documents, co
                   <div>
                     <h3 className="font-medium">{doc.name}</h3>
                     {doc.description && (
-                      <p className="text-sm text-gray-500 mt-1">{doc.description}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{doc.description}</p>
                     )}
-                    <div className="flex items-center gap-2 text-xs text-gray-400 mt-2">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2">
                       <span>
                         Lisätty: {format(new Date(doc.created_at), 'dd.MM.yyyy', { locale: fi })}
                       </span>
@@ -99,7 +99,7 @@ const SharedDocumentsList: React.FC<SharedDocumentsListProps> = ({ documents, co
                         </span>
                       )}
                       {doc.source === 'task_responses' && (
-                        <span className="bg-green-100 text-green-800 px-1.5 py-0.5 rounded-full">
+                        <span className="bg-success/10 text-success px-1.5 py-0.5 rounded-full">
                           Tehtävän liite
                         </span>
                       )}

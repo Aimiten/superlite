@@ -373,7 +373,7 @@ const DCFAnalysis: React.FC = () => {
             <div className="font-semibold text-sm">
               DCF-analyysi
             </div>
-            <div className="text-xs text-slate-600">
+            <div className="text-xs text-muted-foreground">
               {new Date(item.created_at).toLocaleDateString('fi-FI')} {new Date(item.created_at).toLocaleTimeString('fi-FI')}
             </div>
             {item.structured_data?.valuation_summary?.probability_weighted_valuation && (
@@ -437,7 +437,7 @@ const DCFAnalysis: React.FC = () => {
           <div className="flex justify-between items-center mb-8">
             <div>
               <h1 className="text-3xl font-bold mb-2">DCF Skenaarioanalyysi</h1>
-              <p className="text-slate-600">
+              <p className="text-muted-foreground">
                 Discounted Cash Flow -analyysi yritykselle {activeCompany.name}
               </p>
             </div>
@@ -512,9 +512,9 @@ const DCFAnalysis: React.FC = () => {
                 ) : (
                   <Card>
                     <CardContent className="p-8 text-center">
-                      <History className="h-12 w-12 mx-auto mb-4 text-slate-400" />
+                      <History className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
                       <h3 className="text-lg font-semibold mb-2">Ei aiempia analyysejä</h3>
-                      <p className="text-slate-600">
+                      <p className="text-muted-foreground">
                         DCF-analyysit näkyvät täällä kun niitä on luotu
                       </p>
                     </CardContent>

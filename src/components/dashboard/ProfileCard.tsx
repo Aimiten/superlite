@@ -53,7 +53,7 @@ const ProfileCard = () => {
           <div>
             <p className="font-medium">{profile?.full_name || "Käyttäjä"}</p>
             {profile?.company_name && (
-              <p className="text-sm text-slate-500">{profile.company_name}</p>
+              <p className="text-sm text-muted-foreground">{profile.company_name}</p>
             )}
           </div>
         </div>

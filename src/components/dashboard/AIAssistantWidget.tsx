@@ -124,7 +124,7 @@ const AIAssistantWidget = () => {
           <CardContent className="px-3 overflow-y-auto h-64">
             <div className="space-y-4">
               {messages.length === 0 ? (
-                <div className="text-center text-slate-500 mt-10">
+                <div className="text-center text-muted-foreground mt-10">
                   <Bot className="h-12 w-12 mx-auto mb-2 text-primary" />
                   <p>Kysy minulta mitä tahansa yrityksesi myyntikuntoon liittyen.</p>
                 </div>

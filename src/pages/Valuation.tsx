@@ -671,7 +671,7 @@ const analyzeCompany = async () => {
               <FileText className="h-4 w-4 text-primary flex-shrink-0" />
               <span className="text-sm font-medium truncate" title={file.name}>{file.name}</span>
               {selectedDocuments.includes(file.id) && !file.id.startsWith('upload-') && (
-                <Badge variant="success" className="text-xs bg-green-100 text-green-800">Tallennettu</Badge>
+                <Badge variant="success" className="text-xs bg-success/10 text-success">Tallennettu</Badge>
               )}
             </div>
             <Button
@@ -782,7 +782,7 @@ const analyzeCompany = async () => {
                         Valitse analysoitavat tilinpäätöstiedostot yritykselle: {activeCompany.name} {activeCompany.company_type && `- ${activeCompany.company_type}`}
                       </p>
                     ) : (
-                      <p className="text-amber-600 mt-1">
+                      <p className="text-warning mt-1">
                         Ei aktiivista yritystä valittuna. Siirry profiiliin luomaan tai valitsemaan yritys.
                       </p>
                     )}
@@ -809,7 +809,7 @@ const analyzeCompany = async () => {
                         {activeCompany.company_type && <span> ({activeCompany.company_type})</span>}
                       </p>
                       {activeCompany.business_id && (
-                        <p className="text-sm text-blue-600 mt-1">Y-tunnus: {activeCompany.business_id}</p>
+                        <p className="text-sm text-info mt-1">Y-tunnus: {activeCompany.business_id}</p>
                       )}
                     </div>
 
@@ -863,7 +863,7 @@ const analyzeCompany = async () => {
                       <div className="space-y-2">
                         <h3 className="text-md font-medium">Tai valitse tallennetuista</h3>
                         {loadingDocuments ? (
-                          <div className="flex items-center text-blue-600">
+                          <div className="flex items-center text-info">
                             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                             Ladataan dokumentteja...
                           </div>

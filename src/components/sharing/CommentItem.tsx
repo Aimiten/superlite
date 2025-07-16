@@ -48,10 +48,10 @@ const CommentItem: React.FC<CommentItemProps> = ({
   const userName = comment.user_name || (comment.user_id ? "Käyttäjä" : "Vieras");
 
   return (
-    <div className={`p-4 ${isReply ? "ml-8 border-l-2 border-gray-200 pl-4" : "border border-gray-200 rounded-lg"} 
-                     ${comment.is_owner ? "bg-blue-50/50" : isReply ? "bg-gray-50" : "bg-white"}`}>
+    <div className={`p-4 ${isReply ? "ml-8 border-l-2 border-border pl-4" : "border border-border rounded-lg"} 
+                     ${comment.is_owner ? "bg-info/5" : isReply ? "bg-muted" : "bg-background"}`}>
       <div className="flex items-start gap-3">
-        <Avatar className={`h-8 w-8 ${comment.is_owner ? "bg-blue-600" : "bg-gray-600"}`}>
+        <Avatar className={`h-8 w-8 ${comment.is_owner ? "bg-info" : "bg-muted-foreground"}`}>
           <AvatarFallback>{getInitials(userName)}</AvatarFallback>
         </Avatar>
 
@@ -67,14 +67,14 @@ const CommentItem: React.FC<CommentItemProps> = ({
               </Badge>
             )}
 
-            <span className="text-gray-500 text-xs">
+            <span className="text-muted-foreground text-xs">
               {format(new Date(comment.created_at), "d.M.yyyy HH:mm", { locale: fi })}
             </span>
           </div>
 
           <div className="text-sm whitespace-pre-line">
             {isReply && (
-              <div className="flex items-center text-xs text-gray-500 mb-1">
+              <div className="flex items-center text-xs text-muted-foreground mb-1">
                 <CornerDownRight className="h-3 w-3 mr-1" />
                 <span>Vastaus</span>
               </div>
@@ -94,7 +94,7 @@ const CommentItem: React.FC<CommentItemProps> = ({
               <Button 
                 variant="ghost" 
                 size="sm" 
-                className="h-7 px-2 text-gray-600 hover:text-gray-800"
+                className="h-7 px-2 text-muted-foreground hover:text-foreground"
                 onClick={() => onReplyClick(comment.id)}
               >
                 <Reply className="h-3.5 w-3.5 mr-1.5" />

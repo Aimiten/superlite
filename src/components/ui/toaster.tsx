@@ -19,7 +19,7 @@ export function Toaster() {
       case "destructive":
         return <AlertCircle className="h-5 w-5 text-destructive" />
       case "warning":
-        return <AlertTriangle className="h-5 w-5 text-amber-500" />
+        return <AlertTriangle className="h-5 w-5 text-warning" />
       case "info":
         return <Bell className="h-5 w-5 text-info" />
       default:

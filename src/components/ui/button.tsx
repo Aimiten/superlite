@@ -19,9 +19,9 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        neumorphic: "bg-muted text-foreground ring-1 ring-gray-200/30 hover:ring-gray-300/40 active:ring-gray-300/40 transition-all duration-200",
+        neumorphic: "bg-muted text-foreground ring-1 ring-border/30 hover:ring-border/40 active:ring-border/40 transition-all duration-200",
         "neumorphic-primary": "bg-primary/10 text-primary ring-1 ring-primary/20 hover:ring-primary/30 active:ring-primary/30 transition-all duration-200",
-        "neumorphic-secondary": "bg-secondary text-secondary-foreground ring-1 ring-gray-200/30 hover:ring-gray-300/40 active:ring-gray-300/40 transition-all duration-200",
+        "neumorphic-secondary": "bg-secondary text-secondary-foreground ring-1 ring-border/30 hover:ring-border/40 active:ring-border/40 transition-all duration-200",
       },
       size: {
         default: "h-10 px-4 py-2 rounded-xl",

@@ -43,7 +43,7 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
                   ? "text-success" 
                   : trend === "down" 
                   ? "text-destructive" 
-                  : "text-slate-600"
+                  : "text-muted-foreground"
               }`}>
                 {trendValue}
               </span>

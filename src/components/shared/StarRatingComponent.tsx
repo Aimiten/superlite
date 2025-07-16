@@ -49,16 +49,16 @@ const StarRatingComponent = ({ valuationData, targetTable = "free_calculator_res
             onMouseEnter={() => !hasRated && setHoveredRating(star)}
             onMouseLeave={() => !hasRated && setHoveredRating(null)}
             disabled={hasRated}
-            className={`w-12 h-12 flex items-center justify-center rounded-md border-2 ring-1 ring-gray-200/20 transition-all 
+            className={`w-12 h-12 flex items-center justify-center rounded-md border-2 ring-1 ring-border/20 transition-all 
               ${hasRated 
                 ? (star <= (selectedRating || 0) 
-                    ? 'text-yellow-500 border-yellow-400 bg-yellow-50' 
-                    : 'text-gray-400 border-gray-300') 
+                    ? 'text-warning border-warning bg-warning/10' 
+                    : 'text-muted-foreground border-border') 
                 : (hoveredRating !== null 
                     ? (star <= (hoveredRating || 0) 
-                        ? 'text-yellow-500 border-yellow-400 bg-yellow-50 hover:ring-2 hover:ring-yellow-300/30 hover:scale-110 cursor-pointer' 
-                        : 'text-gray-400 border-gray-300 hover:ring-2 hover:ring-gray-300/30 hover:scale-110 cursor-pointer') 
-                    : 'text-gray-400 border-gray-300 hover:ring-2 hover:ring-gray-300/30 hover:scale-110 cursor-pointer'
+                        ? 'text-warning border-warning bg-warning/10 hover:ring-2 hover:ring-warning/30 hover:scale-110 cursor-pointer' 
+                        : 'text-muted-foreground border-border hover:ring-2 hover:ring-border/30 hover:scale-110 cursor-pointer') 
+                    : 'text-muted-foreground border-border hover:ring-2 hover:ring-border/30 hover:scale-110 cursor-pointer'
                 )
               }`}
             aria-label={`Anna ${star} tähden arvio`}
@@ -70,7 +70,7 @@ const StarRatingComponent = ({ valuationData, targetTable = "free_calculator_res
         ))}
       </div>
       {hasRated && (
-        <p className="text-sm text-green-600 font-medium">
+        <p className="text-sm text-success font-medium">
           Kiitos arvioinnistasi!
         </p>
       )}

@@ -60,7 +60,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gradient-to-br from-slate-50 to-white">
+    <div className="flex h-screen overflow-hidden bg-gradient-to-br from-muted/10 to-white">
       {/* Mobile menu button */}
       <Button
         variant="ghost"
@@ -127,7 +127,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
               {pageTitle && (
                 <div>
                   <h1 className="text-xl sm:text-2xl font-bold tracking-tight">{pageTitle}</h1>
-                  {pageDescription && <p className="text-sm sm:text-base text-slate-500">{pageDescription}</p>}
+                  {pageDescription && <p className="text-sm sm:text-base text-muted-foreground">{pageDescription}</p>}
                 </div>
               )}
             </div>

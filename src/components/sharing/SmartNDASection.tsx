@@ -103,14 +103,14 @@ export function SmartNDASection({
   }
 
   return (
-    <Card className={`border-2 ${requiresNDA ? 'border-blue-500 bg-blue-50/30' : 'border-blue-200'}`}>
+    <Card className={`border-2 ${requiresNDA ? 'border-info bg-info/5' : 'border-info/20'}`}>
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Shield className="h-5 w-5 text-blue-600" />
+            <Shield className="h-5 w-5 text-info" />
             <CardTitle className="text-base">Suojaa jaettavat tiedot NDA:lla</CardTitle>
             {suggestion.strength === 'strong' && (
-              <Badge variant="default" className="bg-blue-600">Suositeltu</Badge>
+              <Badge variant="default" className="bg-info">Suositeltu</Badge>
             )}
           </div>
           <Switch
@@ -125,8 +125,8 @@ export function SmartNDASection({
       
       {(requiresNDA || showDetails) && (
         <CardContent className="space-y-4">
-          <Alert className="bg-blue-50 border-blue-200">
-            <Info className="h-4 w-4 text-blue-700" />
+          <Alert className="bg-info/10 border-info/20">
+            <Info className="h-4 w-4 text-info" />
             <AlertDescription className="text-info">
               {suggestion.reason}. NDA varmistaa että vastaanottaja sitoutuu pitämään tiedot salassa.
             </AlertDescription>
@@ -264,7 +264,7 @@ export function SmartNDASection({
 
               {/* Esikatselu ja yhteenveto */}
               <div className="space-y-3">
-                <div className="bg-white rounded-lg p-3 border border-gray-200">
+                <div className="bg-white rounded-lg p-3 border border-border">
                   <p className="font-medium text-sm mb-2">NDA suojaa seuraavat tiedot:</p>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                     {shareValuation && (

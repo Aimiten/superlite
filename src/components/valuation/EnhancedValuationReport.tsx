@@ -81,10 +81,10 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
 
   // Determine score level class
   const getScoreClass = (score: number | undefined): string => {
-    if (score === undefined || isNaN(score)) return "text-slate-500";
+    if (score === undefined || isNaN(score)) return "text-muted-foreground";
     if (score >= 80) return "text-success";
     if (score >= 60) return "text-info";
-    if (score >= 40) return "text-yellow-600";
+    if (score >= 40) return "text-warning";
     return "text-destructive";
   };
 
@@ -189,7 +189,7 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
                 {/* Arvohaarukka */}
                 {report.valuation_numbers?.range && report.valuation_numbers.range.low !== undefined && (
                   <div className="p-5 bg-white rounded-lg border border-primary/20">
-                    <h4 className="text-sm font-medium text-slate-500 mb-1">Arvohaarukka</h4>
+                    <h4 className="text-sm font-medium text-muted-foreground mb-1">Arvohaarukka</h4>
                     <p className="text-2xl font-bold text-primary">
                       {formatCurrency(report.valuation_numbers.range.low)} – {formatCurrency(report.valuation_numbers.range.high)}
                     </p>
@@ -199,10 +199,10 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
                 {/* Keskimääräinen arvio */}
                 {report.valuation_numbers?.most_likely_value !== undefined && (
                   <div className="p-5 bg-white rounded-lg border border-primary/20">
-                    <h4 className="text-sm font-medium text-slate-500 mb-1">Todennäköisin arvo</h4>
+                    <h4 className="text-sm font-medium text-muted-foreground mb-1">Todennäköisin arvo</h4>
                     <p className="text-2xl font-bold text-primary">{formatCurrency(report.valuation_numbers.most_likely_value)}</p>
                     {report.valuation_numbers?.valuation_methods_in_average !== undefined && (
-                      <p className="text-xs text-slate-400 mt-1">
+                      <p className="text-xs text-muted-foreground mt-1">
                         Perustuu {report.valuation_numbers.valuation_methods_in_average} arvostusmenetelmään
                       </p>
                     )}
@@ -224,23 +224,23 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
                   <h4 className="text-sm font-medium text-muted-foreground mb-3">Taseen ja velkojen vaikutus</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                     {report.valuation_numbers?.book_value !== undefined && (
-                      <div className="bg-slate-50 p-3 rounded">
+                      <div className="bg-muted p-3 rounded">
                         <div className="flex justify-between">
-                          <span className="text-slate-500">Oman pääoman kirja-arvo:</span>
+                          <span className="text-muted-foreground">Oman pääoman kirja-arvo:</span>
                           <span className="font-medium">{formatCurrency(report.valuation_numbers.book_value)}</span>
                         </div>
                       </div>
                     )}
                     {report.valuation_numbers?.calculated_net_debt !== undefined && (
-                      <div className="bg-slate-50 p-3 rounded">
+                      <div className="bg-muted p-3 rounded">
                         <div className="flex justify-between">
-                          <span className="text-slate-500">Laskennallinen nettovelka:</span>
+                          <span className="text-muted-foreground">Laskennallinen nettovelka:</span>
                           <span className="font-medium">{formatCurrency(report.valuation_numbers.calculated_net_debt)}</span>
                         </div>
                       </div>
                     )}
                   </div>
-                  <p className="text-xs text-slate-400 mt-4">
+                  <p className="text-xs text-muted-foreground mt-4">
                     Nettovelka vähennetään yrityksen velattomasta arvosta (EV) laskettaessa omistajien osuuden arvoa.
                   </p>
                 </div>
@@ -253,7 +253,7 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
             <div className="mb-8">
               {report.totalScore !== undefined && (
                 <div className="bg-white border rounded-xl p-5 text-center mb-6">
-                  <p className="text-sm font-medium text-slate-500 mb-1">Yrityksen kokonaispisteet</p>
+                  <p className="text-sm font-medium text-muted-foreground mb-1">Yrityksen kokonaispisteet</p>
                   <div className={`text-6xl font-bold ${getScoreClass(report.totalScore)} mb-1`}>
                     {report.totalScore}/100
                   </div>
@@ -283,14 +283,14 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
                     }[key] || null;
 
                     return (
-                      <Card key={key} className="bg-slate-50 border text-center overflow-hidden">
+                      <Card key={key} className="bg-muted border text-center overflow-hidden">
                         <CardHeader className="pb-2 pt-4">
                           <div className="flex justify-center">
                             {categoryIcon}
                           </div>
                         </CardHeader>
                         <CardContent className="pb-5">
-                          <h3 className="font-medium text-slate-600 capitalize mb-1">{categoryName}</h3>
+                          <h3 className="font-medium text-muted-foreground capitalize mb-1">{categoryName}</h3>
                           <p className={`text-3xl font-bold ${getScoreClass(value)}`}>{value}/100</p>
                           <p className={`text-xs ${getScoreClass(value)}`}>{getScoreLevel(value)}</p>
                         </CardContent>
@@ -304,7 +304,7 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
 
           {/* --- Key Points Section --- */}
           {report.key_points?.content && (
-            <div className="border rounded-xl p-6 mb-6 bg-slate-50">
+            <div className="border rounded-xl p-6 mb-6 bg-muted">
               <h3 className="text-lg font-semibold flex items-center mb-3">
                 <BarChart className="h-5 w-5 mr-2 text-primary" />
                 {report.key_points.title || "Keskeiset havainnot"}
@@ -342,8 +342,8 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
                 let iconComponent = <ChevronRight className="h-5 w-5 text-muted-foreground" />;
 
                 if (isBusinessModel) {
-                  bgColor = "bg-blue-50";
-                  borderColor = "border-blue-200";
+                  bgColor = "bg-info/5";
+                  borderColor = "border-info/20";
                   iconComponent = <Building className="h-5 w-5 text-info" />;
                 } else if (isRiskAssessment) {
                   bgColor = "bg-warning/5";
@@ -405,7 +405,7 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
                               </div>
                               <div className="flex-grow">
                                 <h4 className="text-lg font-medium mb-2">{recommendation.title}</h4>
-                                <p className="text-slate-600 whitespace-pre-line">{recommendation.description}</p>
+                                <p className="text-muted-foreground whitespace-pre-line">{recommendation.description}</p>
                               </div>
                             </div>
                           </div>
@@ -421,12 +421,12 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
                   recommendation && recommendation.title && recommendation.description ? (
                     <div key={index} className="border rounded-xl p-5 bg-white">
                       <div className="flex items-start gap-4">
-                        <div className="bg-indigo-100 text-indigo-700 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                        <div className="bg-primary/10 text-primary rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
                           <User size={16} />
                         </div>
                         <div className="flex-grow">
                           <h4 className="text-lg font-medium mb-2">{recommendation.title}</h4>
-                          <p className="text-slate-600 whitespace-pre-line">{recommendation.description}</p>
+                          <p className="text-muted-foreground whitespace-pre-line">{recommendation.description}</p>
                           {recommendation.category && (
                             <Badge variant="outline" className="mt-3">{recommendation.category}</Badge>
                           )}
