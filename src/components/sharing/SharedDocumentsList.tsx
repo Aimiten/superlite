@@ -44,7 +44,7 @@ const SharedDocumentsList: React.FC<SharedDocumentsListProps> = ({ documents, co
       case 'presentation':
         return <FilePlus className="h-5 w-5 text-orange-600" />;
       default:
-        return <File className="h-5 w-5 text-slate-600" />;
+        return <File className="h-5 w-5 text-gray-600" />;
     }
   };
 
@@ -57,9 +57,9 @@ const SharedDocumentsList: React.FC<SharedDocumentsListProps> = ({ documents, co
         </CardHeader>
         <CardContent>
           <div className="text-center py-8">
-            <FileText className="h-12 w-12 text-slate-400 mx-auto mb-4" />
+            <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
             <h3 className="text-lg font-medium mb-2">Ei jaettuja dokumentteja</h3>
-            <p className="text-slate-500">Tähän jakoon ei ole liitetty dokumentteja.</p>
+            <p className="text-gray-500">Tähän jakoon ei ole liitetty dokumentteja.</p>
           </div>
         </CardContent>
       </Card>
@@ -77,7 +77,7 @@ const SharedDocumentsList: React.FC<SharedDocumentsListProps> = ({ documents, co
           {documents.map(doc => (
             <div 
               key={`${doc.source}-${doc.id}`} 
-              className="border rounded-md p-4 hover:bg-slate-50 transition-colors"
+              className="border border-gray-200 rounded-md p-4 hover:bg-gray-50 transition-colors"
             >
               <div className="flex items-start justify-between">
                 <div className="flex items-start gap-3">
@@ -87,9 +87,9 @@ const SharedDocumentsList: React.FC<SharedDocumentsListProps> = ({ documents, co
                   <div>
                     <h3 className="font-medium">{doc.name}</h3>
                     {doc.description && (
-                      <p className="text-sm text-slate-500 mt-1">{doc.description}</p>
+                      <p className="text-sm text-gray-500 mt-1">{doc.description}</p>
                     )}
-                    <div className="flex items-center gap-2 text-xs text-slate-400 mt-2">
+                    <div className="flex items-center gap-2 text-xs text-gray-400 mt-2">
                       <span>
                         Lisätty: {format(new Date(doc.created_at), 'dd.MM.yyyy', { locale: fi })}
                       </span>

@@ -172,7 +172,7 @@ const Auth = () => {
 
   if (verifyingEmail) {
     return (
-      <div className="min-h-screen gradient-bg flex flex-col items-center justify-center p-4">
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
           <h2 className="text-2xl font-semibold text-slate-800 mb-2">Vahvistetaan sähköpostia...</h2>
@@ -183,7 +183,7 @@ const Auth = () => {
   }
 
   return (
-    <div className="min-h-screen gradient-bg flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

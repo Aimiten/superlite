@@ -54,7 +54,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onToggle }) => {
   }, [handleSignOut]); // Riippuvuus vain handleSignOut
 
   return (
-    <aside className="bg-background h-screen flex flex-col border-r shadow-sm w-52 sm:w-60">
+    <aside className="bg-background h-screen flex flex-col border-r shadow-neumorphic w-52 sm:w-60">
       <SidebarBranding collapsed={false} />
       <div className="flex-1 overflow-y-auto py-2 sm:py-4">
         <SidebarMainNav collapsed={false} navItems={updatedMainNavItems} />

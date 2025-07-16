@@ -85,9 +85,9 @@ const ValuationRangeChart: React.FC<ValuationRangeChartProps> = ({
       }
 
       return (
-        <div className="bg-white p-2 border rounded shadow-sm">
+        <div className="bg-card p-2 border rounded shadow-neumorphic">
           <p className="font-medium">{label}</p>
-          {description && <p className="text-xs text-slate-500">{description}</p>}
+          {description && <p className="text-xs text-muted-foreground">{description}</p>}
         </div>
       );
     }
@@ -117,7 +117,7 @@ const ValuationRangeChart: React.FC<ValuationRangeChartProps> = ({
           <Line
             type="monotone"
             dataKey="probability"
-            stroke="#4f46e5"
+            stroke="hsl(var(--primary))"
             strokeWidth={2}
             dot={false}
             activeDot={{ r: 8 }}
@@ -127,13 +127,13 @@ const ValuationRangeChart: React.FC<ValuationRangeChartProps> = ({
           {/* Viitejana todennäköisimmälle arvolle */}
           <ReferenceLine
             x={safeMostLikely}
-            stroke="#4f46e5"
+            stroke="hsl(var(--primary))"
             strokeWidth={2}
             strokeDasharray="3 3"
             label={{
               value: formatCurrency(safeMostLikely),
               position: 'top',
-              fill: '#4f46e5',
+              fill: 'hsl(var(--primary))',
               fontSize: 12,
             }}
           />
@@ -141,12 +141,12 @@ const ValuationRangeChart: React.FC<ValuationRangeChartProps> = ({
           {/* Viitejana minimiarvon kohdalle */}
           <ReferenceLine
             x={safeMin}
-            stroke="#94a3b8"
+            stroke="hsl(var(--muted-foreground))"
             strokeDasharray="3 3"
             label={{
               value: formatCurrency(safeMin),
               position: 'insideBottomLeft',
-              fill: '#94a3b8',
+              fill: 'hsl(var(--muted-foreground))',
               fontSize: 11,
             }}
           />
@@ -154,12 +154,12 @@ const ValuationRangeChart: React.FC<ValuationRangeChartProps> = ({
           {/* Viitejana maksimiarvon kohdalle */}
           <ReferenceLine
             x={safeMax}
-            stroke="#94a3b8"
+            stroke="hsl(var(--muted-foreground))"
             strokeDasharray="3 3"
             label={{
               value: formatCurrency(safeMax),
               position: 'insideBottomRight',
-              fill: '#94a3b8',
+              fill: 'hsl(var(--muted-foreground))',
               fontSize: 11,
             }}
           />
@@ -168,12 +168,12 @@ const ValuationRangeChart: React.FC<ValuationRangeChartProps> = ({
           {safeBookValue !== null && (
             <ReferenceLine
               x={safeBookValue}
-              stroke="#10b981"
+              stroke="hsl(var(--success))"
               strokeDasharray="5 5"
               label={{
                 value: "Tasearvo",
                 position: 'top',
-                fill: '#10b981',
+                fill: 'hsl(var(--success))',
                 fontSize: 10,
               }}
             />

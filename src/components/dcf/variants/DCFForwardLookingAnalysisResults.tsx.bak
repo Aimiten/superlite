@@ -78,7 +78,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
   return (
     <div className="space-y-6">
       {/* Forward Looking DCF Specific Header */}
-      <Alert className="border-primary bg-primary/5">
+      <Alert className="border-orange-200 bg-orange-50">
         <Rocket className="h-4 w-4" />
         <AlertDescription>
           <div className="space-y-2">
@@ -94,7 +94,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
       </Alert>
 
       {/* Critical Warning */}
-      <Alert className="border-destructive bg-destructive/5">
+      <Alert className="border-red-200 bg-red-50">
         <AlertTriangle className="h-4 w-4" />
         <AlertTitle>Kriittinen varoitus</AlertTitle>
         <AlertDescription>
@@ -119,7 +119,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
 
         <TabsContent value="overview" className="space-y-6">
           {/* Executive Summary with Startup Context */}
-          <Card className="border-primary">
+          <Card className="border-orange-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <BarChart3 className="h-5 w-5" />
@@ -127,7 +127,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <Alert className="mb-4 bg-primary/5 border-primary">
+              <Alert className="mb-4 bg-orange-50 border-orange-300">
                 <Info className="h-4 w-4" />
                 <AlertDescription className="text-sm">
                   Arvostus perustuu aggressiivisiin kasvuoletuksiin ja markkinapotentiaaliin. 
@@ -137,25 +137,25 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-destructive">
+                  <div className="text-2xl font-bold text-red-600">
                     {formatCurrency(equity_value_range.min)}
                   </div>
-                  <div className="text-sm text-muted-foreground">Pessimistinen (30%)</div>
-                  <div className="text-xs text-muted-foreground mt-1">Hitaampi markkinapenetraatio</div>
+                  <div className="text-sm text-gray-600">Pessimistinen (30%)</div>
+                  <div className="text-xs text-gray-500 mt-1">Hitaampi markkinapenetraatio</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">
+                  <div className="text-3xl font-bold text-blue-600">
                     {formatCurrency(equity_value_range.base)}
                   </div>
-                  <div className="text-sm text-muted-foreground">Base Case (40%)</div>
-                  <div className="text-xs text-muted-foreground mt-1">Odotettu kasvupolku</div>
+                  <div className="text-sm text-gray-600">Base Case (40%)</div>
+                  <div className="text-xs text-gray-500 mt-1">Odotettu kasvupolku</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">
+                  <div className="text-2xl font-bold text-green-600">
                     {formatCurrency(equity_value_range.max)}
                   </div>
-                  <div className="text-sm text-muted-foreground">Optimistinen (30%)</div>
-                  <div className="text-xs text-muted-foreground mt-1">Nopea skaalautuminen</div>
+                  <div className="text-sm text-gray-600">Optimistinen (30%)</div>
+                  <div className="text-xs text-gray-500 mt-1">Nopea skaalautuminen</div>
                 </div>
               </div>
               
@@ -165,10 +165,10 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
                 <div className="text-xl font-semibold mb-2">
                   Todennäköisyyspainotettu arvo
                 </div>
-                <div className="text-4xl font-bold text-primary">
+                <div className="text-4xl font-bold text-purple-600">
                   {formatCurrency(probability_weighted_valuation.weighted_equity_value)}
                 </div>
-                <div className="text-sm text-muted-foreground mt-2">
+                <div className="text-sm text-gray-600 mt-2">
                   Painotus: 30% / 40% / 30% (Adjusted for startup risk)
                 </div>
               </div>
@@ -177,7 +177,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
 
           {/* Startup Stage Indicator */}
           {analysisData.methodology_assessment && (
-            <Card className="border-primary">
+            <Card className="border-purple-200">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Zap className="h-5 w-5" />
@@ -186,29 +186,29 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="text-center p-3 bg-primary/10 rounded">
-                    <div className="text-lg font-bold text-primary">
+                  <div className="text-center p-3 bg-purple-50 rounded">
+                    <div className="text-lg font-bold text-purple-600">
                       {analysisData.methodology_assessment.company_stage}
                     </div>
-                    <div className="text-sm text-muted-foreground">Vaihe</div>
+                    <div className="text-sm text-gray-600">Vaihe</div>
                   </div>
-                  <div className="text-center p-3 bg-primary/10 rounded">
-                    <div className="text-lg font-bold text-primary">
+                  <div className="text-center p-3 bg-purple-50 rounded">
+                    <div className="text-lg font-bold text-purple-600">
                       {analysisData.methodology_assessment.business_model}
                     </div>
-                    <div className="text-sm text-muted-foreground">Malli</div>
+                    <div className="text-sm text-gray-600">Malli</div>
                   </div>
-                  <div className="text-center p-3 bg-primary/10 rounded">
-                    <div className="text-lg font-bold text-primary">
+                  <div className="text-center p-3 bg-purple-50 rounded">
+                    <div className="text-lg font-bold text-purple-600">
                       {analysisData.startup_analysis?.data_quality.periods_available || 1}-2
                     </div>
-                    <div className="text-sm text-muted-foreground">Vuotta dataa</div>
+                    <div className="text-sm text-gray-600">Vuotta dataa</div>
                   </div>
-                  <div className="text-center p-3 bg-primary/10 rounded">
-                    <div className="text-lg font-bold text-primary">
+                  <div className="text-center p-3 bg-purple-50 rounded">
+                    <div className="text-lg font-bold text-purple-600">
                       {analysisData.methodology_assessment.dcf_suitability_score}/10
                     </div>
-                    <div className="text-sm text-muted-foreground">DCF soveltuvuus</div>
+                    <div className="text-sm text-gray-600">DCF soveltuvuus</div>
                   </div>
                 </div>
               </CardContent>
@@ -235,34 +235,34 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
                       {analysisData.startup_analysis.growth_metrics && (
                         <div className="space-y-4">
                           {analysisData.startup_analysis.growth_metrics.burn_rate && (
-                            <div className="p-4 bg-destructive/5 rounded">
+                            <div className="p-4 bg-red-50 rounded">
                               <div className="flex justify-between items-center">
                                 <div>
-                                  <div className="text-sm text-muted-foreground">Burn Rate</div>
-                                  <div className="text-2xl font-bold text-destructive">
+                                  <div className="text-sm text-gray-600">Burn Rate</div>
+                                  <div className="text-2xl font-bold text-red-600">
                                     {formatCurrency(analysisData.startup_analysis.growth_metrics.burn_rate)}/kk
                                   </div>
                                 </div>
-                                <DollarSign className="h-8 w-8 text-destructive" />
+                                <DollarSign className="h-8 w-8 text-red-400" />
                               </div>
                             </div>
                           )}
                           {analysisData.startup_analysis.growth_metrics.runway_months && (
-                            <div className="p-4 bg-primary/5 rounded">
+                            <div className="p-4 bg-orange-50 rounded">
                               <div className="flex justify-between items-center">
                                 <div>
-                                  <div className="text-sm text-muted-foreground">Runway</div>
-                                  <div className="text-2xl font-bold text-primary">
+                                  <div className="text-sm text-gray-600">Runway</div>
+                                  <div className="text-2xl font-bold text-orange-600">
                                     {analysisData.startup_analysis.growth_metrics.runway_months} kk
                                   </div>
                                 </div>
-                                <Clock className="h-8 w-8 text-primary" />
+                                <Clock className="h-8 w-8 text-orange-400" />
                               </div>
                               <Progress 
                                 value={(analysisData.startup_analysis.growth_metrics.runway_months / 24) * 100} 
                                 className="mt-2"
                               />
-                              <div className="text-xs text-muted-foreground mt-1">
+                              <div className="text-xs text-gray-500 mt-1">
                                 {analysisData.startup_analysis.growth_metrics.runway_months < 12 
                                   ? 'Rahoitustarve lähiaikoina!' 
                                   : 'Riittävä runway'}
@@ -285,8 +285,8 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
                             <Radar 
                               name="Arviointi" 
                               dataKey="value" 
-                              stroke="hsl(var(--secondary))" 
-                              fill="hsl(var(--secondary))" 
+                              stroke="#8b5cf6" 
+                              fill="#8b5cf6" 
                               fillOpacity={0.6} 
                             />
                             <Tooltip />
@@ -298,7 +298,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
 
                   {/* Data Quality Warning */}
                   {analysisData.startup_analysis.data_quality && (
-                    <Alert className="mt-6 bg-primary/5 border-primary">
+                    <Alert className="mt-6 bg-orange-50 border-orange-200">
                       <AlertCircle className="h-4 w-4" />
                       <AlertDescription>
                         <strong>Datan laatu:</strong> {analysisData.startup_analysis.data_quality.data_reliability}
@@ -320,22 +320,22 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
                   </CardHeader>
                   <CardContent>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                      <div className="p-3 bg-primary/10 rounded">
-                        <div className="text-sm text-muted-foreground">CAC</div>
+                      <div className="p-3 bg-green-50 rounded">
+                        <div className="text-sm text-gray-600">CAC</div>
                         <div className="font-semibold">
                           {formatCurrency(analysisData.startup_analysis.growth_metrics.customer_acquisition_rate)}
                         </div>
                       </div>
                       {analysisData.startup_analysis.growth_metrics.revenue_per_customer && (
-                        <div className="p-3 bg-primary/10 rounded">
-                          <div className="text-sm text-muted-foreground">Revenue/Customer</div>
+                        <div className="p-3 bg-blue-50 rounded">
+                          <div className="text-sm text-gray-600">Revenue/Customer</div>
                           <div className="font-semibold">
                             {formatCurrency(analysisData.startup_analysis.growth_metrics.revenue_per_customer)}
                           </div>
                         </div>
                       )}
-                      <div className="p-3 bg-primary/10 rounded">
-                        <div className="text-sm text-muted-foreground">Vaihe</div>
+                      <div className="p-3 bg-purple-50 rounded">
+                        <div className="text-sm text-gray-600">Vaihe</div>
                         <div className="font-semibold">
                           {analysisData.startup_analysis.company_stage}
                         </div>
@@ -361,26 +361,26 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-3 gap-6">
-                    <div className="text-center p-6 bg-primary/10 rounded">
-                      <div className="text-3xl font-bold text-primary">
+                    <div className="text-center p-6 bg-blue-50 rounded">
+                      <div className="text-3xl font-bold text-blue-600">
                         {formatCurrency(analysisData.revenue_projections.market_size_analysis.total_addressable_market)}
                       </div>
-                      <div className="text-sm text-muted-foreground mt-2">TAM</div>
-                      <div className="text-xs text-muted-foreground">Total Addressable Market</div>
+                      <div className="text-sm text-gray-600 mt-2">TAM</div>
+                      <div className="text-xs text-gray-500">Total Addressable Market</div>
                     </div>
-                    <div className="text-center p-6 bg-primary/10 rounded">
-                      <div className="text-3xl font-bold text-primary">
+                    <div className="text-center p-6 bg-green-50 rounded">
+                      <div className="text-3xl font-bold text-green-600">
                         {formatCurrency(analysisData.revenue_projections.market_size_analysis.serviceable_addressable_market)}
                       </div>
-                      <div className="text-sm text-muted-foreground mt-2">SAM</div>
-                      <div className="text-xs text-muted-foreground">Serviceable Addressable Market</div>
+                      <div className="text-sm text-gray-600 mt-2">SAM</div>
+                      <div className="text-xs text-gray-500">Serviceable Addressable Market</div>
                     </div>
-                    <div className="text-center p-6 bg-primary/10 rounded">
-                      <div className="text-3xl font-bold text-primary">
+                    <div className="text-center p-6 bg-purple-50 rounded">
+                      <div className="text-3xl font-bold text-purple-600">
                         {formatCurrency(scenario?.projections.revenue[4] || 0)}
                       </div>
-                      <div className="text-sm text-muted-foreground mt-2">SOM (Year 5)</div>
-                      <div className="text-xs text-muted-foreground">Serviceable Obtainable Market</div>
+                      <div className="text-sm text-gray-600 mt-2">SOM (Year 5)</div>
+                      <div className="text-xs text-gray-500">Serviceable Obtainable Market</div>
                     </div>
                   </div>
 
@@ -400,8 +400,8 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
                             yAxisId="left"
                             type="monotone" 
                             dataKey="penetration" 
-                            stroke="hsl(var(--secondary))" 
-                            fill="hsl(var(--secondary))" 
+                            stroke="#8b5cf6" 
+                            fill="#8b5cf6" 
                             fillOpacity={0.6}
                             name="Markkinaosuus %"
                           />
@@ -409,7 +409,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
                             yAxisId="right"
                             type="monotone" 
                             dataKey="revenue" 
-                            stroke="hsl(var(--success))" 
+                            stroke="#10b981" 
                             strokeWidth={2}
                             name="Liikevaihto"
                           />
@@ -426,7 +426,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
                   <CardTitle>Kasvuoletukset</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Alert className="mb-4 bg-primary/10 border-primary">
+                  <Alert className="mb-4 bg-purple-50 border-purple-200">
                     <Rocket className="h-4 w-4" />
                     <AlertDescription className="text-sm">
                       Startup-yrityksen projektiot perustuvat markkinan kokoon ja oletettuun penetraatiovauhtiin, 
@@ -467,7 +467,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
               <CardTitle>Valitse skenaario</CardTitle>
             </CardHeader>
             <CardContent>
-              <Alert className="mb-4 bg-primary/5 border-primary">
+              <Alert className="mb-4 bg-orange-50 border-orange-200">
                 <Info className="h-4 w-4" />
                 <AlertDescription className="text-sm">
                   Startup-yrityksillä skenaarioiden väliset erot ovat erityisen suuria johtuen korkeasta epävarmuudesta.
@@ -538,7 +538,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
                         yAxisId="left"
                         type="monotone" 
                         dataKey="revenue" 
-                        stroke="hsl(var(--info))" 
+                        stroke="#3b82f6" 
                         strokeWidth={3}
                         name="Liikevaihto"
                         dot={{ r: 6 }}
@@ -547,7 +547,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
                         yAxisId="right"
                         type="monotone" 
                         dataKey="growth" 
-                        stroke="hsl(var(--success))" 
+                        stroke="#10b981" 
                         strokeWidth={2}
                         strokeDasharray="5 5"
                         name="Kasvu-%"
@@ -557,30 +557,30 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
                 </div>
 
                 {/* Key Assumptions */}
-                <div className="mt-6 p-4 bg-muted rounded">
+                <div className="mt-6 p-4 bg-gray-50 rounded">
                   <h4 className="font-semibold mb-3">Keskeiset oletukset</h4>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                     <div>
-                      <div className="text-muted-foreground">Keskim. kasvu</div>
+                      <div className="text-gray-600">Keskim. kasvu</div>
                       <div className="font-semibold">
                         {(scenario.assumptions.revenue_growth.reduce((a, b) => a + b, 0) / scenario.assumptions.revenue_growth.length * 100).toFixed(1)}%
                       </div>
                     </div>
                     <div>
-                      <div className="text-muted-foreground">WACC</div>
-                      <div className="font-semibold text-primary">
+                      <div className="text-gray-600">WACC</div>
+                      <div className="font-semibold text-orange-600">
                         {(scenario.assumptions.wacc * 100).toFixed(1)}%
                       </div>
-                      <div className="text-xs text-primary">+Startup premium</div>
+                      <div className="text-xs text-orange-500">+Startup premium</div>
                     </div>
                     <div>
-                      <div className="text-muted-foreground">Terminal kasvu</div>
+                      <div className="text-gray-600">Terminal kasvu</div>
                       <div className="font-semibold">
                         {(scenario.assumptions.terminal_growth * 100).toFixed(1)}%
                       </div>
                     </div>
                     <div>
-                      <div className="text-muted-foreground">Exit vuosi</div>
+                      <div className="text-gray-600">Exit vuosi</div>
                       <div className="font-semibold">5-7v</div>
                     </div>
                   </div>
@@ -592,36 +592,36 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
 
         <TabsContent value="risks" className="space-y-6">
           {/* High Risk Factors */}
-          <Card className="border-destructive">
+          <Card className="border-red-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="h-5 w-5 text-destructive" />
+                <AlertTriangle className="h-5 w-5 text-red-600" />
                 Korkeat riskit
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 {analysisData.risk_analysis?.high_risks?.map((risk, idx) => (
-                  <Alert key={idx} className="bg-destructive/5 border-destructive">
+                  <Alert key={idx} className="bg-red-50 border-red-200">
                     <AlertCircle className="h-4 w-4" />
                     <AlertDescription>{risk}</AlertDescription>
                   </Alert>
                 ))}
                 
                 {/* Startup-specific risks */}
-                <Alert className="bg-destructive/5 border-destructive">
+                <Alert className="bg-red-50 border-red-200">
                   <AlertCircle className="h-4 w-4" />
                   <AlertDescription>
                     <strong>Rahoitusriski:</strong> Yritys tarvitsee lisärahoitusta seuraavan 12-18 kuukauden aikana
                   </AlertDescription>
                 </Alert>
-                <Alert className="bg-destructive/5 border-destructive">
+                <Alert className="bg-red-50 border-red-200">
                   <AlertCircle className="h-4 w-4" />
                   <AlertDescription>
                     <strong>Markkinariski:</strong> Markkinan hyväksyntä ja kasvunopeus ovat epävarmoja
                   </AlertDescription>
                 </Alert>
-                <Alert className="bg-destructive/5 border-destructive">
+                <Alert className="bg-red-50 border-red-200">
                   <AlertCircle className="h-4 w-4" />
                   <AlertDescription>
                     <strong>Toteutusriski:</strong> Tiimin kyky skaalata liiketoimintaa on testaamaton
@@ -640,7 +640,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
               <div className="space-y-3">
                 {analysisData.risk_analysis?.risk_mitigation?.map((action, idx) => (
                   <div key={idx} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
                       {idx + 1}
                     </div>
                     <span className="text-sm">{action}</span>
@@ -661,7 +661,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <Alert className="mb-6 bg-primary/5 border-primary">
+              <Alert className="mb-6 bg-orange-50 border-orange-200">
                 <AlertTriangle className="h-4 w-4" />
                 <AlertDescription>
                   <strong>TÄRKEÄ:</strong> DCF ei ole paras menetelmä startup-yrityksille. 
@@ -671,13 +671,13 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
 
               <div className="grid md:grid-cols-2 gap-4">
                 {analysisData.methodology_assessment?.alternative_methods_recommended?.map((method, idx) => (
-                  <Card key={idx} className="border-primary bg-primary/10">
+                  <Card key={idx} className="border-blue-200 bg-blue-50">
                     <CardContent className="p-4">
                       <div className="flex items-start gap-3">
-                        <Calculator className="h-5 w-5 text-primary mt-0.5" />
+                        <Calculator className="h-5 w-5 text-blue-600 mt-0.5" />
                         <div>
                           <h4 className="font-semibold">{method}</h4>
-                          <p className="text-sm text-muted-foreground mt-1">
+                          <p className="text-sm text-gray-600 mt-1">
                             {method.includes('Berkus') && 'Perustuu laadullisiin tekijöihin, sopii pre-revenue yrityksille'}
                             {method.includes('VC Method') && 'Perustuu exit-arvoon ja tuottovaatimukseen'}
                             {method.includes('First Chicago') && 'Yhdistää kolme skenaariota todennäköisyyksillä'}
@@ -692,7 +692,7 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
               </div>
 
               {/* Recommended Approach */}
-              <div className="mt-6 p-4 bg-primary/10 rounded">
+              <div className="mt-6 p-4 bg-green-50 rounded">
                 <h4 className="font-semibold mb-2">Suositeltu lähestymistapa</h4>
                 <ol className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
@@ -723,21 +723,21 @@ export const DCFForwardLookingAnalysisResults: React.FC<DCFForwardLookingAnalysi
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="p-4 bg-primary/10 rounded">
+                <div className="p-4 bg-purple-50 rounded">
                   <h4 className="font-semibold mb-2">Trade Sale (5-7v)</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-600">
                     Strateginen ostaja, tyypillisesti 3-8x liikevaihtokerroin riippuen kasvusta ja kannattavuudesta
                   </p>
                 </div>
-                <div className="p-4 bg-primary/10 rounded">
+                <div className="p-4 bg-blue-50 rounded">
                   <h4 className="font-semibold mb-2">Financial Exit (7-10v)</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-600">
                     PE-rahasto, tyypillisesti 8-15x EBITDA riippuen kasvusta ja markkinasta
                   </p>
                 </div>
-                <div className="p-4 bg-primary/10 rounded">
+                <div className="p-4 bg-green-50 rounded">
                   <h4 className="font-semibold mb-2">IPO (10v+)</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-600">
                     Pörssilistautuminen, vaatii merkittävää kokoa ja vakaata kasvua
                   </p>
                 </div>

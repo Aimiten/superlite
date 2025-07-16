@@ -31,14 +31,14 @@ const SharingHelpSection = () => {
             <AccordionTrigger>📤 Jakamisen yleiskuva</AccordionTrigger>
             <AccordionContent>
               <div className="space-y-4">
-                <p className="text-sm text-muted-foreground">
+                <p className="text-base text-muted-foreground">
                   Jakamisominaisuus mahdollistaa yrityksen tietojen turvallisen jakamisen potentiaalisten ostajien, neuvonantajien tai muiden sidosryhmien kanssa.
                 </p>
 
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="border rounded-lg p-3">
                     <h4 className="font-semibold mb-2">Mitä voit jakaa</h4>
-                    <ul className="text-sm list-disc pl-4 space-y-1">
+                    <ul className="text-base list-disc pl-4 space-y-1">
                       <li>Arvonmääritysraportteja</li>
                       <li>Myyntikuntotestin tuloksia</li>
                       <li>Yksittäisiä dokumentteja</li>
@@ -48,7 +48,7 @@ const SharingHelpSection = () => {
                   </div>
                   <div className="border rounded-lg p-3">
                     <h4 className="font-semibold mb-2">Kenelle voit jakaa</h4>
-                    <ul className="text-sm list-disc pl-4 space-y-1">
+                    <ul className="text-base list-disc pl-4 space-y-1">
                       <li>M&A-neuvonantajille</li>
                       <li>Potentiaalisille ostajille</li>
                       <li>Rahoittajille</li>
@@ -74,25 +74,25 @@ const SharingHelpSection = () => {
                   <div className="space-y-3">
                     <div className="border rounded p-3">
                       <div className="flex items-center gap-2 mb-1">
-                        <Eye className="w-4 h-4 text-blue-500" />
+                        <Eye className="w-4 h-4 text-[hsl(var(--chart-2))]" />
                         <span className="font-medium">Katseluoikeus</span>
                       </div>
-                      <p className="text-sm text-muted-foreground">Vastaanottaja voi vain katsella jaettuja tietoja</p>
+                      <p className="text-base text-muted-foreground">Vastaanottaja voi vain katsella jaettuja tietoja</p>
                     </div>
                     <div className="border rounded p-3">
                       <div className="flex items-center gap-2 mb-1">
-                        <MessageSquare className="w-4 h-4 text-green-500" />
+                        <MessageSquare className="w-4 h-4 text-[hsl(var(--success))]" />
                         <span className="font-medium">Kommentointioikeus</span>
                       </div>
-                      <p className="text-sm text-muted-foreground">Vastaanottaja voi jättää kommentteja ja kysymyksiä</p>
+                      <p className="text-base text-muted-foreground">Vastaanottaja voi jättää kommentteja ja kysymyksiä</p>
                     </div>
                     <div className="border rounded p-3">
                       <div className="flex items-center gap-2 mb-1">
-                        <FileText className="w-4 h-4 text-orange-500" />
+                        <FileText className="w-4 h-4 text-[hsl(var(--chart-4))]" />
                         <span className="font-medium">Muokkausoikeus</span>
                         <Badge variant="secondary">Pro (99€/kk)</Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground">Vastaanottaja voi muokata tiettyjä kenttiä</p>
+                      <p className="text-base text-muted-foreground">Vastaanottaja voi muokata tiettyjä kenttiä</p>
                     </div>
                   </div>
                 </div>
@@ -155,7 +155,7 @@ const SharingHelpSection = () => {
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold mb-2">Automaattinen vanhentuminen</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-base text-muted-foreground mb-2">
                     Voit asettaa jaettujen sisältöjen automaattisen vanhentumisen:
                   </p>
                   <ul className="list-disc pl-6 space-y-1 text-sm">
@@ -196,7 +196,7 @@ const SharingHelpSection = () => {
                   <div className="grid gap-3 md:grid-cols-2">
                     <div className="border rounded p-3">
                       <h5 className="font-medium mb-1">Käyttötiedot</h5>
-                      <ul className="text-sm list-disc pl-4 space-y-1">
+                      <ul className="text-base list-disc pl-4 space-y-1">
                         <li>Kuka on avannut linkin</li>
                         <li>Milloin ja kuinka kauan</li>
                         <li>Mitä sivuja on katsottu</li>
@@ -205,7 +205,7 @@ const SharingHelpSection = () => {
                     </div>
                     <div className="border rounded p-3">
                       <h5 className="font-medium mb-1">Vuorovaikutus</h5>
-                      <ul className="text-sm list-disc pl-4 space-y-1">
+                      <ul className="text-base list-disc pl-4 space-y-1">
                         <li>Jätetyt kommentit</li>
                         <li>Kysymykset</li>
                         <li>Ladatut dokumentit</li>
@@ -234,7 +234,7 @@ const SharingHelpSection = () => {
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold mb-2">Kommentointijärjestelmä</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-base text-muted-foreground mb-2">
                     Vastaanottajat voivat jättää kommentteja ja kysymyksiä:
                   </p>
                   <ul className="list-disc pl-6 space-y-1 text-sm">

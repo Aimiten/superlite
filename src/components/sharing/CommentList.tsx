@@ -57,9 +57,9 @@ const CommentsList: React.FC<CommentsListProps> = ({
   if (!isLoading && !error && comments.length === 0) {
     return (
       <div className="text-center py-8">
-        <MessageSquare className="h-12 w-12 text-slate-400 mx-auto mb-4" />
+        <MessageSquare className="h-12 w-12 text-gray-400 mx-auto mb-4" />
         <h3 className="text-lg font-medium mb-2">Ei kommentteja</h3>
-        <p className="text-slate-500 mb-6">Tähän jakoon ei ole vielä jätetty kommentteja.</p>
+        <p className="text-gray-500 mb-6">Tähän jakoon ei ole vielä jätetty kommentteja.</p>
 
         <div className="mt-6">
           <h4 className="text-base font-medium mb-3">Lisää ensimmäinen kommentti</h4>

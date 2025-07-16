@@ -40,9 +40,9 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
             <div className="flex items-center mt-2">
               <span className={`text-xs ${
                 trend === "up" 
-                  ? "text-green-600" 
+                  ? "text-success" 
                   : trend === "down" 
-                  ? "text-red-600" 
+                  ? "text-destructive" 
                   : "text-slate-600"
               }`}>
                 {trendValue}

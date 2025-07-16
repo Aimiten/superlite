@@ -16,17 +16,17 @@ interface ChartCardProps {
 const ChartCard: React.FC<ChartCardProps> = ({ scores }) => {
   // Data for the chart
   const chartData = [
-    { name: "Dokumentaatio", value: scores.documentation, color: "#9333ea" },
-    { name: "Prosessit", value: scores.process, color: "#22c55e" },
-    { name: "Talous", value: scores.financial, color: "#3b82f6" },
-    { name: "Asiakkaat", value: scores.customers, color: "#f97316" }
+    { name: "Dokumentaatio", value: scores.documentation, color: "hsl(var(--chart-1))" },
+    { name: "Prosessit", value: scores.process, color: "hsl(var(--success))" },
+    { name: "Talous", value: scores.financial, color: "hsl(var(--chart-2))" },
+    { name: "Asiakkaat", value: scores.customers, color: "hsl(var(--chart-4))" }
   ];
 
   return (
     <Card className="card-3d">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <BarChartIcon className="h-5 w-5 text-blue-500" />
+          <BarChartIcon className="h-5 w-5 text-[hsl(var(--chart-2))]" />
           Osa-alueiden vertailu
         </CardTitle>
       </CardHeader>

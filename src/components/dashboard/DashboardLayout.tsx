@@ -66,7 +66,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         variant="ghost"
         size="icon"
         onClick={toggleSidebar}
-        className={`${isMobile ? 'fixed' : 'hidden'} top-4 left-4 z-50 h-8 w-8 sm:h-10 sm:w-10 rounded-full shadow-sm bg-white/80 backdrop-blur-sm`}
+        className={`${isMobile ? 'fixed' : 'hidden'} top-4 left-4 z-50 h-8 w-8 sm:h-10 sm:w-10 rounded-full shadow-neumorphic bg-white/80 backdrop-blur-sm`}
       >
         {sidebarOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
       </Button>

@@ -49,14 +49,14 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
 
   // Data source breakdown for pie chart
   const dataSourceBreakdown = [
-    { name: 'Toimiala-benchmarkit', value: 70, color: '#3B82F6' },
-    { name: 'Yrityksen data', value: 30, color: '#10B981' }
+    { name: 'Toimiala-benchmarkit', value: 70, color: 'hsl(var(--info))' },
+    { name: 'Yrityksen data', value: 30, color: 'hsl(var(--success))' }
   ];
 
   return (
     <div className="space-y-6">
       {/* Simplified DCF Specific Header */}
-      <Alert className="border-yellow-200 bg-yellow-50">
+      <Alert className="border-warning bg-warning/10">
         <AlertCircle className="h-4 w-4" />
         <AlertDescription>
           <div className="space-y-2">
@@ -72,7 +72,7 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
       </Alert>
 
       {/* Data Limitations Warning */}
-      <Alert className="border-orange-200 bg-orange-50">
+      <Alert className="border-warning bg-warning/10">
         <Info className="h-4 w-4" />
         <AlertTitle>Datan rajoitteet</AlertTitle>
         <AlertDescription>
@@ -106,26 +106,26 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-red-600">
+                  <div className="text-2xl font-bold text-destructive">
                     {formatCurrency(equity_value_range.min)}
                   </div>
-                  <div className="text-sm text-gray-600">Pessimistinen (-30%)</div>
+                  <div className="text-sm text-muted-foreground">Pessimistinen (-30%)</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600">
+                  <div className="text-3xl font-bold text-info">
                     {formatCurrency(equity_value_range.base)}
                   </div>
-                  <div className="text-sm text-gray-600">Base Case</div>
+                  <div className="text-sm text-muted-foreground">Base Case</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">
+                  <div className="text-2xl font-bold text-success">
                     {formatCurrency(equity_value_range.max)}
                   </div>
-                  <div className="text-sm text-gray-600">Optimistinen (+30%)</div>
+                  <div className="text-sm text-muted-foreground">Optimistinen (+30%)</div>
                 </div>
               </div>
               
-              <Alert className="mt-4 bg-yellow-50 border-yellow-200">
+              <Alert className="mt-4 bg-warning/10 border-warning">
                 <Info className="h-4 w-4" />
                 <AlertDescription className="text-sm">
                   Arvostusväli on tavallista laajempi rajoitetun datan vuoksi. Todellinen arvo riippuu vahvasti tulevaisuuden kehityksestä.
@@ -138,10 +138,10 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
                 <div className="text-xl font-semibold mb-2">
                   Todennäköisyyspainotettu arvo
                 </div>
-                <div className="text-4xl font-bold text-purple-600">
+                <div className="text-4xl font-bold text-secondary">
                   {formatCurrency(probability_weighted_valuation.weighted_equity_value)}
                 </div>
-                <div className="text-sm text-gray-600 mt-2">
+                <div className="text-sm text-muted-foreground mt-2">
                   Painotus: 20% / 60% / 20%
                 </div>
               </div>
@@ -160,7 +160,7 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div>
-                    <div className="text-sm text-gray-600">Risk-free Rate</div>
+                    <div className="text-sm text-muted-foreground">Risk-free Rate</div>
                     <div className="font-semibold">
                       {(analysisData.historical_analysis.market_data_integration.riskFreeRate.value * 100).toFixed(2)}%
                     </div>
@@ -169,8 +169,8 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
                     </Badge>
                   </div>
                   <div>
-                    <div className="text-sm text-gray-600">Adjusted WACC</div>
-                    <div className="font-semibold text-orange-600">
+                    <div className="text-sm text-muted-foreground">Adjusted WACC</div>
+                    <div className="font-semibold text-warning">
                       {((analysisData.historical_analysis.market_data_integration.calculated_market_wacc + 0.01) * 100).toFixed(2)}%
                     </div>
                     <Badge variant="outline" className="text-xs mt-1">
@@ -178,7 +178,7 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
                     </Badge>
                   </div>
                   <div>
-                    <div className="text-sm text-gray-600">Industry Beta</div>
+                    <div className="text-sm text-muted-foreground">Industry Beta</div>
                     <div className="font-semibold">
                       {analysisData.historical_analysis.market_data_integration.industryBeta.value.toFixed(2)}
                     </div>
@@ -187,8 +187,8 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
                     </Badge>
                   </div>
                   <div>
-                    <div className="text-sm text-gray-600">Data Quality</div>
-                    <div className="font-semibold text-yellow-600">
+                    <div className="text-sm text-muted-foreground">Data Quality</div>
+                    <div className="font-semibold text-warning">
                       Rajoitettu
                     </div>
                     <Badge variant="outline" className="text-xs mt-1">
@@ -223,7 +223,7 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
                           cy="50%"
                           labelLine={false}
                           outerRadius={80}
-                          fill="#8884d8"
+                          fill="hsl(var(--primary))"
                           dataKey="value"
                           label={({ name, value }) => `${name} ${value}%`}
                         >
@@ -239,7 +239,7 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
                 <div>
                   <h4 className="font-semibold mb-4">Käytetyt toimiala-benchmarkit</h4>
                   <div className="space-y-3">
-                    <div className="p-3 bg-blue-50 rounded">
+                    <div className="p-3 bg-info/10 rounded">
                       <div className="flex justify-between">
                         <span className="text-sm">EBITDA-marginaali</span>
                         <span className="font-semibold">
@@ -249,7 +249,7 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
                         </span>
                       </div>
                     </div>
-                    <div className="p-3 bg-blue-50 rounded">
+                    <div className="p-3 bg-info/10 rounded">
                       <div className="flex justify-between">
                         <span className="text-sm">Kasvuvauhti</span>
                         <span className="font-semibold">
@@ -259,7 +259,7 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
                         </span>
                       </div>
                     </div>
-                    <div className="p-3 bg-blue-50 rounded">
+                    <div className="p-3 bg-info/10 rounded">
                       <div className="flex justify-between">
                         <span className="text-sm">CapEx %</span>
                         <span className="font-semibold">
@@ -304,7 +304,7 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
                     </Badge>
                   </div>
                   {analysisData.historical_analysis.data_quality.key_limitations?.map((limitation, idx) => (
-                    <Alert key={idx} className="bg-orange-50 border-orange-200">
+                    <Alert key={idx} className="bg-warning/10 border-warning">
                       <AlertCircle className="h-4 w-4" />
                       <AlertDescription className="text-sm">{limitation}</AlertDescription>
                     </Alert>
@@ -433,7 +433,7 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
                 <CardTitle>Benchmark-pohjaiset projektiot</CardTitle>
               </CardHeader>
               <CardContent>
-                <Alert className="mb-4 bg-yellow-50 border-yellow-200">
+                <Alert className="mb-4 bg-warning/10 border-warning">
                   <Info className="h-4 w-4" />
                   <AlertDescription className="text-sm">
                     Projektiot perustuvat 70% toimialan keskiarvoihin ja 30% yrityksen omaan dataan.
@@ -454,7 +454,7 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
                           <XAxis dataKey="year" />
                           <YAxis tickFormatter={(value) => `${(value / 1000000).toFixed(1)}M€`} />
                           <Tooltip formatter={(value: any) => formatCurrency(value)} />
-                          <Line type="monotone" dataKey="revenue" stroke="#3b82f6" strokeWidth={2} />
+                          <Line type="monotone" dataKey="revenue" stroke="hsl(var(--info))" strokeWidth={2} />
                         </LineChart>
                       </ResponsiveContainer>
                     </div>
@@ -471,7 +471,7 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
                           <XAxis dataKey="year" />
                           <YAxis tickFormatter={(value) => `${(value / 1000).toFixed(0)}k€`} />
                           <Tooltip formatter={(value: any) => formatCurrency(value)} />
-                          <Bar dataKey="fcf" fill="#10b981" />
+                          <Bar dataKey="fcf" fill="hsl(var(--success))" />
                         </BarChart>
                       </ResponsiveContainer>
                     </div>
@@ -494,7 +494,7 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
             <CardContent>
               <div className="space-y-4">
                 {analysisData.methodology_assessment?.dcf_limitations?.map((limitation, idx) => (
-                  <Alert key={idx} className="bg-orange-50 border-orange-200">
+                  <Alert key={idx} className="bg-warning/10 border-warning">
                     <AlertCircle className="h-4 w-4" />
                     <AlertDescription>{limitation}</AlertDescription>
                   </Alert>
@@ -507,10 +507,10 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
                   <h4 className="font-semibold mb-3">Suositellut täydentävät menetelmät</h4>
                   <div className="grid md:grid-cols-2 gap-4">
                     {analysisData.methodology_assessment.alternative_methods_recommended.map((method, idx) => (
-                      <Card key={idx} className="border-blue-200">
+                      <Card key={idx} className="border-info">
                         <CardContent className="p-4">
                           <div className="flex items-center gap-2">
-                            <Calculator className="h-5 w-5 text-blue-600" />
+                            <Calculator className="h-5 w-5 text-info" />
                             <span className="font-medium">{method}</span>
                           </div>
                         </CardContent>
@@ -521,7 +521,7 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
               )}
 
               {/* Confidence Assessment */}
-              <div className="mt-6 p-4 bg-yellow-50 rounded">
+              <div className="mt-6 p-4 bg-warning/10 rounded">
                 <h4 className="font-semibold mb-2">Luotettavuusarvio</h4>
                 <div className="space-y-2">
                   <div className="flex justify-between">
@@ -549,19 +549,19 @@ export const DCFSimplifiedAnalysisResults: React.FC<DCFSimplifiedAnalysisResults
             <CardContent>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
-                  <div className="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold mt-0.5">1</div>
+                  <div className="w-5 h-5 rounded-full bg-info/20 text-info flex items-center justify-center text-xs font-bold mt-0.5">1</div>
                   <span>Käytä DCF-tulosta yhdessä muiden menetelmien kanssa</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold mt-0.5">2</div>
+                  <div className="w-5 h-5 rounded-full bg-info/20 text-info flex items-center justify-center text-xs font-bold mt-0.5">2</div>
                   <span>Päivitä analyysi kun lisää historiallista dataa on saatavilla</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold mt-0.5">3</div>
+                  <div className="w-5 h-5 rounded-full bg-info/20 text-info flex items-center justify-center text-xs font-bold mt-0.5">3</div>
                   <span>Kiinnitä erityistä huomiota herkkyysanalyysiin</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold mt-0.5">4</div>
+                  <div className="w-5 h-5 rounded-full bg-info/20 text-info flex items-center justify-center text-xs font-bold mt-0.5">4</div>
                   <span>Vertaa tuloksia toimialan transaktiohintoihin</span>
                 </li>
               </ul>

@@ -27,10 +27,10 @@ const MessageItem: React.FC<MessageItemProps> = ({
       isUser ? "justify-end" : "justify-start"
     )}>
       <div className={cn(
-        "max-w-full rounded-2xl p-4 shadow-sm",
+        "max-w-full rounded-2xl p-4 shadow-neumorphic",
         isUser
           ? "bg-primary/90 text-white rounded-tr-none"
-          : "bg-white border border-gray-100 rounded-tl-none"
+          : "bg-white border border-muted rounded-tl-none"
       )}>
         <div className="flex items-center gap-2 mb-2">
           {isUser ? (
@@ -51,7 +51,7 @@ const MessageItem: React.FC<MessageItemProps> = ({
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="h-7 w-7 p-0 hover:bg-gray-100" 
+                      className="h-7 w-7 p-0 hover:bg-muted" 
                       onClick={copyToClipboard}
                     >
                       {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
@@ -79,7 +79,7 @@ const MessageItem: React.FC<MessageItemProps> = ({
 
         {/* Sources section */}
         {!isUser && message.sources && message.sources.length > 0 && (
-          <div className="mt-3 pt-2 border-t border-gray-200">
+          <div className="mt-3 pt-2 border-t border-muted">
             <p className="text-xs text-muted-foreground mb-1">Lähteet:</p>
             <div className="space-y-1">
               {message.sources.map((source, sourceIndex) => (
@@ -88,7 +88,7 @@ const MessageItem: React.FC<MessageItemProps> = ({
                   href={source.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-xs text-blue-600 hover:underline"
+                  className="flex items-center gap-1 text-xs text-primary hover:underline"
                 >
                   <ExternalLink className="h-3 w-3" />
                   {source.title}

@@ -82,10 +82,10 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
   // Determine score level class
   const getScoreClass = (score: number | undefined): string => {
     if (score === undefined || isNaN(score)) return "text-slate-500";
-    if (score >= 80) return "text-green-600";
-    if (score >= 60) return "text-blue-600";
+    if (score >= 80) return "text-success";
+    if (score >= 60) return "text-info";
     if (score >= 40) return "text-yellow-600";
-    return "text-red-600";
+    return "text-destructive";
   };
 
   // Determine score level text
@@ -165,11 +165,11 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
   return (
     <div className="space-y-6">
       {/* --- Valuation Summary Card --- */}
-      <Card className="border-indigo-100">
-        <CardHeader className="bg-gradient-to-r from-indigo-50 to-indigo-100/50">
-          <Badge variant="outline" className="mb-2 w-fit border-indigo-200">Arvonmäärityksen yhteenveto</Badge>
+      <Card className="border-primary/20">
+        <CardHeader className="bg-gradient-to-r from-primary/5 to-primary/10">
+          <Badge variant="outline" className="mb-2 w-fit border-primary/30">Arvonmäärityksen yhteenveto</Badge>
           <CardTitle className="flex items-center">
-            <Target className="h-5 w-5 mr-2 text-indigo-600" />
+            <Target className="h-5 w-5 mr-2 text-primary" />
             Yrityksen arvonmääritys (Oma Pääoma)
           </CardTitle>
           <CardDescription>
@@ -179,18 +179,18 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
         <CardContent className="pt-6">
           {/* --- Valuation Numbers Section (Equity Value Focus) --- */}
           {hasValuation && (
-            <div className="border rounded-xl p-6 mb-6 bg-indigo-50 border-indigo-200">
-              <h3 className="text-xl font-bold mb-6 flex items-center text-indigo-800">
-                <Scale className="h-5 w-5 mr-2 text-indigo-700" />
+            <div className="border rounded-xl p-6 mb-6 bg-primary/5 border-primary/30">
+              <h3 className="text-xl font-bold mb-6 flex items-center text-primary">
+                <Scale className="h-5 w-5 mr-2 text-primary" />
                 Arvoarvio (Oma Pääoma)
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 {/* Arvohaarukka */}
                 {report.valuation_numbers?.range && report.valuation_numbers.range.low !== undefined && (
-                  <div className="p-5 bg-white rounded-lg shadow-sm border border-indigo-100">
+                  <div className="p-5 bg-white rounded-lg border border-primary/20">
                     <h4 className="text-sm font-medium text-slate-500 mb-1">Arvohaarukka</h4>
-                    <p className="text-2xl font-bold text-indigo-700">
+                    <p className="text-2xl font-bold text-primary">
                       {formatCurrency(report.valuation_numbers.range.low)} – {formatCurrency(report.valuation_numbers.range.high)}
                     </p>
                   </div>
@@ -198,9 +198,9 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
 
                 {/* Keskimääräinen arvio */}
                 {report.valuation_numbers?.most_likely_value !== undefined && (
-                  <div className="p-5 bg-white rounded-lg shadow-sm border border-indigo-100">
+                  <div className="p-5 bg-white rounded-lg border border-primary/20">
                     <h4 className="text-sm font-medium text-slate-500 mb-1">Todennäköisin arvo</h4>
-                    <p className="text-2xl font-bold text-indigo-700">{formatCurrency(report.valuation_numbers.most_likely_value)}</p>
+                    <p className="text-2xl font-bold text-primary">{formatCurrency(report.valuation_numbers.most_likely_value)}</p>
                     {report.valuation_numbers?.valuation_methods_in_average !== undefined && (
                       <p className="text-xs text-slate-400 mt-1">
                         Perustuu {report.valuation_numbers.valuation_methods_in_average} arvostusmenetelmään
@@ -212,7 +212,7 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
 
               {/* Arvonmäärityksen perusteet */}
               {report.valuation_numbers?.valuation_rationale && (
-                <div className="bg-white p-5 rounded-lg mt-4 border border-indigo-100">
+                <div className="bg-white p-5 rounded-lg mt-4 border border-primary/20">
                   <h4 className="text-sm font-medium text-slate-700 mb-2">Arvonmäärityksen perusteet</h4>
                   <p className="text-sm whitespace-pre-line">{report.valuation_numbers.valuation_rationale}</p>
                 </div>
@@ -220,7 +220,7 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
 
               {/* Kontekstitiedot: Oma pääoma ja Nettovelka */}
               {(report.valuation_numbers?.book_value !== undefined || report.valuation_numbers?.calculated_net_debt !== undefined) && (
-                <div className="bg-white p-5 rounded-lg mt-4 border border-indigo-100">
+                <div className="bg-white p-5 rounded-lg mt-4 border border-primary/20">
                   <h4 className="text-sm font-medium text-slate-700 mb-3">Taseen ja velkojen vaikutus</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                     {report.valuation_numbers?.book_value !== undefined && (
@@ -252,7 +252,7 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
           {hasScores && (
             <div className="mb-8">
               {report.totalScore !== undefined && (
-                <div className="bg-white border rounded-xl p-5 text-center mb-6 shadow-sm">
+                <div className="bg-white border rounded-xl p-5 text-center mb-6">
                   <p className="text-sm font-medium text-slate-500 mb-1">Yrityksen kokonaispisteet</p>
                   <div className={`text-6xl font-bold ${getScoreClass(report.totalScore)} mb-1`}>
                     {report.totalScore}/100
@@ -306,7 +306,7 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
           {report.key_points?.content && (
             <div className="border rounded-xl p-6 mb-6 bg-slate-50">
               <h3 className="text-lg font-semibold flex items-center mb-3">
-                <BarChart className="h-5 w-5 mr-2 text-indigo-600" />
+                <BarChart className="h-5 w-5 mr-2 text-primary" />
                 {report.key_points.title || "Keskeiset havainnot"}
               </h3>
               <div className="bg-white p-4 rounded-lg">
@@ -319,7 +319,7 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
           {report.analysis && Object.keys(report.analysis).length > 0 && (
             <div className="space-y-5 mb-6">
               <h2 className="text-xl font-semibold border-b pb-2 flex items-center mb-4">
-                <LineChart className="h-5 w-5 mr-2 text-indigo-600" />
+                <LineChart className="h-5 w-5 mr-2 text-primary" />
                 Tarkempi analyysi
               </h2>
 
@@ -344,19 +344,19 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
                 if (isBusinessModel) {
                   bgColor = "bg-blue-50";
                   borderColor = "border-blue-200";
-                  iconComponent = <Building className="h-5 w-5 text-blue-600" />;
+                  iconComponent = <Building className="h-5 w-5 text-info" />;
                 } else if (isRiskAssessment) {
                   bgColor = "bg-amber-50";
                   borderColor = "border-amber-200";
-                  iconComponent = <AlertTriangle className="h-5 w-5 text-amber-600" />;
+                  iconComponent = <AlertTriangle className="h-5 w-5 text-amber-500" />;
                 } else if (isValuationMethods) {
                   bgColor = "bg-indigo-50";
-                  borderColor = "border-indigo-200";
-                  iconComponent = <Scale className="h-5 w-5 text-indigo-600" />;
+                  borderColor = "border-primary/30";
+                  iconComponent = <Scale className="h-5 w-5 text-primary" />;
                 } else if (isFinancialPerformance) {
                   bgColor = "bg-green-50";
                   borderColor = "border-green-200";
-                  iconComponent = <BarChart className="h-5 w-5 text-green-600" />;
+                  iconComponent = <BarChart className="h-5 w-5 text-success" />;
                 }
 
                 return (
@@ -378,11 +378,11 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
 
       {/* --- Recommendations Card --- */}
       {report.recommendations && report.recommendations.length > 0 && (
-        <Card className="border-indigo-100">
-          <CardHeader className="bg-gradient-to-r from-indigo-50 to-indigo-100/50">
-            <Badge variant="outline" className="mb-2 w-fit border-indigo-200">Toimenpidesuositukset</Badge>
+        <Card className="border-primary/20">
+          <CardHeader className="bg-gradient-to-r from-primary/5 to-primary/10">
+            <Badge variant="outline" className="mb-2 w-fit border-primary/30">Toimenpidesuositukset</Badge>
             <CardTitle className="flex items-center">
-              <TrendingUp className="h-5 w-5 mr-2 text-indigo-600" />
+              <TrendingUp className="h-5 w-5 mr-2 text-primary" />
               Suositukset arvon kasvattamiseksi
             </CardTitle>
           </CardHeader>
@@ -400,7 +400,7 @@ const EnhancedValuationReport: React.FC<EnhancedValuationReportProps> = ({ repor
                         recommendation && recommendation.title && recommendation.description ? (
                           <div key={index} className="border rounded-xl p-5 bg-white">
                             <div className="flex items-start gap-4">
-                              <div className="bg-indigo-100 text-indigo-700 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                              <div className="bg-primary/10 text-primary rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
                                 <User size={16} />
                               </div>
                               <div className="flex-grow">

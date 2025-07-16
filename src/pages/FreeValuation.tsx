@@ -113,7 +113,7 @@ const FreeValuation = () => {
       description: "Saat suuntaa-antavan arvion yrityksesi arvosta muutamassa minuutissa."
     },
     {
-      icon: <CheckCircle className="h-4 w-4 text-green-500" />,
+      icon: <CheckCircle className="h-4 w-4 text-green-600" />,
       title: "Helppo käyttää",
       description: "Voit ladata tilinpäätöksen tai syöttää tiedot manuaalisesti."
     },
@@ -205,7 +205,7 @@ const FreeValuation = () => {
                       Vaihda yritystä
                     </Button>
                   </div>
-                  <Card className="bg-white border-2 border-indigo-100 shadow-md">
+                  <Card className="bg-white border-2 border-indigo-100 shadow-sm">
                     <CardContent className="pt-6">
                       <div className="flex items-center mb-3">
                         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg mr-3">
@@ -294,15 +294,15 @@ const FreeValuation = () => {
                           <h3 className="font-semibold text-slate-800 mb-2">Tietosuoja ja tietojen käsittely:</h3>
                           <ul className="space-y-3 text-slate-700">
                             <li className="flex items-start gap-2">
-                              <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                              <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                               <span>Kaikki palvelun aikana asiakkaan toimittama tieto käsitellään ehdottoman luottamuksellisesti.</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                              <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                               <span>Tiedot välitetään aina suojatun yhteyden kautta API-rajapintaa hyödyntäen prosessoitavaksi.</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                              <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                               <span>Anonymisoitua tietoa käytetään palvelun tuottamiseksi ja kehittämiseksi sekä vertailudatan tuottamiseksi.</span>
                             </li>
                           </ul>

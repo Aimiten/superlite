@@ -310,7 +310,7 @@ const SharedView = () => {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-50">
+      <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-slate-50">
         <div className="w-16 h-16 mb-4 flex items-center justify-center">
           <Loader2 className="h-10 w-10 animate-spin text-indigo-600" />
         </div>
@@ -334,7 +334,7 @@ const SharedView = () => {
 
   if (error || !sharedData) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-50">
+      <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-slate-50">
         <div className="max-w-lg w-full">
           <Alert variant="destructive" className="mb-4">
             <AlertCircle className="h-4 w-4" />
@@ -362,7 +362,7 @@ const SharedView = () => {
     'Kommentointi sallittu';
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <div className="bg-white shadow rounded-lg mb-8 overflow-hidden">
           <div className="p-6 bg-indigo-600 text-white">
@@ -427,7 +427,7 @@ const SharedView = () => {
             </TabsList>
 
             <TabsContent value="company">
-              <Card className="shadow-md overflow-hidden">
+              <Card className="shadow-sm overflow-hidden">
                 <CardHeader className="bg-gradient-to-r from-indigo-50 to-blue-50 border-b border-indigo-100">
                   <CardTitle className="flex items-center gap-2 text-xl">
                     <Building className="h-5 w-5 text-indigo-600" />

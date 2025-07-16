@@ -158,7 +158,7 @@ const Index = () => {
     return (
       <DashboardLayout>
         <div className="flex justify-center items-center min-h-[400px]">
-          <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-b-2 border-indigo-500"></div>
+          <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-b-2 border-primary"></div>
         </div>
       </DashboardLayout>
     );
@@ -167,19 +167,19 @@ const Index = () => {
   if (!hasCompany) {
     return (
       <DashboardLayout>
-        <Card className="border-2 border-dashed border-indigo-200 bg-indigo-50/50">
+        <Card className="border-2 border-dashed border-primary/20 bg-primary/5">
           <CardHeader className="text-center py-4 sm:py-6">
-            <CardTitle className="text-xl sm:text-2xl text-indigo-700">Aloita lisäämällä yritys</CardTitle>
-            <CardDescription className="text-sm sm:text-base text-indigo-600">
+            <CardTitle className="text-xl sm:text-2xl text-primary">Aloita lisäämällä yritys</CardTitle>
+            <CardDescription className="text-sm sm:text-base text-primary/80">
               Aloita lisäämällä yrityksesi tiedot.
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center pb-4 sm:pb-6">
-            <div className="mb-4 sm:mb-6 mt-1 sm:mt-2 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-indigo-100 flex items-center justify-center">
-              <Building className="h-8 w-8 sm:h-10 sm:w-10 text-indigo-600" />
+            <div className="mb-4 sm:mb-6 mt-1 sm:mt-2 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/10 flex items-center justify-center">
+              <Building className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />
             </div>
             <div className="text-center max-w-md mb-4 sm:mb-6">
-              <p className="text-sm sm:text-base text-slate-600">
+              <p className="text-sm sm:text-base text-muted-foreground">
                 Lisäämällä yrityksesi tiedot voit suorittaa alustavan arvonmäärityksen, myyntikuntoisuuden arvioinnin, ja lähteä kehittämään yrityksesi myyntikuntoa sekä arvoa systemaattisesti.
               </p>
             </div>
@@ -206,7 +206,7 @@ const Index = () => {
               <div className="flex items-center gap-2">
                 Yrityksen arvo
                 {activeCompany?.name && (
-                  <span className="inline-flex items-center rounded-full bg-indigo-100 px-2 py-0.5 text-xs font-medium text-indigo-800">
+                  <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
                     {activeCompany.name}
                   </span>
                 )}

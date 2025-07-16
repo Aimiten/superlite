@@ -14,22 +14,22 @@ const SwotAndRiskTab: React.FC<SwotAndRiskTabProps> = ({
 }) => {
   return (
     <div className="space-y-6">
-      <div className="border border-indigo-100 rounded-xl p-6">
+      <div className="border border-primary/20 rounded-xl p-6 shadow-neumorphic">
         <h3 className="text-lg font-semibold mb-4">SWOT-analyysi</h3>
 
         {swotData && (Object.keys(swotData).some(key => swotData[key])) ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {swotData.strengths && (
-              <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+              <div className="p-4 bg-success/10 rounded-lg border border-success/20 shadow-neumorphic">
                 <div className="flex justify-between items-center mb-2">
-                  <h4 className="font-medium text-green-800">Vahvuudet</h4>
-                  <Badge className="bg-green-100 text-green-800 hover:bg-green-100">S</Badge>
+                  <h4 className="font-medium text-success">Vahvuudet</h4>
+                  <Badge className="bg-success/20 text-success hover:bg-success/20">S</Badge>
                 </div>
                 <div className="space-y-2">
                   {swotData.strengths.split(';').filter(Boolean).map((item: string, index: number) => (
                     <div key={index} className="flex items-start">
-                      <span className="bg-green-100 text-green-700 rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5 text-xs font-medium">{index + 1}</span>
-                      <p className="text-green-700">{cleanMarkdownText(item.trim())}</p>
+                      <span className="bg-success/20 text-success rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5 text-xs font-medium">{index + 1}</span>
+                      <p className="text-success">{cleanMarkdownText(item.trim())}</p>
                     </div>
                   ))}
                 </div>
@@ -37,16 +37,16 @@ const SwotAndRiskTab: React.FC<SwotAndRiskTabProps> = ({
             )}
 
             {swotData.weaknesses && (
-              <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+              <div className="p-4 bg-destructive/10 rounded-lg border border-destructive/20 shadow-neumorphic">
                 <div className="flex justify-between items-center mb-2">
-                  <h4 className="font-medium text-red-800">Heikkoudet</h4>
-                  <Badge className="bg-red-100 text-red-800 hover:bg-red-100">W</Badge>
+                  <h4 className="font-medium text-destructive">Heikkoudet</h4>
+                  <Badge className="bg-destructive/20 text-destructive hover:bg-destructive/20">W</Badge>
                 </div>
                 <div className="space-y-2">
                   {swotData.weaknesses.split(';').filter(Boolean).map((item: string, index: number) => (
                     <div key={index} className="flex items-start">
-                      <span className="bg-red-100 text-red-700 rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5 text-xs font-medium">{index + 1}</span>
-                      <p className="text-red-700">{cleanMarkdownText(item.trim())}</p>
+                      <span className="bg-destructive/20 text-destructive rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5 text-xs font-medium">{index + 1}</span>
+                      <p className="text-destructive">{cleanMarkdownText(item.trim())}</p>
                     </div>
                   ))}
                 </div>
@@ -54,16 +54,16 @@ const SwotAndRiskTab: React.FC<SwotAndRiskTabProps> = ({
             )}
 
             {swotData.opportunities && (
-              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <div className="p-4 bg-info/10 rounded-lg border border-info/20 shadow-neumorphic">
                 <div className="flex justify-between items-center mb-2">
-                  <h4 className="font-medium text-blue-800">Mahdollisuudet</h4>
-                  <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100">O</Badge>
+                  <h4 className="font-medium text-info">Mahdollisuudet</h4>
+                  <Badge className="bg-info/20 text-info hover:bg-info/20">O</Badge>
                 </div>
                 <div className="space-y-2">
                   {swotData.opportunities.split(';').filter(Boolean).map((item: string, index: number) => (
                     <div key={index} className="flex items-start">
-                      <span className="bg-blue-100 text-blue-700 rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5 text-xs font-medium">{index + 1}</span>
-                      <p className="text-blue-700">{cleanMarkdownText(item.trim())}</p>
+                      <span className="bg-info/20 text-info rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5 text-xs font-medium">{index + 1}</span>
+                      <p className="text-info">{cleanMarkdownText(item.trim())}</p>
                     </div>
                   ))}
                 </div>
@@ -71,16 +71,16 @@ const SwotAndRiskTab: React.FC<SwotAndRiskTabProps> = ({
             )}
 
             {swotData.threats && (
-              <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
+              <div className="p-4 bg-warning/10 rounded-lg border border-warning/20 shadow-neumorphic">
                 <div className="flex justify-between items-center mb-2">
-                  <h4 className="font-medium text-amber-800">Uhat</h4>
-                  <Badge className="bg-amber-100 text-amber-800 hover:bg-amber-100">T</Badge>
+                  <h4 className="font-medium text-warning">Uhat</h4>
+                  <Badge className="bg-warning/20 text-warning hover:bg-warning/20">T</Badge>
                 </div>
                 <div className="space-y-2">
                   {swotData.threats.split(';').filter(Boolean).map((item: string, index: number) => (
                     <div key={index} className="flex items-start">
-                      <span className="bg-amber-100 text-amber-700 rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5 text-xs font-medium">{index + 1}</span>
-                      <p className="text-amber-700">{cleanMarkdownText(item.trim())}</p>
+                      <span className="bg-warning/20 text-warning rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5 text-xs font-medium">{index + 1}</span>
+                      <p className="text-warning">{cleanMarkdownText(item.trim())}</p>
                     </div>
                   ))}
                 </div>
@@ -88,20 +88,20 @@ const SwotAndRiskTab: React.FC<SwotAndRiskTabProps> = ({
             )}
           </div>
         ) : (
-          <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
-            <p className="text-slate-500">SWOT-analyysia ei ole saatavilla tälle yritykselle.</p>
+          <div className="p-4 bg-muted rounded-lg border border-border shadow-neumorphic">
+            <p className="text-muted-foreground">SWOT-analyysia ei ole saatavilla tälle yritykselle.</p>
           </div>
         )}
       </div>
 
       {/* Riskiarviointi */}
       {valuationReport?.analysis?.risk_assessment?.content && (
-        <div className="border border-amber-100 rounded-xl p-6 bg-amber-50">
+        <div className="border border-warning/20 rounded-xl p-6 bg-warning/10 shadow-neumorphic">
           <h3 className="text-lg font-semibold flex items-center mb-3">
-            <AlertTriangle className="h-5 w-5 mr-2 text-amber-600" />
+            <AlertTriangle className="h-5 w-5 mr-2 text-warning" />
             {valuationReport.analysis.risk_assessment.title || "Riskiarviointi"}
           </h3>
-          <div className="bg-white p-4 rounded-lg border border-amber-100">
+          <div className="bg-card p-4 rounded-lg border border-warning/20 shadow-neumorphic">
             <p className="whitespace-pre-line">{cleanMarkdownText(valuationReport.analysis.risk_assessment.content)}</p>
           </div>
         </div>

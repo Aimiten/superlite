@@ -328,12 +328,12 @@ const ValuationPathQuestionForm: React.FC<ValuationPathQuestionFormProps> = ({
       <CardHeader>
         {currentStep && totalSteps && (
           <Badge variant="outline" className="mb-2 w-fit rounded-full flex items-center gap-1 text-xs py-1">
-            <div className="bg-indigo-100 text-indigo-700 rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 font-medium">{currentStep}</div>
+            <div className="bg-primary/20 text-primary rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 font-medium">{currentStep}</div>
             <span>/ {totalSteps}</span>
           </Badge>
         )}
         <CardTitle className="flex items-center">
-          <Calculator className="h-5 w-5 mr-2 text-indigo-600" />
+          <Calculator className="h-5 w-5 mr-2 text-primary" />
           Vastaa tarkentaviin kysymyksiin
         </CardTitle>
         <CardDescription>
@@ -344,8 +344,8 @@ const ValuationPathQuestionForm: React.FC<ValuationPathQuestionFormProps> = ({
 
       <CardContent className="space-y-6">
         {initialFindings && (
-          <Alert className="bg-blue-50 border-blue-200">
-            <div className="text-blue-800">
+          <Alert className="bg-info/10 border-info/20">
+            <div className="text-info-foreground">
               <h3 className="font-medium mb-1">Alustava analyysi yrityksestä</h3>
               <div className="space-y-1 text-sm">
                 {initialFindings.company_size && (
@@ -382,7 +382,7 @@ const ValuationPathQuestionForm: React.FC<ValuationPathQuestionFormProps> = ({
               if (isNewCategory) {
                 acc.push(
                   <div key={`category-${question.category}-${index}`} className="pt-2 first:pt-0">
-                    <h3 className="font-medium text-lg text-slate-800 mb-2">
+                    <h3 className="font-medium text-lg text-foreground mb-2">
                       {getCategoryLabel(question.category)}
                     </h3>
                   </div>
@@ -393,20 +393,20 @@ const ValuationPathQuestionForm: React.FC<ValuationPathQuestionFormProps> = ({
               const hasError = !!validationErrors[fieldKey];
 
               acc.push(
-                <div key={`question-${question.id}-${index}`} className={`border p-4 rounded-lg space-y-3 ${hasError ? 'border-red-300' : ''}`}>
+                <div key={`question-${question.id}-${index}`} className={`border p-4 rounded-lg space-y-3 ${hasError ? 'border-destructive/50' : ''}`}>
                   {/* Kysymys-label ja kysymys selkeästi esitettynä */}
                   <div className="space-y-2">
-                    <div className="text-sm font-medium text-slate-500">Kysymys:</div>
-                    <div className="bg-slate-50 p-4 rounded-md border-l-4 border-blue-500">
-                      <p className="text-base font-medium text-slate-800">{question.question}</p>
+                    <div className="text-sm font-medium text-muted-foreground">Kysymys:</div>
+                    <div className="bg-muted/30 p-4 rounded-md border-l-4 border-primary">
+                      <p className="text-base font-medium text-foreground">{question.question}</p>
                     </div>
                   </div>
 
                   {/* Tunnistetut arvot tilinpäätöksestä */}
                   {question.identified_values && question.identified_values !== "0" && (
-                    <div className="bg-blue-50 p-3 rounded-md mb-4">
-                      <p className="text-sm font-medium text-blue-700 mb-1">Tunnistetut arvot tilinpäätöksestä:</p>
-                      <p className="text-sm text-blue-700">
+                    <div className="bg-info/10 p-3 rounded-md mb-4">
+                      <p className="text-sm font-medium text-info-foreground mb-1">Tunnistetut arvot tilinpäätöksestä:</p>
+                      <p className="text-sm text-info-foreground">
                         {typeof question.identified_values === 'number' 
                           ? new Intl.NumberFormat('fi-FI', { style: 'currency', currency: 'EUR' }).format(question.identified_values)
                           : typeof question.identified_values === 'object'
@@ -425,12 +425,12 @@ const ValuationPathQuestionForm: React.FC<ValuationPathQuestionFormProps> = ({
                     <Textarea
                       id={question.id}
                       placeholder={getPlaceholder(question)}
-                      className={`mt-1 ${hasError ? 'border-red-500' : ''}`}
+                      className={`mt-1 ${hasError ? 'border-destructive' : ''}`}
                       value={storeAnswers[fieldKey] || ''}
                       onChange={(e) => handleInputChange(question.id, question.category, e.target.value)}
                     />
                     {hasError && (
-                      <p className="text-xs text-red-500 mt-1">{validationErrors[fieldKey]}</p>
+                      <p className="text-xs text-destructive mt-1">{validationErrors[fieldKey]}</p>
                     )}
                   </div>
 
@@ -438,24 +438,24 @@ const ValuationPathQuestionForm: React.FC<ValuationPathQuestionFormProps> = ({
                   <div className="space-y-2 mt-2">
                     {/* Näytetään normalisoinnin tarkoitus */}
                     {question.normalization_purpose && (
-                      <div className="bg-green-50 p-2 rounded-md">
-                        <p className="text-xs text-green-700">{question.normalization_purpose}</p>
+                      <div className="bg-success/10 p-2 rounded-md">
+                        <p className="text-xs text-success-foreground">{question.normalization_purpose}</p>
                       </div>
                     )}
 
                     {/* Näytetään vaikutus */}
                     {question.impact && (
-                      <div className="bg-amber-50 p-2 rounded-md">
-                        <p className="text-xs text-amber-700">{question.impact}</p>
+                      <div className="bg-warning/10 p-2 rounded-md">
+                        <p className="text-xs text-warning-foreground">{question.impact}</p>
                       </div>
                     )}
 
                     {question.source_location && (
-                      <p className="text-xs text-slate-500">Lähde: {question.source_location}</p>
+                      <p className="text-xs text-muted-foreground">Lähde: {question.source_location}</p>
                     )}
 
                     {question.context && (
-                      <p className="text-xs text-slate-500">{question.context}</p>
+                      <p className="text-xs text-muted-foreground">{question.context}</p>
                     )}
                   </div>
                 </div>
@@ -526,7 +526,7 @@ const ValuationPathQuestionForm: React.FC<ValuationPathQuestionFormProps> = ({
             <AlertDialogCancel>Peruuta</AlertDialogCancel>
             <AlertDialogAction 
               onClick={confirmSkipQuestions}
-              className="bg-amber-600 hover:bg-amber-700"
+              className="bg-warning hover:bg-warning/90"
             >
               Kyllä, ohita kysymykset
             </AlertDialogAction>

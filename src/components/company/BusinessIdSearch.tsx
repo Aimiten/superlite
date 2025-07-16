@@ -140,7 +140,7 @@ const BusinessIdSearch: React.FC<BusinessIdSearchProps> = ({
     <div className="w-full">
       <form onSubmit={handleSearch} className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="business-id" className="text-sm font-medium text-gray-700">
+          <Label htmlFor="business-id" className="text-foreground">
             {label}
           </Label>
           <div className="flex items-center gap-2">
@@ -152,16 +152,16 @@ const BusinessIdSearch: React.FC<BusinessIdSearchProps> = ({
                 value={businessId}
                 onChange={handleInputChange}
                 className={`w-full pr-10 ${
-                  isValidId === true ? "border-green-500" : 
-                  isValidId === false ? "border-red-500" : ""
+                  isValidId === true ? "border-success" : 
+                  isValidId === false ? "border-destructive" : ""
                 }`}
               />
               {isValidId !== null && (
                 <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
                   {isValidId ? (
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
+                    <CheckCircle2 className="h-5 w-5 text-success" />
                   ) : (
-                    <AlertCircle className="h-5 w-5 text-red-500" />
+                    <AlertCircle className="h-5 w-5 text-destructive" />
                   )}
                 </div>
               )}
@@ -169,7 +169,7 @@ const BusinessIdSearch: React.FC<BusinessIdSearchProps> = ({
             <Button 
               type="submit" 
               disabled={isLoading || isValidId === false}
-              className="whitespace-nowrap text-white"
+              className="whitespace-nowrap bg-primary text-primary-foreground hover:bg-primary/90"
             >
               {isLoading ? (
                 <Loader2 className="h-4 w-4 animate-spin mr-2" />
@@ -179,8 +179,8 @@ const BusinessIdSearch: React.FC<BusinessIdSearchProps> = ({
               {buttonText}
             </Button>
           </div>
-          <p className="text-xs text-slate-600 mt-1">
-            Palvelua käyttämällä hyväksyt <a href="https://www.aimiten.fi/arvento-free-ehdot" target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">Arvento Free -palvelun tilaus- ja sopimusehdot</a>
+          <p className="text-xs text-muted-foreground mt-1">
+            Palvelua käyttämällä hyväksyt <a href="https://www.aimiten.fi/arvento-free-ehdot" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Arvento Free -palvelun tilaus- ja sopimusehdot</a>
           </p>
         </div>
 
@@ -194,9 +194,9 @@ const BusinessIdSearch: React.FC<BusinessIdSearchProps> = ({
 
         {showExamples && (
           <div className="mt-4">
-            <Alert variant="default" className="bg-blue-50 border-blue-100">
-              <Info className="h-4 w-4 text-blue-500" />
-              <AlertTitle className="text-blue-700">Kokeile näitä toimivia Y-tunnuksia</AlertTitle>
+            <Alert variant="default" className="bg-info/10 border-info/20">
+              <Info className="h-4 w-4 text-info" />
+              <AlertTitle className="text-info">Kokeile näitä toimivia Y-tunnuksia</AlertTitle>
               <AlertDescription>
                 <div className="mt-2 space-y-2">
                   {EXAMPLE_BUSINESS_IDS.map((id) => (
@@ -204,7 +204,7 @@ const BusinessIdSearch: React.FC<BusinessIdSearchProps> = ({
                       key={id} 
                       variant="outline" 
                       size="sm" 
-                      className="mr-2 bg-white"
+                      className="mr-2 bg-background"
                       onClick={() => setExampleBusinessId(id)}
                     >
                       {id}
@@ -227,28 +227,28 @@ const BusinessIdSearch: React.FC<BusinessIdSearchProps> = ({
             <div className="space-y-4">
               {companyData.industry_name && (
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Toimiala</p>
+                  <p className="text-sm font-medium text-muted-foreground">Toimiala</p>
                   <p>{companyData.industry_name} ({companyData.industry_code})</p>
                 </div>
               )}
 
               {companyData.registration_date && (
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Rekisteröity</p>
+                  <p className="text-sm font-medium text-muted-foreground">Rekisteröity</p>
                   <p>{new Date(companyData.registration_date).toLocaleDateString('fi-FI')}</p>
                 </div>
               )}
 
               {companyData.company_form && (
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Yritysmuoto</p>
+                  <p className="text-sm font-medium text-muted-foreground">Yritysmuoto</p>
                   <p>{companyData.company_form}</p>
                 </div>
               )}
 
               {(companyData.street_address || companyData.postal_code || companyData.city) && (
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Osoite</p>
+                  <p className="text-sm font-medium text-muted-foreground">Osoite</p>
                   <p>
                     {companyData.street_address && <span>{companyData.street_address}, </span>}
                     {companyData.postal_code && <span>{companyData.postal_code} </span>}
@@ -259,7 +259,7 @@ const BusinessIdSearch: React.FC<BusinessIdSearchProps> = ({
 
               {companyData.website && (
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Verkkosivut</p>
+                  <p className="text-sm font-medium text-muted-foreground">Verkkosivut</p>
                   <a 
                     href={
                       companyData.website.startsWith('http') 
@@ -268,8 +268,7 @@ const BusinessIdSearch: React.FC<BusinessIdSearchProps> = ({
                     } 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline"
-                  >
+                    className="text-primary hover:underline">
                     {companyData.website}
                   </a>
                 </div>

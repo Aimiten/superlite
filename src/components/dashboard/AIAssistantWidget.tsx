@@ -104,10 +104,10 @@ const AIAssistantWidget = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
       {isOpen && (
-        <Card className="w-80 sm:w-96 h-96 mb-2 shadow-lg bg-white/95 backdrop-blur-sm">
+        <Card className="w-80 sm:w-96 h-96 mb-2 shadow-neumorphic bg-secondary/50 backdrop-blur-sm">
           <CardHeader className="pb-2">
             <div className="flex justify-between items-center">
-              <CardTitle className="text-sm flex items-center text-indigo-700">
+              <CardTitle className="text-sm flex items-center text-foreground">
                 <Bot className="h-4 w-4 mr-2" />
                 Myyntikunto AI Avustaja
               </CardTitle>
@@ -125,7 +125,7 @@ const AIAssistantWidget = () => {
             <div className="space-y-4">
               {messages.length === 0 ? (
                 <div className="text-center text-slate-500 mt-10">
-                  <Bot className="h-12 w-12 mx-auto mb-2 text-indigo-600" />
+                  <Bot className="h-12 w-12 mx-auto mb-2 text-primary" />
                   <p>Kysy minulta mitä tahansa yrityksesi myyntikuntoon liittyen.</p>
                 </div>
               ) : (
@@ -135,8 +135,8 @@ const AIAssistantWidget = () => {
                     className={cn(
                       "p-3 rounded-2xl max-w-[80%]", 
                       msg.role === "user" 
-                        ? "bg-indigo-100 ml-auto" 
-                        : "bg-slate-100"
+                        ? "bg-primary/10 ml-auto shadow-neumorphic-inset" 
+                        : "bg-secondary shadow-neumorphic-inset"
                     )}
                   >
                     {msg.content}
@@ -144,11 +144,11 @@ const AIAssistantWidget = () => {
                 ))
               )}
               {isLoading && (
-                <div className="bg-slate-100 p-3 rounded-2xl max-w-[80%]">
+                <div className="bg-secondary shadow-neumorphic-inset p-3 rounded-2xl max-w-[80%]">
                   <div className="flex space-x-2 items-center">
-                    <div className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></div>
-                    <div className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse delay-75"></div>
-                    <div className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse delay-150"></div>
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse delay-75"></div>
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse delay-150"></div>
                   </div>
                 </div>
               )}
@@ -159,13 +159,13 @@ const AIAssistantWidget = () => {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="flex-shrink-0"
+                className="flex-shrink-0 hover:shadow-neumorphic"
               >
                 <Mic className="h-4 w-4" />
               </Button>
               <Textarea 
                 placeholder="Kirjoita viestisi..." 
-                className="min-h-10 resize-none flex-1"
+                className="min-h-10 resize-none flex-1 shadow-neumorphic-inset bg-secondary/50"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -173,7 +173,7 @@ const AIAssistantWidget = () => {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="flex-shrink-0 bg-indigo-100 hover:bg-indigo-200"
+                className="flex-shrink-0 bg-primary/10 hover:bg-primary/20 shadow-neumorphic hover:shadow-neumorphic"
                 onClick={handleSendMessage}
                 disabled={!message.trim() || isLoading}
               >
@@ -188,7 +188,7 @@ const AIAssistantWidget = () => {
         onClick={toggleChat}
         variant="default"
         size="icon"
-        className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full h-14 w-14 shadow-lg ai-assistant-toggle"
+        className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full h-14 w-14 shadow-neumorphic ai-assistant-toggle"
       >
         <Bot className="h-6 w-6" />
       </Button>

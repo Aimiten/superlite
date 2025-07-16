@@ -86,7 +86,7 @@ const DeleteShareDialog: React.FC<DeleteShareDialogProps> = ({
         <Button 
           variant="outline" 
           size="sm"
-          className="text-red-800 border-red-300 hover:bg-red-100"
+          className="text-red-600 border-red-200 hover:bg-red-50"
         >
           <Trash2 className="mr-1 h-4 w-4" />
           Poista kokonaan

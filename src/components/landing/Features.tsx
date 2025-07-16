@@ -10,7 +10,7 @@ const Features = () => {
   ];
   
   return (
-    <section id="features" className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section id="features" className="py-16 px-4 sm:px-6 lg:px-8 bg-muted">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -30,7 +30,7 @@ const Features = () => {
             {[...Array(3)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute rounded-full bg-indigo-100/50"
+                className="absolute rounded-full bg-primary/10 shadow-neumorphic"
                 style={{
                   width: `${(i + 2) * 100}px`,
                   height: `${(i + 2) * 100}px`,
@@ -65,7 +65,7 @@ const Features = () => {
             >
               <div className="flex items-center space-x-16">
                 {rotatingSentences.map((sentence, index) => (
-                  <div key={`sentence-${index}`} className="text-lg font-medium text-indigo-700">
+                  <div key={`sentence-${index}`} className="text-lg font-medium text-primary">
                     {sentence}
                   </div>
                 ))}
@@ -87,7 +87,7 @@ const Features = () => {
             >
               <div className="flex items-center space-x-16">
                 {[...rotatingSentences].reverse().map((sentence, index) => (
-                  <div key={`sentence-reverse-${index}`} className="text-lg font-medium text-indigo-700">
+                  <div key={`sentence-reverse-${index}`} className="text-lg font-medium text-primary">
                     {sentence}
                   </div>
                 ))}

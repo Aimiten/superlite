@@ -44,18 +44,18 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
 
   return (
     <div className="mb-6">
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="border border-indigo-100 rounded-xl overflow-hidden">
-        <div className="bg-gradient-to-r from-indigo-600 to-blue-700 p-4">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="border border-primary/20 rounded-xl overflow-hidden">
+        <div className="bg-gradient-to-r from-primary to-primary/80 p-4">
           <h2 className="text-xl font-bold text-white">Arvonmääritysraportti</h2>
-          <p className="text-indigo-100 text-sm mt-1">
+          <p className="text-primary/90 text-sm mt-1">
             Tekoälyn tuottama analyysi yrityksen arvosta ja suositukset arvon kehittämiseksi
           </p>
         </div>
 
-        <TabsList className="w-full justify-start p-2 bg-indigo-50 border-b border-indigo-100">
+        <TabsList className="w-full justify-start p-2 bg-primary/5 border-b border-primary/20">
           <TabsTrigger 
             value="arvo-yhteenveto" 
-            className="flex items-center gap-1 data-[state=active]:bg-white data-[state=active]:text-indigo-700 data-[state=active]:shadow-sm"
+            className="flex items-center gap-1 data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:border data-[state=active]:border-primary/30"
           >
             <Target size={16} />
             <span className="hidden sm:inline">Arvon yhteenveto</span>
@@ -64,7 +64,7 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
 
           <TabsTrigger 
             value="yritys" 
-            className="flex items-center gap-1 data-[state=active]:bg-white data-[state=active]:text-indigo-700 data-[state=active]:shadow-sm"
+            className="flex items-center gap-1 data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:border data-[state=active]:border-primary/30"
           >
             <Building size={16} />
             <span>Yritys</span>
@@ -72,7 +72,7 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
 
           <TabsTrigger 
             value="talous" 
-            className="flex items-center gap-1 data-[state=active]:bg-white data-[state=active]:text-indigo-700 data-[state=active]:shadow-sm"
+            className="flex items-center gap-1 data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:border data-[state=active]:border-primary/30"
           >
             <FileBarChart size={16} />
             <span>Talous</span>
@@ -80,7 +80,7 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
 
           <TabsTrigger 
             value="menetelmat" 
-            className="flex items-center gap-1 data-[state=active]:bg-white data-[state=active]:text-indigo-700 data-[state=active]:shadow-sm"
+            className="flex items-center gap-1 data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:border data-[state=active]:border-primary/30"
           >
             <LineChart size={16} />
             <span className="hidden sm:inline">Arvostusmenetelmät</span>
@@ -89,7 +89,7 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
 
           <TabsTrigger 
             value="swot" 
-            className="flex items-center gap-1 data-[state=active]:bg-white data-[state=active]:text-indigo-700 data-[state=active]:shadow-sm"
+            className="flex items-center gap-1 data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:border data-[state=active]:border-primary/30"
           >
             <PieChart size={16} />
             <span>SWOT</span>
@@ -97,7 +97,7 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
 
           <TabsTrigger 
             value="suositukset" 
-            className="flex items-center gap-1 data-[state=active]:bg-white data-[state=active]:text-indigo-700 data-[state=active]:shadow-sm"
+            className="flex items-center gap-1 data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:border data-[state=active]:border-primary/30"
           >
             <TrendingUp size={16} />
             <span>Suositukset</span>
@@ -133,7 +133,7 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
             {valuationReport?.analysis?.financial_performance?.content && (
               <div className="border border-green-100 rounded-xl p-6 bg-green-50 mt-6">
                 <h3 className="text-lg font-semibold flex items-center mb-3">
-                  <FileBarChart className="h-5 w-5 mr-2 text-green-600" />
+                  <FileBarChart className="h-5 w-5 mr-2 text-success" />
                   {valuationReport.analysis.financial_performance.title || "Taloudellinen suorituskyky"}
                 </h3>
                 <div className="bg-white p-4 rounded-lg border border-green-100">
@@ -163,9 +163,9 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
           <TabsContent value="suositukset" className="mt-0">
             {valuationReport?.recommendations && valuationReport.recommendations.length > 0 ? (
               <div className="space-y-6">
-                <div className="border border-indigo-100 rounded-xl p-6">
+                <div className="border border-primary/20 rounded-xl p-6">
                   <h3 className="text-lg font-semibold flex items-center mb-4">
-                    <TrendingUp className="h-5 w-5 mr-2 text-indigo-600" />
+                    <TrendingUp className="h-5 w-5 mr-2 text-primary" />
                     Toimenpidesuositukset arvon kasvattamiseksi
                   </h3>
 
@@ -181,16 +181,16 @@ const ImprovedValuationTabs: React.FC<ValuationTabsProps> = ({
 
                       return Object.entries(categorized).map(([category, recs], categoryIndex) => (
                         <div key={categoryIndex} className="space-y-3">
-                          <h4 className="font-medium text-indigo-900 pb-1 border-b border-indigo-100">{category}</h4>
+                          <h4 className="font-medium text-primary pb-1 border-b border-primary/20">{category}</h4>
 
                           {recs.map((rec: any, recIndex: number) => (
                             <div key={recIndex} className="p-4 bg-white rounded-lg border border-slate-200">
                               <div className="flex items-start gap-3">
-                                <div className="bg-indigo-100 text-indigo-700 rounded-full w-7 h-7 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <div className="bg-primary/10 text-primary rounded-full w-7 h-7 flex items-center justify-center flex-shrink-0 mt-0.5">
                                   {categoryIndex + 1}.{recIndex + 1}
                                 </div>
                                 <div>
-                                  <h5 className="font-semibold text-indigo-800">{cleanMarkdownText(rec.title)}</h5>
+                                  <h5 className="font-semibold text-primary">{cleanMarkdownText(rec.title)}</h5>
                                   <p className="mt-1 text-slate-600">{cleanMarkdownText(rec.description)}</p>
                                 </div>
                               </div>

@@ -32,16 +32,16 @@ const ValuationsList = ({
   if (isLoading) {
     return (
       <div className="flex justify-center py-8">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
       </div>
     );
   }
 
   if (valuations.length === 0) {
     return (
-      <Card className="mb-4 bg-slate-50">
+      <Card className="mb-4 bg-muted shadow-neumorphic">
         <CardContent className="p-6 text-center">
-          <p className="text-slate-500">Ei vielä arvonmäärityksiä.</p>
+          <p className="text-base text-muted-foreground">Ei vielä arvonmäärityksiä.</p>
           {onRefresh && (
             <Button 
               variant="outline"
@@ -98,18 +98,18 @@ const ValuationsList = ({
       {valuations.map((valuation) => (
         <Card 
           key={valuation.id} 
-          className="hover:border-indigo-200 transition-colors cursor-pointer"
+          className="hover:border-primary/30 transition-all cursor-pointer shadow-neumorphic hover:shadow-neumorphic-pressed"
           onClick={() => onSelect && onSelect(valuation)}
         >
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
-                <div className="bg-indigo-100 p-2 rounded-full mr-4">
-                  <FileBarChart className="h-5 w-5 text-indigo-600" />
+                <div className="bg-primary/20 p-2 rounded-full mr-4">
+                  <FileBarChart className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium">{valuation.company_name}</h3>
-                  <div className="flex items-center text-sm text-slate-500">
+                  <h3 className="text-base font-medium">{valuation.company_name}</h3>
+                  <div className="flex items-center text-sm text-muted-foreground">
                     <Calendar className="h-3.5 w-3.5 mr-1" />
                     {formatDate(valuation.created_at)}
                   </div>
@@ -119,10 +119,10 @@ const ValuationsList = ({
               <div className="flex items-center gap-4">
                 {valuation.results && valuation.results.most_likely_value && (
                   <div className="text-right hidden sm:block">
-                    <div className="text-sm font-medium text-slate-800">
+                    <div className="text-sm font-medium text-foreground">
                       {formatCompanyValue(valuation.results.most_likely_value)}
                     </div>
-                    <div className="text-xs text-slate-500">Todennäköinen arvo</div>
+                    <div className="text-xs text-muted-foreground">Todennäköinen arvo</div>
                   </div>
                 )}
                 
@@ -130,7 +130,7 @@ const ValuationsList = ({
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-indigo-600 hover:text-indigo-700 hover:bg-indigo-50"
+                    className="text-primary hover:text-primary/80 hover:bg-primary/10"
                     onClick={(e) => {
                       e.stopPropagation();
                       navigate(`/valuation?id=${valuation.id}`);

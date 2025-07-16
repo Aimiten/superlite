@@ -49,16 +49,16 @@ const StarRatingComponent = ({ valuationData, targetTable = "free_calculator_res
             onMouseEnter={() => !hasRated && setHoveredRating(star)}
             onMouseLeave={() => !hasRated && setHoveredRating(null)}
             disabled={hasRated}
-            className={`w-12 h-12 flex items-center justify-center rounded-md border-2 shadow-sm transition-all 
+            className={`w-12 h-12 flex items-center justify-center rounded-md border-2 ring-1 ring-gray-200/20 transition-all 
               ${hasRated 
                 ? (star <= (selectedRating || 0) 
                     ? 'text-yellow-500 border-yellow-400 bg-yellow-50' 
                     : 'text-gray-400 border-gray-300') 
                 : (hoveredRating !== null 
                     ? (star <= (hoveredRating || 0) 
-                        ? 'text-yellow-500 border-yellow-400 bg-yellow-50 hover:shadow-md hover:scale-110 cursor-pointer' 
-                        : 'text-gray-400 border-gray-300 hover:shadow-md hover:scale-110 cursor-pointer') 
-                    : 'text-gray-400 border-gray-300 hover:shadow-md hover:scale-110 cursor-pointer'
+                        ? 'text-yellow-500 border-yellow-400 bg-yellow-50 hover:ring-2 hover:ring-yellow-300/30 hover:scale-110 cursor-pointer' 
+                        : 'text-gray-400 border-gray-300 hover:ring-2 hover:ring-gray-300/30 hover:scale-110 cursor-pointer') 
+                    : 'text-gray-400 border-gray-300 hover:ring-2 hover:ring-gray-300/30 hover:scale-110 cursor-pointer'
                 )
               }`}
             aria-label={`Anna ${star} tähden arvio`}

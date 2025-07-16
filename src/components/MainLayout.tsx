@@ -48,7 +48,7 @@ const MainLayout = () => {
 
   // Muuten käytetään perus-layoutia (ei-dashboard sivuille)
   return (
-    <div className="min-h-screen gradient-bg flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       <header className="py-3 md:py-4 px-3 sm:px-6 lg:px-8 bg-white/70 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link to="/dashboard" className="flex items-center gap-1 md:gap-2 group">

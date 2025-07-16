@@ -37,7 +37,7 @@ const CheckoutSuccess = () => {
       <div className="min-h-screen flex items-center justify-center">
         <Card className="p-8">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
             <p>Käsitellään tilaustasi...</p>
           </div>
         </Card>
@@ -46,16 +46,16 @@ const CheckoutSuccess = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center bg-muted/50">
       <Card className="max-w-md w-full p-8">
         <div className="text-center">
-          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+          <CheckCircle className="w-16 h-16 text-success mx-auto mb-4" />
           <h1 className="text-2xl font-bold mb-2">Tilaus onnistui!</h1>
-          <p className="text-gray-600 mb-6">
+          <p className="text-muted-foreground mb-6">
             Tervetuloa Arventon käyttäjäksi! Lähetimme sinulle sähköpostin,
             jossa on linkki salasanan asettamiseen.
           </p>
-          <p className="text-sm text-gray-500 mb-6">
+          <p className="text-sm text-muted-foreground mb-6">
             Tarkista myös roskapostikansiosi, jos viestiä ei näy.
           </p>
           <Button 

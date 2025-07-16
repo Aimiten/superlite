@@ -23,15 +23,15 @@ const ValuationCard: React.FC<ValuationCardProps> = ({
   subtext 
 }) => {
   return (
-    <div className={`p-4 rounded-lg border ${highlight ? 'bg-indigo-50 border-indigo-200' : 'bg-white'}`}>
+    <div className={`p-4 rounded-lg border shadow-neumorphic ${highlight ? 'bg-primary/10 border-primary/20' : 'bg-background border-border'}`}>
       <div className="flex items-center gap-3">
-        <div className={`rounded-full p-2 ${highlight ? 'bg-indigo-100 text-indigo-700' : 'bg-slate-100 text-slate-700'}`}>
+        <div className={`rounded-full p-2 ${highlight ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'}`}>
           {icon}
         </div>
         <div>
-          <h3 className="text-sm font-medium text-slate-500">{title}</h3>
-          <p className={`text-xl font-bold ${highlight ? 'text-indigo-700' : 'text-slate-700'}`}>{value}</p>
-          {subtext && <p className="text-xs text-slate-500 mt-1">{subtext}</p>}
+          <h3 className="text-sm font-medium text-muted-foreground">{title}</h3>
+          <p className={`text-xl font-bold ${highlight ? 'text-primary' : 'text-foreground'}`}>{value}</p>
+          {subtext && <p className="text-xs text-muted-foreground mt-1">{subtext}</p>}
         </div>
       </div>
     </div>
@@ -102,17 +102,17 @@ const ValuationDashboard: React.FC<ValuationDashboardProps> = ({
   };
 
   return (
-    <Card className="mb-6 overflow-hidden">
-      <div className="bg-gradient-to-r from-indigo-600 to-blue-700 p-6 text-white">
+    <Card className="mb-6 overflow-hidden shadow-neumorphic">
+      <div className="bg-primary p-6 text-primary-foreground">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
           <div>
             <h2 className="text-2xl font-bold">{companyName || "Yritys"}</h2>
-            <p className="text-indigo-100">
+            <p className="text-primary-foreground/80">
               {companyType && `${companyType} • `}
               {businessId && `Y-tunnus: ${businessId}`}
             </p>
           </div>
-          <Badge variant="outline" className="text-white border-white bg-white/10 h-6">
+          <Badge variant="outline" className="text-primary-foreground border-primary-foreground/50 bg-primary-foreground/10 h-6">
             Arvonmääritys {formatDate(valuationDate)}
           </Badge>
         </div>
@@ -140,8 +140,8 @@ const ValuationDashboard: React.FC<ValuationDashboardProps> = ({
         </div>
 
         {/* Visuaalinen arvohaarukka */}
-        <div className="mt-6 p-4 bg-slate-50 rounded-lg">
-          <h3 className="text-sm font-medium text-slate-500 mb-2">Arvohaarukka</h3>
+        <div className="mt-6 p-4 bg-muted rounded-lg shadow-neumorphic">
+          <h3 className="text-sm font-medium text-muted-foreground mb-2">Arvohaarukka</h3>
           <ValuationRangeChart 
             min={minValue} 
             max={maxValue} 
@@ -152,34 +152,34 @@ const ValuationDashboard: React.FC<ValuationDashboardProps> = ({
 
         {/* Taloudelliset pääindikaattorit */}
         <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="p-3 bg-slate-50 rounded-lg">
+          <div className="p-3 bg-muted rounded-lg shadow-neumorphic">
             <div className="flex items-center gap-2">
-              <TrendingUp size={14} className="text-slate-500" />
-              <h3 className="text-xs font-medium text-slate-500">Liikevaihto</h3>
+              <TrendingUp size={14} className="text-muted-foreground" />
+              <h3 className="text-xs font-medium text-muted-foreground">Liikevaihto</h3>
             </div>
             <p className="text-lg font-semibold mt-1">{formatCurrency(revenue)}</p>
           </div>
 
-          <div className="p-3 bg-slate-50 rounded-lg">
+          <div className="p-3 bg-muted rounded-lg shadow-neumorphic">
             <div className="flex items-center gap-2">
-              <TrendingUp size={14} className="text-slate-500" />
-              <h3 className="text-xs font-medium text-slate-500">EBITDA</h3>
+              <TrendingUp size={14} className="text-muted-foreground" />
+              <h3 className="text-xs font-medium text-muted-foreground">EBITDA</h3>
             </div>
             <p className="text-lg font-semibold mt-1">{formatCurrency(ebitda)}</p>
           </div>
 
-          <div className="p-3 bg-slate-50 rounded-lg">
+          <div className="p-3 bg-muted rounded-lg shadow-neumorphic">
             <div className="flex items-center gap-2">
-              <TrendingUp size={14} className="text-slate-500" />
-              <h3 className="text-xs font-medium text-slate-500">EBIT</h3>
+              <TrendingUp size={14} className="text-muted-foreground" />
+              <h3 className="text-xs font-medium text-muted-foreground">EBIT</h3>
             </div>
             <p className="text-lg font-semibold mt-1">{formatCurrency(ebit)}</p>
           </div>
 
-          <div className="p-3 bg-slate-50 rounded-lg">
+          <div className="p-3 bg-muted rounded-lg shadow-neumorphic">
             <div className="flex items-center gap-2">
-              <FileBarChart size={14} className="text-slate-500" />
-              <h3 className="text-xs font-medium text-slate-500">Nettovelka</h3>
+              <FileBarChart size={14} className="text-muted-foreground" />
+              <h3 className="text-xs font-medium text-muted-foreground">Nettovelka</h3>
             </div>
             <p className="text-lg font-semibold mt-1">{formatCurrency(netDebt)}</p>
           </div>
@@ -187,7 +187,7 @@ const ValuationDashboard: React.FC<ValuationDashboardProps> = ({
 
         {/* Info menetelmistä */}
         {methodsCount > 0 && (
-          <div className="mt-4 flex items-center gap-2 text-xs text-slate-500">
+          <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
             <span>Perustuu {methodsCount} arvostusmenetelmään</span>
           </div>
         )}

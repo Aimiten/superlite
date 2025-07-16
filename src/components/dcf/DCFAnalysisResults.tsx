@@ -14,8 +14,8 @@ export const DCFAnalysisResults: React.FC<DCFAnalysisResultsProps> = ({ analysis
   // Check for required data
   if (!analysisData.valuation_summary || !analysisData.valuation_summary.probability_weighted_valuation) {
     return (
-      <Alert className="border-red-200 bg-red-50">
-        <AlertCircle className="h-4 w-4" />
+      <Alert className="border-destructive">
+        <AlertCircle className="h-4 w-4 text-destructive" />
         <AlertDescription>
           DCF-analyysi on puutteellinen. Tarvittavia tietoja puuttuu.
         </AlertDescription>

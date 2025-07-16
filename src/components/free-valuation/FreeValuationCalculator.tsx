@@ -334,7 +334,7 @@ const FreeValuationCalculator: React.FC<FreeValuationCalculatorProps> = ({
 
   return (
     <div>
-      <h3 className="text-lg font-medium text-slate-800 mb-4">
+      <h3 className="text-lg font-medium text-secondary mb-4">
         Syötä taloudelliset tiedot
       </h3>
 
@@ -351,7 +351,7 @@ const FreeValuationCalculator: React.FC<FreeValuationCalculatorProps> = ({
         </TabsList>
 
         <TabsContent value="upload" className="space-y-4">
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+          <div className="border-2 border-dashed border-border rounded-lg p-8 text-center">
             <input
               id="file-upload"
               name="file-upload"
@@ -363,38 +363,38 @@ const FreeValuationCalculator: React.FC<FreeValuationCalculatorProps> = ({
 
             <div className="space-y-4">
               <div className="flex justify-center">
-                <Upload className="h-12 w-12 text-gray-400" />
+                <Upload className="h-12 w-12 text-muted-foreground" />
               </div>
 
               <div className="text-sm">
                 <label
                   htmlFor="file-upload"
-                  className="cursor-pointer rounded-md font-medium text-indigo-600 hover:text-indigo-500"
+                  className="cursor-pointer rounded-md font-medium text-primary hover:text-primary/80"
                 >
                   <span>Lataa tilinpäätös</span>
                 </label>
-                <p className="text-gray-500 mt-1">PDF-tiedosto, maks. 10 MB</p>
+                <p className="text-muted-foreground mt-1">PDF-tiedosto, maks. 10 MB</p>
               </div>
 
               {file && (
-                <div className="mt-2 text-gray-900 bg-gray-50 px-4 py-3 rounded-lg">
+                <div className="mt-2 text-secondary bg-muted px-4 py-3 rounded-lg">
                   <p className="text-sm font-medium">{file.name}</p>
-                  <p className="text-xs text-gray-500">{Math.round(file.size / 1024)} KB</p>
+                  <p className="text-xs text-muted-foreground">{Math.round(file.size / 1024)} KB</p>
                 </div>
               )}
             </div>
           </div>
 
-          <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-xl text-blue-700 text-sm">
-            <p className="font-medium mb-2">PDF-muotoisen tilinpäätöksen käsittely</p>
-            <p>PDF-tiedostot analysoidaan tekoälyä hyödyntäen. Arvento AI ymmärtää tilinpäätösdokumentit kokonaisuutena, mukaan lukien taulukot, kaaviot ja visuaalisen sisällön.</p>
+          <div className="mt-4 p-4 bg-info/10 border border-info/20 rounded-xl text-info">
+            <p className="text-base font-medium mb-2">PDF-muotoisen tilinpäätöksen käsittely</p>
+            <p className="text-base">PDF-tiedostot analysoidaan tekoälyä hyödyntäen. Arvento AI ymmärtää tilinpäätösdokumentit kokonaisuutena, mukaan lukien taulukot, kaaviot ja visuaalisen sisällön.</p>
           </div>
         </TabsContent>
 
         <TabsContent value="manual" className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="revenue" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="revenue" className="block text-base font-medium text-secondary">
                 Liikevaihto (€)
               </label>
               <Input
@@ -407,7 +407,7 @@ const FreeValuationCalculator: React.FC<FreeValuationCalculatorProps> = ({
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="profit" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="profit" className="block text-base font-medium text-secondary">
                 Tulos (€)
               </label>
               <Input
@@ -420,7 +420,7 @@ const FreeValuationCalculator: React.FC<FreeValuationCalculatorProps> = ({
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="assets" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="assets" className="block text-base font-medium text-secondary">
                 Varat yhteensä (€)
               </label>
               <Input
@@ -433,7 +433,7 @@ const FreeValuationCalculator: React.FC<FreeValuationCalculatorProps> = ({
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="liabilities" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="liabilities" className="block text-base font-medium text-secondary">
                 Velat yhteensä (€)
               </label>
               <Input

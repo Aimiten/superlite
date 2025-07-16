@@ -14,6 +14,7 @@ import EmptyValuationState from '@/components/valuation/EmptyValuationState';
 import ValuationLoadingStep from '@/components/valuation/ValuationLoadingStep';
 import ValuationPathQuestionForm from "@/components/valuation/ValuationPathQuestionForm";
 import ValuationsList from "@/components/valuation/ValuationsList";
+import ValuationNextSteps from "@/components/valuation/ValuationNextSteps";
 
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import { Button } from "@/components/ui/button";
@@ -36,6 +37,8 @@ const Valuation = () => {
   const { toast } = useToast();
   const { user } = useAuth();
   const { activeCompany } = useCompany();
+  const [shareUrl, setShareUrl] = useState<string | null>(null);
+  const [isSharing, setIsSharing] = useState(false);
 
   const { 
     latestValuationId, setLatestValuationId,
@@ -227,7 +230,7 @@ const Valuation = () => {
       setRequiresUserInput(false);
       progress.update("generating-report", 95);
       progress.complete("generating-report");
-      setCurrentStep(3);
+      setCurrentStep(4);
 
       toast({
         title: "Analyysi valmis", 
@@ -273,7 +276,7 @@ const Valuation = () => {
             Object.keys(data.progress_data.financial_answers).length > 0) {
           setFinancialAnswers(data.progress_data.financial_answers);
 
-          if (data.progress_data.current_step === 2.5) {
+          if (data.progress_data.current_step === 3 || data.progress_data.current_step === 2.5) {
             toast({
               title: "Tallennetut vastaukset palautettu",
               description: "Voit jatkaa siitä mihin jäit"
@@ -503,7 +506,7 @@ const analyzeCompany = async () => {
             setFinancialQuestions(status.questions);
             setInitialFindings(status.initial_findings);
             setRequiresUserInput(true);
-            setCurrentStep(2.5);
+            setCurrentStep(3);
 
             toast({
               title: "Dokumenttianalyysi valmis",
@@ -580,7 +583,7 @@ const analyzeCompany = async () => {
       setSelectedDocuments(documentIds.filter(id => typeof id === 'string'));
     }
 
-    setCurrentStep(3);
+    setCurrentStep(4);
     setShowNewValuationForm(true);
 
     toast({
@@ -609,6 +612,51 @@ const analyzeCompany = async () => {
     resetValuationState();
     setSelectedValuationId(null);
   }, [setShowNewValuationForm, resetValuationState, setSelectedValuationId]);
+
+  const handleShare = async () => {
+    if (!latestValuationId && !selectedValuationId) {
+      toast({
+        title: "Virhe",
+        description: "Arvonmääritystä ei löydy jaettavaksi",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSharing(true);
+    
+    try {
+      const valuationId = selectedValuationId || latestValuationId;
+      const { data, error } = await supabase
+        .from('valuations')
+        .update({ is_public: true })
+        .eq('id', valuationId)
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      const url = `${window.location.origin}/shared/valuation/${valuationId}`;
+      setShareUrl(url);
+      
+      // Copy to clipboard
+      await navigator.clipboard.writeText(url);
+      
+      toast({
+        title: "Linkki kopioitu!",
+        description: "Jaettava linkki on kopioitu leikepöydälle",
+      });
+    } catch (error) {
+      console.error('Error sharing valuation:', error);
+      toast({
+        title: "Virhe",
+        description: "Jakaminen epäonnistui. Yritä uudelleen.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSharing(false);
+    }
+  };
 
   const renderDocumentSelection = () => (
     <div className="space-y-2 mt-4">
@@ -702,7 +750,7 @@ const analyzeCompany = async () => {
   };
 
   const renderStep = () => {
-    if (selectedValuationId && currentStep !== 3 && isLoading) {
+    if (selectedValuationId && currentStep !== 4 && isLoading) {
       return (
         <div className="flex justify-center items-center py-10">
           <Loader2 className="h-12 w-12 text-indigo-600 animate-spin" />
@@ -721,12 +769,12 @@ const analyzeCompany = async () => {
           <>
             <ValuationPrinciples />
             <div className="mb-6">
-              <div className="border p-6 rounded-lg shadow-sm">
+              <div className="border p-6 rounded-lg shadow-neumorphic">
                 <div className="flex justify-between items-center mb-4">
                   <div>
                     <Badge variant="outline" className="mb-2 w-fit rounded-full flex items-center gap-1 text-xs py-1">
                       <div className="bg-indigo-100 text-indigo-700 rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 font-medium">1</div>
-                      <span>/ 3</span>
+                      <span>/ 4</span>
                     </Badge>
                     <h2 className="text-xl font-bold">Yritystiedot ja dokumentit</h2>
                     {activeCompany ? (
@@ -906,11 +954,12 @@ const analyzeCompany = async () => {
             progress={analysisProgress}
             error={error}
             currentStep={2}
-            totalSteps={3}
+            totalSteps={4}
           />
         );
 
       case 2.5:
+      case 3:
         return (
           <ValuationPathQuestionForm
             questions={financialQuestions}
@@ -919,12 +968,12 @@ const analyzeCompany = async () => {
             companyType={activeCompany?.company_type}
             onSubmit={handleAnswersSubmit}
             isProcessing={isProcessing}
-            currentStep={2}
-            totalSteps={3}
+            currentStep={3}
+            totalSteps={4}
           />
         );
 
-      case 3:
+      case 4:
         return (
           <>
             <div className="flex flex-wrap justify-between items-center gap-2 mb-4">
@@ -945,6 +994,12 @@ const analyzeCompany = async () => {
                 Siirry myyntikunnon analysointiin
               </Button>
             </div>
+
+            {/* Step indicator for the final step */}
+            <Badge variant="outline" className="mb-4 w-fit rounded-full flex items-center gap-1 text-xs py-1">
+              <div className="bg-indigo-100 text-indigo-700 rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 font-medium">4</div>
+              <span>/ 4</span>
+            </Badge>
 
             {financialAnalysis?.error && (
               <Alert variant="destructive" className="mb-4">
@@ -1015,6 +1070,15 @@ const analyzeCompany = async () => {
                   <EnhancedValuationReport report={valuationReport} />
                 )}
               </>
+            )}
+
+            {/* Next Steps Section - Always show when valuation is complete */}
+            {valuationReport && !valuationReport.error && (
+              <ValuationNextSteps 
+                onShare={handleShare}
+                valuationId={selectedValuationId || latestValuationId}
+                companyName={financialAnalysis?.company?.name || activeCompany?.name}
+              />
             )}
           </>
         );

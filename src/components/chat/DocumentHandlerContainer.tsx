@@ -102,7 +102,7 @@ const DocumentHandlerContainer: React.FC<DocumentHandlerContainerProps> = ({
 
   return (
     <div className="border rounded-md p-4 bg-muted/30">
-      <Alert className="mb-3 bg-green-50 border-green-200 text-green-800">
+      <Alert className="mb-3 bg-success/10 border-success/20 text-success">
         <AlertDescription className="flex items-center gap-2">
           <FileUp className="h-4 w-4" />
           <span>Dokumentti on valmis! Voit ladata sen eri tiedostomuodossa.</span>

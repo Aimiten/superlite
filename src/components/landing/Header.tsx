@@ -57,10 +57,10 @@ const Header = ({ isLoggedIn, handleNavigation, customLinks, useNavigation = fal
   };
 
   return (
-    <header className="py-4 px-4 sm:px-6 lg:px-8 bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+    <header className="py-4 px-4 sm:px-6 lg:px-8 bg-background sticky top-0 z-50 shadow-neumorphic">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <a href="https://arvento.fi" className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-700 to-indigo-700">
+          <a href="https://arvento.fi" className="text-xl font-bold text-primary">
             Arvento
           </a>
         </div>
@@ -78,7 +78,7 @@ const Header = ({ isLoggedIn, handleNavigation, customLinks, useNavigation = fal
           <Button 
             variant="default" 
             size="sm"
-            className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-full px-6 shadow-md hover:shadow-lg transition-all"
+            className="bg-primary text-primary-foreground rounded-full px-6 shadow-neumorphic-primary hover:shadow-neumorphic-primary-pressed transition-all"
             onClick={() => isLoggedIn ? handleNavigation() : window.open('https://tally.so/r/wQ4WOp', '_blank')}
           >
             {isLoggedIn ? "Siirry sovellukseen" : "Kirjaudu sisään"}
@@ -102,7 +102,7 @@ const Header = ({ isLoggedIn, handleNavigation, customLinks, useNavigation = fal
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg py-4 px-6 flex flex-col space-y-4"
+          className="md:hidden absolute top-full left-0 right-0 bg-background shadow-neumorphic py-4 px-6 flex flex-col space-y-4"
         >
           {menuItems.map((item, index) => (
             <button
@@ -116,7 +116,7 @@ const Header = ({ isLoggedIn, handleNavigation, customLinks, useNavigation = fal
           <Button 
             variant="default" 
             size="sm"
-            className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-full mt-4"
+            className="bg-primary text-primary-foreground rounded-full mt-4 shadow-neumorphic-primary hover:shadow-neumorphic-primary-pressed transition-all"
             onClick={handleNavigation}
           >
             {isLoggedIn ? "Siirry sovellukseen" : "Kirjaudu sisään"}

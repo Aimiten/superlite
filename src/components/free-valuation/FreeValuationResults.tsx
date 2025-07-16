@@ -199,8 +199,8 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
     // Fallback perusrakenne, jos odotettua dataa ei löydy
     if (!valuationResults || !valuationResults.finalAnalysis) {
       return (
-        <div className="p-4 bg-red-50 border border-red-300 rounded">
-          <h3 className="text-red-700">Odottamaton tietorakenne</h3>
+        <div className="p-4 bg-destructive/10 border border-destructive/30 rounded">
+          <h3 className="text-destructive">Odottamaton tietorakenne</h3>
           <pre className="mt-2 text-xs overflow-auto max-h-64">
             {JSON.stringify(valuationResults, null, 2)}
           </pre>
@@ -214,22 +214,22 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
         {/* Header with company name and description */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <div className="h-10 w-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold">
+            <div className="h-10 w-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">
               {displayCompanyName.charAt(0).toUpperCase()}
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">
-                {displayCompanyName} <span className="text-lg font-normal text-gray-500">| Arvonmääritys</span>
+              <h2 className="text-2xl font-bold text-secondary">
+                {displayCompanyName} <span className="text-lg font-normal text-secondary/60">| Arvonmääritys</span>
               </h2>
-              <p className="text-gray-600 text-sm">
+              <p className="text-secondary/70 text-sm">
                 Laadittu {new Date().toLocaleDateString('fi-FI')} | Ilmainen, alustava arvio
               </p>
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-4 rounded-lg">
-            <p className="text-gray-600">
-              Tämä on ilmainen, alustava arvio yrityksesi arvosta. Tarkemman analyysin ja toimenpidesuositukset saat pian käyttämällä <span className="font-semibold text-indigo-600">Arvento Lite ja Pro</span> -versioita.
+          <div className="bg-gradient-to-r bg-primary/10 p-4 rounded-lg">
+            <p className="text-base text-secondary/70">
+              Tämä on ilmainen, alustava arvio yrityksesi arvosta. Tarkemman analyysin ja toimenpidesuositukset saat pian käyttämällä <span className="font-semibold text-primary">Arvento Lite ja Pro</span> -versioita.
             </p>
           </div>
         </div>
@@ -256,21 +256,21 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
           {/* UUSI JÄRJESTYS: 2x2 Grid laskelmille */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Substanssiarvo */}
-            <Card className={`p-4 border ${calculationValues.is_substanssi_negative ? 'border-amber-300 bg-amber-50' : ''}`}>
+            <Card className={`p-4 border ${calculationValues.is_substanssi_negative ? 'border-destructive/30 bg-destructive/10' : ''}`}>
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
                   <h3 className="font-medium">Substanssiarvo</h3>
                   {calculationValues.is_substanssi_negative && (
-                    <AlertTriangle className="h-4 w-4 text-amber-500" />
+                    <AlertTriangle className="h-4 w-4 text-destructive" />
                   )}
                 </div>
-                <div className={`text-xl font-semibold ${calculationValues.is_substanssi_negative ? 'text-amber-700' : ''}`}>
+                <div className={`text-xl font-semibold ${calculationValues.is_substanssi_negative ? 'text-destructive' : ''}`}>
                   {calculationValues.is_substanssi_negative 
                     ? `${formatCurrency(calculationValues.substanssi_value * -1)} (negatiivinen)` 
                     : formatCurrency(calculationValues.substanssi_value)}
                 </div>
               </div>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-secondary/60 mt-1">
                 {calculationValues.is_substanssi_negative 
                   ? "Velat ylittävät yrityksen varat. Tämä voi vaikuttaa arvoon negatiivisesti."
                   : "Perustuu yrityksen varallisuuteen ja velkoihin"}
@@ -287,18 +287,18 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
                   {formatCurrency(calculationValues.ev_liikevaihto_value)}
                 </div>
               </div>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-secondary/60 mt-1">
                 Perustuu yrityksen liikevaihtoon ja toimialan kertoimeen ({calculationValues.ev_kerroin.toFixed(1)}x)
               </p>
             </Card>
 
             {/* EV/EBIT-arvostus */}
-            <Card className={`p-4 border ${calculationValues.is_ebit_negative_or_zero ? 'border-amber-300 bg-amber-50' : ''}`}>
+            <Card className={`p-4 border ${calculationValues.is_ebit_negative_or_zero ? 'border-destructive/30 bg-destructive/10' : ''}`}>
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
                   <h3 className="font-medium">EV/EBIT-arvostus</h3>
                   {calculationValues.is_ebit_negative_or_zero && (
-                    <AlertTriangle className="h-4 w-4 text-amber-500" />
+                    <AlertTriangle className="h-4 w-4 text-destructive" />
                   )}
                 </div>
                 <div className="text-xl font-semibold">
@@ -307,7 +307,7 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
                     : formatCurrency(calculationValues.ev_ebit_value)}
                 </div>
               </div>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-secondary/60 mt-1">
                 {calculationValues.is_ebit_negative_or_zero 
                   ? "Ei laskettavissa, koska liikevoitto (EBIT) on negatiivinen tai nolla" 
                   : `Perustuu yrityksen kykyyn tuottaa liikevoittoa (kerroin ${calculationValues.ev_ebit_ratio.toFixed(1)}x)`}
@@ -315,24 +315,24 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
             </Card>
 
             {/* Arvon vaihteluväli */}
-            <Card className={`p-4 ${hasValidValuationRange ? 'border-2 border-green-100 bg-green-50/30' : 'border-amber-300 bg-amber-50'}`}>
+            <Card className={`p-4 ${hasValidValuationRange ? 'border-2 border-primary/20 bg-primary/5' : 'border-destructive/30 bg-destructive/10'}`}>
               <div className="flex justify-between items-center mb-2">
                 <div className="flex items-center gap-2">
-                  <h3 className="font-medium text-gray-900">Arvon vaihteluväli</h3>
+                  <h3 className="font-medium text-secondary">Arvon vaihteluväli</h3>
                   {!hasValidValuationRange && (
-                    <AlertTriangle className="h-4 w-4 text-amber-500" />
+                    <AlertTriangle className="h-4 w-4 text-destructive" />
                   )}
                 </div>
-                <div className={`${hasValidValuationRange ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'} px-3 py-1 rounded-full text-sm font-medium`}>
+                <div className={`${hasValidValuationRange ? 'bg-primary/20 text-primary' : 'bg-destructive/20 text-destructive'} px-3 py-1 rounded-full text-sm font-medium`}>
                   Yhteenveto
                 </div>
               </div>
-              <div className="text-xl font-bold text-gray-900">
+              <div className="text-xl font-bold text-secondary">
                 {hasValidValuationRange
                   ? `${formatCurrency(calculationValues.range.low)} - ${formatCurrency(calculationValues.range.high)}` 
                   : "Ei laskettavissa"}
               </div>
-              <p className="text-xs text-gray-500 mt-2">
+              <p className="text-xs text-secondary/60 mt-2">
                 {hasValidValuationRange
                   ? "Arvio perustuu sekä varallisuuteen että tuloksentekokykyyn"
                   : "Arvoa ei voida laskea luotettavasti, koska taloudelliset mittarit ovat negatiivisia tai nollia"}
@@ -344,12 +344,12 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
           {valuationResults.finalAnalysis?.key_points && (
             <Card className="p-5 border mt-6">
               <div className="flex items-start gap-3">
-                <Info className="h-5 w-5 text-indigo-600 flex-shrink-0 mt-1" />
+                <Info className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="font-semibold text-slate-800 mb-2 text-lg">
+                  <h3 className="font-semibold text-secondary mb-2 text-lg">
                     {valuationResults.finalAnalysis.key_points.title || "Keskeiset havainnot"}
                   </h3>
-                  <p className="text-slate-600">{valuationResults.finalAnalysis.key_points.content}</p>
+                  <p className="text-secondary/70">{valuationResults.finalAnalysis.key_points.content}</p>
                 </div>
               </div>
             </Card>
@@ -359,49 +359,49 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
           <div className="mt-6">
             <button
               onClick={() => setShowCalculationExplanations(!showCalculationExplanations)}
-              className="flex w-full items-center justify-between bg-slate-50 p-4 rounded-lg hover:bg-slate-100 transition-colors"
+              className="flex w-full items-center justify-between bg-muted p-4 rounded-lg hover:bg-muted/80 transition-colors"
             >
               <div className="flex items-center gap-2">
-                <Layers className="h-5 w-5 text-indigo-600" />
-                <span className="font-medium text-slate-800">Laskentaperusteet</span>
+                <Layers className="h-5 w-5 text-primary" />
+                <span className="font-medium text-secondary">Laskentaperusteet</span>
               </div>
               {showCalculationExplanations ? (
-                <ChevronUp className="h-5 w-5 text-slate-500" />
+                <ChevronUp className="h-5 w-5 text-secondary/60" />
               ) : (
-                <ChevronDown className="h-5 w-5 text-slate-500" />
+                <ChevronDown className="h-5 w-5 text-secondary/60" />
               )}
             </button>
 
             {showCalculationExplanations && (
-              <Card className="p-5 mt-2 border-slate-200 bg-white">
+              <Card className="p-5 mt-2 border-muted bg-white">
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-medium text-slate-800 mb-1">Substanssiarvo</h4>
-                    <p className="text-sm text-slate-600">
+                    <h4 className="font-medium text-secondary mb-1">Substanssiarvo</h4>
+                    <p className="text-sm text-secondary/70">
                       Substanssiarvo on yrityksen varojen ja velkojen erotus. Laskennassa huomioidaan yrityksen taseessa olevat varat ja velat.
                       Kaava: Substanssiarvo = Yrityksen varat - Yrityksen velat
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="font-medium text-slate-800 mb-1">EV/Revenue-arvostus</h4>
-                    <p className="text-sm text-slate-600">
+                    <h4 className="font-medium text-secondary mb-1">EV/Revenue-arvostus</h4>
+                    <p className="text-sm text-secondary/70">
                       EV/Revenue-arvostus perustuu yrityksen liikevaihtoon ja toimialan mukaiseen kertoimeen.
                       Kaava: EV/Revenue-arvo = Liikevaihto × Toimialan kerroin ({calculationValues.ev_kerroin.toFixed(2)})
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="font-medium text-slate-800 mb-1">EV/EBIT-arvostus</h4>
-                    <p className="text-sm text-slate-600">
+                    <h4 className="font-medium text-secondary mb-1">EV/EBIT-arvostus</h4>
+                    <p className="text-sm text-secondary/70">
                       EV/EBIT-arvostus perustuu yrityksen liikevoittoon (EBIT) ja toimialan mukaiseen kertoimeen.
                       Kaava: EV/EBIT-arvo = Liikevoitto (EBIT) × Toimialan kerroin ({calculationValues.ev_ebit_ratio.toFixed(2)})
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="font-medium text-slate-800 mb-1">Arvon vaihteluväli</h4>
-                    <p className="text-sm text-slate-600">
+                    <h4 className="font-medium text-secondary mb-1">Arvon vaihteluväli</h4>
+                    <p className="text-sm text-secondary/70">
                       Arvon vaihteluväli muodostuu eri arvonmääritysmenetelmien antamien tulosten pohjalta.
                       Vaihteluvälin alaraja on yleensä substanssiarvo (jos positiivinen) ja yläraja korkein saatava arvo eri menetelmillä.
                     </p>
@@ -413,12 +413,12 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
 
           {/* Varoitusilmoitukset - Full Width */}
           {(calculationValues.is_substanssi_negative || calculationValues.is_ebit_negative_or_zero) && (
-            <Card className="p-5 border-amber-300 bg-amber-50/70 mt-6">
+            <Card className="p-5 border-destructive/30 bg-destructive/10 mt-6">
               <div className="flex items-start gap-3">
-                <AlertTriangle className="h-5 w-5 text-amber-600 flex-shrink-0 mt-1" />
+                <AlertTriangle className="h-5 w-5 text-destructive flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="font-semibold text-amber-800 mb-2">Huomioitavaa arvonmäärityksessä</h3>
-                  <div className="space-y-3 text-amber-700">
+                  <h3 className="font-semibold text-destructive mb-2">Huomioitavaa arvonmäärityksessä</h3>
+                  <div className="space-y-3 text-destructive">
                     {calculationValues.is_substanssi_negative && (
                       <p>Yrityksesi substanssiarvo on negatiivinen, mikä tarkoittaa että velat ylittävät varat. Tämä vaikuttaa merkittävästi yrityksen arvoon.</p>
                     )}
@@ -436,8 +436,8 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
         {/* Financials Tab Content */}
         <TabsContent value="financials">
           <Card className="p-6 border">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <BarChart className="h-5 w-5 text-indigo-600" />
+            <h3 className="text-lg font-semibold text-secondary mb-4 flex items-center gap-2">
+              <BarChart className="h-5 w-5 text-primary" />
               Taloudelliset tunnusluvut
             </h3>
 
@@ -445,39 +445,39 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
               <>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                   {/* Liikevaihto */}
-                  <div className="bg-slate-50 p-4 rounded-lg">
-                    <h4 className="text-sm text-slate-500 mb-1">Liikevaihto</h4>
-                    <p className="text-xl font-semibold text-slate-900">{formatCurrency(financialMetrics.liikevaihto)}</p>
+                  <div className="bg-muted p-4 rounded-lg">
+                    <h4 className="text-sm text-secondary/60 mb-1">Liikevaihto</h4>
+                    <p className="text-xl font-semibold text-secondary">{formatCurrency(financialMetrics.liikevaihto)}</p>
                   </div>
 
                   {/* Liikevoitto (EBIT) */}
-                  <div className="bg-slate-50 p-4 rounded-lg">
-                    <h4 className="text-sm text-slate-500 mb-1">Liikevoitto (EBIT)</h4>
-                    <p className="text-xl font-semibold text-slate-900">{formatCurrency(financialMetrics.liikevoitto)}</p>
+                  <div className="bg-muted p-4 rounded-lg">
+                    <h4 className="text-sm text-secondary/60 mb-1">Liikevoitto (EBIT)</h4>
+                    <p className="text-xl font-semibold text-secondary">{formatCurrency(financialMetrics.liikevoitto)}</p>
                   </div>
 
                   {/* Liikevoitto-% */}
-                  <div className="bg-slate-50 p-4 rounded-lg">
-                    <h4 className="text-sm text-slate-500 mb-1">Liikevoitto-%</h4>
-                    <p className="text-xl font-semibold text-slate-900">
+                  <div className="bg-muted p-4 rounded-lg">
+                    <h4 className="text-sm text-secondary/60 mb-1">Liikevoitto-%</h4>
+                    <p className="text-xl font-semibold text-secondary">
                       {financialMetrics.liikevaihto > 0 ? `${((financialMetrics.liikevoitto / financialMetrics.liikevaihto) * 100).toFixed(1)} %` : '0,0 %'}
                     </p>
                   </div>
                 </div>
 
                 {/* Link to financial analysis sections */}
-                <div className="mt-6 pt-4 border-t border-slate-200">
-                  <h4 className="font-medium text-slate-800 mb-3">Taloudelliset analyysit</h4>
+                <div className="mt-6 pt-4 border-t border-muted">
+                  <h4 className="font-medium text-secondary mb-3">Taloudelliset analyysit</h4>
 
                   {valuationResults.finalAnalysis?.valuation_analysis && (
                     <div className="space-y-4">
                       {/* Substanssiarvo analysis */}
                       {valuationResults.finalAnalysis.valuation_analysis.substanssi_analysis && (
-                        <Card className="p-4 border-l-4 border-l-indigo-600 hover:bg-slate-50 transition-colors">
-                          <h5 className="font-medium text-slate-900 mb-2">
+                        <Card className="p-4 border-l-4 border-l-primary hover:bg-muted transition-colors">
+                          <h5 className="font-medium text-secondary mb-2">
                             {valuationResults.finalAnalysis.valuation_analysis.substanssi_analysis.title || "Substanssiarvon analyysi"}
                           </h5>
-                          <p className="text-sm text-slate-600">
+                          <p className="text-sm text-secondary/70">
                             {valuationResults.finalAnalysis.valuation_analysis.substanssi_analysis.content}
                           </p>
                         </Card>
@@ -485,11 +485,11 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
 
                       {/* EV/Revenue analysis */}
                       {valuationResults.finalAnalysis.valuation_analysis.ev_revenue_analysis && (
-                        <Card className="p-4 border-l-4 border-l-indigo-600 hover:bg-slate-50 transition-colors">
-                          <h5 className="font-medium text-slate-900 mb-2">
+                        <Card className="p-4 border-l-4 border-l-primary hover:bg-muted transition-colors">
+                          <h5 className="font-medium text-secondary mb-2">
                             {valuationResults.finalAnalysis.valuation_analysis.ev_revenue_analysis.title || "EV/Revenue-arvon analyysi"}
                           </h5>
-                          <p className="text-sm text-slate-600">
+                          <p className="text-sm text-secondary/70">
                             {valuationResults.finalAnalysis.valuation_analysis.ev_revenue_analysis.content}
                           </p>
                         </Card>
@@ -497,11 +497,11 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
 
                       {/* EV/EBIT analysis */}
                       {valuationResults.finalAnalysis.valuation_analysis.ev_ebit_analysis && (
-                        <Card className="p-4 border-l-4 border-l-indigo-600 hover:bg-slate-50 transition-colors">
-                          <h5 className="font-medium text-slate-900 mb-2">
+                        <Card className="p-4 border-l-4 border-l-primary hover:bg-muted transition-colors">
+                          <h5 className="font-medium text-secondary mb-2">
                             {valuationResults.finalAnalysis.valuation_analysis.ev_ebit_analysis.title || "EV/EBIT-arvon analyysi"}
                           </h5>
-                          <p className="text-sm text-slate-600">
+                          <p className="text-sm text-secondary/70">
                             {valuationResults.finalAnalysis.valuation_analysis.ev_ebit_analysis.content}
                           </p>
                         </Card>
@@ -512,16 +512,16 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
               </>
             ) : (
               <div className="text-center py-10">
-                <BarChart className="h-12 w-12 text-slate-300 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Yksityiskohtaiset taloudelliset tiedot puuttuvat</h3>
-                <p className="text-slate-600 max-w-md mx-auto">
+                <BarChart className="h-12 w-12 text-secondary/30 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-secondary mb-2">Yksityiskohtaiset taloudelliset tiedot puuttuvat</h3>
+                <p className="text-secondary/70 max-w-md mx-auto">
                   Tässä ilmaisessa versiossa näytetään vain perustason taloudelliset tiedot. 
                   Kattavamman analyysin saat Myyntikuntoon-palvelun maksullisessa versiossa.
                 </p>
 
-                <div className="mt-6 bg-indigo-50 p-4 rounded-lg max-w-lg mx-auto">
-                  <h4 className="font-medium text-indigo-800 mb-2">Maksullisessa versiossa saat:</h4>
-                  <ul className="space-y-2 text-left list-disc list-inside text-indigo-700">
+                <div className="mt-6 bg-primary/10 p-4 rounded-lg max-w-lg mx-auto">
+                  <h4 className="font-medium text-primary mb-2">Maksullisessa versiossa saat:</h4>
+                  <ul className="space-y-2 text-left list-disc list-inside text-primary">
                     <li>Kattavan taloudellisen analyysin yrityksen tunnusluvuista</li>
                     <li>Toimialavertailun keskeisistä tunnusluvuista</li>
                     <li>Trendianalyysin tunnuslukujen kehityksestä</li>
@@ -530,7 +530,7 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
 
                   <Link to="/auth" className="block mt-4">
                     <Button 
-                      className="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg py-2 h-auto font-medium"
+                      className="w-full bg-primary hover:bg-primary/90 text-white rounded-lg py-2 h-auto font-medium"
                     >
                       Hanki kattava taloudellinen analyysi
                       <ExternalLink className="ml-2 h-4 w-4" />
@@ -545,30 +545,30 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
         {/* Normalization Tab Content */}
         <TabsContent value="normalization">
           <Card className="p-6 border">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <RefreshCw className="h-5 w-5 text-indigo-600" />
+            <h3 className="text-lg font-semibold text-secondary mb-4 flex items-center gap-2">
+              <RefreshCw className="h-5 w-5 text-primary" />
               Tilinpäätöstietojen normalisointi
             </h3>
 
             {normalizationInfo ? (
               <div className="space-y-6">
-                <div className="bg-slate-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-slate-800 mb-2">Normalisoinnin vaikutus</h4>
-                  <p className="text-slate-600">{normalizationInfo.normalization_impact}</p>
+                <div className="bg-muted p-4 rounded-lg">
+                  <h4 className="font-medium text-secondary mb-2">Normalisoinnin vaikutus</h4>
+                  <p className="text-secondary/70">{normalizationInfo.normalization_impact}</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Omistajan palkka */}
                   <div className="border rounded-lg overflow-hidden">
-                    <div className="bg-indigo-50 p-3 border-b">
+                    <div className="bg-primary/10 p-3 border-b">
                       <div className="flex items-center justify-between">
-                        <h5 className="font-medium text-slate-800">Omistajan palkka</h5>
+                        <h5 className="font-medium text-secondary">Omistajan palkka</h5>
                         {normalizationInfo.owner_salary_normalized ? (
-                          <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs font-medium">
+                          <span className="bg-primary/20 text-primary px-2 py-1 rounded text-xs font-medium">
                             Normalisoitu
                           </span>
                         ) : (
-                          <span className="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-medium">
+                          <span className="bg-muted text-secondary/70 px-2 py-1 rounded text-xs font-medium">
                             Ei muutoksia
                           </span>
                         )}
@@ -579,14 +579,14 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
                       <div className="p-3">
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <p className="text-xs text-slate-500 mb-1">Alkuperäinen</p>
-                            <p className="font-medium text-slate-900">
+                            <p className="text-xs text-secondary/60 mb-1">Alkuperäinen</p>
+                            <p className="font-medium text-secondary">
                               {formatCurrency(normalizationInfo.original_values?.owner_salary || 0)}
                             </p>
                           </div>
                           <div>
-                            <p className="text-xs text-slate-500 mb-1">Normalisoitu</p>
-                            <p className="font-medium text-slate-900">
+                            <p className="text-xs text-secondary/60 mb-1">Normalisoitu</p>
+                            <p className="font-medium text-secondary">
                               {formatCurrency(normalizationInfo.adjusted_values?.owner_salary || 0)}
                             </p>
                           </div>
@@ -597,15 +597,15 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
 
                   {/* Toimitilakulut */}
                   <div className="border rounded-lg overflow-hidden">
-                    <div className="bg-indigo-50 p-3 border-b">
+                    <div className="bg-primary/10 p-3 border-b">
                       <div className="flex items-center justify-between">
-                        <h5 className="font-medium text-slate-800">Toimitilakulut</h5>
+                        <h5 className="font-medium text-secondary">Toimitilakulut</h5>
                         {normalizationInfo.premises_costs_normalized ? (
-                          <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs font-medium">
+                          <span className="bg-primary/20 text-primary px-2 py-1 rounded text-xs font-medium">
                             Normalisoitu
                           </span>
                         ) : (
-                          <span className="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-medium">
+                          <span className="bg-muted text-secondary/70 px-2 py-1 rounded text-xs font-medium">
                             Ei muutoksia
                           </span>
                         )}
@@ -616,13 +616,13 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
                       <div className="p-3">
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <p className="text-xs text-slate-500 mb-1">Alkuperäinen</p><p className="font-medium text-slate-900">
+                            <p className="text-xs text-secondary/60 mb-1">Alkuperäinen</p><p className="font-medium text-secondary">
                               {formatCurrency(normalizationInfo.original_values?.premises_costs || 0)}
                             </p>
                           </div>
                           <div>
-                            <p className="text-xs text-slate-500 mb-1">Normalisoitu</p>
-                            <p className="font-medium text-slate-900">
+                            <p className="text-xs text-secondary/60 mb-1">Normalisoitu</p>
+                            <p className="font-medium text-secondary">
                               {formatCurrency(normalizationInfo.adjusted_values?.premises_costs || 0)}
                             </p>
                           </div>
@@ -633,9 +633,9 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
                 </div>
 
                 {/* Normalisoinnin vaikutus yrityksen arvoon */}
-                <Card className="p-4 bg-indigo-50 border-indigo-100">
-                  <h4 className="font-medium text-slate-800 mb-2">Normalisoinnin vaikutus yrityksen arvoon</h4>
-                  <p className="text-slate-600">
+                <Card className="p-4 bg-primary/10 border-primary/20">
+                  <h4 className="font-medium text-secondary mb-2">Normalisoinnin vaikutus yrityksen arvoon</h4>
+                  <p className="text-secondary/70">
                     Normalisoinnilla pyritään poistamaan tilinpäätöksestä sellaisia tekijöitä, jotka eivät kuvasta yrityksen todellista tuloksentekokykyä 
                     tai taloudellista asemaa. Tällaisia eriä ovat mm. omistajan palkka, joka voi olla yli tai alle markkinatason, sekä toimitilakulut, 
                     jotka voivat sisältää markkinatason poikkeavia vuokria tai omistajan omien kiinteistöjen kuluja.
@@ -644,16 +644,16 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
               </div>
             ) : (
               <div className="text-center py-10">
-                <RefreshCw className="h-12 w-12 text-slate-300 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Ei normalisointitietoja saatavilla</h3>
-                <p className="text-slate-600 max-w-md mx-auto">
+                <RefreshCw className="h-12 w-12 text-secondary/30 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-secondary mb-2">Ei normalisointitietoja saatavilla</h3>
+                <p className="text-secondary/70 max-w-md mx-auto">
                   Normalisointi on tärkeä osa yrityksen arvonmääritystä. Sen avulla poistetaan tilinpäätöksestä poikkeukselliset erät,
                   jotka eivät kuvasta yrityksen todellista tuloksentekokykyä.
                 </p>
 
-                <div className="mt-6 bg-indigo-50 p-4 rounded-lg max-w-lg mx-auto">
-                  <h4 className="font-medium text-indigo-800 mb-2">Saat maksullisessa versiossa:</h4>
-                  <ul className="space-y-2 text-left list-disc list-inside text-indigo-700">
+                <div className="mt-6 bg-primary/10 p-4 rounded-lg max-w-lg mx-auto">
+                  <h4 className="font-medium text-primary mb-2">Saat maksullisessa versiossa:</h4>
+                  <ul className="space-y-2 text-left list-disc list-inside text-primary">
                     <li>Omistajan palkan normalisoinnin markkinatasoon</li>
                     <li>Toimitilakulujen oikaisun markkinatason mukaiseksi</li>
                     <li>Muiden poikkeuksellisten erien normalisoinnin</li>
@@ -662,7 +662,7 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
 
                   <Link to="https://tally.so/r/wQ4WOp" className="block mt-4">
                     <Button 
-                      className="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg py-2 h-auto font-medium"
+                      className="w-full bg-primary hover:bg-primary/90 text-white rounded-lg py-2 h-auto font-medium"
                     >
                       Hanki tarkempi analyysi
                       <ExternalLink className="ml-2 h-4 w-4" />
@@ -680,15 +680,15 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
           {valuationResults.finalAnalysis?.recommendations && 
           valuationResults.finalAnalysis?.recommendations.length > 0 ? (
             <Card className="p-6 border">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <Clipboard className="h-5 w-5 text-indigo-600" />
+              <h3 className="text-lg font-semibold text-secondary mb-4 flex items-center gap-2">
+                <Clipboard className="h-5 w-5 text-primary" />
                 Suositukset
               </h3>
               <div className="grid gap-4">
                 {valuationResults.finalAnalysis.recommendations.map((rec: any, idx: number) => (
-                  <div key={idx} className="p-5 bg-slate-50 rounded-lg border-l-4 border-l-indigo-600">
-                    <h4 className="font-medium text-indigo-800 mb-2">{rec.title}</h4>
-                    <p className="text-slate-600">{rec.description}</p>
+                  <div key={idx} className="p-5 bg-muted rounded-lg border-l-4 border-l-primary">
+                    <h4 className="font-medium text-primary mb-2">{rec.title}</h4>
+                    <p className="text-secondary/70">{rec.description}</p>
                   </div>
                 ))}
               </div>
@@ -696,9 +696,9 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
           ) : (
             <Card className="p-6 border">
               <div className="text-center py-8">
-                <Clipboard className="h-12 w-12 text-slate-300 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Ei suosituksia saatavilla</h3>
-                <p className="text-slate-600">
+                <Clipboard className="h-12 w-12 text-secondary/30 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-secondary mb-2">Ei suosituksia saatavilla</h3>
+                <p className="text-secondary/70">
                   Tarkemmat toimenpidesuositukset saat käyttämällä Myyntikuntoon-palvelun maksullista versiota.
                 </p>
               </div>
@@ -707,15 +707,15 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
 
           {/* Myyntikuntoon-palvelun hyödyt - Completely Redesigned for Clean Layout */}
           {valuationResults.finalAnalysis?.myyntikuntoon_recommendation && (
-            <Card className="overflow-hidden bg-white border border-indigo-100 mt-6">
+            <Card className="overflow-hidden bg-white border border-primary/20 mt-6">
               <div className="flex flex-col">
                 {/* Header with gradient background */}
-                <div className="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4 text-white">
+                <div className="bg-gradient-to-r bg-primary px-6 py-4 text-white">
                   <h3 className="text-xl font-bold">
                     {valuationResults.finalAnalysis.myyntikuntoon_recommendation.personalized_title || 
                     "Myyntikuntoon - Maksimoi yrityksesi arvo!"}
                   </h3>
-                  <p className="mt-1 text-indigo-100">
+                  <p className="mt-1 text-white/80">
                     {valuationResults.finalAnalysis.myyntikuntoon_recommendation.catchy_subtitle || 
                     "Ota seuraava askel ja nosta yrityksesi arvoa"}
                   </p>
@@ -723,7 +723,7 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
 
                 {/* Content area */}
                 <div className="p-6">
-                  <p className="text-slate-700 mb-4">
+                  <p className="text-secondary/80 mb-4">
                     {valuationResults.finalAnalysis.myyntikuntoon_recommendation.main_benefit_description || 
                     "Myyntikuntoon-palvelun maksullinen versio auttaa sinua parantamaan yrityksesi arvoa ja houkuttelevuutta potentiaalisten ostajien silmissä."}
                   </p>
@@ -731,28 +731,28 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
                   {/* Benefits section with check marks */}
                   <div className="mb-6 space-y-3">
                     <div className="flex items-start gap-3">
-                      <div className="bg-green-100 rounded-full p-1 mt-0.5 flex-shrink-0">
-                        <Check className="h-4 w-4 text-green-600" />
+                      <div className="bg-primary/20 rounded-full p-1 mt-0.5 flex-shrink-0">
+                        <Check className="h-4 w-4 text-primary" />
                       </div>
-                      <p className="text-slate-700 text-sm">
+                      <p className="text-secondary/80 text-sm">
                         {valuationResults.finalAnalysis.myyntikuntoon_recommendation.bullet_points?.bullet_point_1 || 
                         "Saat tarkan analyysin yrityksesi arvosta ja kehityskohteista"}
                       </p>
                     </div>
                     <div className="flex items-start gap-3">
-                      <div className="bg-green-100 rounded-full p-1 mt-0.5 flex-shrink-0">
-                        <Check className="h-4 w-4 text-green-600" />
+                      <div className="bg-primary/20 rounded-full p-1 mt-0.5 flex-shrink-0">
+                        <Check className="h-4 w-4 text-primary" />
                       </div>
-                      <p className="text-slate-700 text-sm">
+                      <p className="text-secondary/80 text-sm">
                         {valuationResults.finalAnalysis.myyntikuntoon_recommendation.bullet_points?.bullet_point_2 || 
                         "Vertaamme yrityksesi lukuja toimialan keskiarvoihin"}
                       </p>
                     </div>
                     <div className="flex items-start gap-3">
-                      <div className="bg-green-100 rounded-full p-1 mt-0.5 flex-shrink-0">
-                        <Check className="h-4 w-4 text-green-600" />
+                      <div className="bg-primary/20 rounded-full p-1 mt-0.5 flex-shrink-0">
+                        <Check className="h-4 w-4 text-primary" />
                       </div>
-                      <p className="text-slate-700 text-sm">
+                      <p className="text-secondary/80 text-sm">
                         {valuationResults.finalAnalysis.myyntikuntoon_recommendation.bullet_points?.bullet_point_3 || 
                         "Saat konkreettisen toimenpidesuunnitelman arvon nostamiseksi"}
                       </p>
@@ -762,7 +762,7 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
                   {/* Call to action button */}
                   <Link to="/auth">
                     <Button 
-                      className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg py-2 h-auto font-medium"
+                      className="w-full bg-gradient-to-r bg-primary hover:bg-primary/90 text-white rounded-lg py-2 h-auto font-medium"
                     >
                       {valuationResults.finalAnalysis.myyntikuntoon_recommendation.call_to_action || 
                       "Aloita arvon parantaminen Myyntikuntoon-palvelulla"} 
@@ -791,7 +791,7 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
           <Mail className="h-4 w-4" /> Lähetä sähköpostiin
         </Button>
 
-        <div className="text-xs text-slate-500">
+        <div className="text-xs text-secondary/60">
           Ilmainen arvonmääritys | Laajemmat analyysit Lite ja Pro saatavilla pian!
         </div>
       </div>
@@ -805,8 +805,8 @@ const FreeValuationResults: React.FC<FreeValuationResultsProps> = ({
   } catch (error) {
     console.error("Error rendering results:", error);
     return (
-      <div className="p-4 bg-red-50 border border-red-300 rounded">
-        <h3 className="text-red-700">Virhe tulosten näyttämisessä</h3>
+      <div className="p-4 bg-destructive/10 border border-destructive/30 rounded">
+        <h3 className="text-destructive">Virhe tulosten näyttämisessä</h3>
         <p>{error instanceof Error ? error.message : "Tuntematon virhe"}</p>
         <Button onClick={resetForm} className="mt-4">Aloita alusta</Button>
       </div>

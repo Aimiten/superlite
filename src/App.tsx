@@ -36,6 +36,7 @@ import Help from "@/pages/Help"; // Added import
 import Simulator from "@/pages/Simulator";
 import DCFAnalysis from "@/pages/DCFAnalysis";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import ColorSystemDemo from "@/pages/ColorSystemDemo";
 
 const queryClient = new QueryClient();
 
@@ -144,6 +145,7 @@ function App() {
             <Route path="/free-calculator" element={<FreeCalculatorPage />} />
             <Route path="/checkout-success" element={<CheckoutSuccess />} />
             <Route path="/shared/:shareId" element={<SharedView />} />
+            <Route path="/color-system-demo" element={<ColorSystemDemo />} />
 
             {/* Suojatut reitit ilman yritysvaatimusta */}
             <Route element={<ProtectedMainLayout requireCompany={false} />}>

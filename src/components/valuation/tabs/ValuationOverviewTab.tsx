@@ -32,17 +32,17 @@ const ValuationOverviewTab: React.FC<ValuationOverviewTabProps> = ({
 
   return (
     <div className="space-y-6">
-      <div className="border border-indigo-100 rounded-xl p-6 bg-indigo-50">
-        <h3 className="text-xl font-bold mb-4 flex items-center text-indigo-800">
-          <Target className="h-5 w-5 mr-2 text-indigo-700" />
+      <div className="border border-primary/20 rounded-xl p-6 bg-primary/10 shadow-neumorphic">
+        <h3 className="text-xl font-bold mb-4 flex items-center text-primary">
+          <Target className="h-5 w-5 mr-2 text-primary" />
           Yrityksen arvo (Oma pääoma)
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           {/* Arvohaarukka */}
-          <div className="p-5 bg-white rounded-lg shadow-sm border border-indigo-100">
-            <h4 className="text-sm font-medium text-slate-500 mb-1">Arvohaarukka</h4>
-            <p className="text-2xl font-bold text-indigo-700">
+          <div className="p-5 bg-card rounded-lg shadow-neumorphic border border-border">
+            <h4 className="text-sm font-medium text-muted-foreground mb-1">Arvohaarukka</h4>
+            <p className="text-2xl font-bold text-primary">
               {formatCurrency(
                 valuationReport?.valuation_numbers?.range?.low || 
                 latestPeriod?.valuation_metrics?.equity_valuation_range?.low || 
@@ -56,9 +56,9 @@ const ValuationOverviewTab: React.FC<ValuationOverviewTabProps> = ({
           </div>
 
           {/* Todennäköisin arvo */}
-          <div className="p-5 bg-white rounded-lg shadow-sm border border-indigo-100">
-            <h4 className="text-sm font-medium text-slate-500 mb-1">Todennäköisin arvo</h4>
-            <p className="text-2xl font-bold text-indigo-700">
+          <div className="p-5 bg-card rounded-lg shadow-neumorphic border border-border">
+            <h4 className="text-sm font-medium text-muted-foreground mb-1">Todennäköisin arvo</h4>
+            <p className="text-2xl font-bold text-primary">
               {formatCurrency(
                 valuationReport?.valuation_numbers?.most_likely_value || 
                 latestPeriod?.valuation_metrics?.average_equity_valuation || 
@@ -67,7 +67,7 @@ const ValuationOverviewTab: React.FC<ValuationOverviewTabProps> = ({
             </p>
             {(valuationReport?.valuation_numbers?.valuation_methods_in_average || 
               latestPeriod?.valuation_metrics?.methods_count) && (
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-muted-foreground mt-1">
                 Perustuu {valuationReport?.valuation_numbers?.valuation_methods_in_average || 
                          latestPeriod?.valuation_metrics?.methods_count} arvostusmenetelmään
               </p>
@@ -77,9 +77,9 @@ const ValuationOverviewTab: React.FC<ValuationOverviewTabProps> = ({
 
         {/* Laskentaperiaate */}
         {latestPeriod?.valuation_metrics && valuationReport?.valuation_numbers?.most_likely_value && (
-          <div className="bg-white p-5 rounded-lg mt-4 border border-indigo-100">
-            <h4 className="text-sm font-medium text-slate-700 mb-2 flex items-center">
-              <Calculator className="h-4 w-4 mr-1 text-indigo-600" />
+          <div className="bg-card p-5 rounded-lg mt-4 border border-border shadow-neumorphic">
+            <h4 className="text-sm font-medium text-foreground mb-2 flex items-center">
+              <Calculator className="h-4 w-4 mr-1 text-primary" />
               Arvon laskentaperiaate
             </h4>
             <div className="text-sm">
@@ -93,8 +93,8 @@ const ValuationOverviewTab: React.FC<ValuationOverviewTabProps> = ({
 
         {/* Arvonmäärityksen perusteet */}
         {valuationReport?.valuation_numbers?.valuation_rationale && (
-          <div className="bg-white p-5 rounded-lg mt-4 border border-indigo-100">
-            <h4 className="text-sm font-medium text-slate-700 mb-2">Arvonmäärityksen perusteet</h4>
+          <div className="bg-card p-5 rounded-lg mt-4 border border-border shadow-neumorphic">
+            <h4 className="text-sm font-medium text-foreground mb-2">Arvonmäärityksen perusteet</h4>
             <p className="text-sm whitespace-pre-line">{cleanMarkdownText(valuationReport.valuation_numbers.valuation_rationale)}</p>
           </div>
         )}
@@ -102,12 +102,12 @@ const ValuationOverviewTab: React.FC<ValuationOverviewTabProps> = ({
 
       {/* Keskeiset havainnot */}
       {valuationReport?.key_points?.content && (
-        <div className="border border-indigo-100 rounded-xl p-6">
+        <div className="border border-primary/20 rounded-xl p-6 shadow-neumorphic">
           <h3 className="text-lg font-semibold flex items-center mb-3">
-            <Scale className="h-5 w-5 mr-2 text-indigo-600" />
+            <Scale className="h-5 w-5 mr-2 text-primary" />
             {valuationReport.key_points.title || "Keskeiset havainnot"}
           </h3>
-          <div className="bg-white p-4 rounded-lg border border-slate-100">
+          <div className="bg-card p-4 rounded-lg border border-border shadow-neumorphic">
             <p className="whitespace-pre-line">{cleanMarkdownText(valuationReport.key_points.content)}</p>
           </div>
         </div>

@@ -16,24 +16,24 @@ interface ScoreCardProps {
 
 const ScoreCard: React.FC<ScoreCardProps> = ({ totalScore, scores }) => {
   const getColorClass = (score: number) => {
-    if (score >= 80) return 'text-green-600';
-    if (score >= 60) return 'text-yellow-600';
-    if (score >= 40) return 'text-orange-600';
-    return 'text-red-600';
+    if (score >= 80) return 'text-success';
+    if (score >= 60) return 'text-warning';
+    if (score >= 40) return 'text-warning';
+    return 'text-destructive';
   };
 
   const getProgressColorClass = (score: number) => {
-    if (score >= 80) return 'bg-green-500';
-    if (score >= 60) return 'bg-yellow-500';
-    if (score >= 40) return 'bg-orange-500';
-    return 'bg-red-500';
+    if (score >= 80) return 'bg-success';
+    if (score >= 60) return 'bg-warning';
+    if (score >= 40) return 'bg-warning';
+    return 'bg-destructive';
   };
 
   const getProgressBgColorClass = (score: number) => {
-    if (score >= 80) return 'bg-green-100';
-    if (score >= 60) return 'bg-yellow-100';
-    if (score >= 40) return 'bg-orange-100';
-    return 'bg-red-100';
+    if (score >= 80) return 'bg-success/10';
+    if (score >= 60) return 'bg-warning/10';
+    if (score >= 40) return 'bg-warning/10';
+    return 'bg-destructive/10';
   };
 
   const getScoreMessage = (score: number) => {
@@ -47,7 +47,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ totalScore, scores }) => {
     <Card className="card-3d">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Brain className="h-5 w-5 text-purple-500" />
+          <Brain className="h-5 w-5 text-primary" />
           Kokonaisarvio
         </CardTitle>
       </CardHeader>
@@ -56,12 +56,12 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ totalScore, scores }) => {
           <div className={`text-5xl font-bold mb-2 ${getColorClass(totalScore)}`}>
             {totalScore}%
           </div>
-          <p className="text-gray-500">
+          <p className="text-muted-foreground">
             {getScoreMessage(totalScore)}
           </p>
         </div>
 
-        <div className="my-4 h-px bg-gray-200" />
+        <div className="my-4 h-px bg-border" />
 
         <div className="space-y-4">
           <div>
@@ -121,8 +121,8 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ totalScore, scores }) => {
           </div>
         </div>
         
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-100">
-          <p className="text-sm text-gray-600 italic">
+        <div className="mt-6 p-4 bg-muted rounded-lg border border-border">
+          <p className="text-sm text-muted-foreground italic">
             <span className="font-medium">Huomio:</span> Pisteytys perustuu annettuihin vastauksiin asteikolla 1-5, jossa vastaukselle 1 annetaan 0-20 pistettä, vastaukselle 2 annetaan 21-40 pistettä jne.
           </p>
         </div>

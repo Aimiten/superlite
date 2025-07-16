@@ -54,16 +54,16 @@ const StarRatingComponent = ({ valuationData }: { valuationData: any }) => {
             onMouseEnter={() => !hasRated && setHoveredRating(star)}
             onMouseLeave={() => !hasRated && setHoveredRating(null)}
             disabled={hasRated}
-            className={`w-12 h-12 flex items-center justify-center rounded-md border-2 shadow-sm transition-all 
+            className={`w-12 h-12 flex items-center justify-center rounded-md border-2 shadow-neumorphic transition-all 
               ${hasRated 
                 ? (star <= (selectedRating || 0) 
-                    ? 'text-yellow-500 border-yellow-400 bg-yellow-50' 
-                    : 'text-gray-400 border-gray-300') 
+                    ? 'text-warning border-warning/40 bg-warning/10' 
+                    : 'text-muted-foreground border-border') 
                 : (hoveredRating !== null 
                     ? (star <= (hoveredRating || 0) 
-                        ? 'text-yellow-500 border-yellow-400 bg-yellow-50 hover:shadow-md hover:scale-110 cursor-pointer' 
-                        : 'text-gray-400 border-gray-300 hover:shadow-md hover:scale-110 cursor-pointer') 
-                    : 'text-gray-400 border-gray-300 hover:shadow-md hover:scale-110 cursor-pointer'
+                        ? 'text-warning border-warning/40 bg-warning/10 hover:shadow-md hover:scale-110 cursor-pointer' 
+                        : 'text-muted-foreground border-border hover:shadow-md hover:scale-110 cursor-pointer') 
+                    : 'text-muted-foreground border-border hover:shadow-md hover:scale-110 cursor-pointer'
                 )
               }`}
             aria-label={`Anna ${star} tähden arvio`}
@@ -75,7 +75,7 @@ const StarRatingComponent = ({ valuationData }: { valuationData: any }) => {
         ))}
       </div>
       {hasRated && (
-        <p className="text-sm text-green-600 font-medium">
+        <p className="text-sm text-success font-medium">
           Kiitos arvioinnistasi!
         </p>
       )}
@@ -274,11 +274,11 @@ const BusinessValueCalculator = () => {
   return (
     <div className="w-full">
       {!valuationData ? (
-        <Card className="border shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+        <Card className="border shadow-neumorphic">
+          <CardHeader className="bg-gradient-to-r from-primary/5 to-primary/10 border-b">
             <CardTitle className="flex items-center gap-2 text-2xl">
-              <Calculator className="h-6 w-6 text-indigo-600" />
-              <span>PK-yrityksen <span className="text-indigo-600">arvonmäärityslaskuri</span></span>
+              <Calculator className="h-6 w-6 text-primary" />
+              <span>PK-yrityksen <span className="text-primary">arvonmäärityslaskuri</span></span>
             </CardTitle>
             <CardDescription className="text-base">
               Laske yrityksesi alustava arvo perustuen tuoreimpiin taloustietoihin ja toimialan arvostuskertoimiin.
@@ -308,7 +308,7 @@ const BusinessValueCalculator = () => {
                       placeholder="esim. 1234567-8"
                       className="text-center font-medium text-lg py-6"
                     />
-                    <p className="text-sm text-slate-500">
+                    <p className="text-sm text-muted-foreground">
                       Muoto: 7 numeroa, väliviiva, 1 tarkistenumero (esim. 1234567-8)
                     </p>
                   </div>
@@ -338,7 +338,7 @@ const BusinessValueCalculator = () => {
               <div>
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all py-6 text-lg text-white"
+                  className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all py-6 text-lg text-primary-foreground"
                   disabled={isLoading}
                 >
                   {isLoading ? (
@@ -355,14 +355,14 @@ const BusinessValueCalculator = () => {
                 </Button>
                 
                 {isLoading && (
-                  <div className="mt-4 text-center text-sm text-slate-500">
+                  <div className="mt-4 text-center text-sm text-muted-foreground">
                     <p>Laskenta voi kestää 1-2 minuuttia, odota hetki.</p>
                     <p>Haemme useista lähteistä ajantasaiset taloustiedot ja arvostuskertoimet.</p>
                   </div>
                 )}
                 
                 {!isLoading && (
-                  <div className="mt-3 text-center text-xs text-slate-500">
+                  <div className="mt-3 text-center text-xs text-muted-foreground">
                     Laskenta hyödyntää julkisia taloustietoja ja toimialakohtaisia arvostuskertoimia. 
                     Prosessi kestää noin 1-2 minuuttia.
                   </div>
@@ -370,22 +370,22 @@ const BusinessValueCalculator = () => {
               </div>
             </form>
           </CardContent>
-          <CardFooter className="border-t bg-gray-50 flex justify-center text-sm text-gray-500 px-6 py-4">
+          <CardFooter className="border-t bg-muted flex justify-center text-sm text-muted-foreground px-6 py-4">
             Laskuri hyödyntää julkisia taloustietoja ja toimialakohtaisia arvostuskertoimia
           </CardFooter>
         </Card>
       ) : (
         <div className="space-y-6">
-          <Card className="border shadow-md overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+          <Card className="border shadow-neumorphic overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground">
               <div className="flex justify-between items-start">
                 <div>
                   <CardTitle className="text-2xl">{valuationData.companyInfo.name}</CardTitle>
-                  <CardDescription className="text-indigo-100">
+                  <CardDescription className="text-primary-foreground/80">
                     {valuationData.companyInfo.businessId} • {valuationData.companyInfo.industry || 'Toimiala ei tiedossa'}
                   </CardDescription>
                 </div>
-                <div className="bg-white text-indigo-800 rounded-md px-3 py-1 text-sm font-medium">
+                <div className="bg-primary-foreground text-primary rounded-md px-3 py-1 text-sm font-medium">
                   {valuationData.companyInfo.size ? `${valuationData.companyInfo.size} ` : 'Koko ei tiedossa'}
                 </div>
               </div>
@@ -396,14 +396,14 @@ const BusinessValueCalculator = () => {
                 <h3 className="text-lg font-medium mb-4">Taloudelliset tunnusluvut</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="text-sm font-medium text-gray-500 mb-2">Liikevaihto (3v keskiarvo)</h4>
-                    <p className="text-2xl font-bold text-indigo-700">
+                    <h4 className="text-sm font-medium text-muted-foreground mb-2">Liikevaihto (3v keskiarvo)</h4>
+                    <p className="text-2xl font-bold text-primary">
                       {formatCurrency(valuationData.calculations.avgRevenue)}
                     </p>
                     <div className="mt-2 space-y-1">
                       {valuationData.financialData.revenue.map((item: { year: string; value: number | null }, i: number) => (
                         <div key={i} className="flex justify-between text-sm">
-                          <span className="text-gray-500">{item.year}:</span>
+                          <span className="text-muted-foreground">{item.year}:</span>
                           <span className="font-medium">{formatCurrency(item.value)}</span>
                         </div>
                       ))}
@@ -411,14 +411,14 @@ const BusinessValueCalculator = () => {
                   </div>
 
                   <div>
-                    <h4 className="text-sm font-medium text-gray-500 mb-2">Liiketulos (3v keskiarvo)</h4>
-                    <p className="text-2xl font-bold text-indigo-700">
+                    <h4 className="text-sm font-medium text-muted-foreground mb-2">Liiketulos (3v keskiarvo)</h4>
+                    <p className="text-2xl font-bold text-primary">
                       {formatCurrency(valuationData.calculations.avgOperatingProfit)}
                     </p>
                     <div className="mt-2 space-y-1">
                       {valuationData.financialData.operatingProfit.map((item: { year: string; value: number | null }, i: number) => (
                         <div key={i} className="flex justify-between text-sm">
-                          <span className="text-gray-500">{item.year}:</span>
+                          <span className="text-muted-foreground">{item.year}:</span>
                           <span className="font-medium">{formatCurrency(item.value)}</span>
                         </div>
                       ))}
@@ -431,28 +431,28 @@ const BusinessValueCalculator = () => {
                 <h3 className="text-lg font-medium mb-4">Arvonmäärityksen tulokset</h3>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-                  <div className="bg-white border rounded-lg p-5 shadow-sm">
+                  <div className="bg-white border rounded-lg p-5 shadow-neumorphic">
                     <div className="flex items-center justify-between mb-3">
-                      <h4 className="font-medium flex items-center gap-1 text-indigo-700">
+                      <h4 className="font-medium flex items-center gap-1 text-primary">
                         <TrendingUp className="h-4 w-4" />
                         Liikevaihtokerroin
                       </h4>
-                      <span className="text-gray-500 text-sm">
+                      <span className="text-muted-foreground text-sm">
                         Kerroin: {getCurrentMultiplier('revenue', revenueMultiplierValue).toFixed(2)}x
                       </span>
                     </div>
 
-                    <p className="text-4xl font-bold text-indigo-700 mb-6">
+                    <p className="text-4xl font-bold text-primary mb-6">
                       {formatCurrency(calculateCurrentValuation('revenue', revenueMultiplierValue))}
                     </p>
 
                     <div className="mb-4">
                       <div className="flex justify-between mb-1">
-                        <span className="text-sm text-gray-500">Konservatiivinen</span>
-                        <span className="text-sm bg-indigo-100 text-indigo-800 px-3 py-0.5 rounded-full">
+                        <span className="text-sm text-muted-foreground">Konservatiivinen</span>
+                        <span className="text-sm bg-primary/10 text-primary px-3 py-0.5 rounded-full">
                           {getMultiplierDescription(revenueMultiplierValue)}
                         </span>
-                        <span className="text-sm text-gray-500">Optimistinen</span>
+                        <span className="text-sm text-muted-foreground">Optimistinen</span>
                       </div>
 
                       <CalculatorSlider
@@ -470,34 +470,34 @@ const BusinessValueCalculator = () => {
                       </div>
                     </div>
 
-                    <div className="text-sm text-gray-500 bg-gray-50 p-3 rounded-md">
+                    <div className="text-sm text-muted-foreground bg-muted p-3 rounded-md">
                       <p>{valuationData.multipliers.revenue.justification || 'Perustelua ei saatavilla.'}</p>
-                      <p className="mt-1 text-xs text-gray-400">Lähde: {valuationData.multipliers.revenue.source || 'Lähdettä ei saatavilla.'}</p>
+                      <p className="mt-1 text-xs text-muted-foreground/70">Lähde: {valuationData.multipliers.revenue.source || 'Lähdettä ei saatavilla.'}</p>
                     </div>
                   </div>
 
-                  <div className="bg-white border rounded-lg p-5 shadow-sm">
+                  <div className="bg-white border rounded-lg p-5 shadow-neumorphic">
                     <div className="flex items-center justify-between mb-3">
-                      <h4 className="font-medium flex items-center gap-1 text-indigo-700">
+                      <h4 className="font-medium flex items-center gap-1 text-primary">
                         <ChevronsUpDown className="h-4 w-4" />
                         EV/EBIT-kerroin
                       </h4>
-                      <span className="text-gray-500 text-sm">
+                      <span className="text-muted-foreground text-sm">
                         Kerroin: {getCurrentMultiplier('evEbit', evEbitMultiplierValue).toFixed(2)}x
                       </span>
                     </div>
 
-                    <p className="text-4xl font-bold text-indigo-700 mb-6">
+                    <p className="text-4xl font-bold text-primary mb-6">
                       {formatCurrency(calculateCurrentValuation('evEbit', evEbitMultiplierValue))}
                     </p>
 
                     <div className="mb-4">
                       <div className="flex justify-between mb-1">
-                        <span className="text-sm text-gray-500">Konservatiivinen</span>
-                        <span className="text-sm bg-indigo-100 text-indigo-800 px-3 py-0.5 rounded-full">
+                        <span className="text-sm text-muted-foreground">Konservatiivinen</span>
+                        <span className="text-sm bg-primary/10 text-primary px-3 py-0.5 rounded-full">
                           {getMultiplierDescription(evEbitMultiplierValue)}
                         </span>
-                        <span className="text-sm text-gray-500">Optimistinen</span>
+                        <span className="text-sm text-muted-foreground">Optimistinen</span>
                       </div>
 
                       <CalculatorSlider
@@ -515,9 +515,9 @@ const BusinessValueCalculator = () => {
                       </div>
                     </div>
 
-                    <div className="text-sm text-gray-500 bg-gray-50 p-3 rounded-md">
+                    <div className="text-sm text-muted-foreground bg-muted p-3 rounded-md">
                       <p>{valuationData.multipliers.evEbit.justification || 'Perustelua ei saatavilla.'}</p>
-                      <p className="mt-1 text-xs text-gray-400">Lähde: {valuationData.multipliers.evEbit.source || 'Lähdettä ei saatavilla.'}</p>
+                      <p className="mt-1 text-xs text-muted-foreground/70">Lähde: {valuationData.multipliers.evEbit.source || 'Lähdettä ei saatavilla.'}</p>
                     </div>
                   </div>
                 </div>
@@ -525,15 +525,15 @@ const BusinessValueCalculator = () => {
             </CardContent>
 
             {/* Tähtiarviointikomponentti */}
-            <div className="px-6 py-4 border-t bg-gray-50">
-              <h3 className="font-medium text-slate-800 mb-3">Miten hyvin onnistuimme?</h3>
-              <p className="text-sm text-slate-600 mb-3">Klikkaa tähteä antaaksesi arvion (1-5 tähteä)</p>
+            <div className="px-6 py-4 border-t bg-muted">
+              <h3 className="font-medium text-secondary mb-3">Miten hyvin onnistuimme?</h3>
+              <p className="text-sm text-secondary/70 mb-3">Klikkaa tähteä antaaksesi arvion (1-5 tähteä)</p>
               <StarRatingComponent valuationData={valuationData} />
             </div>
             
-            <CardFooter className="bg-gray-50 border-t p-6">
+            <CardFooter className="bg-muted border-t p-6">
               <div className="w-full flex flex-col gap-4">
-                <Button onClick={resetForm} className="bg-white border border-indigo-500 text-indigo-500 hover:bg-indigo-50 transition-all py-6">
+                <Button onClick={resetForm} className="bg-background border border-primary text-primary hover:bg-primary/5 transition-all py-6">
                   Laske uusi arvonmääritys
                 </Button>
                 <Button
@@ -542,18 +542,18 @@ const BusinessValueCalculator = () => {
                       `?businessId=${encodeURIComponent(valuationData.companyInfo.businessId)}` : '';
                     window.location.href = `/free-valuation${businessIdParam}`;
                   }}
-                  className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all py-6 text-white"
+                  className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all py-6 text-primary-foreground"
                 >
                   Tee tarkempi arvonmääritys
                 </Button>
                 <Button
                   onClick={() => setIsEmailDialogOpen(true)}
-                  className="bg-white border border-indigo-500 text-indigo-500 hover:bg-indigo-50 transition-all py-6 flex items-center justify-center gap-2"
+                  className="bg-background border border-primary text-primary hover:bg-primary/5 transition-all py-6 flex items-center justify-center gap-2"
                 >
                   <Mail className="h-5 w-5" />
                   Lähetä tulokset sähköpostiin
                 </Button>
-                <div className="text-center text-sm text-gray-500 mt-2">
+                <div className="text-center text-sm text-muted-foreground mt-2">
                   <p>Tämä arvonmääritys on alustava arvio, joka perustuu julkisiin tietoihin ja toimialan keskiarvoihin.</p>
                   <p className="mt-1">Tarkempaa arvonmääritystä varten suosittelemme käyttämään maksullisia versioita.</p>
                 </div>

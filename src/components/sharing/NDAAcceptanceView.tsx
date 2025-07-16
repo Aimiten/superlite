@@ -211,7 +211,7 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-4" />
-          <p className="text-muted-foreground">Ladataan salassapitosopimusta...</p>
+          <p className="text-gray-500">Ladataan salassapitosopimusta...</p>
         </div>
       </div>
     );
@@ -220,10 +220,10 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4">
-        <Card className="border-2">
+        <Card className="border border-gray-200">
           <CardHeader className="text-center pb-6">
             <div className="flex justify-center mb-4">
-              <div className="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+              <div className="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center border border-blue-200">
                 <Shield className="h-8 w-8 text-blue-600" />
               </div>
             </div>
@@ -235,25 +235,25 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
 
           <CardContent className="space-y-6">
             {/* Jaon tiedot */}
-            <div className="bg-gray-50 rounded-lg p-4">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
               <h3 className="font-semibold mb-3 flex items-center gap-2">
                 <Building className="h-4 w-4" />
                 Tietojen jakaja
               </h3>
-              <div className="space-y-2 text-sm">
+              <div className="space-y-2 text-base">
                 <div>
-                  <span className="text-muted-foreground">Yritys:</span>{' '}
+                  <span className="text-gray-500">Yritys:</span>{' '}
                   <span className="font-medium">{shareInfo?.company_name}</span>
                 </div>
                 <div>
-                  <span className="text-muted-foreground">Jaettu:</span>{' '}
+                  <span className="text-gray-500">Jaettu:</span>{' '}
                   <span className="font-medium">
                     {shareInfo && format(new Date(shareInfo.created_at), 'dd.MM.yyyy HH:mm', { locale: fi })}
                   </span>
                 </div>
                 {shareInfo?.expires_at && (
                   <div>
-                    <span className="text-muted-foreground">Voimassa:</span>{' '}
+                    <span className="text-gray-500">Voimassa:</span>{' '}
                     <span className="font-medium">
                       {format(new Date(shareInfo.expires_at), 'dd.MM.yyyy', { locale: fi })} asti
                     </span>
@@ -263,7 +263,7 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
             </div>
 
             {/* Jaettavat tiedot */}
-            <div className="bg-blue-50 rounded-lg p-4">
+            <div className="bg-blue-50/50 border border-blue-200 rounded-lg p-4">
               <h3 className="font-semibold mb-3 flex items-center gap-2">
                 <FileText className="h-4 w-4" />
                 Jaettavat tiedot
@@ -280,15 +280,15 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
             {/* NDA-sopimus */}
             <div>
               <h3 className="font-semibold mb-3">Salassapitosopimus</h3>
-              <ScrollArea className="h-[400px] border rounded-lg p-4 bg-white">
+              <ScrollArea className="h-[400px] border border-gray-200 rounded-lg p-4 bg-gray-50">
                 {ndaDocument?.content_markdown ? (
                   <div className="prose prose-sm max-w-none">
                     <ReactMarkdown
                       components={{
                         // Rajoita sallitut elementit turvallisuuden vuoksi
-                        h1: ({children}) => <h1 className="text-xl font-bold mb-4">{children}</h1>,
-                        h2: ({children}) => <h2 className="text-lg font-bold mb-3">{children}</h2>,
-                        h3: ({children}) => <h3 className="text-base font-bold mb-2">{children}</h3>,
+                        h1: ({children}) => <h1 className="text-xl font-bold mb-4 text-gray-800">{children}</h1>,
+                        h2: ({children}) => <h2 className="text-lg font-bold mb-3 text-gray-800">{children}</h2>,
+                        h3: ({children}) => <h3 className="text-base font-bold mb-2 text-gray-800">{children}</h3>,
                         p: ({children}) => <p className="mb-4">{children}</p>,
                         ul: ({children}) => <ul className="list-disc list-inside mb-4">{children}</ul>,
                         ol: ({children}) => <ol className="list-decimal list-inside mb-4">{children}</ol>,
@@ -299,14 +299,14 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
                         img: () => null,
                         script: () => null,
                         iframe: () => null,
-                        a: ({children}) => <span className="text-blue-600 underline">{children}</span>
+                        a: ({children}) => <span className="text-blue-600 underline hover:text-blue-700">{children}</span>
                       }}
                     >
                       {ndaDocument.content_markdown}
                     </ReactMarkdown>
                   </div>
                 ) : (
-                  <Alert>
+                  <Alert className="border border-gray-200">
                     <AlertCircle className="h-4 w-4" />
                     <AlertDescription>
                       Salassapitosopimusta ei voitu ladata. Yritä päivittää sivu.
@@ -331,6 +331,7 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
                     onChange={(e) => setSignerInfo({ ...signerInfo, name: e.target.value })}
                     placeholder="Etunimi Sukunimi"
                     required
+                    className="border border-gray-200 bg-white"
                   />
                 </div>
                 
@@ -343,6 +344,7 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
                     onChange={(e) => setSignerInfo({ ...signerInfo, email: e.target.value })}
                     placeholder="nimi@yritys.fi"
                     required
+                    className="border border-gray-200 bg-white"
                   />
                 </div>
                 
@@ -353,6 +355,7 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
                     value={signerInfo.company}
                     onChange={(e) => setSignerInfo({ ...signerInfo, company: e.target.value })}
                     placeholder="Yritys Oy"
+                    className="border border-gray-200 bg-white"
                   />
                 </div>
                 
@@ -363,6 +366,7 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
                     value={signerInfo.title}
                     onChange={(e) => setSignerInfo({ ...signerInfo, title: e.target.value })}
                     placeholder="Toimitusjohtaja"
+                    className="border border-gray-200 bg-white"
                   />
                 </div>
               </div>
@@ -385,7 +389,7 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
           </CardContent>
 
           <CardFooter className="flex justify-between pt-6">
-            <div className="text-sm text-muted-foreground flex items-center gap-2">
+            <div className="text-sm text-gray-500 flex items-center gap-2">
               <Clock className="h-4 w-4" />
               <span>
                 Hyväksyntä tallennetaan: {format(new Date(), 'dd.MM.yyyy HH:mm:ss', { locale: fi })}
@@ -396,6 +400,7 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
               onClick={handleAccept}
               disabled={!acceptedTerms || !signerInfo.name || !signerInfo.email || accepting}
               size="lg"
+              className="bg-blue-600 hover:bg-blue-700 text-white"
             >
               {accepting ? (
                 <>
@@ -413,7 +418,7 @@ export function NDAAcceptanceView({ shareId, onAccept }: NDAAcceptanceViewProps)
         </Card>
 
         {/* Footer info */}
-        <div className="text-center mt-6 text-sm text-muted-foreground">
+        <div className="text-center mt-6 text-sm text-gray-500">
           <p>
             Hyväksymällä salassapitosopimuksen vahvistat, että sinulla on oikeus sitoutua sopimukseen
             {signerInfo.company && ` yrityksen ${signerInfo.company} puolesta`}.

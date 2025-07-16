@@ -30,7 +30,7 @@ interface RecentActivityProps {
 const RecentActivity: React.FC<RecentActivityProps> = ({ activities }) => {
   if (!activities || activities.length === 0) {
     return (
-      <Card>
+      <Card className="shadow-neumorphic">
         <CardHeader>
           <CardTitle>Viimeaikaiset toimenpiteet</CardTitle>
           <CardDescription>Näet täällä viimeaikaiset toimenpiteesi</CardDescription>
@@ -46,7 +46,7 @@ const RecentActivity: React.FC<RecentActivityProps> = ({ activities }) => {
   }
 
   return (
-    <Card>
+    <Card className="shadow-neumorphic">
       <CardHeader>
         <CardTitle>Viimeaikaiset toimenpiteet</CardTitle>
         <CardDescription>Viimeksi tekemäsi toimenpiteet</CardDescription>

@@ -56,7 +56,7 @@ export class NDAErrorBoundary extends Component<Props, State> {
                   <summary className="cursor-pointer text-sm font-medium">
                     Tekninen virhe (vain kehittäjille)
                   </summary>
-                  <pre className="mt-2 text-xs overflow-auto bg-gray-100 p-2 rounded">
+                  <pre className="mt-2 text-xs overflow-auto bg-gray-50 border border-gray-200 p-2 rounded">
                     {this.state.error.message}
                     {this.state.error.stack}
                   </pre>

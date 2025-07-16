@@ -71,7 +71,7 @@ p-6">
         {currentStep && totalSteps && (
           <Badge variant="outline" className="mb-4 w-fit rounded-full 
 flex items-center gap-1 text-xs py-1 self-start">
-            <div className="bg-indigo-100 text-indigo-700 rounded-full 
+            <div className="bg-primary/20 text-primary rounded-full 
 w-5 h-5 flex items-center justify-center flex-shrink-0 
 font-medium">{currentStep}</div>
             <span>/ {totalSteps}</span>
@@ -81,19 +81,19 @@ font-medium">{currentStep}</div>
         {!error ? (
           <div className="flex flex-col items-center space-y-4 
 text-center w-full">
-            <div className="rounded-full bg-blue-100 p-3">
-              <Loader2 className="h-8 w-8 text-blue-600 animate-spin" />
+            <div className="rounded-full bg-primary/20 p-3">
+              <Loader2 className="h-8 w-8 text-primary animate-spin" />
             </div>
             <div>
               <h3 className="text-xl font-medium">{getStageTitle()}</h3>
-              <p className="text-sm text-gray-500 
+              <p className="text-sm text-muted-foreground 
 mt-1">{getStageDescription()}</p>
             </div>
           </div>
         ) : (
           <div className="text-center space-y-4">
-            <div className="rounded-full bg-red-100 p-3 mx-auto w-fit">
-              <AlertTriangle className="h-8 w-8 text-red-600" />
+            <div className="rounded-full bg-destructive/20 p-3 mx-auto w-fit">
+              <AlertTriangle className="h-8 w-8 text-destructive" />
             </div>
 
             <Alert variant="destructive" className="mt-4">
@@ -101,7 +101,7 @@ mt-1">{getStageDescription()}</p>
               <AlertDescription>{error}</AlertDescription>
             </Alert>
 
-            <p className="text-sm mt-4 text-gray-600">
+            <p className="text-sm mt-4 text-muted-foreground">
               Yritä uudelleen tai kokeile myöhemmin uudestaan. Jos
 ongelma toistuu, ota yhteyttä tukeen.
             </p>

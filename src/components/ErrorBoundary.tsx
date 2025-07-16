@@ -82,9 +82,9 @@ class ErrorBoundary extends Component<Props, State> {
             </div>
 
             {process.env.NODE_ENV === 'development' && this.state.error && (
-              <details className="mt-4 p-4 bg-gray-100 rounded-md text-sm">
-                <summary className="cursor-pointer font-medium">Virheen tiedot (vain kehitystilassa)</summary>
-                <pre className="mt-2 whitespace-pre-wrap text-xs overflow-auto">
+              <details className="mt-4 p-4 bg-muted rounded-md text-sm">
+                <summary className="cursor-pointer font-medium text-foreground">Virheen tiedot (vain kehitystilassa)</summary>
+                <pre className="mt-2 whitespace-pre-wrap text-xs overflow-auto text-muted-foreground">
                   {this.state.error.toString()}
                   {this.state.errorInfo?.componentStack}
                 </pre>

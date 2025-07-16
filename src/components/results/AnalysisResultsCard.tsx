@@ -34,18 +34,18 @@ const AnalysisResultsCard: React.FC<AnalysisResultsCardProps> = ({
     <Card className="card-3d">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <FileText className="h-5 w-5 text-purple-500" />
+          <FileText className="h-5 w-5 text-[hsl(var(--chart-1))]" />
           Myyntikuntoisuuden analyysi
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {analysisResults.key_points && (
-          <div className="rounded-lg bg-purple-50 p-4 border border-purple-100">
+          <div className="rounded-lg bg-[hsl(var(--chart-1))]/10 p-4 border border-[hsl(var(--chart-1))]/20">
             <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
-              <LightbulbIcon className="h-5 w-5 text-purple-500" />
+              <LightbulbIcon className="h-5 w-5 text-[hsl(var(--chart-1))]" />
               {analysisResults.key_points.title || "Keskeiset havainnot"}
             </h3>
-            <p className="text-gray-700 whitespace-pre-line">
+            <p className="text-foreground/80 whitespace-pre-line">
               {analysisResults.key_points.content}
             </p>
           </div>
@@ -59,14 +59,14 @@ const AnalysisResultsCard: React.FC<AnalysisResultsCardProps> = ({
             {analysisResults.valuation_analysis.substanssi_analysis && (
               <div className="border rounded-lg p-4">
                 <h4 className="font-medium mb-2">{analysisResults.valuation_analysis.substanssi_analysis.title}</h4>
-                <p className="text-gray-700 whitespace-pre-line">{analysisResults.valuation_analysis.substanssi_analysis.content}</p>
+                <p className="text-foreground/80 whitespace-pre-line">{analysisResults.valuation_analysis.substanssi_analysis.content}</p>
               </div>
             )}
             
             {analysisResults.valuation_analysis.ev_ebit_analysis && (
               <div className="border rounded-lg p-4">
                 <h4 className="font-medium mb-2">{analysisResults.valuation_analysis.ev_ebit_analysis.title}</h4>
-                <p className="text-gray-700 whitespace-pre-line">{analysisResults.valuation_analysis.ev_ebit_analysis.content}</p>
+                <p className="text-foreground/80 whitespace-pre-line">{analysisResults.valuation_analysis.ev_ebit_analysis.content}</p>
               </div>
             )}
           </div>
@@ -79,7 +79,7 @@ const AnalysisResultsCard: React.FC<AnalysisResultsCardProps> = ({
             {analysisResults.company_insights.map((insight, index) => (
               <div key={index} className="border rounded-lg p-4">
                 <h4 className="font-medium mb-2">{insight.title}</h4>
-                <p className="text-gray-700 whitespace-pre-line">{insight.description}</p>
+                <p className="text-foreground/80 whitespace-pre-line">{insight.description}</p>
               </div>
             ))}
           </div>
@@ -87,12 +87,12 @@ const AnalysisResultsCard: React.FC<AnalysisResultsCardProps> = ({
 
         {/* MYYNTIKUNTOON-palvelun suositus erikseen korostettuna */}
         {analysisResults.myyntikuntoon_recommendation && (
-          <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
+          <div className="bg-[hsl(var(--chart-2))]/10 rounded-lg p-4 border border-[hsl(var(--chart-2))]/20">
             <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-blue-500" />
+              <TrendingUp className="h-5 w-5 text-[hsl(var(--chart-2))]" />
               {analysisResults.myyntikuntoon_recommendation.title}
             </h3>
-            <p className="text-gray-700 whitespace-pre-line">
+            <p className="text-foreground/80 whitespace-pre-line">
               {analysisResults.myyntikuntoon_recommendation.description}
             </p>
           </div>
@@ -104,16 +104,16 @@ const AnalysisResultsCard: React.FC<AnalysisResultsCardProps> = ({
             {analysisResults.analysis_sections.map((section, index) => (
               <div key={index} className="border rounded-lg p-4">
                 <h4 className="font-medium mb-2">{section.title}</h4>
-                <p className="text-gray-700 whitespace-pre-line">{section.content}</p>
+                <p className="text-foreground/80 whitespace-pre-line">{section.content}</p>
               </div>
             ))}
           </div>
         )}
 
         {analysisResults.sale_readiness_growth_path && (
-          <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
+          <div className="bg-[hsl(var(--chart-2))]/10 rounded-lg p-4 border border-[hsl(var(--chart-2))]/20">
             <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-blue-500" />
+              <TrendingUp className="h-5 w-5 text-[hsl(var(--chart-2))]" />
               Myyntikuntoisuuden kehityspolku
             </h3>
             
@@ -122,7 +122,7 @@ const AnalysisResultsCard: React.FC<AnalysisResultsCardProps> = ({
                 <h4 className="font-medium mb-2">Seuraavat toimenpiteet</h4>
                 <ul className="list-disc pl-5 space-y-1">
                   {analysisResults.sale_readiness_growth_path.next_steps.map((step, index) => (
-                    <li key={index} className="text-gray-700">{step}</li>
+                    <li key={index} className="text-foreground/80">{step}</li>
                   ))}
                 </ul>
               </div>
@@ -131,14 +131,14 @@ const AnalysisResultsCard: React.FC<AnalysisResultsCardProps> = ({
                 <h4 className="font-medium mb-2">Keskipitkän aikavälin toimenpiteet</h4>
                 <ul className="list-disc pl-5 space-y-1">
                   {analysisResults.sale_readiness_growth_path.medium_term_actions.map((action, index) => (
-                    <li key={index} className="text-gray-700">{action}</li>
+                    <li key={index} className="text-foreground/80">{action}</li>
                   ))}
                 </ul>
               </div>
               
               <div>
                 <h4 className="font-medium mb-2">Odotetut tulokset</h4>
-                <p className="text-gray-700 whitespace-pre-line">
+                <p className="text-foreground/80 whitespace-pre-line">
                   {analysisResults.sale_readiness_growth_path.expected_outcomes}
                 </p>
               </div>
@@ -150,7 +150,7 @@ const AnalysisResultsCard: React.FC<AnalysisResultsCardProps> = ({
         {analysisResults.additional_recommendations && analysisResults.additional_recommendations.length > 0 && (
           <div className="border-t pt-6">
             <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-              <CheckSquare className="h-5 w-5 text-green-500" />
+              <CheckSquare className="h-5 w-5 text-[hsl(var(--success))]" />
               Toimenpidesuositukset
             </h3>
             
@@ -165,7 +165,7 @@ const AnalysisResultsCard: React.FC<AnalysisResultsCardProps> = ({
                       {recommendation.expected_impact && (
                         <div className="mt-3 pt-3 border-t border-dashed">
                           <p className="text-sm font-medium">Odotettu vaikutus:</p>
-                          <p className="text-sm text-gray-600">{recommendation.expected_impact}</p>
+                          <p className="text-sm text-muted-foreground">{recommendation.expected_impact}</p>
                         </div>
                       )}
                     </div>
@@ -180,7 +180,7 @@ const AnalysisResultsCard: React.FC<AnalysisResultsCardProps> = ({
         {!analysisResults.additional_recommendations && analysisResults.recommendations && analysisResults.recommendations.length > 0 && (
           <div className="border-t pt-6">
             <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-              <CheckSquare className="h-5 w-5 text-green-500" />
+              <CheckSquare className="h-5 w-5 text-[hsl(var(--success))]" />
               Toimenpidesuositukset
             </h3>
             
@@ -201,7 +201,7 @@ const AnalysisResultsCard: React.FC<AnalysisResultsCardProps> = ({
                       {recommendation.expected_impact && (
                         <div className="mt-3 pt-3 border-t border-dashed">
                           <p className="text-sm font-medium">Odotettu vaikutus:</p>
-                          <p className="text-sm text-gray-600">{recommendation.expected_impact}</p>
+                          <p className="text-sm text-muted-foreground">{recommendation.expected_impact}</p>
                         </div>
                       )}
                     </div>

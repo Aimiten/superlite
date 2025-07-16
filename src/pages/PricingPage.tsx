@@ -333,7 +333,7 @@ const PricingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-b from-primary/5 via-white to-secondary/5">
       <Header 
         isLoggedIn={false} 
         handleNavigation={handleNavigation}
@@ -354,7 +354,7 @@ const PricingPage = () => {
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-bold text-slate-800 mb-4"
           >
-            Läpinäkyvä hinnoittelu <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">jokaiselle yritykselle</span>
+            Läpinäkyvä hinnoittelu <span className="text-primary">jokaiselle yritykselle</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: -20 }}
@@ -435,17 +435,17 @@ const PricingPage = () => {
                         </td>
                         <td className="py-3 px-6 text-center">
                           {feature.free ? 
-                            <Check className="h-5 w-5 text-green-500 mx-auto" /> : 
+                            <Check className="h-5 w-5 text-success mx-auto" /> : 
                             <X className="h-5 w-5 text-slate-300 mx-auto" />}
                         </td>
                         <td className="py-3 px-6 text-center">
                           {feature.lite ? 
-                            <Check className="h-5 w-5 text-blue-500 mx-auto" /> : 
+                            <Check className="h-5 w-5 text-primary mx-auto" /> : 
                             <X className="h-5 w-5 text-slate-300 mx-auto" />}
                         </td>
                         <td className="py-3 px-6 text-center">
                           {feature.pro ? 
-                            <Check className="h-5 w-5 text-purple-500 mx-auto" /> : 
+                            <Check className="h-5 w-5 text-secondary mx-auto" /> : 
                             <X className="h-5 w-5 text-slate-300 mx-auto" />}
                         </td>
                       </tr>
@@ -459,14 +459,14 @@ const PricingPage = () => {
       </section>
 
       {/* FAQ - Usein kysytyt kysymykset */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-indigo-50/30">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-primary/5">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-slate-800 text-center mb-12">Usein kysytyt kysymykset</h2>
 
-          <Accordion type="single" collapsible className="bg-white rounded-xl shadow-sm">
+          <Accordion type="single" collapsible className="bg-white rounded-xl shadow-neumorphic">
             {faqItems.map((item, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="px-6 py-4 text-slate-800 hover:text-indigo-600">
+                <AccordionTrigger className="px-6 py-4 text-slate-800 hover:text-primary">
                   {item.question}
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-4 text-slate-600">
@@ -479,7 +479,7 @@ const PricingPage = () => {
       </section>
 
       {/* Asiakastarinat */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-indigo-50/30 to-white">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-primary/5 to-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-slate-800 text-center mb-4">Mitä asiakkaamme sanovat</h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto text-center mb-12">
@@ -494,7 +494,7 @@ const PricingPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-white rounded-xl shadow-sm p-6 border border-slate-100"
+                className="bg-white rounded-xl shadow-neumorphic p-6 border border-slate-100"
               >
                 <div className="flex items-start gap-4 mb-4">
                   <div className="bg-slate-100 h-16 w-16 rounded-full flex items-center justify-center">
@@ -510,7 +510,7 @@ const PricingPage = () => {
                   </div>
                 </div>
                 <blockquote className="text-slate-700 mb-4 italic">"{story.quote}"</blockquote>
-                <div className="bg-indigo-50 p-3 rounded-lg text-sm text-indigo-700 font-medium">
+                <div className="bg-primary/10 p-3 rounded-lg text-sm text-primary font-medium">
                   Tulokset: {story.results}
                 </div>
               </motion.div>
@@ -520,14 +520,14 @@ const PricingPage = () => {
       </section>
 
       {/* Yhteydenotto */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-indigo-100 to-purple-100">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary/10 to-secondary/10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-slate-800 mb-4">Tarvitsetko räätälöidyn ratkaisun?</h2>
           <p className="text-lg text-slate-600 mb-8">
             Isommille yrityksille ja erityistarpeisiin tarjoamme räätälöityjä ratkaisuja. Ota yhteyttä myyntitiimiimme.
           </p>
           <Button 
-            className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-full px-8 py-6 text-lg shadow-md hover:shadow-lg transition-all"
+            className="bg-secondary hover:bg-secondary/90 text-white rounded-full px-8 py-6 text-lg shadow-neumorphic-pressed hover:shadow-neumorphic transition-all"
             onClick={() => window.open("mailto:sales@arvento.fi")}
           >
             Ota yhteyttä myyntiin
@@ -543,7 +543,7 @@ const PricingPage = () => {
             Aloita ilmaisella arvonmäärityksellä ja päivitä tarvittaessa laajempaan versioon.
           </p>
           <Button 
-            className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-full px-8 py-6 text-lg shadow-md hover:shadow-lg transition-all"
+            className="bg-secondary hover:bg-secondary/90 text-white rounded-full px-8 py-6 text-lg shadow-neumorphic-pressed hover:shadow-neumorphic transition-all"
             onClick={handleNavigation}
           >
             Aloita ilmaiseksi

@@ -52,7 +52,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
 
   // Kompakti header kaikissa tiloissa
   return (
-    <div className="border-b bg-white shadow-sm">
+    <div className="border-b bg-white shadow-neumorphic">
       <div className="max-w-6xl mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Vasen puoli: Yritysten valinta */}

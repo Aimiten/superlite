@@ -16,7 +16,7 @@ const CallToAction = ({ handleNavigation }: CallToActionProps) => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 purple-gradient">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/10">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -24,18 +24,18 @@ const CallToAction = ({ handleNavigation }: CallToActionProps) => {
         transition={{ duration: 0.6 }}
         className="max-w-4xl mx-auto glass-effect p-12"
       >
-        <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-6">
+        <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
           Valmis kasvattamaan yrityksesi arvoa?
         </h2>
-        <p className="text-xl text-slate-700 mb-8 max-w-2xl mx-auto">
+        <p className="text-xl text-foreground/80 mb-8 max-w-2xl mx-auto">
           Aloita ilmaiseksi ja näe, kuinka paljon voit kasvattaa yrityksesi arvoa ennen myyntiä.
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-10">
           {premiumFeatures.map((feature, index) => (
-            <div key={index} className="flex items-center space-x-2 text-left text-slate-700">
+            <div key={index} className="flex items-center space-x-2 text-left text-foreground/80">
               <div className="bg-white w-6 h-6 rounded-full shadow-neumorphic flex items-center justify-center">
-                <Check className="h-3 w-3 text-green-500 flex-shrink-0" />
+                <Check className="h-3 w-3 text-[hsl(var(--success))] flex-shrink-0" />
               </div>
               <span>{feature}</span>
             </div>
@@ -45,7 +45,7 @@ const CallToAction = ({ handleNavigation }: CallToActionProps) => {
         <Button 
           size="pill"
           variant="neumorphic-primary"
-          className="text-indigo-700 px-10 py-6 text-lg"
+          className="text-primary-foreground px-10 py-6 text-lg"
           onClick={handleNavigation}
         >
           Luo ilmainen tili <ArrowRight className="ml-2 h-5 w-5" />

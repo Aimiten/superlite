@@ -46,6 +46,16 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
+    /* Semantic colors */
+    --success: 142 76% 36%; /* Green for success states */
+    --success-foreground: 142 70% 96%;
+    
+    --warning: 38 92% 50%; /* Amber for warning states */
+    --warning-foreground: 39 90% 5%;
+    
+    --info: 217 91% 60%; /* Blue for info states */
+    --info-foreground: 220 13% 98%;
+
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
@@ -78,6 +88,16 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
+    /* Semantic colors - dark mode */
+    --success: 142 70% 45%; /* Lighter green for dark mode */
+    --success-foreground: 142 76% 15%;
+    
+    --warning: 38 92% 60%; /* Lighter amber for dark mode */
+    --warning-foreground: 39 96% 15%;
+    
+    --info: 217 91% 70%; /* Lighter blue for dark mode */
+    --info-foreground: 220 30% 15%;
+
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
@@ -93,25 +113,6 @@
   }
 }
 
-/* Gradient Background */
-.gradient-bg {
-  background: linear-gradient(to bottom right, rgba(239, 246, 255, 0.8), rgba(238, 242, 255, 0.8), rgba(245, 243, 255, 0.8));
-}
-
-/* Modern Soft Gradient */
-.modern-gradient {
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-}
-
-/* Purple Gradient */
-.purple-gradient {
-  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
-}
-
-/* Blue Gradient */
-.blue-gradient {
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-}
 
 /* 3D Card Effect */
 .card-3d {

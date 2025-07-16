@@ -47,7 +47,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
     <form onSubmit={onSend} className="flex items-end gap-2 w-full">
       <div className={cn(
         "flex-grow relative min-h-[50px] max-h-[200px] overflow-hidden rounded-full", // Pyöreä muoto
-        "border border-gray-200 shadow-sm bg-white focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary"
+        "border border-muted shadow-neumorphic bg-white focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary"
       )}>
         <textarea
           ref={textareaRef}

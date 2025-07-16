@@ -516,7 +516,7 @@ const AIAssistant = () => {
   const hasMessages = messages.length > 0 || isLoading;
 
   return (
-    <DashboardLayout pageTitle="" pageDescription="">
+    <DashboardLayout pageTitle="" pageDescription="" className="bg-muted/50">
       {/* Chat-käyttöliittymä */}
       <ChatContainer 
         messages={messages}

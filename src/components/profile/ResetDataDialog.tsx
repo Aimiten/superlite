@@ -91,7 +91,7 @@ const ResetDataDialog: React.FC<ResetDataDialogProps> = ({ disabled = false }) =
       <DialogTrigger asChild>
         <Button 
           variant="outline" 
-          className="text-red-600 border-red-300 hover:bg-red-50 hover:text-red-700"
+          className="text-destructive border-destructive/30 hover:bg-destructive/10 hover:text-destructive"
           disabled={disabled}
         >
           <RefreshCw className="mr-2 h-4 w-4" />
@@ -102,7 +102,7 @@ const ResetDataDialog: React.FC<ResetDataDialogProps> = ({ disabled = false }) =
         {step === "warning" ? (
           <>
             <DialogHeader>
-              <DialogTitle className="flex items-center gap-2 text-red-600">
+              <DialogTitle className="flex items-center gap-2 text-destructive">
                 <AlertTriangle className="h-5 w-5" />
                 Aloita alusta - Poista kaikki tiedot
               </DialogTitle>

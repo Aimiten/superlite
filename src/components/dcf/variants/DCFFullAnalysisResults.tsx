@@ -49,7 +49,7 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
   return (
     <div className="space-y-6">
       {/* Full DCF Specific Header */}
-      <Alert className="border-green-200 bg-green-50">
+      <Alert className="border-success bg-success/10">
         <CheckCircle className="h-4 w-4" />
         <AlertDescription>
           <div className="space-y-2">
@@ -85,22 +85,22 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-red-600">
+                  <div className="text-2xl font-bold text-destructive">
                     {formatCurrency(equity_value_range.min)}
                   </div>
-                  <div className="text-sm text-gray-600">Pessimistinen</div>
+                  <div className="text-sm text-muted-foreground">Pessimistinen</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600">
+                  <div className="text-3xl font-bold text-info">
                     {formatCurrency(equity_value_range.base)}
                   </div>
-                  <div className="text-sm text-gray-600">Base Case</div>
+                  <div className="text-sm text-muted-foreground">Base Case</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">
+                  <div className="text-2xl font-bold text-success">
                     {formatCurrency(equity_value_range.max)}
                   </div>
-                  <div className="text-sm text-gray-600">Optimistinen</div>
+                  <div className="text-sm text-muted-foreground">Optimistinen</div>
                 </div>
               </div>
               
@@ -110,10 +110,10 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
                 <div className="text-xl font-semibold mb-2">
                   Todennäköisyyspainotettu arvo
                 </div>
-                <div className="text-4xl font-bold text-purple-600">
+                <div className="text-4xl font-bold text-secondary">
                   {formatCurrency(probability_weighted_valuation.weighted_equity_value)}
                 </div>
-                <div className="text-sm text-gray-600 mt-2">
+                <div className="text-sm text-muted-foreground mt-2">
                   Painotus: 20% / 60% / 20%
                 </div>
               </div>
@@ -121,32 +121,32 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
           </Card>
 
           {/* High Confidence Indicators */}
-          <Card className="border-green-200">
+          <Card className="border-success">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-green-600" />
+                <CheckCircle className="h-5 w-5 text-success" />
                 Luotettavuusindikaattorit
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="text-center p-3 bg-green-50 rounded">
-                  <div className="text-2xl font-bold text-green-600">3+</div>
-                  <div className="text-sm text-gray-600">Vuotta dataa</div>
+                <div className="text-center p-3 bg-success/10 rounded">
+                  <div className="text-2xl font-bold text-success">3+</div>
+                  <div className="text-sm text-muted-foreground">Vuotta dataa</div>
                 </div>
-                <div className="text-center p-3 bg-green-50 rounded">
-                  <div className="text-2xl font-bold text-green-600">
+                <div className="text-center p-3 bg-success/10 rounded">
+                  <div className="text-2xl font-bold text-success">
                     {analysisData.confidence_assessment?.overall_confidence_score}/10
                   </div>
-                  <div className="text-sm text-gray-600">Luottamustaso</div>
+                  <div className="text-sm text-muted-foreground">Luottamustaso</div>
                 </div>
-                <div className="text-center p-3 bg-green-50 rounded">
-                  <div className="text-2xl font-bold text-green-600">Vahva</div>
-                  <div className="text-sm text-gray-600">Trendianalyysi</div>
+                <div className="text-center p-3 bg-success/10 rounded">
+                  <div className="text-2xl font-bold text-success">Vahva</div>
+                  <div className="text-sm text-muted-foreground">Trendianalyysi</div>
                 </div>
-                <div className="text-center p-3 bg-green-50 rounded">
-                  <div className="text-2xl font-bold text-green-600">Korkea</div>
-                  <div className="text-sm text-gray-600">Datan laatu</div>
+                <div className="text-center p-3 bg-success/10 rounded">
+                  <div className="text-2xl font-bold text-success">Korkea</div>
+                  <div className="text-sm text-muted-foreground">Datan laatu</div>
                 </div>
               </div>
             </CardContent>
@@ -164,7 +164,7 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div>
-                    <div className="text-sm text-gray-600">Risk-free Rate</div>
+                    <div className="text-sm text-muted-foreground">Risk-free Rate</div>
                     <div className="font-semibold">
                       {(analysisData.historical_analysis.market_data_integration.riskFreeRate.value * 100).toFixed(2)}%
                     </div>
@@ -173,7 +173,7 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
                     </Badge>
                   </div>
                   <div>
-                    <div className="text-sm text-gray-600">EU Inflaatio</div>
+                    <div className="text-sm text-muted-foreground">EU Inflaatio</div>
                     <div className="font-semibold">
                       {(analysisData.historical_analysis.market_data_integration.inflation.value * 100).toFixed(2)}%
                     </div>
@@ -182,7 +182,7 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
                     </Badge>
                   </div>
                   <div>
-                    <div className="text-sm text-gray-600">Industry Beta</div>
+                    <div className="text-sm text-muted-foreground">Industry Beta</div>
                     <div className="font-semibold">
                       {analysisData.historical_analysis.market_data_integration.industryBeta.value.toFixed(2)}
                     </div>
@@ -191,7 +191,7 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
                     </Badge>
                   </div>
                   <div>
-                    <div className="text-sm text-gray-600">Market WACC</div>
+                    <div className="text-sm text-muted-foreground">Market WACC</div>
                     <div className="font-semibold">
                       {(analysisData.historical_analysis.market_data_integration.calculated_market_wacc * 100).toFixed(2)}%
                     </div>
@@ -217,32 +217,32 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
             <CardContent>
               {analysisData.historical_analysis?.trends && (
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                  <div className="text-center p-3 bg-gray-50 rounded">
-                    <div className="text-sm text-gray-600">Liikevaihdon CAGR</div>
+                  <div className="text-center p-3 bg-muted rounded">
+                    <div className="text-sm text-muted-foreground">Liikevaihdon CAGR</div>
                     <div className="text-xl font-bold">
                       {(analysisData.historical_analysis.trends.revenue_cagr * 100).toFixed(1)}%
                     </div>
                   </div>
-                  <div className="text-center p-3 bg-gray-50 rounded">
-                    <div className="text-sm text-gray-600">Keskim. EBITDA-%</div>
+                  <div className="text-center p-3 bg-muted rounded">
+                    <div className="text-sm text-muted-foreground">Keskim. EBITDA-%</div>
                     <div className="text-xl font-bold">
                       {(analysisData.historical_analysis.trends.ebitda_margin_avg * 100).toFixed(1)}%
                     </div>
                   </div>
-                  <div className="text-center p-3 bg-gray-50 rounded">
-                    <div className="text-sm text-gray-600">Keskim. EBIT-%</div>
+                  <div className="text-center p-3 bg-muted rounded">
+                    <div className="text-sm text-muted-foreground">Keskim. EBIT-%</div>
                     <div className="text-xl font-bold">
                       {(analysisData.historical_analysis.trends.ebit_margin_avg * 100).toFixed(1)}%
                     </div>
                   </div>
-                  <div className="text-center p-3 bg-gray-50 rounded">
-                    <div className="text-sm text-gray-600">CapEx % liikevaihdosta</div>
+                  <div className="text-center p-3 bg-muted rounded">
+                    <div className="text-sm text-muted-foreground">CapEx % liikevaihdosta</div>
                     <div className="text-xl font-bold">
                       {(analysisData.historical_analysis.trends.capex_avg_percent * 100).toFixed(1)}%
                     </div>
                   </div>
-                  <div className="text-center p-3 bg-gray-50 rounded">
-                    <div className="text-sm text-gray-600">WC trendi</div>
+                  <div className="text-center p-3 bg-muted rounded">
+                    <div className="text-sm text-muted-foreground">WC trendi</div>
                     <div className="text-xl font-bold">
                       {(analysisData.historical_analysis.trends.working_capital_trend * 100).toFixed(1)}%
                     </div>
@@ -266,9 +266,9 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
                           return formatCurrency(value);
                         }} />
                         <Legend />
-                        <Line yAxisId="left" type="monotone" dataKey="revenue" stroke="#3b82f6" name="Liikevaihto" strokeWidth={2} />
-                        <Line yAxisId="left" type="monotone" dataKey="ebitda" stroke="#10b981" name="EBITDA" strokeWidth={2} />
-                        <Line yAxisId="left" type="monotone" dataKey="free_cash_flow" stroke="#8b5cf6" name="FCF" strokeWidth={2} />
+                        <Line yAxisId="left" type="monotone" dataKey="revenue" stroke="hsl(var(--info))" name="Liikevaihto" strokeWidth={2} />
+                        <Line yAxisId="left" type="monotone" dataKey="ebitda" stroke="hsl(var(--success))" name="EBITDA" strokeWidth={2} />
+                        <Line yAxisId="left" type="monotone" dataKey="free_cash_flow" stroke="hsl(var(--secondary))" name="FCF" strokeWidth={2} />
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
@@ -293,15 +293,15 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
                         Toimiala: {(analysisData.historical_analysis.industry_benchmark.benchmark_metrics.avg_ebitda_margin * 100).toFixed(1)}%
                       </span>
                     </div>
-                    <div className="relative h-4 bg-gray-200 rounded">
+                    <div className="relative h-4 bg-muted rounded">
                       <div 
-                        className="absolute h-full bg-blue-500 rounded" 
+                        className="absolute h-full bg-info rounded" 
                         style={{width: `${Math.min(analysisData.historical_analysis.trends.ebitda_margin_avg / analysisData.historical_analysis.industry_benchmark.benchmark_metrics.avg_ebitda_margin * 50, 100)}%`}}
                       />
-                      <div className="absolute h-full w-0.5 bg-gray-600" style={{left: '50%'}} />
+                      <div className="absolute h-full w-0.5 bg-muted-foreground" style={{left: '50%'}} />
                     </div>
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-muted-foreground">
                     {analysisData.historical_analysis.industry_benchmark.company_vs_industry.performance_assessment}
                   </div>
                 </div>
@@ -421,9 +421,9 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
                       <div key={idx} className="flex items-center gap-4">
                         <div className="w-32 text-sm font-medium">{item.parameter}</div>
                         <div className="flex-1">
-                          <div className="h-8 bg-gray-100 rounded relative overflow-hidden">
+                          <div className="h-8 bg-muted rounded relative overflow-hidden">
                             <div 
-                              className="absolute h-full bg-gradient-to-r from-red-500 to-green-500"
+                              className="absolute h-full bg-gradient-to-r from-destructive to-success"
                               style={{
                                 left: '50%',
                                 width: `${Math.abs(item.percentage_impact) * 2}%`,
@@ -488,19 +488,19 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
                     </thead>
                     <tbody>
                       {scenario.detailed_calculations.yearly_breakdown.map((year, idx) => (
-                        <tr key={idx} className="border-b hover:bg-gray-50">
+                        <tr key={idx} className="border-b hover:bg-muted">
                           <td className="py-2">{year.year}</td>
                           <td className="text-right">{formatCurrency(year.revenue)}</td>
                           <td className="text-right">
                             {formatCurrency(year.ebitda)}
-                            <span className="text-xs text-gray-500 ml-1">
+                            <span className="text-xs text-muted-foreground ml-1">
                               ({(year.ebitda_margin * 100).toFixed(1)}%)
                             </span>
                           </td>
                           <td className="text-right">{formatCurrency(year.ebit)}</td>
                           <td className="text-right">{formatCurrency(year.nopat)}</td>
-                          <td className="text-right text-red-600">-{formatCurrency(year.capex)}</td>
-                          <td className="text-right text-red-600">-{formatCurrency(year.working_capital_change)}</td>
+                          <td className="text-right text-destructive">-{formatCurrency(year.capex)}</td>
+                          <td className="text-right text-destructive">-{formatCurrency(year.working_capital_change)}</td>
                           <td className="text-right font-semibold">{formatCurrency(year.free_cash_flow)}</td>
                           <td className="text-right">{formatCurrency(year.present_value_fcf)}</td>
                         </tr>
@@ -511,7 +511,7 @@ export const DCFFullAnalysisResults: React.FC<DCFFullAnalysisResultsProps> = ({ 
 
                 {/* Valuation Bridge */}
                 {scenario.detailed_calculations.valuation_bridge && (
-                  <div className="mt-6 p-4 bg-gray-50 rounded">
+                  <div className="mt-6 p-4 bg-muted rounded">
                     <h4 className="font-semibold mb-3">Arvostussilta</h4>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">

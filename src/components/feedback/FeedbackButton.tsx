@@ -373,7 +373,7 @@ const FeedbackButton: React.FC = () => {
           setIsOpen(true);
           setTimeout(captureScreenshot, 200);
         }}
-        className="fixed bottom-4 right-4 z-50 w-12 h-12 bg-primary text-white rounded-full shadow-lg hover:bg-primary/90 transition-all flex items-center justify-center"
+        className="fixed bottom-4 right-4 z-50 w-12 h-12 bg-primary text-white rounded-full shadow-neumorphic hover:bg-primary/90 transition-all flex items-center justify-center"
         aria-label="Raportoi virhe"
       >
         <Bug size={20} color="white" />
@@ -381,7 +381,7 @@ const FeedbackButton: React.FC = () => {
 
       {/* Palautepaneeli */}
       {isOpen && (
-        <div className="fixed bottom-20 right-4 bg-card border rounded-lg shadow-lg p-4 z-50 w-80 feedback-panel transition-opacity">
+        <div className="fixed bottom-20 right-4 bg-card border rounded-lg shadow-neumorphic p-4 z-50 w-80 feedback-panel transition-opacity">
           <div className="flex justify-between items-center mb-2">
             <h3 className="font-medium">Raportoi virhe</h3>
             <button

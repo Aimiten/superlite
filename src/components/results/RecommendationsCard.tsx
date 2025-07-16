@@ -22,18 +22,18 @@ const RecommendationsCard: React.FC<RecommendationsCardProps> = ({ recommendatio
     switch (category.toLowerCase()) {
       case 'documentation':
       case 'dokumentaatio':
-        return 'bg-purple-100 text-purple-700';
+        return 'bg-[hsl(var(--chart-1))]/10 text-[hsl(var(--chart-1))]/80';
       case 'process':
       case 'prosessit':
-        return 'bg-green-100 text-green-700';
+        return 'bg-[hsl(var(--success))]/10 text-[hsl(var(--success))]/80';
       case 'financial':
       case 'talous':
-        return 'bg-blue-100 text-blue-700';
+        return 'bg-[hsl(var(--chart-2))]/10 text-[hsl(var(--chart-2))]/80';
       case 'customers':
       case 'asiakkaat':
-        return 'bg-orange-100 text-orange-700';
+        return 'bg-[hsl(var(--chart-4))]/10 text-[hsl(var(--chart-4))]/80';
       default:
-        return 'bg-gray-100 text-gray-700';
+        return 'bg-muted text-foreground/80';
     }
   };
 
@@ -61,11 +61,11 @@ const RecommendationsCard: React.FC<RecommendationsCardProps> = ({ recommendatio
     
     switch (priority.toLowerCase()) {
       case 'korkea':
-        return <AlertTriangle className="h-4 w-4 text-red-500 ml-2" />;
+        return <AlertTriangle className="h-4 w-4 text-destructive ml-2" />;
       case 'keskitaso':
-        return <AlertTriangle className="h-4 w-4 text-yellow-500 ml-2" />;
+        return <AlertTriangle className="h-4 w-4 text-[hsl(var(--warning))] ml-2" />;
       case 'matala':
-        return <ThumbsUp className="h-4 w-4 text-green-500 ml-2" />;
+        return <ThumbsUp className="h-4 w-4 text-[hsl(var(--success))] ml-2" />;
       default:
         return null;
     }
@@ -75,10 +75,10 @@ const RecommendationsCard: React.FC<RecommendationsCardProps> = ({ recommendatio
     if (!priority) return null;
     
     const colorClass = priority.toLowerCase() === 'korkea' 
-      ? 'bg-red-100 text-red-700' 
+      ? 'bg-destructive/10 text-destructive' 
       : priority.toLowerCase() === 'keskitaso'
-      ? 'bg-yellow-100 text-yellow-700'
-      : 'bg-green-100 text-green-700';
+      ? 'bg-[hsl(var(--warning))]/10 text-[hsl(var(--warning))]'
+      : 'bg-[hsl(var(--success))]/10 text-[hsl(var(--success))]';
     
     return (
       <span className={`text-xs px-2 py-1 rounded-full ${colorClass} ml-2`}>
@@ -91,7 +91,7 @@ const RecommendationsCard: React.FC<RecommendationsCardProps> = ({ recommendatio
     <Card className="card-3d">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Check className="h-5 w-5 text-green-600" />
+          <Check className="h-5 w-5 text-[hsl(var(--success))]" />
           Kehitysehdotukset
         </CardTitle>
       </CardHeader>
@@ -119,10 +119,10 @@ const RecommendationsCard: React.FC<RecommendationsCardProps> = ({ recommendatio
                       <h3 className="font-semibold text-lg">{recommendation.title}</h3>
                       {getPriorityLabel(recommendation.priority)}
                     </div>
-                    <p className="text-gray-600 mt-1">{recommendation.description}</p>
+                    <p className="text-muted-foreground mt-1">{recommendation.description}</p>
                     
                     {recommendation.expected_impact && (
-                      <div className="mt-2 p-2 bg-blue-50 rounded border border-blue-100 text-sm text-blue-700">
+                      <div className="mt-2 p-2 bg-[hsl(var(--chart-2))]/10 rounded border border-[hsl(var(--chart-2))]/20 text-sm text-[hsl(var(--chart-2))]/80">
                         <strong>Odotettu vaikutus:</strong> {recommendation.expected_impact}
                       </div>
                     )}
@@ -134,12 +134,12 @@ const RecommendationsCard: React.FC<RecommendationsCardProps> = ({ recommendatio
           </div>
         ) : (
           <div className="text-center py-8">
-            <p className="text-gray-500">Yrityksesi myyntikuntoisuus on erinomaisella tasolla! Jatka samaan malliin.</p>
+            <p className="text-muted-foreground">Yrityksesi myyntikuntoisuus on erinomaisella tasolla! Jatka samaan malliin.</p>
           </div>
         )}
         
-        <div className="mt-6 p-4 bg-purple-50 rounded-2xl border border-purple-100">
-          <p className="text-sm text-purple-800">
+        <div className="mt-6 p-4 bg-[hsl(var(--chart-1))]/10 rounded-2xl border border-[hsl(var(--chart-1))]/20">
+          <p className="text-sm text-[hsl(var(--chart-1))]/80">
             <span className="font-semibold">Tekoälyanalyysi:</span> Tämä arviointi on luotu yhdistämällä useiden 
             tekoälymallien (Perplexity, Gemini) analyysiä yrityksestäsi. Kehitysehdotukset perustuvat sekä antamiisi 
             tietoihin että tekoälyn laskemiin taloudellisiin tunnuslukuihin ja toimiala-analyysiin.

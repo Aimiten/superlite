@@ -166,8 +166,8 @@ const ValuationQuestionForm: React.FC<ValuationQuestionFormProps> = ({
       
       <CardContent className="space-y-6">
         {initialFindings && (
-          <Alert className="bg-blue-50 border-blue-200">
-            <div className="text-blue-800">
+          <Alert className="bg-info/10 border-info/20">
+            <div className="text-info">
               <h3 className="font-medium mb-1">Alustava analyysi yrityksestä</h3>
               <div className="space-y-1 text-sm">
                 {initialFindings.company_size && (
@@ -204,7 +204,7 @@ const ValuationQuestionForm: React.FC<ValuationQuestionFormProps> = ({
               if (isNewCategory) {
                 acc.push(
                   <div key={`category-${question.category}`} className="pt-2 first:pt-0">
-                    <h3 className="font-medium text-lg text-slate-800 mb-2">
+                    <h3 className="font-medium text-lg text-secondary mb-2">
                       {getCategoryLabel(question.category)}
                     </h3>
                   </div>
@@ -215,12 +215,12 @@ const ValuationQuestionForm: React.FC<ValuationQuestionFormProps> = ({
               const hasError = !!validationErrors[fieldKey];
               
               acc.push(
-                <div key={question.id} className={`border p-4 rounded-lg space-y-3 ${hasError ? 'border-red-300' : ''}`}>
+                <div key={question.id} className={`border p-4 rounded-lg space-y-3 ${hasError ? 'border-destructive/30' : ''}`}>
                   {/* Kysymys-label ja kysymys selkeästi esitettynä */}
                   <div className="space-y-2">
-                    <div className="text-sm font-medium text-slate-500">Kysymys:</div>
-                    <div className="bg-slate-50 p-4 rounded-md border-l-4 border-blue-500">
-                      <p className="text-base font-medium text-slate-800">{question.question}</p>
+                    <div className="text-sm font-medium text-muted-foreground">Kysymys:</div>
+                    <div className="bg-muted p-4 rounded-md border-l-4 border-primary">
+                      <p className="text-base font-medium text-secondary">{question.question}</p>
                     </div>
                   </div>
                   
@@ -232,9 +232,9 @@ const ValuationQuestionForm: React.FC<ValuationQuestionFormProps> = ({
                       (typeof question.identified_values === 'string' && !isNaN(Number(question.identified_values)) && 
                        Number(question.identified_values) >= 0 && Number(question.identified_values) <= 10)
                     ) && (
-                    <div className="bg-blue-50 p-3 rounded-md mb-4">
-                      <p className="text-sm font-medium text-blue-700 mb-1">Tunnistetut arvot tilinpäätöksestä:</p>
-                      <p className="text-sm text-blue-700">
+                    <div className="bg-info/10 p-3 rounded-md mb-4">
+                      <p className="text-sm font-medium text-info mb-1">Tunnistetut arvot tilinpäätöksestä:</p>
+                      <p className="text-sm text-info">
                         {typeof question.identified_values === 'number' 
                           ? new Intl.NumberFormat('fi-FI', { style: 'currency', currency: 'EUR' }).format(question.identified_values)
                           : typeof question.identified_values === 'object'
@@ -253,12 +253,12 @@ const ValuationQuestionForm: React.FC<ValuationQuestionFormProps> = ({
                     <Textarea
                       id={question.id}
                       placeholder={getPlaceholder(question)}
-                      className={`mt-1 ${hasError ? 'border-red-500' : ''}`}
+                      className={`mt-1 ${hasError ? 'border-destructive' : ''}`}
                       value={answers[fieldKey] || ''}
                       onChange={(e) => handleInputChange(question.id, question.category, e.target.value)}
                     />
                     {hasError && (
-                      <p className="text-xs text-red-500 mt-1">{validationErrors[fieldKey]}</p>
+                      <p className="text-xs text-destructive mt-1">{validationErrors[fieldKey]}</p>
                     )}
                   </div>
                   
@@ -266,24 +266,24 @@ const ValuationQuestionForm: React.FC<ValuationQuestionFormProps> = ({
                   <div className="space-y-2 mt-2">
                     {/* Näytetään normalisoinnin tarkoitus */}
                     {question.normalization_purpose && (
-                      <div className="bg-green-50 p-2 rounded-md">
-                        <p className="text-xs text-green-700">{question.normalization_purpose}</p>
+                      <div className="bg-success/10 p-2 rounded-md">
+                        <p className="text-xs text-success">{question.normalization_purpose}</p>
                       </div>
                     )}
                     
                     {/* Näytetään vaikutus */}
                     {question.impact && (
-                      <div className="bg-amber-50 p-2 rounded-md">
-                        <p className="text-xs text-amber-700">{question.impact}</p>
+                      <div className="bg-warning/10 p-2 rounded-md">
+                        <p className="text-xs text-warning">{question.impact}</p>
                       </div>
                     )}
                     
                     {question.source_location && (
-                      <p className="text-xs text-slate-500">Lähde: {question.source_location}</p>
+                      <p className="text-xs text-muted-foreground">Lähde: {question.source_location}</p>
                     )}
                     
                     {question.context && (
-                      <p className="text-xs text-slate-500">{question.context}</p>
+                      <p className="text-xs text-muted-foreground">{question.context}</p>
                     )}
                   </div>
                 </div>

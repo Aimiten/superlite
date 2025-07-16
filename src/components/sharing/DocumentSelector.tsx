@@ -129,8 +129,8 @@ const DocumentSelector: React.FC<DocumentSelectorProps> = ({
 
       {loading ? (
         <div className="flex items-center justify-center py-4">
-          <Loader2 className="h-5 w-5 animate-spin text-slate-500 mr-2" />
-          <span className="text-sm text-slate-500">Ladataan dokumentteja...</span>
+          <Loader2 className="h-5 w-5 animate-spin text-gray-500 mr-2" />
+          <span className="text-sm text-gray-500">Ladataan dokumentteja...</span>
         </div>
       ) : (
         <>
@@ -147,11 +147,11 @@ const DocumentSelector: React.FC<DocumentSelectorProps> = ({
                       onCheckedChange={(checked) => toggleDocument(doc.id, doc.source, !!checked)}
                     />
                     <div className="flex items-center gap-2">
-                      <FileText className="h-4 w-4 text-slate-400" />
+                      <FileText className="h-4 w-4 text-gray-400" />
                       <Label htmlFor={`company-doc-${doc.id}`} className="cursor-pointer">
                         {doc.name} 
                         {doc.metadata?.document_type && (
-                          <span className="text-xs text-slate-500 ml-1">
+                          <span className="text-xs text-gray-500 ml-1">
                             ({doc.metadata.document_type})
                           </span>
                         )}
@@ -176,7 +176,7 @@ const DocumentSelector: React.FC<DocumentSelectorProps> = ({
                       onCheckedChange={(checked) => toggleDocument(doc.id, doc.source, !!checked)}
                     />
                     <div className="flex items-center gap-2">
-                      <FileText className="h-4 w-4 text-slate-400" />
+                      <FileText className="h-4 w-4 text-gray-400" />
                       <Label htmlFor={`task-doc-${doc.id}`} className="cursor-pointer">
                         {doc.name}
                         <span className="text-xs text-slate-500 ml-1">
@@ -191,7 +191,7 @@ const DocumentSelector: React.FC<DocumentSelectorProps> = ({
           )}
 
           {companyDocuments.length === 0 && taskDocuments.length === 0 && (
-            <div className="text-sm text-slate-500 py-4 text-center border rounded-md">
+            <div className="text-sm text-gray-500 py-4 text-center border border-gray-200 rounded-md">
               Ei jaettavia dokumentteja saatavilla.
             </div>
           )}

@@ -235,11 +235,11 @@ const DocumentsTab = ({ user, isNewUser, selectedCompany, onComplete }: Document
   };
 
   return (
-    <Card className="shadow-lg">
+    <Card className="shadow-neumorphic">
       <CardHeader>
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
-            <FileText className="h-8 w-8 text-green-600" />
+          <div className="w-16 h-16 rounded-full bg-success/10 flex items-center justify-center">
+            <FileText className="h-8 w-8 text-success" />
           </div>
           <div>
             <CardTitle className="text-2xl">Dokumentit</CardTitle>
@@ -253,7 +253,7 @@ const DocumentsTab = ({ user, isNewUser, selectedCompany, onComplete }: Document
         </div>
 
         {isNewUser && (
-          <div className="mt-4 bg-blue-50 text-blue-800 p-4 rounded-lg border border-blue-200">
+          <div className="mt-4 bg-info/10 text-info-foreground p-4 rounded-lg border border-info/20">
             <h3 className="font-medium mb-1">Dokumenttien lisääminen</h3>
             <p className="text-sm">
               Lataa yrityksen tilinpäätösdokumentit arvonmääritystä varten. Voit ladata useita dokumentteja.
@@ -277,8 +277,8 @@ const DocumentsTab = ({ user, isNewUser, selectedCompany, onComplete }: Document
           </div>
         ) : (
           <div className="space-y-6">
-            <Alert className="bg-blue-50 text-blue-800 border-blue-200">
-              <AlertCircle className="h-4 w-4 text-blue-600" />
+            <Alert className="bg-info/10 text-info-foreground border-info/20 shadow-neumorphic">
+              <AlertCircle className="h-4 w-4 text-info" />
               <AlertTitle>Ohje</AlertTitle>
               <AlertDescription>{getDocumentTypeInstructions()}</AlertDescription>
             </Alert>
@@ -376,7 +376,7 @@ const DocumentsTab = ({ user, isNewUser, selectedCompany, onComplete }: Document
                           </FormControl>
                           <FormMessage />
                           {showSuccessPrompt && (
-                            <div className="mt-2 bg-green-50 border border-green-200 text-green-700 p-2 rounded-md flex items-center">
+                            <div className="mt-2 bg-success/10 border border-success/20 text-success p-2 rounded-md flex items-center">
                               <Check className="h-4 w-4 mr-2" />
                               <span className="text-sm">Edellinen dokumentti lisätty onnistuneesti! Voit nyt lisätä seuraavan.</span>
                             </div>
@@ -397,7 +397,7 @@ const DocumentsTab = ({ user, isNewUser, selectedCompany, onComplete }: Document
                       <Button 
                         type="submit" 
                         disabled={isUploading || !selectedFile}
-                        className="min-w-32 text-white bg-indigo-600 hover:bg-indigo-700"
+                        className="min-w-32 bg-info text-info-foreground hover:bg-info/90 shadow-neumorphic"
                       >
                         {isUploading ? (
                           <>
@@ -416,8 +416,8 @@ const DocumentsTab = ({ user, isNewUser, selectedCompany, onComplete }: Document
                 </Form>
               ) : (
                 <div className="space-y-4">
-                  <Alert className="bg-amber-50 text-amber-800 border-amber-200">
-                    <AlertCircle className="h-4 w-4 text-amber-600" />
+                  <Alert className="bg-warning/10 text-warning-foreground border-warning/20 shadow-neumorphic">
+                    <AlertCircle className="h-4 w-4 text-warning" />
                     <AlertTitle>Ei dokumentteja saatavilla</AlertTitle>
                     <AlertDescription>
                       Voit syöttää tilinpäätöstiedot manuaalisesti tähän lomakkeeseen.
@@ -446,13 +446,13 @@ const DocumentsTab = ({ user, isNewUser, selectedCompany, onComplete }: Document
                     {documents.map(doc => (
                       <div 
                         key={doc.id}
-                        className="flex items-center justify-between p-3 bg-slate-50 rounded-lg border"
+                        className="flex items-center justify-between p-3 bg-muted/10 rounded-lg shadow-neumorphic"
                       >
                         <div className="flex items-center gap-3">
-                          <FileText className="h-5 w-5 text-slate-600" />
+                          <FileText className="h-5 w-5 text-muted-foreground" />
                           <div>
                             <p className="font-medium">{doc.name}</p>
-                            <p className="text-sm text-slate-500">
+                            <p className="text-sm text-muted-foreground">
                               {documentTypeOptions.find(opt => opt.value === doc.document_type)?.label || doc.document_type}
                               {doc.description && ` - ${doc.description}`}
                             </p>
@@ -463,7 +463,7 @@ const DocumentsTab = ({ user, isNewUser, selectedCompany, onComplete }: Document
                           size="sm"
                           onClick={() => handleDeleteDocument(doc.id)}
                         >
-                          <X className="h-4 w-4 text-slate-500" />
+                          <X className="h-4 w-4 text-muted-foreground" />
                         </Button>
                       </div>
                     ))}
@@ -471,10 +471,10 @@ const DocumentsTab = ({ user, isNewUser, selectedCompany, onComplete }: Document
                 </>
               ) : (
                 isNewUser && (
-                  <div className="text-center p-6 bg-slate-50 rounded-lg border border-dashed">
-                    <FileText className="h-10 w-10 text-slate-400 mx-auto mb-2" />
-                    <h3 className="text-lg font-medium text-slate-700">Ei dokumentteja</h3>
-                    <p className="text-sm text-slate-500 mt-1">
+                  <div className="text-center p-6 bg-muted/10 rounded-lg shadow-neumorphic-inset border border-dashed border-muted/20">
+                    <FileText className="h-10 w-10 text-muted-foreground/50 mx-auto mb-2" />
+                    <h3 className="text-lg font-medium text-foreground">Ei dokumentteja</h3>
+                    <p className="text-sm text-muted-foreground mt-1">
                       Dokumenttien lataaminen parantaa arvonmäärityksen tarkkuutta, 
                       mutta voit myös jatkaa ilman dokumentteja
                     </p>
@@ -487,7 +487,7 @@ const DocumentsTab = ({ user, isNewUser, selectedCompany, onComplete }: Document
                 <div className="mt-6 flex justify-end">
                   <Button 
                     onClick={onComplete}
-                    className="text-white bg-indigo-600 hover:bg-indigo-700"
+                    className="bg-info text-info-foreground hover:bg-info/90 shadow-neumorphic"
                   >
                     Siirry arvonmääritykseen
                   </Button>

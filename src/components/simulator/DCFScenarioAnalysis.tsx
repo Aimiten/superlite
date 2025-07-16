@@ -14,6 +14,7 @@ import {
   DCFAnalysisRequest,
   DCFAnalysisResponse 
 } from '@/types/dcf-analysis';
+import { supabase } from '@/integrations/supabase/client';
 
 interface DCFScenarioAnalysisProps {
   latestValuation: any;
@@ -139,14 +140,14 @@ export const DCFScenarioAnalysis: React.FC<DCFScenarioAnalysisProps> = ({ latest
     switch (status) {
       case 'completed':
         return (
-          <Badge variant="default" className="bg-green-100 text-green-800">
+          <Badge variant="default" className="bg-success/10 text-success">
             <CheckCircle className="h-3 w-3 mr-1" />
             Valmis
           </Badge>
         );
       case 'processing':
         return (
-          <Badge variant="default" className="bg-blue-100 text-blue-800">
+          <Badge variant="default" className="bg-info/10 text-info">
             <Loader2 className="h-3 w-3 mr-1 animate-spin" />
             Käsitellään
           </Badge>
@@ -186,7 +187,7 @@ export const DCFScenarioAnalysis: React.FC<DCFScenarioAnalysisProps> = ({ latest
           
           {!analysis || analysis.status === 'failed' ? (
             <div className="space-y-4">
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-muted-foreground">
                 Järjestelmä analysoi tilinpäätöksesi ja luo kolme DCF-skenaariota: 
                 pessimistinen, realistinen ja optimistinen. Analyysi perustuu historiallisiin 
                 taloustietoihin ja laskee tulevaisuuden kassavirta-arviot.
@@ -227,7 +228,7 @@ export const DCFScenarioAnalysis: React.FC<DCFScenarioAnalysisProps> = ({ latest
               </AlertDescription>
             </Alert>
           ) : analysis.status === 'completed' && analysis.structured_data ? (
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-muted-foreground">
               Analyysi valmistunut {formatDate(analysis.analysis_date)}
             </div>
           ) : null}
@@ -290,31 +291,31 @@ const HistoricalAnalysisCard: React.FC<{ analysis: DCFStructuredData['historical
     <CardContent>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="text-center">
-          <div className="text-2xl font-bold text-green-600">
+          <div className="text-2xl font-bold text-success">
             {(analysis.trends.revenue_cagr * 100).toFixed(1)}%
           </div>
-          <div className="text-sm text-gray-600">Liikevaihdon kasvu (CAGR)</div>
+          <div className="text-sm text-muted-foreground">Liikevaihdon kasvu (CAGR)</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-blue-600">
+          <div className="text-2xl font-bold text-info">
             {(analysis.trends.ebitda_margin_avg * 100).toFixed(1)}%
           </div>
-          <div className="text-sm text-gray-600">EBITDA-marginaali</div>
+          <div className="text-sm text-muted-foreground">EBITDA-marginaali</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-purple-600">
+          <div className="text-2xl font-bold text-primary">
             {(analysis.wacc_estimate * 100).toFixed(1)}%
           </div>
-          <div className="text-sm text-gray-600">WACC-arvio</div>
+          <div className="text-sm text-muted-foreground">WACC-arvio</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-orange-600">
+          <div className="text-2xl font-bold text-warning">
             {formatCurrency(analysis.net_debt)}
           </div>
-          <div className="text-sm text-gray-600">Nettovelka</div>
+          <div className="text-sm text-muted-foreground">Nettovelka</div>
         </div>
       </div>
-      <div className="mt-4 bg-gray-50 p-3 rounded text-sm">
+      <div className="mt-4 bg-muted p-3 rounded text-sm">
         {analysis.analysis_notes}
       </div>
     </CardContent>
@@ -341,7 +342,7 @@ const ScenarioComparisonCard: React.FC<{ scenarios: DCFStructuredData['scenario_
                 <span>{(scenario.assumptions.wacc * 100).toFixed(1)}%</span>
               </div>
             </div>
-            <div className="mt-3 text-xs text-gray-600 bg-gray-50 p-2 rounded">
+            <div className="mt-3 text-xs text-muted-foreground bg-muted p-2 rounded">
               {scenario.rationale}
             </div>
           </div>
@@ -359,16 +360,16 @@ const ValuationSummaryCard: React.FC<{ summary: DCFStructuredData['valuation_sum
     <CardContent>
       <div className="grid grid-cols-3 gap-4 mb-4">
         <div className="text-center">
-          <div className="text-lg font-bold text-red-600">{formatCurrency(summary.equity_value_range.min)}</div>
-          <div className="text-sm text-gray-600">Minimi</div>
+          <div className="text-lg font-bold text-destructive">{formatCurrency(summary.equity_value_range.min)}</div>
+          <div className="text-sm text-muted-foreground">Minimi</div>
         </div>
         <div className="text-center">
-          <div className="text-lg font-bold text-blue-600">{formatCurrency(summary.equity_value_range.base)}</div>
-          <div className="text-sm text-gray-600">Base case</div>
+          <div className="text-lg font-bold text-info">{formatCurrency(summary.equity_value_range.base)}</div>
+          <div className="text-sm text-muted-foreground">Base case</div>
         </div>
         <div className="text-center">
-          <div className="text-lg font-bold text-green-600">{formatCurrency(summary.equity_value_range.max)}</div>
-          <div className="text-sm text-gray-600">Maksimi</div>
+          <div className="text-lg font-bold text-success">{formatCurrency(summary.equity_value_range.max)}</div>
+          <div className="text-sm text-muted-foreground">Maksimi</div>
         </div>
       </div>
       <div>
@@ -391,7 +392,7 @@ const RiskAnalysisCard: React.FC<{ risks: DCFStructuredData['risk_analysis'] }> 
     <CardContent>
       <div className="space-y-4">
         <div>
-          <h4 className="font-semibold text-red-600 mb-2">Suuret riskit:</h4>
+          <h4 className="font-semibold text-destructive mb-2">Suuret riskit:</h4>
           <ul className="list-disc list-inside text-sm space-y-1">
             {risks.high_risks.map((risk, index) => (
               <li key={index}>{risk}</li>
@@ -399,7 +400,7 @@ const RiskAnalysisCard: React.FC<{ risks: DCFStructuredData['risk_analysis'] }> 
           </ul>
         </div>
         <div>
-          <h4 className="font-semibold text-orange-600 mb-2">Keskisuuret riskit:</h4>
+          <h4 className="font-semibold text-warning mb-2">Keskisuuret riskit:</h4>
           <ul className="list-disc list-inside text-sm space-y-1">
             {risks.medium_risks.map((risk, index) => (
               <li key={index}>{risk}</li>
@@ -419,7 +420,7 @@ const RecommendationsCard: React.FC<{ recommendations: DCFStructuredData['recomm
     <CardContent>
       <div className="space-y-4">
         <div>
-          <h4 className="font-semibold text-green-600 mb-2">Arvonluonti:</h4>
+          <h4 className="font-semibold text-success mb-2">Arvonluonti:</h4>
           <ul className="list-disc list-inside text-sm space-y-1">
             {recommendations.value_creation.map((rec, index) => (
               <li key={index}>{rec}</li>
@@ -427,7 +428,7 @@ const RecommendationsCard: React.FC<{ recommendations: DCFStructuredData['recomm
           </ul>
         </div>
         <div>
-          <h4 className="font-semibold text-blue-600 mb-2">Operatiiviset parannukset:</h4>
+          <h4 className="font-semibold text-info mb-2">Operatiiviset parannukset:</h4>
           <ul className="list-disc list-inside text-sm space-y-1">
             {recommendations.operational_improvements.map((rec, index) => (
               <li key={index}>{rec}</li>
@@ -435,7 +436,7 @@ const RecommendationsCard: React.FC<{ recommendations: DCFStructuredData['recomm
           </ul>
         </div>
         <div>
-          <h4 className="font-semibold text-purple-600 mb-2">Strategiset aloitteet:</h4>
+          <h4 className="font-semibold text-primary mb-2">Strategiset aloitteet:</h4>
           <ul className="list-disc list-inside text-sm space-y-1">
             {recommendations.strategic_initiatives.map((rec, index) => (
               <li key={index}>{rec}</li>

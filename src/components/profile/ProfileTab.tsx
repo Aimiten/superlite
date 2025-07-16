@@ -131,11 +131,11 @@ const ProfileTab = ({ user, isNewUser, onContinue, initialData }: ProfileTabProp
   };
 
   return (
-    <Card className="shadow-lg">
+    <Card className="shadow-neumorphic">
       <CardHeader>
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center">
-            <User className="h-8 w-8 text-indigo-600" />
+          <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+            <User className="h-8 w-8 text-primary" />
           </div>
           <div>
             <CardTitle className="text-2xl">Käyttäjäprofiili</CardTitle>
@@ -149,17 +149,17 @@ const ProfileTab = ({ user, isNewUser, onContinue, initialData }: ProfileTabProp
         </div>
 
         {isNewUser && (
-          <div className="mt-4 bg-blue-50 text-blue-800 p-4 rounded-lg border border-blue-200">
+          <div className="mt-4 bg-info/10 text-info-foreground p-4 rounded-lg border border-info/20">
             <h3 className="font-medium mb-1">Tervetuloa arvonmääritykseen!</h3>
-            <p className="text-sm">
+            <p className="text-base">
               Käymme läpi kolme vaihetta yrityksen arvonmäärityksen käynnistämiseksi:
             </p>
-            <ol className="text-sm mt-2 list-decimal list-inside">
+            <ol className="text-base mt-2 list-decimal list-inside">
               <li className="font-medium">Henkilötiedot ja Y-tunnus (tämä vaihe)</li>
               <li>Yrityksen perustiedot</li>
               <li>Dokumenttien lataus</li>
             </ol>
-            <p className="text-sm mt-2">
+            <p className="text-base mt-2">
               Aloita antamalla nimesi ja yrityksen Y-tunnus. Haemme automaattisesti yrityksen perustiedot Y-tunnuksen perusteella.
             </p>
           </div>
@@ -211,7 +211,7 @@ const ProfileTab = ({ user, isNewUser, onContinue, initialData }: ProfileTabProp
                 <Button 
                   type="submit" 
                   disabled={isSaving || isChecking}
-                  className="min-w-32 text-white bg-indigo-600 hover:bg-indigo-700"
+                  className="min-w-32 bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   {(isSaving || isChecking) ? (
                     <>

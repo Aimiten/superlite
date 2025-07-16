@@ -74,20 +74,20 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
 
     if (value < 0) {
       return (
-        <span className="flex items-center text-red-600 font-medium">
+        <span className="flex items-center text-destructive font-medium">
           {formattedValue} 
           <ArrowDownRight className="ml-1 h-4 w-4" />
         </span>
       );
     } else if (value > 0) {
       return (
-        <span className="flex items-center text-green-600 font-medium">
+        <span className="flex items-center text-success font-medium">
           {formattedValue}
           <ArrowUpRight className="ml-1 h-4 w-4" />
         </span>
       );
     } else {
-      return <span className="text-slate-500">{formattedValue}</span>;
+      return <span className="text-muted-foreground">{formattedValue}</span>;
     }
   };
 
@@ -100,20 +100,20 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
 
     if (value < 0) {
       return (
-        <span className="flex items-center text-red-600 font-medium">
+        <span className="flex items-center text-destructive font-medium">
           {formattedValue} 
           <ArrowDownRight className="ml-1 h-4 w-4" />
         </span>
       );
     } else if (value > 0) {
       return (
-        <span className="flex items-center text-green-600 font-medium">
+        <span className="flex items-center text-success font-medium">
           {formattedValue}
           <ArrowUpRight className="ml-1 h-4 w-4" />
         </span>
       );
     } else {
-      return <span className="text-slate-500">{formattedValue}</span>;
+      return <span className="text-muted-foreground">{formattedValue}</span>;
     }
   };
 
@@ -148,12 +148,12 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
 
   if (!hasFinancialData) {
     return (
-      <div className="p-4 border rounded-lg bg-amber-50 border-amber-200">
+      <div className="p-4 border rounded-lg bg-destructive/10 border-destructive/20 shadow-neumorphic">
         <div className="flex items-start">
-          <AlertCircle className="h-5 w-5 text-amber-600 mr-2 mt-0.5" />
+          <AlertCircle className="h-5 w-5 text-destructive mr-2 mt-0.5" />
           <div>
-            <h3 className="font-medium text-amber-800">Taloudelliset tiedot puuttuvat</h3>
-            <p className="text-amber-700 text-sm mt-1">
+            <h3 className="font-medium text-destructive">Taloudelliset tiedot puuttuvat</h3>
+            <p className="text-destructive text-sm mt-1">
               Taloudelliset tiedot puuttuvat tai ovat puutteellisia. 
               Täydellistä analyysiä varten tarvitaan tilinpäätöstiedot.
             </p>
@@ -167,32 +167,32 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
     <div className="space-y-6">
       {/* Tilikausi */}
       {latestPeriod?.period?.start_date && latestPeriod?.period?.end_date && (
-        <div className="border border-indigo-100 rounded-lg bg-indigo-50 p-4 flex items-center">
-          <Clock className="h-5 w-5 text-indigo-600 mr-3 flex-shrink-0" />
+        <div className="border border-primary/20 rounded-lg bg-primary/10 p-4 flex items-center shadow-neumorphic">
+          <Clock className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
           <div>
-            <h3 className="font-medium text-indigo-800">
+            <h3 className="font-medium text-primary">
               {financialPeriods.length > 1 ? "Viimeisin tilikausi" : "Tilikausi"}
             </h3>
-            <p className="text-indigo-700">{formatDate(latestPeriod.period.start_date)} – {formatDate(latestPeriod.period.end_date)}</p>
+            <p className="text-primary">{formatDate(latestPeriod.period.start_date)} – {formatDate(latestPeriod.period.end_date)}</p>
           </div>
         </div>
       )}
 
       {/* Tärkeimmät tunnusluvut */}
-      <div className="border border-indigo-100 rounded-xl overflow-hidden">
-        <div className="bg-gradient-to-r from-indigo-600 to-blue-700 p-4">
-          <h2 className="text-lg font-bold text-white flex items-center">
+      <div className="border border-primary/20 rounded-xl overflow-hidden shadow-neumorphic">
+        <div className="bg-primary p-4">
+          <h2 className="text-lg font-bold text-primary-foreground flex items-center">
             <TrendingUp className="h-5 w-5 mr-2" />
             Keskeiset taloudelliset tunnusluvut
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-white">
-          <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-card">
+          <div className="p-4 bg-muted rounded-lg border border-border shadow-neumorphic">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="text-sm font-medium text-slate-500">Liikevaihto</h3>
-              <div className="p-1.5 rounded-full bg-blue-100">
-                <LineChart className="h-4 w-4 text-blue-700" />
+              <h3 className="text-sm font-medium text-muted-foreground">Liikevaihto</h3>
+              <div className="p-1.5 rounded-full bg-primary/20">
+                <LineChart className="h-4 w-4 text-primary" />
               </div>
             </div>
             <div className="text-xl font-semibold">
@@ -200,81 +200,81 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
             </div>
           </div>
 
-          <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
+          <div className="p-4 bg-muted rounded-lg border border-border shadow-neumorphic">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="text-sm font-medium text-slate-500">EBITDA (Käyttökate)</h3>
-              <div className="p-1.5 rounded-full bg-blue-100">
-                <BarChart className="h-4 w-4 text-blue-700" />
+              <h3 className="text-sm font-medium text-muted-foreground">EBITDA (Käyttökate)</h3>
+              <div className="p-1.5 rounded-full bg-primary/20">
+                <BarChart className="h-4 w-4 text-primary" />
               </div>
             </div>
             <div className="text-xl font-semibold">
               {formatCurrency(calculatedFields.ebitda_estimated || incomeStatement.ebitda, true)}
             </div>
             {incomeStatement.revenue > 0 && (calculatedFields.ebitda_estimated || incomeStatement.ebitda) && (
-              <div className="text-sm text-slate-500 mt-1">
+              <div className="text-sm text-muted-foreground mt-1">
                 {formatPercentage(ebitdaMargin)} liikevaihdosta
               </div>
             )}
           </div>
 
-          <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
+          <div className="p-4 bg-muted rounded-lg border border-border shadow-neumorphic">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="text-sm font-medium text-slate-500">EBIT (Liikevoitto)</h3>
-              <div className="p-1.5 rounded-full bg-blue-100">
-                <TrendingUp className="h-4 w-4 text-blue-700" />
+              <h3 className="text-sm font-medium text-muted-foreground">EBIT (Liikevoitto)</h3>
+              <div className="p-1.5 rounded-full bg-primary/20">
+                <TrendingUp className="h-4 w-4 text-primary" />
               </div>
             </div>
             <div className="text-xl font-semibold">
               {formatCurrency(incomeStatement.ebit, true)}
             </div>
             {incomeStatement.revenue > 0 && incomeStatement.ebit && (
-              <div className="text-sm text-slate-500 mt-1">
+              <div className="text-sm text-muted-foreground mt-1">
                 {formatPercentage(ebitMargin)} liikevaihdosta
               </div>
             )}
           </div>
 
-          <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
+          <div className="p-4 bg-muted rounded-lg border border-border shadow-neumorphic">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="text-sm font-medium text-slate-500">Nettotulos</h3>
-              <div className="p-1.5 rounded-full bg-blue-100">
-                <Calculator className="h-4 w-4 text-blue-700" />
+              <h3 className="text-sm font-medium text-muted-foreground">Nettotulos</h3>
+              <div className="p-1.5 rounded-full bg-primary/20">
+                <Calculator className="h-4 w-4 text-primary" />
               </div>
             </div>
             <div className="text-xl font-semibold">
               {formatCurrency(incomeStatement.net_income, true)}
             </div>
             {incomeStatement.revenue > 0 && incomeStatement.net_income && (
-              <div className="text-sm text-slate-500 mt-1">
+              <div className="text-sm text-muted-foreground mt-1">
                 {formatPercentage(profitMargin)} liikevaihdosta
               </div>
             )}
           </div>
 
-          <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
+          <div className="p-4 bg-muted rounded-lg border border-border shadow-neumorphic">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="text-sm font-medium text-slate-500">Oma pääoma</h3>
-              <div className="p-1.5 rounded-full bg-blue-100">
-                <BookOpen className="h-4 w-4 text-blue-700" />
+              <h3 className="text-sm font-medium text-muted-foreground">Oma pääoma</h3>
+              <div className="p-1.5 rounded-full bg-primary/20">
+                <BookOpen className="h-4 w-4 text-primary" />
               </div>
             </div>
             <div className="text-xl font-semibold">
               {formatCurrency(balanceSheet.equity, false)}
             </div>
             {balanceSheet.assets_total > 0 && balanceSheet.equity && (
-              <div className="text-sm text-slate-500 mt-1">
+              <div className="text-sm text-muted-foreground mt-1">
                 {formatPercentage(equityRatio)} taseesta
               </div>
             )}
           </div>
 
-          <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
+          <div className="p-4 bg-muted rounded-lg border border-border shadow-neumorphic">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="text-sm font-medium text-slate-500">
+              <h3 className="text-sm font-medium text-muted-foreground">
                 {valuationMetrics.calculated_net_debt < 0 ? "Nettovarat" : "Nettovelka"}
               </h3>
-              <div className="p-1.5 rounded-full bg-blue-100">
-                <Calculator className="h-4 w-4 text-blue-700" />
+              <div className="p-1.5 rounded-full bg-primary/20">
+                <Calculator className="h-4 w-4 text-primary" />
               </div>
             </div>
             <div className="text-xl font-semibold">
@@ -283,7 +283,7 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 : formatCurrency(valuationMetrics.calculated_net_debt, true)}
             </div>
             {valuationMetrics.calculated_net_debt < 0 && (
-              <div className="text-sm text-green-600 mt-1">
+              <div className="text-sm text-primary mt-1">
                 Kassavarat ylittävät korollisen velan
               </div>
             )}
@@ -294,10 +294,10 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
       {/* Tuloslaskelma ja tase */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Tuloslaskelma */}
-        <div className="border border-slate-200 rounded-xl overflow-hidden">
-          <div className="bg-slate-50 p-4 border-b border-slate-200">
-            <h2 className="font-bold text-slate-800 flex items-center">
-              <BarChart className="h-5 w-5 mr-2 text-indigo-600" />
+        <div className="border border-border rounded-xl overflow-hidden shadow-neumorphic">
+          <div className="bg-muted p-4 border-b border-border">
+            <h2 className="font-bold text-foreground flex items-center">
+              <BarChart className="h-5 w-5 mr-2 text-primary" />
               Tuloslaskelma
             </h2>
           </div>
@@ -305,16 +305,16 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
           <div className="p-4">
             <table className="w-full">
               <tbody>
-                <tr className="border-b border-slate-100">
-                  <td className="py-2 text-slate-700">Liikevaihto</td>
+                <tr className="border-b border-border">
+                  <td className="py-2 text-muted-foreground">Liikevaihto</td>
                   <td className="py-2 text-right font-medium">
                     {formatCurrency(incomeStatement.revenue, false)}
                   </td>
                 </tr>
 
                 {incomeStatement.materials_and_services !== undefined && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Materiaalit ja palvelut</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Materiaalit ja palvelut</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(incomeStatement.materials_and_services, true)}
                     </td>
@@ -322,8 +322,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {incomeStatement.personnel_expenses !== undefined && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Henkilöstökulut</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Henkilöstökulut</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(incomeStatement.personnel_expenses, true)}
                     </td>
@@ -331,8 +331,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {incomeStatement.other_expenses !== undefined && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Liiketoiminnan muut kulut</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Liiketoiminnan muut kulut</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(incomeStatement.other_expenses, true)}
                     </td>
@@ -340,8 +340,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {(calculatedFields.ebitda_estimated || incomeStatement.ebitda) !== undefined && (
-                  <tr className="border-b border-slate-100 bg-blue-50">
-                    <td className="py-2 text-blue-800 font-medium">EBITDA (Käyttökate)</td>
+                  <tr className="border-b border-border bg-primary/10">
+                    <td className="py-2 text-primary font-medium">EBITDA (Käyttökate)</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(calculatedFields.ebitda_estimated || incomeStatement.ebitda, true)}
                     </td>
@@ -349,8 +349,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {incomeStatement.depreciation !== undefined && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Poistot</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Poistot</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(incomeStatement.depreciation, true)}
                     </td>
@@ -358,8 +358,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {incomeStatement.ebit !== undefined && (
-                  <tr className="border-b border-slate-100 bg-blue-50">
-                    <td className="py-2 text-blue-800 font-medium">EBIT (Liikevoitto)</td>
+                  <tr className="border-b border-border bg-primary/10">
+                    <td className="py-2 text-primary font-medium">EBIT (Liikevoitto)</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(incomeStatement.ebit, true)}
                     </td>
@@ -367,8 +367,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {incomeStatement.financial_income_expenses !== undefined && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Rahoitustuotot ja -kulut</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Rahoitustuotot ja -kulut</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(incomeStatement.financial_income_expenses, true)}
                     </td>
@@ -376,8 +376,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {incomeStatement.taxes !== undefined && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Verot</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Verot</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(incomeStatement.taxes, true)}
                     </td>
@@ -385,8 +385,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {incomeStatement.net_income !== undefined && (
-                  <tr className="bg-indigo-50">
-                    <td className="py-2 text-indigo-800 font-medium">Tilikauden tulos</td>
+                  <tr className="bg-primary/10">
+                    <td className="py-2 text-primary font-medium">Tilikauden tulos</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(incomeStatement.net_income, true)}
                     </td>
@@ -398,10 +398,10 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
         </div>
 
         {/* Tase */}
-        <div className="border border-slate-200 rounded-xl overflow-hidden">
-          <div className="bg-slate-50 p-4 border-b border-slate-200">
-            <h2 className="font-bold text-slate-800 flex items-center">
-              <BookOpen className="h-5 w-5 mr-2 text-indigo-600" />
+        <div className="border border-border rounded-xl overflow-hidden shadow-neumorphic">
+          <div className="bg-muted p-4 border-b border-border">
+            <h2 className="font-bold text-foreground flex items-center">
+              <BookOpen className="h-5 w-5 mr-2 text-primary" />
               Tase
             </h2>
           </div>
@@ -409,13 +409,13 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
           <div className="p-4">
             <table className="w-full">
               <tbody>
-                <tr className="border-b border-slate-100 bg-blue-50">
-                  <td className="py-2 text-blue-800 font-medium" colSpan={2}>Vastaavaa</td>
+                <tr className="border-b border-border bg-primary/10">
+                  <td className="py-2 text-primary font-medium" colSpan={2}>Vastaavaa</td>
                 </tr>
 
                 {balanceSheet.intangible_assets !== undefined && balanceSheet.intangible_assets > 0 && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Aineettomat hyödykkeet</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Aineettomat hyödykkeet</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(balanceSheet.intangible_assets, false)}
                     </td>
@@ -423,8 +423,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {balanceSheet.machinery_and_equipment !== undefined && balanceSheet.machinery_and_equipment > 0 && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Koneet ja kalusto</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Koneet ja kalusto</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(balanceSheet.machinery_and_equipment, false)}
                     </td>
@@ -432,8 +432,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {balanceSheet.real_estate !== undefined && balanceSheet.real_estate > 0 && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Kiinteistöt</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Kiinteistöt</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(balanceSheet.real_estate, false)}
                     </td>
@@ -441,8 +441,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {balanceSheet.inventory !== undefined && balanceSheet.inventory > 0 && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Vaihto-omaisuus</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Vaihto-omaisuus</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(balanceSheet.inventory, false)}
                     </td>
@@ -450,8 +450,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {balanceSheet.accounts_receivable !== undefined && balanceSheet.accounts_receivable > 0 && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Myyntisaamiset</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Myyntisaamiset</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(balanceSheet.accounts_receivable, false)}
                     </td>
@@ -459,8 +459,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {dcfItems.cash !== undefined && dcfItems.cash > 0 && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Rahat ja pankkisaamiset</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Rahat ja pankkisaamiset</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(dcfItems.cash, false)}
                     </td>
@@ -468,21 +468,21 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {balanceSheet.assets_total !== undefined && (
-                  <tr className="border-b border-slate-100 bg-blue-50">
-                    <td className="py-2 text-blue-800 font-medium">Vastaavaa yhteensä</td>
+                  <tr className="border-b border-border bg-primary/10">
+                    <td className="py-2 text-primary font-medium">Vastaavaa yhteensä</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(balanceSheet.assets_total, false)}
                     </td>
                   </tr>
                 )}
 
-                <tr className="border-b border-slate-100 bg-blue-50 mt-2">
-                  <td className="py-2 text-blue-800 font-medium" colSpan={2}>Vastattavaa</td>
+                <tr className="border-b border-border bg-primary/10 mt-2">
+                  <td className="py-2 text-primary font-medium" colSpan={2}>Vastattavaa</td>
                 </tr>
 
                 {balanceSheet.equity !== undefined && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Oma pääoma</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Oma pääoma</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(balanceSheet.equity, false)}
                     </td>
@@ -490,8 +490,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {balanceSheet.long_term_liabilities !== undefined && balanceSheet.long_term_liabilities > 0 && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Pitkäaikainen vieras pääoma</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Pitkäaikainen vieras pääoma</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(balanceSheet.long_term_liabilities, false)}
                     </td>
@@ -499,8 +499,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {balanceSheet.short_term_liabilities !== undefined && balanceSheet.short_term_liabilities > 0 && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Lyhytaikainen vieras pääoma</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Lyhytaikainen vieras pääoma</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency(balanceSheet.short_term_liabilities, false)}
                     </td>
@@ -508,8 +508,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {(balanceSheet.long_term_liabilities !== undefined || balanceSheet.short_term_liabilities !== undefined) && (
-                  <tr className="border-b border-slate-100">
-                    <td className="py-2 text-slate-700">Vieras pääoma yhteensä</td>
+                  <tr className="border-b border-border">
+                    <td className="py-2 text-muted-foreground">Vieras pääoma yhteensä</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency((balanceSheet.long_term_liabilities || 0) + (balanceSheet.short_term_liabilities || 0), false)}
                     </td>
@@ -517,8 +517,8 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                 )}
 
                 {balanceSheet.equity !== undefined && (
-                  <tr className="bg-blue-50">
-                    <td className="py-2 text-blue-800 font-medium">Vastattavaa yhteensä</td>
+                  <tr className="bg-primary/10">
+                    <td className="py-2 text-primary font-medium">Vastattavaa yhteensä</td>
                     <td className="py-2 text-right font-medium">
                       {formatCurrency((balanceSheet.equity || 0) + (balanceSheet.long_term_liabilities || 0) + (balanceSheet.short_term_liabilities || 0), false)}
                     </td>
@@ -535,19 +535,19 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
       {/* Tehdyt normalisoinnit */}
       {financialAnalysis?.normalization_explanations?.applied_normalizations && 
        financialAnalysis.normalization_explanations.applied_normalizations.length > 0 && (
-        <div className="border border-amber-200 rounded-xl overflow-hidden">
-          <div className="bg-amber-50 p-4 border-b border-amber-200">
-            <h2 className="font-bold text-amber-800 flex items-center">
-              <Info className="h-5 w-5 mr-2 text-amber-600" />
+        <div className="border border-destructive/20 rounded-xl overflow-hidden shadow-neumorphic">
+          <div className="bg-destructive/10 p-4 border-b border-destructive/20">
+            <h2 className="font-bold text-destructive flex items-center">
+              <Info className="h-5 w-5 mr-2 text-destructive" />
               Tilinpäätöksen normalisoinnit
             </h2>
-            <p className="text-sm text-amber-700 mt-1">
+            <p className="text-sm text-destructive mt-1">
               {financialAnalysis.normalization_explanations.summary || 
                "Tilinpäätöslukuja on normalisoitu seuraavilla korjauksilla:"}
             </p>
           </div>
 
-          <div className="p-4 bg-white">
+          <div className="p-4 bg-card">
             <ul className="space-y-3">
               {financialAnalysis.normalization_explanations.applied_normalizations.map((norm: any, idx: number) => {
                 const fieldName = norm.field.split('.').pop();
@@ -558,15 +558,15 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
                   fieldName;
 
                 return (
-                  <li key={idx} className="flex items-start bg-amber-50 p-3 rounded-lg border border-amber-100">
-                    <div className="bg-amber-100 text-amber-800 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5 mr-3">
+                  <li key={idx} className="flex items-start bg-destructive/10 p-3 rounded-lg border border-destructive/10">
+                    <div className="bg-destructive/20 text-destructive rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5 mr-3">
                       {idx + 1}
                     </div>
                     <div>
-                      <h4 className="font-medium text-amber-800">{fieldLabel}</h4>
-                      <p className="text-amber-700 text-sm">{norm.explanation}</p>
+                      <h4 className="font-medium text-destructive">{fieldLabel}</h4>
+                      <p className="text-destructive text-sm">{norm.explanation}</p>
                       {norm.original_value !== undefined && norm.normalized_value !== undefined && (
-                        <p className="text-amber-600 text-sm mt-1">
+                        <p className="text-destructive text-sm mt-1">
                           <span className="line-through">{formatCurrency(norm.original_value, false)}</span>
                           {" → "}
                           <span className="font-medium">{formatCurrency(norm.normalized_value, false)}</span>
@@ -582,43 +582,43 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
       )}
 
       {/* Tunnuslukujen selitykset */}
-      <div className="border border-slate-200 rounded-xl overflow-hidden">
-        <div className="bg-slate-50 p-4 border-b border-slate-200">
-          <h2 className="font-bold text-slate-800 flex items-center">
-            <Info className="h-5 w-5 mr-2 text-indigo-600" />
+      <div className="border border-border rounded-xl overflow-hidden shadow-neumorphic">
+        <div className="bg-muted p-4 border-b border-border">
+          <h2 className="font-bold text-foreground flex items-center">
+            <Info className="h-5 w-5 mr-2 text-primary" />
             Tunnuslukujen selitykset
           </h2>
         </div>
 
-        <div className="p-4 bg-white">
+        <div className="p-4 bg-card">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-3 bg-slate-50 rounded-lg">
-              <h3 className="font-medium text-slate-800">EBITDA (Käyttökate)</h3>
-              <p className="text-sm text-slate-600 mt-1">
+            <div className="p-3 bg-muted rounded-lg shadow-neumorphic">
+              <h3 className="font-medium text-foreground">EBITDA (Käyttökate)</h3>
+              <p className="text-sm text-muted-foreground mt-1">
                 Tulos ennen korkoja, veroja, poistoja ja arvonalentumisia. 
                 Kuvaa yrityksen operatiivista kannattavuutta ennen investointeja.
               </p>
             </div>
 
-            <div className="p-3 bg-slate-50 rounded-lg">
-              <h3 className="font-medium text-slate-800">EBIT (Liikevoitto)</h3>
-              <p className="text-sm text-slate-600 mt-1">
+            <div className="p-3 bg-muted rounded-lg shadow-neumorphic">
+              <h3 className="font-medium text-foreground">EBIT (Liikevoitto)</h3>
+              <p className="text-sm text-muted-foreground mt-1">
                 Tulos ennen korkoja ja veroja. Kertoo liiketoiminnan operatiivisen
                 tuloksen ennen rahoituseriä.
               </p>
             </div>
 
-            <div className="p-3 bg-slate-50 rounded-lg">
-              <h3 className="font-medium text-slate-800">Nettovelka</h3>
-              <p className="text-sm text-slate-600 mt-1">
+            <div className="p-3 bg-muted rounded-lg shadow-neumorphic">
+              <h3 className="font-medium text-foreground">Nettovelka</h3>
+              <p className="text-sm text-muted-foreground mt-1">
                 Korollinen velka vähennettynä rahavaroilla. Kuvaa yrityksen todellista 
                 velkarasitusta.
               </p>
             </div>
 
-            <div className="p-3 bg-slate-50 rounded-lg">
-              <h3 className="font-medium text-slate-800">Omavaraisuusaste</h3>
-              <p className="text-sm text-slate-600 mt-1">
+            <div className="p-3 bg-muted rounded-lg shadow-neumorphic">
+              <h3 className="font-medium text-foreground">Omavaraisuusaste</h3>
+              <p className="text-sm text-muted-foreground mt-1">
                 Oman pääoman suhde taseen loppusummaan. Kuvaa yrityksen vakavaraisuutta
                 ja tappionsietokykyä.
               </p>
@@ -634,7 +634,7 @@ const EnhancedValuationSummary: React.FC<EnhancedValuationSummaryProps> = ({
 const InfoTooltip = ({ text }: { text: string }) => {
   return (
     <div className="flex items-start">
-      <Info className="h-4 w-4 text-slate-400 mr-1 flex-shrink-0 mt-0.5" />
+      <Info className="h-4 w-4 text-muted-foreground/40 mr-1 flex-shrink-0 mt-0.5" />
       <span>{text}</span>
     </div>
   );

@@ -31,14 +31,14 @@ const AIAssistantHelpSection = () => {
             <AccordionTrigger>🤖 AI-assistentin yleiskuva</AccordionTrigger>
             <AccordionContent>
               <div className="space-y-4">
-                <p className="text-sm text-muted-foreground">
+                <p className="text-base text-muted-foreground">
                   AI-assistentti on keskusteleva tekoäly, joka on erikoistunut yrityskauppoihin ja liiketoiminnan myyntikuntoon.
                 </p>
 
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="border rounded-lg p-3">
                     <h4 className="font-semibold mb-2">Mitä AI tietää</h4>
-                    <ul className="text-sm list-disc pl-4 space-y-1">
+                    <ul className="text-base list-disc pl-4 space-y-1">
                       <li>Yrityksesi arvonmääritykset</li>
                       <li>Myyntikuntotestin tulokset</li>
                       <li>Kaikki tehtävät ja niiden tilat</li>
@@ -48,7 +48,7 @@ const AIAssistantHelpSection = () => {
                   </div>
                   <div className="border rounded-lg p-3">
                     <h4 className="font-semibold mb-2">Mitä AI osaa</h4>
-                    <ul className="text-sm list-disc pl-4 space-y-1">
+                    <ul className="text-base list-disc pl-4 space-y-1">
                       <li>Vastata kysymyksiin</li>
                       <li>Luoda dokumentteja</li>
                       <li>Analysoida tietoja</li>
@@ -110,7 +110,7 @@ const AIAssistantHelpSection = () => {
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold mb-2">Dokumenttien lataus</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-base text-muted-foreground mb-2">
                     Voit ladata dokumentteja suoraan keskusteluun:
                   </p>
                   <ul className="list-disc pl-6 space-y-1 text-sm">
@@ -124,7 +124,7 @@ const AIAssistantHelpSection = () => {
 
                 <div>
                   <h4 className="font-semibold mb-2">Dokumenttien analysointi</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-base text-muted-foreground mb-2">
                     AI osaa analysoida ja vastata dokumenttien sisällöstä:
                   </p>
                   <ul className="list-disc pl-6 space-y-1 text-sm">
@@ -148,7 +148,7 @@ const AIAssistantHelpSection = () => {
                   <div className="grid gap-3 md:grid-cols-2">
                     <div className="border rounded p-3">
                       <h5 className="font-medium mb-1">Myyntidokumentit</h5>
-                      <ul className="text-sm list-disc pl-4 space-y-1">
+                      <ul className="text-base list-disc pl-4 space-y-1">
                         <li>Teaser-dokumentti</li>
                         <li>Information Memorandum</li>
                         <li>Management Presentation</li>
@@ -157,7 +157,7 @@ const AIAssistantHelpSection = () => {
                     </div>
                     <div className="border rounded p-3">
                       <h5 className="font-medium mb-1">Juridiset dokumentit</h5>
-                      <ul className="text-sm list-disc pl-4 space-y-1">
+                      <ul className="text-base list-disc pl-4 space-y-1">
                         <li>Salassapitosopimus (NDA)</li>
                         <li>Aiesopimus (LOI)</li>
                         <li>Due Diligence -luettelo</li>
@@ -190,7 +190,7 @@ const AIAssistantHelpSection = () => {
                   <Mic className="w-4 h-4" />
                 </div>
                 
-                <p className="text-sm text-muted-foreground">
+                <p className="text-base text-muted-foreground">
                   Pro-versiossa (99€/kk) voit keskustella AI:n kanssa äänellä ja kuunnella vastaukset.
                 </p>
 
@@ -223,7 +223,7 @@ const AIAssistantHelpSection = () => {
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold mb-2">Keskustelujen tallentaminen</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-base text-muted-foreground mb-2">
                     Kaikki keskustelut tallennetaan automaattisesti:
                   </p>
                   <ul className="list-disc pl-6 space-y-1 text-sm">

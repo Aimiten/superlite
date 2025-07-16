@@ -37,7 +37,7 @@ const GettingStartedSection = () => {
                     <div className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0">1</div>
                     <div>
                       <p className="font-medium">Lisää yrityksesi tiedot</p>
-                      <p className="text-sm text-muted-foreground">Hae Y-tunnuksella tai syötä manuaalisesti</p>
+                      <p className="text-base text-muted-foreground">Hae Y-tunnuksella tai syötä manuaalisesti</p>
                       <Button 
                         variant="link" 
                         className="h-auto p-0 text-sm"

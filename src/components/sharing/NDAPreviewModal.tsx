@@ -163,7 +163,7 @@ export function NDAPreviewModal({
         <div className="px-6 pb-4">
           {/* Sopimuksen tiedot kortteina */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
-            <Card className="p-4 bg-blue-50 border-blue-200">
+            <Card className="p-4 bg-blue-50/50 border-blue-200">
               <div className="flex items-center gap-3">
                 <Users className="h-5 w-5 text-blue-600" />
                 <div>
@@ -177,7 +177,7 @@ export function NDAPreviewModal({
               </div>
             </Card>
             
-            <Card className="p-4 bg-green-50 border-green-200">
+            <Card className="p-4 bg-green-50/50 border-green-200">
               <div className="flex items-center gap-3">
                 <Clock className="h-5 w-5 text-green-600" />
                 <div>
@@ -187,7 +187,7 @@ export function NDAPreviewModal({
               </div>
             </Card>
             
-            <Card className="p-4 bg-orange-50 border-orange-200">
+            <Card className="p-4 bg-orange-50/50 border-orange-200">
               <div className="flex items-center gap-3">
                 <Euro className="h-5 w-5 text-orange-600" />
                 <div>
@@ -202,8 +202,8 @@ export function NDAPreviewModal({
         </div>
 
         <div className="px-6">
-          <div className="bg-gray-50 rounded-lg border overflow-hidden">
-            <div className="bg-white px-4 py-3 border-b flex items-center justify-between">
+          <div className="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+            <div className="bg-white px-4 py-3 border-b border-gray-200 flex items-center justify-between">
               <h3 className="font-medium text-sm flex items-center gap-2">
                 <FileText className="h-4 w-4" />
                 Sopimuksen sisältö
@@ -224,7 +224,7 @@ export function NDAPreviewModal({
                 </div>
               ) : ndaContent ? (
                 <div className="prose prose-sm max-w-none">
-                  <div className="bg-white rounded-lg p-6 shadow-sm text-sm leading-relaxed text-gray-700">
+                  <div className="bg-white rounded-lg p-6 border border-gray-200 text-sm leading-relaxed text-gray-700">
                     <ReactMarkdown
                       components={{
                         // Rajoita sallitut elementit turvallisuuden vuoksi

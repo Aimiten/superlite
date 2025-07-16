@@ -112,7 +112,7 @@ const MultiplierSettings: React.FC<MultiplierSettingsProps> = ({ onSettingsChang
           </TooltipContent>
         </Tooltip>
         
-        <CollapsibleContent className="mt-4 border rounded-lg p-4 bg-slate-50">
+        <CollapsibleContent className="mt-4 border rounded-lg p-4 bg-muted/30">
           <Alert className="mb-4">
             <Info className="h-4 w-4" />
             <AlertDescription>
@@ -128,7 +128,7 @@ const MultiplierSettings: React.FC<MultiplierSettingsProps> = ({ onSettingsChang
               <Label htmlFor="ai">Anna Arvennon analyysityökalun valita kertoimet automaattisesti (suositeltu)</Label>
               <Tooltip>
                 <TooltipTrigger>
-                  <HelpCircle className="h-4 w-4 text-slate-400" />
+                  <HelpCircle className="h-4 w-4 text-muted-foreground" />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Arvennon analyysityökalu analysoi yrityksen toimialan, koon ja ominaisuudet<br/>
@@ -141,7 +141,7 @@ const MultiplierSettings: React.FC<MultiplierSettingsProps> = ({ onSettingsChang
               <Label htmlFor="manual">Määritä omat kertoimet</Label>
               <Tooltip>
                 <TooltipTrigger>
-                  <HelpCircle className="h-4 w-4 text-slate-400" />
+                  <HelpCircle className="h-4 w-4 text-muted-foreground" />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Syötä itse haluamasi arvostuskertoimet jos sinulla on<br/>
@@ -159,7 +159,7 @@ const MultiplierSettings: React.FC<MultiplierSettingsProps> = ({ onSettingsChang
                     <Label htmlFor="revenue">Liikevaihtokerroin</Label>
                   <Tooltip>
                     <TooltipTrigger>
-                      <HelpCircle className="h-3 w-3 text-slate-400" />
+                      <HelpCircle className="h-3 w-3 text-muted-foreground" />
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>Liikevaihto × kerroin = yrityksen arvo<br/>
@@ -174,10 +174,10 @@ const MultiplierSettings: React.FC<MultiplierSettingsProps> = ({ onSettingsChang
                   value={multiplierStrings.revenue_multiple}
                   onChange={(e) => handleMultiplierChange('revenue_multiple', e.target.value)}
                   onBlur={(e) => handleBlur('revenue_multiple', e.target.value)}
-                  className={errors.revenue_multiple ? 'border-red-500' : ''}
+                  className={errors.revenue_multiple ? 'border-destructive' : ''}
                 />
                 {errors.revenue_multiple && (
-                  <p className="text-red-500 text-xs mt-1">{errors.revenue_multiple}</p>
+                  <p className="text-destructive text-xs mt-1">{errors.revenue_multiple}</p>
                 )}
               </div>
               <div>
@@ -185,7 +185,7 @@ const MultiplierSettings: React.FC<MultiplierSettingsProps> = ({ onSettingsChang
                   <Label htmlFor="ebit">EV/EBIT-kerroin</Label>
                   <Tooltip>
                     <TooltipTrigger>
-                      <HelpCircle className="h-3 w-3 text-slate-400" />
+                      <HelpCircle className="h-3 w-3 text-muted-foreground" />
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>EBIT × kerroin = yritysarvo (Enterprise Value)<br/>
@@ -200,10 +200,10 @@ const MultiplierSettings: React.FC<MultiplierSettingsProps> = ({ onSettingsChang
                   value={multiplierStrings.ev_ebit}
                   onChange={(e) => handleMultiplierChange('ev_ebit', e.target.value)}
                   onBlur={(e) => handleBlur('ev_ebit', e.target.value)}
-                  className={errors.ev_ebit ? 'border-red-500' : ''}
+                  className={errors.ev_ebit ? 'border-destructive' : ''}
                 />
                 {errors.ev_ebit && (
-                  <p className="text-red-500 text-xs mt-1">{errors.ev_ebit}</p>
+                  <p className="text-destructive text-xs mt-1">{errors.ev_ebit}</p>
                 )}
               </div>
               <div>
@@ -211,7 +211,7 @@ const MultiplierSettings: React.FC<MultiplierSettingsProps> = ({ onSettingsChang
                   <Label htmlFor="ebitda">EV/EBITDA-kerroin</Label>
                   <Tooltip>
                     <TooltipTrigger>
-                      <HelpCircle className="h-3 w-3 text-slate-400" />
+                      <HelpCircle className="h-3 w-3 text-muted-foreground" />
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>EBITDA × kerroin = yritysarvo<br/>
@@ -226,10 +226,10 @@ const MultiplierSettings: React.FC<MultiplierSettingsProps> = ({ onSettingsChang
                   value={multiplierStrings.ev_ebitda}
                   onChange={(e) => handleMultiplierChange('ev_ebitda', e.target.value)}
                   onBlur={(e) => handleBlur('ev_ebitda', e.target.value)}
-                  className={errors.ev_ebitda ? 'border-red-500' : ''}
+                  className={errors.ev_ebitda ? 'border-destructive' : ''}
                 />
                 {errors.ev_ebitda && (
-                  <p className="text-red-500 text-xs mt-1">{errors.ev_ebitda}</p>
+                  <p className="text-destructive text-xs mt-1">{errors.ev_ebitda}</p>
                 )}
               </div>
               <div>
@@ -237,7 +237,7 @@ const MultiplierSettings: React.FC<MultiplierSettingsProps> = ({ onSettingsChang
                   <Label htmlFor="pe">P/E-kerroin</Label>
                   <Tooltip>
                     <TooltipTrigger>
-                      <HelpCircle className="h-3 w-3 text-slate-400" />
+                      <HelpCircle className="h-3 w-3 text-muted-foreground" />
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>Nettotulos × kerroin = oman pääoman arvo<br/>
@@ -252,10 +252,10 @@ const MultiplierSettings: React.FC<MultiplierSettingsProps> = ({ onSettingsChang
                   value={multiplierStrings.p_e}
                   onChange={(e) => handleMultiplierChange('p_e', e.target.value)}
                   onBlur={(e) => handleBlur('p_e', e.target.value)}
-                  className={errors.p_e ? 'border-red-500' : ''}
+                  className={errors.p_e ? 'border-destructive' : ''}
                 />
                 {errors.p_e && (
-                  <p className="text-red-500 text-xs mt-1">{errors.p_e}</p>
+                  <p className="text-destructive text-xs mt-1">{errors.p_e}</p>
                 )}
               </div>
             </div>

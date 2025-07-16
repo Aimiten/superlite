@@ -293,12 +293,12 @@ const CompanyTab = ({
   };
 
   return (
-    <Card className="shadow-lg">
+    <Card className="shadow-neumorphic">
       <CardHeader>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
-              <Building className="h-8 w-8 text-blue-600" />
+            <div className="w-16 h-16 rounded-full bg-info/10 flex items-center justify-center">
+              <Building className="h-8 w-8 text-info" />
             </div>
             <div>
               <CardTitle className="text-2xl">Yritys</CardTitle>
@@ -315,17 +315,17 @@ const CompanyTab = ({
         </div>
 
         {isNewUser && (
-          <div className="mt-4 bg-blue-50 text-blue-800 p-4 rounded-lg border border-blue-200">
+          <div className="mt-4 bg-info/10 text-info-foreground p-4 rounded-lg border border-info/20">
             <h3 className="font-medium mb-1">Yritystiedot</h3>
-            <p className="text-sm">
+            <p className="text-base">
               Olemme hakeneet yrityksen perustiedot YTJ-palvelusta Y-tunnuksen perusteella.
             </p>
-            <ol className="text-sm mt-2 list-decimal list-inside">
+            <ol className="text-base mt-2 list-decimal list-inside">
               <li>Henkilötiedot ja Y-tunnus ✓</li>
               <li className="font-medium">Yrityksen perustiedot (tämä vaihe)</li>
               <li>Dokumenttien lataus</li>
             </ol>
-            <p className="text-sm mt-2 font-medium text-blue-900">
+            <p className="text-base mt-2 font-medium text-info-foreground">
               Tarkista esitäytetyt tiedot ja valitse "Omistajanvaihdoksen tyyppi", joka on oleellinen arvonmäärityksen kannalta.
             </p>
           </div>
@@ -350,7 +350,7 @@ const CompanyTab = ({
       <CardContent>
         {isLoading ? (
           <div className="flex justify-center py-8">
-            <Loader2 className="h-8 w-8 text-blue-500 animate-spin" />
+            <Loader2 className="h-8 w-8 text-info animate-spin" />
             <span className="ml-2">Haetaan yritystietoja YTJ:stä...</span>
           </div>
         ) : (
@@ -584,7 +584,7 @@ const CompanyTab = ({
                 <Button 
                   type="submit" 
                   disabled={isSaving}
-                  className="min-w-32 text-white bg-indigo-600 hover:bg-indigo-700"
+                  className="min-w-32 bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   {isSaving ? (
                     <>
