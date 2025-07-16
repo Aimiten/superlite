@@ -20,9 +20,10 @@
   - muted (gray backgrounds)
   - foreground/background (teksti ja taustat)
 
-### 3. Typografia - 100% valmis ✅
-- Kaikki text-sm muutettu text-base oletuskooksi
-- Yhtenäinen fonttikoko läpi sovelluksen
+### 3. Typografia - OSITTAIN tehty ⚠️
+- Osa text-sm muutettu text-base (mutta 486 text-sm vielä jäljellä)
+- Fonttikoko EI ole yhtenäinen läpi sovelluksen
+- Tämä jätettiin tarkoituksella kesken, koska se on iso muutos
 
 ## Semanttinen värijärjestelmä
 
@@ -41,11 +42,11 @@ Lisäksi käytössä:
 
 ## Yhteenveto
 
-Kaikki alkuperäiset tavoitteet saavutettu:
-- ✅ Neumorphic-tyyli kaikkialla
-- ✅ 35+ väristä → 4 pääväriä + semanttiset apuvärit
-- ✅ Yhtenäinen typografia
-- ✅ Ei yhtään kovakoodattua väriä jäljellä
+Tavoitteiden toteutuminen:
+- ✅ Neumorphic-tyyli kaikkialla (100% valmis)
+- ✅ 35+ väristä → 4 pääväriä + semanttiset apuvärit (100% valmis)
+- ⚠️ Yhtenäinen typografia (osittain - 486 text-sm jäljellä)
+- ✅ Ei yhtään kovakoodattua väriä jäljellä (100% valmis)
 
 Sovelluksen ulkoasu on nyt:
 - Yhtenäinen ja moderni
