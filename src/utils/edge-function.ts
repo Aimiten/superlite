@@ -27,7 +27,7 @@ export async function callEdgeFunction<T = any>(
 
   // Sallittujen funktioiden allow-list
   const ALLOWED_FUNCTIONS = [
-    'analyze-post-dd-readiness', 'valuation', 'free-valuation', 'analyze-sales-readiness',
+    'analyze-post-dd-readiness', 'valuation', 'analyze-sales-readiness',
     'ai-database-chat', 'simple-calculator', 
     'send-email-valuation', 'get-shared-company',
     'create-checkout', 'send-report-email', 'ai-document-generator',

@@ -58,8 +58,8 @@ const Benefits = ({ handleNavigation }: BenefitsProps) => {
                 onClick={handleNavigation}
                 asChild
               >
-                <Link to="/free-valuation">
-                  Aloita ilmaiseksi <ArrowRight className="ml-2 h-5 w-5" />
+                <Link to="/auth">
+                  Aloita nyt <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </div>

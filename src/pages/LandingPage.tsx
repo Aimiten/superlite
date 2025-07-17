@@ -11,6 +11,7 @@ import Hero from "@/components/landing/Hero";
 import Workflow from "@/components/landing/Workflow";
 import Features from "@/components/landing/Features";
 import Benefits from "@/components/landing/Benefits";
+import TrustSection from "@/components/landing/TrustSection";
 import Pricing from "@/components/landing/Pricing";
 import CallToAction from "@/components/landing/CallToAction";
 import Footer from "@/components/landing/Footer";
@@ -87,6 +88,13 @@ const LandingPage = () => {
         scrollToSection={scrollToSection}
       />
 
+      <Benefits 
+        handleNavigation={handleNavigation}
+      />
+
+      <Features />
+
+      <TrustSection />
 
       <Pricing 
         redirectToCheckout={redirectToCheckout}
@@ -94,7 +102,7 @@ const LandingPage = () => {
         handleNavigation={handleNavigation}
       />
       
-      <Benefits 
+      <CallToAction
         handleNavigation={handleNavigation}
       />
       

@@ -27,7 +27,6 @@ import MainLayout from "@/components/MainLayout";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { CompanyProvider } from "@/contexts/CompanyContext";
-import FreeValuation from "@/pages/FreeValuation";
 import FreeCalculatorPage from "@/pages/FreeCalculatorPage";
 import AIAssistantHistory from "@/pages/AIAssistantHistory";
 import TermsOfService from "@/pages/TermsOfService";
@@ -141,7 +140,6 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/tally-signup" element={<TallyRedirect />} />
-            <Route path="/free-valuation" element={<FreeValuation />} />
             <Route path="/free-calculator" element={<FreeCalculatorPage />} />
             <Route path="/checkout-success" element={<CheckoutSuccess />} />
             <Route path="/shared/:shareId" element={<SharedView />} />

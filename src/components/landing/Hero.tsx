@@ -30,13 +30,13 @@ const Hero = ({ handleNavigation, scrollToSection }: HeroProps) => {
               Arvento on nopea ja tarkka tapa määrittää yrityksesi arvo. Tunnista arvoa nostavat tekijät ja valmistaudu onnistuneeseen yrityskauppaan.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <Link to={isMobile ? "/free-calculator" : "/free-valuation"}>
+              <Link to="/auth">
                 <Button 
                   size="pill"
                   variant="neumorphic-primary"
                   className="px-8 py-6 text-lg w-full sm:w-auto"
                 >
-                  Aloita ilmaiseksi<ArrowRight className="ml-2 h-5 w-5"/>
+                  Aloita nyt<ArrowRight className="ml-2 h-5 w-5"/>
                 </Button>
               </Link>
               <Button 
