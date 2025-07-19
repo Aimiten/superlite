@@ -83,10 +83,20 @@ const StarRatingComponent = ({ valuationData }: { valuationData: any }) => {
   );
 };
 
-const BusinessValueCalculator = () => {
-  const [activeTab, setActiveTab] = useState("business-id");
-  const [businessId, setBusinessId] = useState("");
-  const [companyName, setCompanyName] = useState("");
+interface BusinessValueCalculatorProps {
+  prefilledCompany?: string;
+  prefilledBusinessId?: string;
+  showHeader?: boolean;
+}
+
+const BusinessValueCalculator = ({ 
+  prefilledCompany = "", 
+  prefilledBusinessId = "",
+  showHeader = true 
+}: BusinessValueCalculatorProps) => {
+  const [activeTab, setActiveTab] = useState(prefilledBusinessId ? "business-id" : "company-name");
+  const [businessId, setBusinessId] = useState(prefilledBusinessId);
+  const [companyName, setCompanyName] = useState(prefilledCompany);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [valuationData, setValuationData] = useState<any | null>(null);
@@ -125,7 +135,7 @@ const BusinessValueCalculator = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/simple-calculator`,
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/enhanced-calculator`,
         {
           method: 'POST',
           headers: {
@@ -538,9 +548,7 @@ const BusinessValueCalculator = () => {
                 </Button>
                 <Button
                   onClick={() => {
-                    const businessIdParam = valuationData?.companyInfo?.businessId ?
-                      `?businessId=${encodeURIComponent(valuationData.companyInfo.businessId)}` : '';
-                    window.location.href = `/free-valuation${businessIdParam}`;
+                    window.location.href = 'https://tally.so/r/wQ4WOp';
                   }}
                   className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all py-6 text-primary-foreground"
                 >

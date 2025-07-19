@@ -7,12 +7,15 @@ import { toast } from "@/hooks/use-toast";
 
 // Import components
 import Header from "@/components/landing/Header";
-import Hero from "@/components/landing/Hero";
+import EnhancedHero from "@/components/landing/EnhancedHero";
+import ProblemAgitation from "@/components/landing/ProblemAgitation";
 import Workflow from "@/components/landing/Workflow";
 import Features from "@/components/landing/Features";
 import Benefits from "@/components/landing/Benefits";
 import TrustSection from "@/components/landing/TrustSection";
+import Guarantee from "@/components/landing/Guarantee";
 import Pricing from "@/components/landing/Pricing";
+import FAQ from "@/components/landing/FAQ";
 import CallToAction from "@/components/landing/CallToAction";
 import Footer from "@/components/landing/Footer";
 
@@ -83,24 +86,30 @@ const LandingPage = () => {
         handleNavigation={handleNavigation}
       />
       
-      <Hero 
+      <EnhancedHero 
         handleNavigation={handleNavigation}
         scrollToSection={scrollToSection}
       />
+
+      <ProblemAgitation />
+
+      <Features />
 
       <Benefits 
         handleNavigation={handleNavigation}
       />
 
-      <Features />
-
       <TrustSection />
+
+      <Guarantee />
 
       <Pricing 
         redirectToCheckout={redirectToCheckout}
         isRedirecting={isRedirecting}
         handleNavigation={handleNavigation}
       />
+
+      <FAQ />
       
       <CallToAction
         handleNavigation={handleNavigation}

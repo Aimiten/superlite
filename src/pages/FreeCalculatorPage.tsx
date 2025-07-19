@@ -38,8 +38,7 @@ const FreeCalculatorPage = () => {
         isLoggedIn={isLoggedIn}
         handleNavigation={handleNavigation}
         customLinks={[
-          { label: "Etusivu", href: "/" },
-          { label: "Ilmainen arvonmääritys", href: "/free-valuation" }
+          { label: "Etusivu", href: "/" }
         ]}
         useNavigation={true}
       />
