@@ -76,7 +76,7 @@ export default function EnhancedHero({ handleNavigation, scrollToSection }: Enha
 
   return (
     <>
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-background via-muted/30 to-background">
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-background to-muted/30">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

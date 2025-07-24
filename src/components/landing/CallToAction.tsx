@@ -16,13 +16,13 @@ const CallToAction = ({ handleNavigation }: CallToActionProps) => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/10">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto glass-effect p-12"
+        className="max-w-4xl mx-auto bg-background rounded-2xl shadow-neumorphic p-12"
       >
         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
           Valmis kasvattamaan yrityksesi arvoa?
@@ -44,8 +44,8 @@ const CallToAction = ({ handleNavigation }: CallToActionProps) => {
         
         <Button 
           size="pill"
-          variant="neumorphic-primary"
-          className="text-primary-foreground px-10 py-6 text-lg"
+          variant="default"
+          className="px-10 py-6 text-lg shadow-neumorphic hover:shadow-neumorphic-pressed transition-shadow"
           onClick={handleNavigation}
         >
           Luo ilmainen tili <ArrowRight className="ml-2 h-5 w-5" />

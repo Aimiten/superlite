@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Building2, BarChart2 } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface MenuItem {
@@ -20,19 +20,8 @@ const Header = ({ isLoggedIn, handleNavigation, customLinks, useNavigation = fal
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   
-  // Lisätään debuggausviestit konsoli-ikkunaan
-  console.log("Header render - useNavigation:", useNavigation);
-  console.log("Header render - customLinks:", customLinks);
-  
-  useEffect(() => {
-    console.log("Header mounted/updated - useNavigation:", useNavigation);
-    console.log("Header mounted/updated - customLinks:", customLinks);
-  }, [useNavigation, customLinks]);
-  
   const menuItems: MenuItem[] = customLinks || [
-    { label: "Etusivu", href: "#" },
-    { label: "Ominaisuudet", href: "#pricing" },
-    { label: "Hyödyt", href: "#benefits" },
+    { label: "Ilmainen laskuri", href: "#" },
   ];
 
   const scrollToSection = (id: string) => {
@@ -79,9 +68,9 @@ const Header = ({ isLoggedIn, handleNavigation, customLinks, useNavigation = fal
             variant="default" 
             size="sm"
             className="bg-primary text-primary-foreground rounded-full px-6 shadow-neumorphic-primary hover:shadow-neumorphic-primary-pressed transition-all"
-            onClick={() => isLoggedIn ? handleNavigation() : window.open('https://tally.so/r/wQ4WOp', '_blank')}
+            onClick={handleNavigation}
           >
-            {isLoggedIn ? "Siirry sovellukseen" : "Kirjaudu sisään"}
+            {isLoggedIn ? "Dashboard" : "Kirjaudu"}
           </Button>
         </nav>
         
@@ -119,7 +108,7 @@ const Header = ({ isLoggedIn, handleNavigation, customLinks, useNavigation = fal
             className="bg-primary text-primary-foreground rounded-full mt-4 shadow-neumorphic-primary hover:shadow-neumorphic-primary-pressed transition-all"
             onClick={handleNavigation}
           >
-            {isLoggedIn ? "Siirry sovellukseen" : "Kirjaudu sisään"}
+            {isLoggedIn ? "Dashboard" : "Kirjaudu"}
           </Button>
         </motion.div>
       )}

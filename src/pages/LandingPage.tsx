@@ -8,15 +8,14 @@ import { toast } from "@/hooks/use-toast";
 // Import components
 import Header from "@/components/landing/Header";
 import EnhancedHero from "@/components/landing/EnhancedHero";
-import ProblemAgitation from "@/components/landing/ProblemAgitation";
-import Workflow from "@/components/landing/Workflow";
-import Features from "@/components/landing/Features";
-import Benefits from "@/components/landing/Benefits";
-import TrustSection from "@/components/landing/TrustSection";
-import Guarantee from "@/components/landing/Guarantee";
+import TrustBar from "@/components/landing/TrustBar";
+import ProblemContext from "@/components/landing/ProblemContext";
+import HowItWorks from "@/components/landing/HowItWorks";
+import ValueProposition from "@/components/landing/ValueProposition";
 import Pricing from "@/components/landing/Pricing";
+import SingleTestimonial from "@/components/landing/SingleTestimonial";
 import FAQ from "@/components/landing/FAQ";
-import CallToAction from "@/components/landing/CallToAction";
+import FinalCTA from "@/components/landing/FinalCTA";
 import Footer from "@/components/landing/Footer";
 
 const LandingPage = () => {
@@ -80,7 +79,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50 via-white to-purple-50">
+    <div className="min-h-screen bg-background">
       <Header 
         isLoggedIn={isLoggedIn}
         handleNavigation={handleNavigation}
@@ -91,17 +90,13 @@ const LandingPage = () => {
         scrollToSection={scrollToSection}
       />
 
-      <ProblemAgitation />
+      <TrustBar />
 
-      <Features />
+      <ProblemContext />
 
-      <Benefits 
-        handleNavigation={handleNavigation}
-      />
+      <HowItWorks />
 
-      <TrustSection />
-
-      <Guarantee />
+      <ValueProposition />
 
       <Pricing 
         redirectToCheckout={redirectToCheckout}
@@ -109,9 +104,11 @@ const LandingPage = () => {
         handleNavigation={handleNavigation}
       />
 
+      <SingleTestimonial />
+
       <FAQ />
       
-      <CallToAction
+      <FinalCTA
         handleNavigation={handleNavigation}
       />
       
