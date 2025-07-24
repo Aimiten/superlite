@@ -85,7 +85,7 @@ export default function EnhancedHero({ handleNavigation, scrollToSection }: Enha
             className="text-center mb-12"
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground leading-tight mb-6">
-              Paljonko yrityksesi on <span className="text-primary">ostajan silmissä?</span>
+              Selvitä yrityksesi <span className="text-primary">todellinen arvo</span> sekunneissa
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
               Näet heti alustavan arvion perustuen toimialasi todellisiin kertoimiin ja yrityksesi lukuihin

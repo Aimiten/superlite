@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Sparkles, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 
 interface PricingProps {
@@ -13,160 +12,180 @@ interface PricingProps {
 
 const Pricing = ({ redirectToCheckout, isRedirecting, handleNavigation }: PricingProps) => {
   const navigate = useNavigate();
-  const [selectedTier, setSelectedTier] = useState("pro");
-
-  const pricingTiers = [
-    {
-      id: "free",
-      name: "Free",
-      price: "0",
-      description: "Ilmainen kevyt arvonmääritys - selvitä yrityksesi nykyinen arvo nopeasti.",
-      popular: false,
-      features: [
-        "Tilinpäätöstietojen analysointi",
-        "Normalisointikysymykset tarkemman arvon määrittämiseksi",
-        "Arvonmääritys kolmella eri menetelmällä",
-        "Perusanalyysi tuloksista ja keskeiset havainnot",
-      ],
-      buttonText: "Kokeile nyt",
-      buttonAction: () => navigate("/auth"),
-      headerBgClass: "bg-muted",
-      titleClass: "text-primary",
-      textClass: "text-primary",
-      checkClass: "text-primary",
-      buttonClass: "bg-primary hover:bg-primary/90 text-primary-foreground",
-    },
-    {
-      id: "lite",
-      name: "Lite",
-      price: "29",
-      description: "Tarkempi arvonmääritys sekä yrityksen myyntikunnon kehittäminen.",
-      popular: true,
-      features: [
-        "Kattava kahden tilinpäätöksen analyysi",
-        "Yrityksen ja toimialan analyysi",
-        "Myyntikunnon arviointi ja systemaattinen kehittäminen",
-        "Tekoälyavustaja apunasi",
-        "Sähköpostituki",
-      ],
-      buttonText: "Liity jonoon",
-      buttonAction: () => window.open("https://tally.so/r/wQ4WOp", "_blank"),
-      // Original Stripe action: buttonAction: () => redirectToCheckout("lite"),
-      headerBgClass: "bg-primary/10",
-      titleClass: "text-primary",
-      textClass: "text-primary",
-      checkClass: "text-primary",
-      buttonClass: "bg-primary hover:bg-primary/90 text-primary-foreground",
-    },
-    {
-      id: "pro",
-      name: "Pro",
-      price: " alkaen 99",
-      description: "Kattavin arvonmääritys ja kaikki mitä tarvitset yrityksesi arvon maksimointiin.",
-      popular: false,
-      features: [
-        "Arvennon kattavin analyysi todennäköisimmästä arvosta laajoin perusteluin",
-        "Arvonmääritys perustuen toimialan liikevaihtokertoimiin ja yrityskohtaisiin tekijöihin",
-        "Laaja riskianalyysi ja toimenpidesuositukset",
-        "Yrityksen ja toimialan laaja analyysi",
-        "Myyntikunnon laaja arviointi",
-        "Arvonmäärityksen simulaattori",
-        "Arvonnousun visualisointi",
-        "Potentiaaliset ostajat ja eri ostajatyyppien näkemys arvosta",
-        "Laajennettu tuki",
-      ],
-      buttonText: "Liity jonoon",
-      buttonAction: () => window.open("https://tally.so/r/wQ4WOp", "_blank"),
-      // Original Stripe action: buttonAction: () => redirectToCheckout("pro"),
-      headerBgClass: "bg-muted",
-      titleClass: "text-secondary",
-      textClass: "text-secondary",
-      checkClass: "text-secondary",
-      buttonClass: "bg-secondary hover:bg-secondary/90 text-secondary-foreground",
-    }
-  ];
 
   return (
-    <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <motion.div 
+    <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-primary/5 to-white">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-secondary">
-            Teimme yrityksen arvonmäärityksestä helppoa 
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Yksinkertainen hinnoittelu
           </h2>
-          <p className="mt-4 text-xl text-secondary/80 max-w-3xl mx-auto">
-            Selkeä ja läpinäkyvä hinnoittelu sopii kaikenkokoisille yrityksille.
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Aloita ilmaisella arviolla. Saat kaikki työkalut käyttöösi yhdellä selkeällä hinnalla.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {pricingTiers.map((tier) => (
-            <Card 
-              key={tier.id}
-              className={`overflow-hidden transform transition-all duration-300 shadow-neumorphic hover:shadow-neumorphic-pressed ${
-                tier.id === selectedTier ? "ring-2 ring-primary" : ""
-              }`}
-              onMouseEnter={() => setSelectedTier(tier.id)}
-            >
-              {tier.popular && (
-                <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-6 py-1 rounded-bl-lg text-sm font-medium shadow-neumorphic-primary">
-                  Tulossa heinäkuussa!
-                </div>
-              )}
-              <CardHeader className={`${tier.headerBgClass} border-b border-muted pb-6`}>
-                <CardTitle className={`text-2xl font-bold ${tier.titleClass}`}>{tier.name}</CardTitle>
-                <div className="mt-2 flex items-baseline">
-                  <span className="text-3xl font-extrabold text-secondary">{tier.price} €</span>
-                  <span className="ml-1 text-secondary/70 font-medium">{tier.price !== "0" ? "/kk (alv 0%)" : ""}</span>
-                </div>
-                <CardDescription className="text-secondary/70 mt-3">
-                  {tier.description}
-                </CardDescription>
-                <div className="mt-6">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* Ilmainen arvio */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <Card className="h-full border-2 hover:border-primary/50 transition-all">
+              <CardHeader className="text-center pb-6">
+                <h3 className="text-2xl font-bold mb-2">Ilmainen arvio</h3>
+                <div className="text-4xl font-bold text-primary mb-2">0€</div>
+                <p className="text-muted-foreground">Nopea arvonmääritys yrityksellesi</p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
+                    <span className="text-muted-foreground">Hae yritystiedot Y-tunnuksella</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
+                    <span className="text-muted-foreground">Toimialan arvostuskertoimet</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
+                    <span className="text-muted-foreground">Alustava arvio 15 sekunnissa</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
+                    <span className="text-muted-foreground">Tulokset sähköpostiin</span>
+                  </li>
+                </ul>
+                <div className="pt-6">
                   <Button 
-                    className={`w-full rounded-full py-5 text-lg transition-all shadow-neumorphic hover:shadow-neumorphic-pressed ${tier.buttonClass}`}
-                    onClick={tier.buttonAction}
-                    disabled={isRedirecting && tier.id !== "free"}
+                    variant="outline"
+                    size="lg"
+                    className="w-full"
+                    onClick={() => {
+                      // Skrollaa sivun alkuun missä on hakukenttä
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                      // Fokusoi hakukenttään
+                      setTimeout(() => {
+                        const searchInput = document.querySelector('input[placeholder*="yrityksen nimi"]');
+                        if (searchInput) {
+                          (searchInput as HTMLInputElement).focus();
+                        }
+                      }, 500);
+                    }}
                   >
-                    {isRedirecting && tier.id !== "free" ? "Ohjataan maksusivulle..." : tier.buttonText}
+                    <ArrowUp className="mr-2 h-4 w-4" />
+                    Kokeile ilmaiseksi
                   </Button>
-                  <p className="text-sm text-center text-secondary/60 mt-2">
-                    {tier.id !== "free" 
-                      ? "Ei sitoutumisaikaa, voit peruuttaa milloin tahansa" 
-                      : "Aina ilmainen - ei piilokuluja"}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Pro versio */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Card className="h-full border-2 border-primary shadow-xl relative">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
+                  Suosituin
+                </span>
+              </div>
+              <CardHeader className="text-center pb-6">
+                <h3 className="text-2xl font-bold mb-2">Täysi palvelu</h3>
+                <div className="mb-2">
+                  <span className="text-4xl font-bold text-primary">39€</span>
+                  <span className="text-muted-foreground ml-2">ensimmäinen kk</span>
+                </div>
+                <p className="text-muted-foreground">Sen jälkeen 19€/kk • Peru milloin vain</p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-foreground font-medium">Kaikki ilmaisen ominaisuudet</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-foreground">Täysi arvonmääritysraportti</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-foreground">AI-assistentti 24/7</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-foreground">Turvallinen jakaminen (NDA)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-foreground">DCF-kassavirtalaskelmat</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-foreground">Dokumenttien analysointi</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-foreground">Potentiaaliset ostajat (tulossa)</span>
+                  </li>
+                </ul>
+                <div className="pt-6">
+                  <Button 
+                    size="lg"
+                    className="w-full bg-primary hover:bg-primary/90"
+                    onClick={() => navigate("/auth?redirect=checkout")}
+                    disabled={isRedirecting}
+                  >
+                    {isRedirecting ? (
+                      <>
+                        <Sparkles className="mr-2 h-5 w-5 animate-spin" />
+                        Siirrytään...
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="mr-2 h-5 w-5" />
+                        Aloita nyt
+                      </>
+                    )}
+                  </Button>
+                  <p className="text-sm text-muted-foreground text-center mt-2">
+                    Ei vaadi luottokorttia ilmaiseen arvioon
                   </p>
                 </div>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <p className={`text-base font-medium mb-4 ${tier.textClass}`}>
-                  {tier.id === "free" 
-                    ? "Lähde liikkeelle näillä:" 
-                    : tier.id === "lite" 
-                      ? "Kaikki mitä Free:ssä, sekä:" 
-                      : "Kaikki mitä Lite:ssä, sekä:"}
-                </p>
-                <ul className="space-y-3">
-                  {tier.features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="flex-shrink-0 mt-1">
-                        <Check className={`h-5 w-5 ${tier.checkClass}`} />
-                      </div>
-                      <span className="ml-3 text-secondary/80">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
               </CardContent>
-              <CardFooter className="flex flex-col space-y-3 pb-6">
-
-              </CardFooter>
             </Card>
-          ))}
+          </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center mt-12"
+        >
+          <p className="text-muted-foreground">
+            Kysyttävää? {" "}
+            <button 
+              onClick={() => navigate("/hinnoittelu")}
+              className="text-primary hover:underline"
+            >
+              Lue usein kysytyt kysymykset →
+            </button>
+          </p>
+        </motion.div>
       </div>
     </section>
   );

@@ -144,7 +144,7 @@ const PricingPage = () => {
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-bold text-foreground mb-4"
           >
-            Yksinkertainen hinnoittelu <span className="text-primary">ilman yllätyksiä</span>
+            Investoi yrityksesi <span className="text-primary">arvon kasvattamiseen</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: -20 }}
@@ -152,7 +152,7 @@ const PricingPage = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8"
           >
-            Yksi selkeä hinta, kaikki ominaisuudet käytössäsi heti
+            39€ ensimmäinen kuukausi, sen jälkeen 19€/kk. Keskimääräinen asiakas nostaa yrityksen arvoa 15-30%.
           </motion.p>
         </div>
       </section>

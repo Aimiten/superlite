@@ -2,23 +2,40 @@ import { motion } from "framer-motion";
 
 const HowItWorks = () => {
   const steps = [
-    { number: 1, title: "Hae yritys" },
-    { number: 2, title: "Täytä tiedot" },
-    { number: 3, title: "Saat raportin" }
+    { 
+      number: 1, 
+      title: "Aloita ilmaisella arviolla",
+      description: "Kirjoita Y-tunnus. Superlite hakee talousluvut ja näyttää alustavan arvion toimialasi perusteella."
+    },
+    { 
+      number: 2, 
+      title: "Tilaa täysi analyysi",
+      description: "39 eurolla voit ladata tilinpäätöksen. Superlite lukee sen, kysyy tarkennuksia ja normalisoi luvut ammattimaisesti."
+    },
+    { 
+      number: 3, 
+      title: "Hyödynnä tuloksia",
+      description: "Saat tarkan arvon perusteluineen. Voit jakaa sen turvallisesti, kysyä neuvoja ja seurata arvon kehitystä."
+    }
   ];
 
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background">
-      <div className="max-w-4xl mx-auto">
-        <motion.h2 
+      <div className="max-w-5xl mx-auto">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center text-3xl md:text-4xl font-bold mb-12"
+          className="text-center mb-12"
         >
-          Kolme vaihetta
-        </motion.h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Ammattitason arvonmääritys helposti
+          </h2>
+          <p className="text-xl text-muted-foreground">
+            Saat tuloksen minuuteissa, ei päivissä
+          </p>
+        </motion.div>
         
         <div className="relative">
           {/* Connecting line - desktop only */}
@@ -43,7 +60,10 @@ const HowItWorks = () => {
                 >
                   {step.number}
                 </motion.div>
-                <h3 className="font-semibold text-lg">{step.title}</h3>
+                <h3 className="font-semibold text-lg mb-2">{step.title}</h3>
+                <p className="text-muted-foreground text-sm max-w-xs mx-auto">
+                  {step.description}
+                </p>
               </motion.div>
             ))}
           </div>
