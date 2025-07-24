@@ -6,6 +6,9 @@
 - [x] Suomenkieliset virheilmoitukset
 - [x] Progress-indikaattorit
 - [x] SQL migraatiot luotu
+- [x] Landing page redesign (kortit 15→3)
+- [x] Poistettu placeholder-numerot ja meilit
+- [x] Korjattu taustavärit (ei purple gradientteja)
 
 ## 📋 Tehtävä ennen tuotantoa:
 
@@ -99,3 +102,36 @@ Supabase Dashboard → Edge Functions → Secrets:
 - API-virheet (free_calculator_errors taulu)
 - Keskimääräinen latausaika
 - Käyttäjäarviot (rating kentästä)
+
+## 🐛 Landing Page TODO:
+
+### 1. **SingleTestimonial placeholder-tekstit (KORKEA)**
+```tsx
+// Korvaa [Nimi] ja [Yritys ja toimiala] oikeilla tiedoilla
+// TAI piilota komponentti kokonaan kunnes on oikeaa dataa
+```
+
+### 2. **TrustBar Live Activity (KESKITASO)**
+```sql
+-- Luo taulu hakuhistorialle
+CREATE TABLE search_history (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  company_type text NOT NULL,
+  city text NOT NULL,
+  created_at timestamp with time zone DEFAULT now()
+);
+
+-- Lisää company-preview edge functioniin:
+-- Tallenna anonymisoitu haku (esim. "IT-alan yritys", "Tampere")
+```
+
+### 3. **TypeScript any-tyypit (MATALA)**
+```typescript
+// EnhancedHero.tsx
+interface PreviewData {
+  businessId: string;
+  name: string;
+  // ... muut kentät
+}
+const [previewData, setPreviewData] = useState<PreviewData | null>(null);
+```
