@@ -115,7 +115,16 @@ const Auth = () => {
         description: "Tervetuloa takaisin!",
       });
       
-      navigate("/dashboard");
+      // Tarkista onko redirect-parametri
+      const searchParams = new URLSearchParams(location.search);
+      const redirect = searchParams.get('redirect');
+      
+      if (redirect === 'checkout') {
+        // Ohjaa suoraan hinnoitteluun (josta pääsee checkoutiin)
+        navigate("/hinnoittelu");
+      } else {
+        navigate("/dashboard");
+      }
     } catch (error: any) {
       toast({
         title: "Virhe kirjautumisessa",

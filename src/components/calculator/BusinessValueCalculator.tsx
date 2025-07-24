@@ -548,11 +548,12 @@ const BusinessValueCalculator = ({
                 </Button>
                 <Button
                   onClick={() => {
-                    window.location.href = 'https://tally.so/r/wQ4WOp';
+                    // Ohjaa suoraan kirjautumiseen ja sitten checkoutiin
+                    window.location.href = '/auth?redirect=checkout';
                   }}
                   className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all py-6 text-primary-foreground"
                 >
-                  Tee tarkempi arvonmääritys
+                  Avaa kaikki ominaisuudet 39€
                 </Button>
                 <Button
                   onClick={() => setIsEmailDialogOpen(true)}

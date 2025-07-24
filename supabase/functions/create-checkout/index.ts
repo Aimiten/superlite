@@ -28,7 +28,7 @@ serve(async (req) => {
       throw new Error('Supabase configuration missing');
     }
 
-    const { priceId, successUrl, cancelUrl, email } = await req.json();
+    const { priceId, addOnPriceId, successUrl, cancelUrl, email } = await req.json();
 
     if (!priceId) {
       throw new Error('Price ID is required');
@@ -59,11 +59,11 @@ serve(async (req) => {
 
     // Luo Checkout-sessio
     const sessionConfig: Stripe.Checkout.SessionCreateParams = {
+      mode: 'subscription',
       line_items: [{
-        price: priceId,
+        price: priceId, // 19€/kk subscription
         quantity: 1,
       }],
-      mode: 'subscription',
       success_url: successUrl || `${Deno.env.get('SITE_URL') || ''}/dashboard?success=true&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: cancelUrl || `${Deno.env.get('SITE_URL') || ''}/?canceled=true`,
       allow_promotion_codes: true,
@@ -73,6 +73,16 @@ serve(async (req) => {
         ...(userId && { user_id: userId }),
       },
     };
+
+    // Jos on lisämaksu ensimmäiselle laskulle (esim. 20€ setup fee)
+    if (addOnPriceId) {
+      sessionConfig.subscription_data = {
+        add_invoice_items: [{
+          price: addOnPriceId, // 20€ kertaluontoinen lisämaksu
+          quantity: 1,
+        }],
+      };
+    }
 
     // Jos käyttäjä on kirjautunut ja hänellä on stripe_customer_id
     if (userId) {

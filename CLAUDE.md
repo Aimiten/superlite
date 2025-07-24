@@ -78,3 +78,24 @@ Toimi kuten kokenut Principal Engineer. Tavoitteena on tuotantolaatuinen, turval
 4. Älä arvaa jos et ole varma
 5. Älä mielistele
 6. Älä valehtele
+
+## COMPANY PREVIEW TOTEUTUS
+
+### Arkkitehtuuri
+Landing pagella on kaksiosainen yritysarvon haku:
+1. **company-preview** (~1.5s): Nopea YTJ + Finder + Gemini teaser
+2. **enhanced-calculator** (~3-4s): Tarkempi analyysi Perplexity-kertoimilla
+
+### Flow
+1. Käyttäjä kirjoittaa yrityksen nimen tai Y-tunnuksen
+2. CompanyPreviewSearch → company-preview edge function
+3. Näyttää heti ProgressiveValuationCard + quickValuation (0.6-1.0x)
+4. Taustalla EnhancedHero kutsuu enhanced-calculator
+5. Päivittää ProgressiveValuationCard tarkemmilla kertoimilla (0.4-0.6x)
+6. CTA: "Aloita arvonmääritys 39€" → BusinessValueCalculator
+
+### Tärkeää
+- Molemmat edge funktiot validoivat inputin
+- enhanced-calculator käyttää 6h Supabase-välimuistia
+- Virheet tallennetaan free_calculator_errors tauluun
+- Preview toimii vaikka enhanced epäonnistuisi
